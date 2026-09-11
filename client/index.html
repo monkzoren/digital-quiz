@@ -3703,15 +3703,18 @@
        stake dial, the standings ladder, the question writer), built out of
        the same tokens so they belong to the same game.
        ================================================================== */
-    #stage { width: min(1040px, 96vw, calc(100dvh * 16 / 10)); aspect-ratio: 16 / 10; }
+    #stage { width: min(1280px, 96vw, calc(100dvh * 16 / 10)); aspect-ratio: 16 / 10; }
     #app:fullscreen #stage { width: min(100vw, calc(100vh * 16 / 10)); }
 
     /* Overlays sit inside the stage here (the pub is the backdrop). The
        lobby/results/writer screens are taller than the box on a short
        viewport, so they scroll from the top rather than clipping both ends. */
     .overlay { overflow-y: auto; }
+    /* `safe center` centers the screen while it fits and falls back to
+       top-aligned once it does not — plain `center` would push the first
+       rows out of reach above the scroll area. */
     #overlay-lobby, #overlay-results, #overlay-questions, #overlay-menu {
-      justify-content: flex-start; padding-block: 22px; gap: 10px;
+      justify-content: safe center; padding-block: 22px; gap: 12px;
     }
     #overlay-lobby > *, #overlay-results > *, #overlay-questions > *, #overlay-menu > * { flex: none; }
     .overlay.translucent { background: linear-gradient(180deg, rgba(5, 8, 34, 0.82), rgba(3, 4, 18, 0.9)); backdrop-filter: blur(6px); }
@@ -3761,7 +3764,11 @@
     #status { position: absolute; left: 12px; bottom: 8px; color: var(--dim-2); font-size: 10px; letter-spacing: 1px; z-index: 7; pointer-events: none; }
 
     /* ---- menu ---- */
-    #menu-top { display: flex; gap: 16px; align-items: stretch; flex-wrap: wrap; justify-content: center; width: min(880px, 100%); }
+    /* Two columns, like the tennis menu: the card (who you are + what you
+       can do) with the open-pub list alongside, instead of one narrow
+       stack with dead space either side. */
+    #menu-layout { display: flex; gap: 16px; align-items: stretch; flex-wrap: wrap; justify-content: center; width: min(1160px, 100%); }
+    #menu-top { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; justify-content: center; flex: 1 1 560px; }
     #menu-top > .col { flex: 1 1 260px; justify-content: center; }
     #profile-card { flex: 1 1 320px; }
     #profile-avatar {
@@ -3777,12 +3784,12 @@
     .stat-row b { color: var(--ink); font-size: 12px; }
     #account-chip { position: absolute; top: 12px; right: 14px; display: flex; align-items: center; gap: 8px; z-index: 2; }
     #account-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--dim-2); }
-    #public-panel { width: min(880px, 100%); }
-    #public-list { display: flex; flex-direction: column; gap: 6px; max-height: 150px; overflow-y: auto; }
+    #public-panel { flex: 1 1 280px; max-width: 340px; }
+    #public-list { display: flex; flex-direction: column; gap: 6px; max-height: 280px; overflow-y: auto; }
     #public-list .lobby-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     #public-list .lobby-row .meta { font-size: 10px; color: var(--dim); letter-spacing: 1px; }
     #join-code { width: 130px; }
-    #create-panel { width: min(680px, 100%); }
+    #create-panel { width: min(760px, 100%); }
 
     /* ---- character select (tennis's PLAYER SELECT, same cards) ---- */
     #overlay-avatar { justify-content: flex-start; gap: 14px; }
@@ -3796,8 +3803,16 @@
     #overlay-lobby h2 { font-size: clamp(18px, 3vw, 26px); }
     #overlay-lobby .code-display { font-size: 26px; letter-spacing: 8px; padding: 6px 14px 6px 22px; }
     #overlay-lobby .link-box { font-size: 11px; max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    #lobby-body > .panel { max-height: 380px; overflow-y: auto; }
+    /* Panels size to their own content — stretching them to match each
+       other turned AT THE BAR into a 380px box holding one chip. Only the
+       lists inside scroll. */
+    #lobby-body { align-items: flex-start; }
+    #lobby-body > .panel:first-child { min-height: 210px; }
+    #lobby-roster { max-height: 250px; overflow-y: auto; align-content: flex-start; }
     #lobby-body { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; width: min(900px, 100%); }
+    #lobby-settings .grid { gap: 7px; }
+    #lobby-settings input, #lobby-settings select { padding: 6px 9px; font-size: 13px; }
+    #lobby-settings .panel-label { margin-top: 2px; }
     #lobby-body > .panel { flex: 1 1 320px; }
     #lobby-roster { display: flex; flex-wrap: wrap; gap: 6px; }
     .chip { display: flex; align-items: center; gap: 7px; padding: 5px 10px; border-radius: 999px; background: rgba(10, 16, 60, 0.75); border: 1px solid var(--line); font-size: 12px; font-weight: 700; letter-spacing: 1px; }
@@ -3810,7 +3825,7 @@
       background: rgba(255, 70, 70, 0.12); border: 1px solid rgba(255, 70, 70, 0.45); border-radius: 999px; color: #ff9a9a; box-shadow: none; transform: none; }
     .chip .kick:hover { background: rgba(255, 70, 70, 0.3); color: #fff; transform: none; }
     .chip .team-dot { width: 9px; height: 9px; border-radius: 50%; }
-    #s-topics { display: flex; flex-wrap: wrap; gap: 5px; max-height: 96px; overflow-y: auto; }
+    #s-topics { display: flex; flex-wrap: wrap; gap: 5px; max-height: 124px; overflow-y: auto; align-content: flex-start; padding-right: 2px; }
     .topic-pill { font-size: 10px; padding: 4px 9px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line); letter-spacing: 1px; font-weight: 700; }
     .topic-pill.on { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: #201800; border-color: var(--gold); }
     .topic-pill.off { background: rgba(10, 16, 60, 0.7); color: var(--dim); }
@@ -3960,7 +3975,7 @@
           <input id="chat-input" type="text" placeholder="SAY SOMETHING… (ENTER)" maxlength="120" autocomplete="off" />
         </div>
         <!-- The pub floor is yours to walk: same controls as the tennis grounds -->
-        <div id="walk-hint">WASD / ARROWS — WALK ABOUT<br />SPACE JUMP · E WAVE · 1-4 ANSWER</div>
+        <div id="walk-hint">WASD / ARROWS — WALK ABOUT<br />SPACE JUMP · E WAVE · 1-4 ANSWER · F FULLSCREEN</div>
         <button id="btn-esc" class="small ghost">☰ MENU</button>
       </div>
 
@@ -3981,6 +3996,7 @@
           <h1>DIGITAL QUIZ</h1>
           <div class="tag">THE ARCADE PUB QUIZ</div>
         </div>
+        <div id="menu-layout">
         <div id="menu-top">
           <div id="profile-card" class="panel">
             <div class="row" style="justify-content:flex-start">
@@ -4002,6 +4018,11 @@
             <button id="btn-questions" class="mode-btn"><span class="mode-ico">✍️</span><span class="mode-name">Write Questions</span><span class="desc">your questions, in every pub that plays the topic</span></button>
           </div>
         </div>
+        <div class="panel" id="public-panel">
+          <div class="panel-label">PUBLIC PUBS</div>
+          <div id="public-list"><div class="subtitle">NOBODY'S OPEN YET</div></div>
+        </div>
+        </div>
         <div id="create-panel" class="panel hidden">
           <div class="panel-label">TONIGHT'S FORMAT</div>
           <div class="grid">
@@ -4017,9 +4038,8 @@
           </div>
           <div class="row" style="margin-top:10px"><button id="c-go" class="primary">Open The Doors ▶</button><button id="c-cancel" class="ghost">Cancel</button></div>
         </div>
-        <div class="panel" id="public-panel">
-          <div class="panel-label">PUBLIC PUBS</div>
-          <div id="public-list"><div class="subtitle">NOBODY'S OPEN YET</div></div>
+        <div class="menu-utility">
+          <button id="menu-fullscreen-btn" class="util-btn" title="Fullscreen (F)">⛶ Fullscreen</button>
         </div>
         <div id="status-msg"></div>
       </div>

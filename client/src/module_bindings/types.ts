@@ -115,6 +115,9 @@ export const Lobby = __t.object("Lobby", {
 });
 export type Lobby = __Infer<typeof Lobby>;
 
+export const MyPick = __t.object("MyPick", {});
+export type MyPick = __Infer<typeof MyPick>;
+
 export const MyQuestions = __t.object("MyQuestions", {});
 export type MyQuestions = __Infer<typeof MyQuestions>;
 
@@ -128,6 +131,14 @@ export const PhaseTimer = __t.object("PhaseTimer", {
   gen: __t.u32(),
 });
 export type PhaseTimer = __Infer<typeof PhaseTimer>;
+
+export const Pick = __t.object("Pick", {
+  identity: __t.identity(),
+  lobbyId: __t.u64(),
+  questionIdx: __t.u8(),
+  choice: __t.u8(),
+});
+export type Pick = __Infer<typeof Pick>;
 
 export const Player = __t.object("Player", {
   identity: __t.identity(),

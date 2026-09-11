@@ -67,6 +67,7 @@ import ChatRow from "./chat_table";
 import EntryRow from "./entry_table";
 import LegResultRow from "./leg_result_table";
 import LobbyRow from "./lobby_table";
+import MyPickRow from "./my_pick_table";
 import MyQuestionsRow from "./my_questions_table";
 import MyQuizLogRow from "./my_quiz_log_table";
 import PlayerRow from "./player_table";
@@ -176,6 +177,13 @@ const tablesSchema = __schema({
       { name: 'topic_name_key', constraint: 'unique', columns: ['name'] },
     ],
   }, TopicRow),
+  myPick: __table({
+    name: 'my_pick',
+    indexes: [
+    ],
+    constraints: [
+    ],
+  }, MyPickRow),
   myQuestions: __table({
     name: 'my_questions',
     indexes: [
@@ -226,6 +234,8 @@ const proceduresSchema = __procedures(
 
 type __SchemaWithTableAccessorAliases = Omit<typeof tablesSchema.schemaType, "tables"> & {
   tables: typeof tablesSchema.schemaType.tables & {
+    /** @deprecated Use `myPick` instead. This alias will be removed in the next major version. */
+    readonly "my_pick": Omit<typeof tablesSchema.schemaType.tables["myPick"], "accessorName"> & { readonly accessorName: "my_pick" };
     /** @deprecated Use `myQuestions` instead. This alias will be removed in the next major version. */
     readonly "my_questions": Omit<typeof tablesSchema.schemaType.tables["myQuestions"], "accessorName"> & { readonly accessorName: "my_questions" };
     /** @deprecated Use `myQuizLog` instead. This alias will be removed in the next major version. */
@@ -248,6 +258,7 @@ const REMOTE_MODULE = {
 >;
 
 const tableAccessorAliases = {
+  "my_pick": "myPick",
   "my_questions": "myQuestions",
   "my_quiz_log": "myQuizLog",
 } as const;
@@ -270,6 +281,8 @@ function __withTableAccessorAliases<T extends object>(target: T, freeze = false)
 
 type __DbViewBase = __DbConnectionImpl<typeof REMOTE_MODULE>["db"];
 export type DbView = __DbViewBase & {
+  /** @deprecated Use `myPick` instead. This alias will be removed in the next major version. */
+  readonly "my_pick": __DbViewBase["myPick"];
   /** @deprecated Use `myQuestions` instead. This alias will be removed in the next major version. */
   readonly "my_questions": __DbViewBase["myQuestions"];
   /** @deprecated Use `myQuizLog` instead. This alias will be removed in the next major version. */
@@ -278,6 +291,8 @@ export type DbView = __DbViewBase & {
 
 type __TablesBase = __QueryBuilder<typeof tablesSchema.schemaType>;
 export type Tables = __TablesBase & {
+  /** @deprecated Use `myPick` instead. This alias will be removed in the next major version. */
+  readonly "my_pick": __TablesBase["myPick"];
   /** @deprecated Use `myQuestions` instead. This alias will be removed in the next major version. */
   readonly "my_questions": __TablesBase["myQuestions"];
   /** @deprecated Use `myQuizLog` instead. This alias will be removed in the next major version. */

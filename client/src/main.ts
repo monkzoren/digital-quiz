@@ -137,6 +137,7 @@ async function connect() {
             'SELECT * FROM chat',
             'SELECT * FROM account',
             'SELECT * FROM leg_result',
+            'SELECT * FROM my_pick',
             'SELECT * FROM my_quiz_log',
             'SELECT * FROM my_questions',
           ]);
@@ -184,6 +185,8 @@ async function connect() {
   conn.db.account.onUpdate(() => { dirty = true; });
   conn.db.myQuestions.onInsert(() => { dirty = true; });
   conn.db.myQuestions.onDelete(() => { dirty = true; });
+  conn.db.myPick.onInsert(() => { dirty = true; });
+  conn.db.myPick.onDelete(() => { dirty = true; });
   conn.db.myQuizLog.onInsert(() => { dirty = true; });
 }
 
@@ -761,7 +764,8 @@ function refreshHud(room: Lobby, me: Player) {
   ($('stake-max') as HTMLButtonElement).textContent = T.max;
   ($('btn-esc') as HTMLButtonElement).textContent = T.menu;
   (chatInput as HTMLInputElement).placeholder = T.chatPlaceholder;
-  const phaseKey = `${room.id}|${room.questionIdx}|${room.phase}|${room.qOptions.join('|')}|${room.qCorrect}|${me.answer}|${me.stake}|${me.credits}`;
+  const mine = myAnswer(room, me);
+  const phaseKey = `${room.id}|${room.questionIdx}|${room.phase}|${room.qOptions.join('|')}|${room.qCorrect}|${mine}|${me.stake}|${me.credits}`;
   const changed = phaseKey !== lastPhaseKey;
   lastPhaseKey = phaseKey;
 
@@ -797,12 +801,12 @@ function refreshHud(room: Lobby, me: Player) {
       room.qOptions.forEach((opt, i) => {
         const b = document.createElement('button');
         b.className = 'opt';
-        if (me.answer === i) b.classList.add('mine');
+        if (mine === i) b.classList.add('mine');
         if (room.phase === C.PH_RESULT) {
           if (i === room.qCorrect) b.classList.add('right');
-          else if (me.answer === i) b.classList.add('wrong');
+          else if (mine === i) b.classList.add('wrong');
           b.disabled = true;
-        } else b.disabled = me.answer !== C.NO_ANSWER;
+        } else b.disabled = mine !== C.NO_ANSWER;
         b.innerHTML = `<span class="letter" style="background:${['#ff4b33', '#3c8dff', '#43e97b', '#ffd60a'][i]};color:${i === 3 ? '#1a1200' : '#fff'}">${'ABCD'[i]}</span><span>${escapeHtml(opt)}</span>`;
         b.onclick = () => call(conn.reducers.answer({ choice: i }));
         options.appendChild(b);
@@ -811,7 +815,7 @@ function refreshHud(room: Lobby, me: Player) {
         result.classList.remove('hidden');
         const d = me.lastDelta;
         const speed = room.fastestName ? ` · ${T.fastest}: ${escapeHtml(room.fastestName)}` : '';
-        result.innerHTML = me.answer === C.NO_ANSWER
+        result.innerHTML = mine === C.NO_ANSWER
           ? `<span class="delta down">${T.noAnswer} −${me.stake}¢</span>${speed}`
           : `<span class="delta ${d >= 0 ? 'up' : 'down'}">${me.lastCorrect ? T.correct : T.wrong} ${d >= 0 ? '+' : ''}${d}¢</span>${speed}`;
       }
@@ -836,7 +840,7 @@ function refreshHud(room: Lobby, me: Player) {
   order.forEach((p, i) => {
     const me_ = p.identity.toHexString() === myHex();
     const delta = room.phase === C.PH_RESULT ? `<span class="d ${p.lastDelta >= 0 ? 'up' : 'down'}">${p.lastDelta >= 0 ? '+' : ''}${p.lastDelta}</span>` : '';
-    const flag = p.attention === C.ATT_PHONE ? ' 📱' : p.attention === C.ATT_IDLE ? ' 💤' : p.answer !== C.NO_ANSWER && room.phase === C.PH_ANSWER ? ' ✔' : '';
+    const flag = p.attention === C.ATT_PHONE ? ' 📱' : p.attention === C.ATT_IDLE ? ' 💤' : p.answeredAt !== 0n && room.phase === C.PH_ANSWER ? ' ✔' : '';
     html += `<div class="st-row${me_ ? ' me' : ''}"><span class="pos">${i + 1}</span><span class="name" style="${room.teamMode && p.team ? `color:${C.TEAM_COLORS[p.team]}` : ''}">${escapeHtml(p.name || 'GUEST')}${flag}</span>${delta}<span class="cr">${p.credits}¢</span></div>`;
   });
   st.innerHTML = html;
@@ -871,6 +875,16 @@ $('stake-max').addEventListener('click', () => { const me = getMyPlayer(); const
 // arrows walk, SPACE jumps, E waves, and a gamepad stick does the same. The
 // answer keys are 1-4 (A-D would fight with the walk keys).
 // ---------------------------------------------------------------------------
+// Fullscreen: the menu button, the ESC-menu button and F all come here. The
+// stage keeps its 16:10 shape and grows to fill the screen (see the
+// #app:fullscreen rules) — the renderer re-reads the canvas size every frame,
+// so nothing else has to be told.
+function toggleFullscreen() {
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  else $('app').requestFullscreen().catch(() => showToast('FULLSCREEN BLOCKED BY THE BROWSER', 'var(--red)'));
+}
+$('menu-fullscreen-btn').addEventListener('click', toggleFullscreen);
+
 const MOVE_KEYS: Record<string, [number, number]> = {
   ArrowUp: [0, -1],
   ArrowDown: [0, 1],
@@ -952,6 +966,7 @@ window.addEventListener('keydown', e => {
   }
   if (e.code === 'Space') { call(conn.reducers.act({ kind: ACT_JUMP })); e.preventDefault(); return; }
   if (e.code === 'KeyE') { call(conn.reducers.act({ kind: ACT_WAVE })); return; }
+  if (e.code === 'KeyF') { toggleFullscreen(); return; }
   const room = myRoom();
   if (!room || room.status !== C.L_RUNNING || room.phase !== C.PH_ANSWER) return;
   const idx = '1234'.indexOf(e.key);
@@ -1080,10 +1095,7 @@ function renderEscMenu() {
 $('btn-esc').addEventListener('click', toggleEscMenu);
 $('mm-resume').addEventListener('click', () => escMenu.classList.add('hidden'));
 $('mm-leave').addEventListener('click', () => { escMenu.classList.add('hidden'); call(conn.reducers.leavePub({})); });
-$('mm-fullscreen').addEventListener('click', () => {
-  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-  else $('app').requestFullscreen().catch(() => {});
-});
+$('mm-fullscreen').addEventListener('click', toggleFullscreen);
 
 // ---------------------------------------------------------------------------
 // Results
@@ -1247,6 +1259,16 @@ function onSubscribed() {
   dirty = true;
 }
 
+/** What I locked in this question. `player.answer` stays NO_ANSWER for
+ *  everyone until the reveal, so my own choice comes from the my_pick view. */
+function myAnswer(room: Lobby, me: Player): number {
+  if (room.phase === C.PH_RESULT || room.status === C.L_FINISHED) return me.answer;
+  for (const row of conn.db.myPick.iter()) {
+    if (row.lobbyId === room.id && row.questionIdx === room.questionIdx) return row.choice;
+  }
+  return C.NO_ANSWER;
+}
+
 let lastUiRoomId = 0n;
 function refreshUi() {
   if (!subscribed) return;
@@ -1285,7 +1307,10 @@ function buildScene(): Scene {
     return {
       key, name: p.name, avatarId: p.avatarId, seat: p.seat, credits: p.credits, attention: p.attention,
       x: p.x, y: p.y, dirX: p.dirX, dirY: p.dirY, actTicks: p.actTicks, actKind: p.actKind,
-      answer: room.phase === C.PH_ANSWER || room.phase === C.PH_RESULT ? p.answer : C.NO_ANSWER,
+      // the letter on the paddle is public ONLY at the reveal; until then a
+      // paddle is up but face down (and my own is my own business)
+      answer: room.phase === C.PH_RESULT ? p.answer : C.NO_ANSWER,
+      locked: room.phase === C.PH_ANSWER && p.answeredAt !== 0n,
       team: room.teamMode ? p.team : 0, online: p.online, mood: moods.get(key) ?? 0, isMe: key === myHex(),
       bubble: bubbles.get(key) ?? null,
     };
@@ -1324,7 +1349,7 @@ function demoSeats(now: number): SceneSeat[] {
     return {
       key: `demo${i}`, name: CHARACTERS[(i * 5) % AVATAR_COUNT].name, avatarId: (i * 5) % AVATAR_COUNT,
       seat, credits: 100, team: 0, online: true, isMe: false, bubble: null,
-      x, y, dirX: Math.cos(a) * speed, dirY: -Math.sin(a) * speed, actTicks: 0, actKind: 0,
+      x, y, dirX: Math.cos(a) * speed, dirY: -Math.sin(a) * speed, actTicks: 0, actKind: 0, locked: false,
       attention: Math.floor(t / 9 + i) % 4 === 0 ? C.ATT_PHONE : C.ATT_HERE, answer: C.NO_ANSWER, mood: 0,
     };
   });

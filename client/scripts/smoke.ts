@@ -22,7 +22,7 @@ async function client(name: string): Promise<DbConnection> {
         c.subscriptionBuilder()
           .onApplied(() => { console.log(`${name} connected as ${id.toHexString().slice(0, 10)}`); resolve(c); })
           .onError(e => reject(e))
-          .subscribe(['SELECT * FROM lobby', 'SELECT * FROM player', 'SELECT * FROM entry', 'SELECT * FROM topic', 'SELECT * FROM chat', 'SELECT * FROM account', 'SELECT * FROM my_quiz_log', 'SELECT * FROM my_questions']);
+          .subscribe(['SELECT * FROM lobby', 'SELECT * FROM player', 'SELECT * FROM entry', 'SELECT * FROM topic', 'SELECT * FROM chat', 'SELECT * FROM account', 'SELECT * FROM my_quiz_log', 'SELECT * FROM my_questions', 'SELECT * FROM my_pick']);
       })
       .onConnectError((_c, e) => reject(e))
       .build();
@@ -97,7 +97,11 @@ for (let q = 0; q < 3; q++) {
   if (ra.qOptions.length !== 4 || !ra.qText || ra.qCorrect !== 255) fail('answer phase shape wrong');
   // A guesses 0; B guesses 1
   await a.reducers.answer({ choice: 0 });
-  await until('A locked in', () => me(a).answer === 0);
+  // the PUBLIC row only says they are in; the choice itself is private
+  await until('A locked in', () => me(a).answeredAt !== 0n);
+  if (me(a).answer !== 255) fail('own answer leaked into the public player row before the reveal');
+  const mine = [...a.db.myPick.iter()].find(r => r.questionIdx === q);
+  if (!mine || mine.choice !== 0) fail('my_pick did not give A their own answer back');
   threw = false;
   try { await a.reducers.answer({ choice: 1 }); } catch { threw = true; }
   if (!threw) fail('second answer accepted');
@@ -108,10 +112,16 @@ for (let q = 0; q < 3; q++) {
     await b.reducers.setAttention({ state: 0 });
   }
   await b.reducers.answer({ choice: 1 });
+  await until('B locked in', () => asSeenBy(a, b).answeredAt !== 0n);
+  // THE point of the private pick: A can see that B is in, never what B said
+  if (room(a)?.phase === 3 && asSeenBy(a, b).answer !== 255) fail("B's answer was visible to A before the reveal");
+  if ([...a.db.myPick.iter()].some(r => r.identity.toHexString() === b.identity!.toHexString())) fail("A can read B's pick through my_pick");
+  ok('answers stay hidden until the reveal');
   await until(`result Q${q + 1}`, () => room(a)?.phase === 4, 20000);
   const rr = room(a)!;
   if (rr.qCorrect > 3) fail('result did not reveal the key');
   const ma = me(a);
+  if (ma.answer !== 0 || asSeenBy(a, b).answer !== 1) fail('answers were not revealed at the result');
   const expected = rr.qCorrect === 0;
   if (ma.lastCorrect !== expected) fail('lastCorrect mismatch');
   if (expected) correctA++;

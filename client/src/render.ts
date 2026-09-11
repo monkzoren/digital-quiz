@@ -34,7 +34,10 @@ export interface SceneSeat {
   actKind: number;
   credits: number;
   attention: number;
-  answer: number; // NO_ANSWER until locked in
+  /** The letter to show on the paddle — only ever set at the reveal. */
+  answer: number;
+  /** They have locked in, but nobody may see what: a face-down paddle. */
+  locked: boolean;
   team: number;
   online: boolean;
   /** 0 neutral · 1 just won the question · 2 just lost it */
@@ -247,7 +250,7 @@ function makeRig(): PubRig {
   anno.add(ring);
 
   return {
-    holder, anno, rig, phone, phoneLight, paddle, paddleFace, paddleLetter: -1,
+    holder, anno, rig, phone, phoneLight, paddle, paddleFace, paddleLetter: -2,
     zzz: z.sprite, label: label.sprite, labelKey: '', bubble: bubble.sprite, bubbleKey: '', ring,
     characterId: -1, seed: Math.random() * 10, mood: 0, moodAt: 0,
     yaw: Math.PI, prevX: 0, prevZ: 0,
@@ -265,22 +268,31 @@ function dressRig(r: PubRig, characterId: number) {
 /** The quiz master: a roster character in a bow tie, permanently behind the
  *  bar. MC_CHARACTER is who holds the mic. */
 const MC_CHARACTER = 13; // GRANNY — she has run this quiz for thirty years
+/** Paddle faces: 0-3 are the answer letters, -1 is the blank back shown
+ *  while the table has locked in but nothing is revealed yet. */
 function letterTexture(i: number): THREE.CanvasTexture {
-  if (letterTex[i]) return letterTex[i];
+  const key = i < 0 ? 4 : i;
+  if (letterTex[key]) return letterTex[key];
   const c = document.createElement('canvas');
   c.width = c.height = 128;
   const ctx = c.getContext('2d')!;
-  ctx.fillStyle = ['#ff4b33', '#3c8dff', '#43e97b', '#ffd60a'][i] ?? '#fff';
+  ctx.fillStyle = i < 0 ? '#1b2568' : (['#ff4b33', '#3c8dff', '#43e97b', '#ffd60a'][i] ?? '#fff');
   roundRect(ctx, 6, 6, 116, 116, 22);
   ctx.fill();
+  if (i < 0) {
+    ctx.strokeStyle = 'rgba(255, 214, 10, 0.55)';
+    ctx.lineWidth = 5;
+    roundRect(ctx, 16, 16, 96, 96, 16);
+    ctx.stroke();
+  }
   ctx.fillStyle = i === 3 ? '#1a1200' : '#fff';
   ctx.font = 'bold 84px "Chakra Petch", Arial';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('ABCD'[i] ?? '?', 64, 70);
+  ctx.fillText(i < 0 ? '?' : ('ABCD'[i] ?? '?'), 64, 70);
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
-  letterTex[i] = tex;
+  letterTex[key] = tex;
   return tex;
 }
 
@@ -685,6 +697,7 @@ function acquireRig(key: string): PubRig {
   r = rigPool.pop() ?? makeRig();
   r.holder.visible = true;
   r.anno.visible = true;
+  r.paddleLetter = -2;
   r.labelKey = '';
   r.bubbleKey = '';
   r.emoteKind = 0;
@@ -779,7 +792,7 @@ function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boole
 
   const onPhone = s.attention === ATT_PHONE;
   const dozing = s.attention === ATT_IDLE;
-  const paddleUp = s.answer !== NO_ANSWER && !onPhone;
+  const paddleUp = (s.answer !== NO_ANSWER || s.locked) && !onPhone;
 
   let target: Pose;
   let rate = 12;
@@ -838,9 +851,11 @@ function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boole
   r.zzz.visible = dozing;
   if (dozing) r.zzz.position.y = 2.2 + ((nowMs / 2500 + r.seed) % 1) * 0.3;
   r.paddle.visible = paddleUp;
-  if (paddleUp && r.paddleLetter !== s.answer) {
-    r.paddleLetter = s.answer;
-    (r.paddleFace.material as THREE.MeshBasicMaterial).map = letterTexture(s.answer);
+  // -1 is the blank back of the paddle: up, but giving nothing away
+  const face = s.answer === NO_ANSWER ? -1 : s.answer;
+  if (paddleUp && r.paddleLetter !== face) {
+    r.paddleLetter = face;
+    (r.paddleFace.material as THREE.MeshBasicMaterial).map = letterTexture(face);
     (r.paddleFace.material as THREE.MeshBasicMaterial).needsUpdate = true;
   }
   r.ring.visible = s.isMe && !menu;

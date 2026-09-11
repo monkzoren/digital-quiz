@@ -430,6 +430,25 @@ const Question = table(
   }
 );
 
+// Locked-in answers, PRIVATE until the reveal. `player.answer` is on a public
+// table, so writing a choice there the moment it is made hands it to every
+// other client — the whole table could simply copy whoever is winning. The
+// pick lives here until settleQuestion reveals it; all the public row says
+// meanwhile is `answeredAt` (that they are in, not what they said). A player
+// reads their own pick back through the `my_pick` view.
+const Pick = table(
+  {
+    name: 'pick',
+    indexes: [{ accessor: 'byLobby', algorithm: 'btree', columns: ['lobbyId'] }],
+  },
+  {
+    identity: t.identity().primaryKey(),
+    lobbyId: t.u64(),
+    questionIdx: t.u8(),
+    choice: t.u8(),
+  }
+);
+
 // Singleton: which compiled bank the tables currently reflect.
 const BankMeta = table(
   { name: 'bank_meta' },
@@ -577,6 +596,7 @@ const spacetimedb = schema({
   topic: Topic,
   question: Question,
   bankMeta: BankMeta,
+  pick: Pick,
   chat: Chat,
   chatGuard: ChatGuard,
   account: Account,
@@ -910,7 +930,12 @@ function questionAt(ctx: Ctx, lobby: LobbyRow, idx: number): QuestionRow {
   );
 }
 
+function clearPicks(ctx: Ctx, lobbyId: bigint) {
+  for (const row of ctx.db.pick.byLobby.filter(lobbyId)) ctx.db.pick.identity.delete(row.identity);
+}
+
 function openBetting(ctx: Ctx, lobby: LobbyRow, idx: number) {
+  clearPicks(ctx, lobby.id);
   const q = questionAt(ctx, lobby, idx);
   const topic = ctx.db.topic.id.find(q.topicId);
   const final = idx >= lobby.questionCount - 1;
@@ -957,15 +982,23 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
   const correctIdx = lobby.qOptions.indexOf(q.correct);
   const seats = lobbyPlayers(ctx, lobby.id);
   const started = lobby.phaseStartedAt.microsSinceUnixEpoch;
+  // The reveal: every pick comes out of the private table at the same moment.
+  const picked = new Map<string, number>();
+  for (const row of ctx.db.pick.byLobby.filter(lobby.id)) {
+    if (row.questionIdx === lobby.questionIdx) picked.set(row.identity.toHexString(), row.choice);
+    ctx.db.pick.identity.delete(row.identity);
+  }
+  const choiceOf = (p: PlayerRow) => picked.get(p.identity.toHexString()) ?? NO_ANSWER;
   // Who was quickest and right?
   let fastest: PlayerRow | null = null;
   for (const p of seats) {
-    if (p.answer === correctIdx && p.answeredAt !== 0n && (!fastest || p.answeredAt < fastest.answeredAt)) fastest = p;
+    if (choiceOf(p) === correctIdx && p.answeredAt !== 0n && (!fastest || p.answeredAt < fastest.answeredAt)) fastest = p;
   }
   let right = 0;
   let onPhoneName = '';
   for (const p of seats) {
-    const correct = p.answer === correctIdx;
+    const choice = choiceOf(p);
+    const correct = choice === correctIdx;
     let delta: number;
     let streak = p.streak;
     if (correct) {
@@ -986,7 +1019,7 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
       identity: p.identity,
       name: p.name,
       stake: p.stake,
-      answer: p.answer,
+      answer: choice,
       correct,
       delta,
       answerMillis: p.answeredAt === 0n ? 0 : Number((p.answeredAt - started) / 1000n),
@@ -994,11 +1027,12 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
     });
     ctx.db.player.identity.update({
       ...p,
+      answer: choice, // revealed now, and only now
       credits: p.credits + delta,
       lastDelta: delta,
       lastCorrect: correct,
       correct: p.correct + (correct ? 1 : 0),
-      answered: p.answered + (p.answer === NO_ANSWER ? 0 : 1),
+      answered: p.answered + (choice === NO_ANSWER ? 0 : 1),
       streak,
     });
   }
@@ -1211,6 +1245,17 @@ export const restore_account = spacetimedb.reducer(
   }
 );
 
+// Your own locked-in answer, so the client can keep it highlighted while the
+// rest of the table still cannot see it.
+export const my_pick = spacetimedb.view(
+  { name: 'my_pick', public: true },
+  t.array(Pick.rowType),
+  ctx => {
+    const row = ctx.db.pick.identity.find(ctx.sender);
+    return row ? [row] : [];
+  }
+);
+
 export const my_quiz_log = spacetimedb.view(
   { name: 'my_quiz_log', public: true },
   t.array(QuizLog.rowType),
@@ -1335,6 +1380,7 @@ function insertLobby(ctx: Ctx, o: LobbyOpts): LobbyRow {
 function destroyLobby(ctx: Ctx, lobby: LobbyRow) {
   deletePhaseTimers(ctx, lobby.id);
   disarmWalk(ctx, lobby.id);
+  clearPicks(ctx, lobby.id);
   disarmReaper(ctx, lobby.id);
   for (const p of lobbyPlayers(ctx, lobby.id)) {
     ctx.db.player.identity.update({
@@ -1373,6 +1419,7 @@ function seatPlayer(ctx: Ctx, lobby: LobbyRow, player: PlayerRow) {
 
 function leaveCurrentLobby(ctx: Ctx, player: PlayerRow) {
   if (player.lobbyId === 0n) return;
+  ctx.db.pick.identity.delete(player.identity);
   const lobby = ctx.db.lobby.id.find(player.lobbyId);
   ctx.db.player.identity.update({
     ...freshQuizFields(player),
@@ -1726,11 +1773,15 @@ export const answer = spacetimedb.reducer({ choice: t.u8() }, (ctx, { choice }) 
   const lobby = ctx.db.lobby.id.find(player.lobbyId);
   if (!lobby || lobby.status !== L_RUNNING || lobby.phase !== PH_ANSWER) throw new SenderError('Not taking answers');
   if (choice >= lobby.qOptions.length) throw new SenderError('No such option');
-  if (player.answer !== NO_ANSWER) throw new SenderError('Already locked in');
-  ctx.db.player.identity.update({ ...player, answer: choice, answeredAt: micros(ctx) });
+  if (player.answeredAt !== 0n) throw new SenderError('Already locked in');
+  // the choice goes in the private table; the public row only records THAT
+  // they answered, and when (the fastest-finger bonus needs the clock)
+  ctx.db.pick.identity.delete(ctx.sender);
+  ctx.db.pick.insert({ identity: ctx.sender, lobbyId: lobby.id, questionIdx: lobby.questionIdx, choice });
+  ctx.db.player.identity.update({ ...player, answeredAt: micros(ctx) });
   // Everyone in? Don't make the table sit through the rest of the clock.
   const seats = lobbyPlayers(ctx, lobby.id);
-  const waiting = seats.filter(p => !sameId(p.identity, ctx.sender) && p.answer === NO_ANSWER && p.online);
+  const waiting = seats.filter(p => !sameId(p.identity, ctx.sender) && p.answeredAt === 0n && p.online);
   if (waiting.length === 0) {
     const remaining = lobby.phaseEndsAt.microsSinceUnixEpoch - micros(ctx);
     if (remaining > BigInt(ALL_IN_GRACE_SECS * 1_000_000)) setPhase(ctx, lobby, PH_ANSWER, ALL_IN_GRACE_SECS);

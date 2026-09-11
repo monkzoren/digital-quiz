@@ -29,6 +29,16 @@ README.md for how a night goes and how to run it. Key facts:
 - VENUES: `PUBS` in the module is mirrored in `client/src/config.ts`, where
   `PUB_LOOK` maps each venue to one of render.ts's three interiors — adding a
   pub costs a name and a look index, nothing else.
+- ANSWERS ARE SECRET until the reveal: `player` is a PUBLIC table, so writing
+  a choice into `player.answer` when it is made hands it to every other
+  client (copy whoever is winning). The pick goes into the PRIVATE `pick`
+  table (`answer` reducer), the public row only records `answeredAt` — that
+  they are in, not what they said — and `settleQuestion` copies every pick
+  into `player.answer` at PH_RESULT, all at once. A player reads their own
+  back through the `my_pick` view (`myAnswer()` in main.ts); the renderer
+  shows a face-down paddle for `SceneSeat.locked` and the letter only once
+  `answer` is set. `clearPicks` keeps a pick from outliving its question,
+  its room or its seat. The smoke test asserts the whole contract.
 - Quiz flow: `startQuiz` → PH_INTRO → per question PH_BETTING (topic/odds
   only — `qText`/`qOptions` stay empty, `qCorrect` = NO_ANSWER) → PH_ANSWER
   (question + shuffled options; key still hidden) → PH_RESULT (`qCorrect`
@@ -82,6 +92,10 @@ README.md for how a night goes and how to run it. Key facts:
   row write for anyone standing still. Floor bounds `PUB_*` live in the
   module; the renderer places rigs from those coords and the camera pans
   with the local player.
+- Fullscreen is `toggleFullscreen()` in main.ts — the menu button
+  (`menu-fullscreen-btn`), the ESC menu's (`mm-fullscreen`) and the F key all
+  call it; `#app:fullscreen #stage` keeps the 16:10 shape and fills the
+  screen, and the renderer re-reads the canvas size every frame.
 - Client: `main.ts` owns connection/UI, `render.ts` the three.js pub (spawn
   spots `seatPos`/`seatSpot`, rigs pooled per identity at `PUB_SCALE` inside
   a holder group, big screen is a CanvasTexture repainted only when

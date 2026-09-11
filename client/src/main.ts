@@ -51,6 +51,9 @@ function showOverlay(name: OverlayName | null) {
   if (currentOverlay === name) return;
   currentOverlay = name;
   for (const [k, el] of Object.entries(overlays)) el.classList.toggle('hidden', k !== name);
+  // Coming back to the menu always shows the three columns, never a format
+  // sheet left over from the pub you just walked out of.
+  if (name === 'menu') showCreatePanel(false);
 }
 const hud = $('hud');
 const statusEl = $('status');
@@ -422,8 +425,14 @@ function preferVenueFor(lang: string) {
 preferVenueFor(C.defaultLang());
 $('c-lang').addEventListener('change', () => preferVenueFor(($('c-lang') as HTMLSelectElement).value));
 
-$('btn-create').addEventListener('click', () => withName(() => $('create-panel').classList.remove('hidden')));
-$('c-cancel').addEventListener('click', () => $('create-panel').classList.add('hidden'));
+// The format sheet takes the menu's place rather than stacking under it —
+// three panels plus a five-field form does not fit the screen at once.
+function showCreatePanel(on: boolean) {
+  $('create-panel').classList.toggle('hidden', !on);
+  $('menu-layout').classList.toggle('hidden', on);
+}
+$('btn-create').addEventListener('click', () => withName(() => showCreatePanel(true)));
+$('c-cancel').addEventListener('click', () => showCreatePanel(false));
 $('c-go').addEventListener('click', () => {
   const num = (id: string, lo: number, hi: number, def: number) => {
     const v = Number(($(id) as HTMLInputElement).value);
@@ -438,7 +447,7 @@ $('c-go').addEventListener('click', () => {
     teamMode: ($('c-teams') as HTMLInputElement).checked,
     lang: ($('c-lang') as HTMLSelectElement).value,
   }));
-  $('create-panel').classList.add('hidden');
+  showCreatePanel(false);
 });
 function joinByCode(code: string) {
   const clean = code.trim().toUpperCase();

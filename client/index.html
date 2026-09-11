@@ -3764,13 +3764,18 @@
     #status { position: absolute; left: 12px; bottom: 8px; color: var(--dim-2); font-size: 10px; letter-spacing: 1px; z-index: 7; pointer-events: none; }
 
     /* ---- menu ---- */
-    /* Two columns, like the tennis menu: the card (who you are + what you
-       can do) with the open-pub list alongside, instead of one narrow
-       stack with dead space either side. */
-    #menu-layout { display: flex; gap: 16px; align-items: stretch; flex-wrap: wrap; justify-content: center; width: min(1160px, 100%); }
-    #menu-top { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; justify-content: center; flex: 1 1 560px; }
-    #menu-top > .col { flex: 1 1 260px; justify-content: center; }
-    #profile-card { flex: 1 1 320px; }
+    /* Three columns, like the tennis menu: who you are, what you can do,
+       and who is already open — each keeping its OWN height. `stretch` blew
+       the (usually empty) PUBLIC PUBS panel up to match the tallest
+       neighbour, which is where the big dead box came from. */
+    #menu-layout {
+      display: grid; gap: 16px; align-items: start; width: min(1180px, 96%);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) minmax(0, 0.9fr);
+    }
+    /* #menu-top only groups the first two columns in the markup — let its
+       children sit in the grid directly rather than nest a second layout. */
+    #menu-top { display: contents; }
+    #menu-top > .col { justify-content: center; }
     #profile-avatar {
       width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-size: 24px; font-style: italic; font-weight: 700; color: #101010; cursor: pointer;
@@ -3784,12 +3789,40 @@
     .stat-row b { color: var(--ink); font-size: 12px; }
     #account-chip { position: absolute; top: 12px; right: 14px; display: flex; align-items: center; gap: 8px; z-index: 2; }
     #account-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--dim-2); }
-    #public-panel { flex: 1 1 280px; max-width: 340px; }
-    #public-list { display: flex; flex-direction: column; gap: 6px; max-height: 280px; overflow-y: auto; }
+    #public-panel { min-height: 0; }
+    #public-list { display: flex; flex-direction: column; gap: 6px; max-height: 300px; overflow-y: auto; }
     #public-list .lobby-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     #public-list .lobby-row .meta { font-size: 10px; color: var(--dim); letter-spacing: 1px; }
     #join-code { width: 130px; }
-    #create-panel { width: min(760px, 100%); }
+    /* The format sheet REPLACES the three columns (main.ts hides
+       #menu-layout while it is open) — stacked under them it was a fourth
+       block on an already full screen. */
+    #create-panel { width: min(820px, 96%); gap: 12px; }
+
+    /* The five format fields are the same set in both the menu sheet and the
+       lobby panel. auto-fit wrapped them 4 + 1, leaving an orphan under a
+       full row; a six-track grid gives the two wide selects a row of their
+       own and the three clocks an even row beneath. */
+    .format-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .format-grid > :nth-child(-n+2) { grid-column: span 3; }
+    .format-grid > :nth-child(n+3) { grid-column: span 2; }
+    /* The checkbox row reads as a caption to the fields above it, so it
+       lines up with them rather than floating in the middle. */
+    .format-checks { justify-content: flex-start; gap: 18px; }
+    @media (max-width: 620px) {
+      .format-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .format-grid > * { grid-column: span 1 !important; }
+    }
+
+    /* Two columns before one: the open-pub list drops full width first, so
+       the profile and the buttons stay side by side as long as they fit. */
+    @media (max-width: 1020px) {
+      #menu-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      #public-panel { grid-column: 1 / -1; }
+    }
+    @media (max-width: 700px) {
+      #menu-layout { grid-template-columns: minmax(0, 1fr); }
+    }
 
     /* ---- character select (tennis's PLAYER SELECT, same cards) ---- */
     #overlay-avatar { justify-content: flex-start; gap: 14px; }
@@ -3803,18 +3836,21 @@
     #overlay-lobby h2 { font-size: clamp(18px, 3vw, 26px); }
     #overlay-lobby .code-display { font-size: 26px; letter-spacing: 8px; padding: 6px 14px 6px 22px; }
     #overlay-lobby .link-box { font-size: 11px; max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    /* Panels size to their own content — stretching them to match each
-       other turned AT THE BAR into a 380px box holding one chip. Only the
-       lists inside scroll. */
-    #lobby-body { align-items: flex-start; }
-    #lobby-body > .panel:first-child { min-height: 210px; }
-    #lobby-roster { max-height: 250px; overflow-y: auto; align-content: flex-start; }
-    #lobby-body { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; width: min(900px, 100%); }
-    #lobby-settings .grid { gap: 7px; }
+    /* The two panels carry very different loads: AT THE BAR is a short list
+       of chips, FORMAT is five fields plus every topic pill. Equal columns
+       left one empty and crammed the other, so FORMAT gets the wider share
+       and both size to their own content. Only the lists inside scroll. */
+    #lobby-body {
+      display: grid; gap: 14px; align-items: start; width: min(1100px, 96%);
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.45fr);
+    }
+    #lobby-body > .panel:first-child { min-height: 120px; }
+    #lobby-roster { display: flex; flex-wrap: wrap; gap: 6px; max-height: 260px; overflow-y: auto; align-content: flex-start; }
+    #lobby-settings .grid { gap: 8px; }
     #lobby-settings input, #lobby-settings select { padding: 6px 9px; font-size: 13px; }
     #lobby-settings .panel-label { margin-top: 2px; }
-    #lobby-body > .panel { flex: 1 1 320px; }
-    #lobby-roster { display: flex; flex-wrap: wrap; gap: 6px; }
+    #lobby-summary { line-height: 1.7; }
+    @media (max-width: 860px) { #lobby-body { grid-template-columns: minmax(0, 1fr); } }
     .chip { display: flex; align-items: center; gap: 7px; padding: 5px 10px; border-radius: 999px; background: rgba(10, 16, 60, 0.75); border: 1px solid var(--line); font-size: 12px; font-weight: 700; letter-spacing: 1px; }
     .chip .face { width: 20px; height: 20px; border-radius: 50%; box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.3); }
     .chip.host .name::after { content: ' ★'; color: var(--gold); }
@@ -3825,7 +3861,7 @@
       background: rgba(255, 70, 70, 0.12); border: 1px solid rgba(255, 70, 70, 0.45); border-radius: 999px; color: #ff9a9a; box-shadow: none; transform: none; }
     .chip .kick:hover { background: rgba(255, 70, 70, 0.3); color: #fff; transform: none; }
     .chip .team-dot { width: 9px; height: 9px; border-radius: 50%; }
-    #s-topics { display: flex; flex-wrap: wrap; gap: 5px; max-height: 124px; overflow-y: auto; align-content: flex-start; padding-right: 2px; }
+    #s-topics { display: flex; flex-wrap: wrap; gap: 5px; max-height: 150px; overflow-y: auto; align-content: flex-start; padding-right: 2px; }
     .topic-pill { font-size: 10px; padding: 4px 9px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line); letter-spacing: 1px; font-weight: 700; }
     .topic-pill.on { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: #201800; border-color: var(--gold); }
     .topic-pill.off { background: rgba(10, 16, 60, 0.7); color: var(--dim); }
@@ -4025,14 +4061,14 @@
         </div>
         <div id="create-panel" class="panel hidden">
           <div class="panel-label">TONIGHT'S FORMAT</div>
-          <div class="grid">
+          <div class="grid format-grid">
             <label class="field">SPRÅK / LANGUAGE<select id="c-lang"></select></label>
             <label class="field">PUB<select id="c-theme"></select></label>
             <label class="field">QUESTIONS<input id="c-questions" type="number" min="3" max="30" value="10" /></label>
             <label class="field">STAKES OPEN (S)<input id="c-bet" type="number" min="5" max="30" value="10" /></label>
             <label class="field">ANSWER TIME (S)<input id="c-answer" type="number" min="8" max="60" value="20" /></label>
           </div>
-          <div class="row" style="margin-top:10px">
+          <div class="row format-checks" style="margin-top:10px">
             <label class="check"><input id="c-teams" type="checkbox" /> TEAMS</label>
             <label class="check"><input id="c-public" type="checkbox" /> PUBLIC (LISTED ON THE MENU)</label>
           </div>
@@ -4076,14 +4112,14 @@
           </div>
           <div class="panel" id="lobby-settings">
             <div class="panel-label">FORMAT</div>
-            <div class="grid">
+            <div class="grid format-grid">
               <label class="field">SPRÅK / LANGUAGE<select id="s-lang"></select></label>
               <label class="field">PUB<select id="s-theme"></select></label>
               <label class="field">QUESTIONS<input id="s-questions" type="number" min="3" max="30" /></label>
               <label class="field">STAKES OPEN (S)<input id="s-bet" type="number" min="5" max="30" /></label>
               <label class="field">ANSWER TIME (S)<input id="s-answer" type="number" min="8" max="60" /></label>
             </div>
-            <div class="row" style="margin-top:8px"><label class="check"><input id="s-teams" type="checkbox" /> TEAMS</label></div>
+            <div class="row format-checks" style="margin-top:8px"><label class="check"><input id="s-teams" type="checkbox" /> TEAMS</label></div>
             <div class="panel-label" style="margin-top:10px">TOPICS</div>
             <div id="s-topics"></div>
             <div id="lobby-summary" class="subtitle" style="margin-top:8px"></div>

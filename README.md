@@ -1,10 +1,17 @@
 # Digital Quiz
 
 An arcade pub quiz for the browser, and the quiz leg of the Digital
-championship suite (tennis · golf · racing · quiz). Everyone picks an avatar
-and takes a stool in a 3D pub; the quiz master behind the bar runs the
-questions; every seat has a wallet of credits to **bet on each question**;
-and the pub can see who has sneaked off to look at their phone.
+championship suite (tennis · golf · racing · quiz). You pick one of the
+**Digital Tennis roster** — the same eighteen characters, the same select
+screen, the same UI — and walk into a 3D pub; the quiz master behind the bar
+runs the questions; every seat has a wallet of credits to **bet on each
+question**; and the pub can see who has sneaked off to look at their phone.
+
+**It is the same game, presented the same way.** The stylesheet, the menus,
+the modals, the character select with its live 3D cards, and the character
+rig itself are digital-tennis's, carried over verbatim — BLAZE serving on
+Centre Court and BLAZE nursing a pint in the corner are the same person, the
+same model and the same walk.
 
 **Norsk pubquiz.** The bank ships **650 Norwegian questions across 23
 topics** — Norge rundt, norsk historie, kongehuset, MGP & Eurovision, norsk
@@ -27,14 +34,17 @@ module. The client is a Vite + TypeScript app with a three.js pub.
    picks the **topics** the quiz draws from — only topics in the pub's
    language are offered, so a Norwegian night can never pull an English pack
    mid-quiz.
-2. Everyone **readies up** at the bar (a signal, not a gate — the host can
+2. Everyone **walks about** the pub — WASD or the arrows walk, SPACE jumps,
+   E waves, and a gamepad stick does the same. Movement is server-authoritative
+   (a 20 Hz tick per room), exactly like the spectators on the tennis grounds.
+   Everyone **readies up** at the bar (a signal, not a gate — the host can
    start anyway, and the room starts itself when everyone is ready).
 3. Each question runs in three beats, all timed by the module:
    - **Stakes open** — the screen shows the **topic, difficulty and odds**,
      not the question. Everyone is in for the 5¢ ante; slide up to half your
      wallet if you fancy the topic. Easy pays 1×, medium 1.5×, hard 2×.
    - **Answer** — the question and four options go up. First lock-in counts
-     (A–D or 1–4 on the keyboard). When everyone is in, the clock jumps.
+     (click an option, or 1–4 on the keyboard — A–D belong to the walk keys). When everyone is in, the clock jumps.
    - **Result** — the key is revealed, wallets move, the quiz master has a
      word. The fastest correct answer earns a bonus; three or more in a row
      earns a streak bonus.
@@ -177,7 +187,8 @@ spacetimedb/questions/     the built-in question packs — edit these
 client/src/main.ts         connection, UI, input
 client/src/render.ts       the three.js pub
 client/src/attention.ts    the activity checker
-client/src/avatars.ts      the twelve regulars
+client/src/characters.ts   the roster — a VERBATIM copy of digital-tennis's
+client/src/rig.ts          the character rig — lifted from digital-tennis's render.ts
 client/src/config.ts       mirrors of the module's constants + the UI wording per language
 client/src/auth.ts         Firebase (same as every Digital game)
 client/scripts/smoke.ts    end-to-end test

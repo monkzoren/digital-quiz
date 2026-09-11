@@ -8,14 +8,30 @@
 // touches the network.
 // ---------------------------------------------------------------------------
 import * as THREE from 'three';
-import { AVATARS } from './avatars';
+import { CHARACTERS, type Character } from './characters';
+import {
+  applyCharacter, applyPose, actionPose, emotePose, blendAngle, makePlayerRig,
+  readyPose, runPose, standPose, wrapAngle, RUN_STRIDE_RATE, WATCHER_EMOTE_MS,
+  WATCHER_JUMP_MS, WATCHER_WAVE_MS, ZERO_POSE,
+  type PlayerRig, type Pose,
+} from './rig';
 import { ATT_IDLE, ATT_PHONE, NO_ANSWER, PUB_LOOK, TEAM_COLORS } from './config';
 
 export interface SceneSeat {
   key: string; // identity hex
   name: string;
+  /** Index into CHARACTERS — the module's avatarId. */
   avatarId: number;
   seat: number;
+  /** Where they are standing on the pub floor (module coords: x across, y
+   *  into the room, +y toward the door). */
+  x: number;
+  y: number;
+  dirX: number;
+  dirY: number;
+  /** Jump/wave countdown and which of the two it is (module ACT_*). */
+  actTicks: number;
+  actKind: number;
   credits: number;
   attention: number;
   answer: number; // NO_ANSWER until locked in
@@ -49,8 +65,10 @@ export interface Scene {
 // ---------------------------------------------------------------------------
 // Layout (meters). Bar along z = -4; stools face -z.
 // ---------------------------------------------------------------------------
-const ROOM_W = 16;
-const ROOM_D = 13;
+// A big room: the camera sits at the door end and everyone has floor to
+// walk on without filling the lens.
+const ROOM_W = 18;
+const ROOM_D = 18;
 const ROOM_H = 4.2;
 const BAR_Z = -4;
 const SEAT_ARCS = [
@@ -86,18 +104,22 @@ let screenKey = '';
 let screenTimeFrac = -1;
 let signTex: THREE.CanvasTexture | null = null;
 let signMesh: THREE.Mesh | null = null;
-let mcRig: Rig;
+let mcRig: PubRig;
 let lampLights: THREE.PointLight[] = [];
+// ---------------------------------------------------------------------------
+// The regulars. Every one of them is a digital-tennis character, built by the
+// SAME rig code (rig.ts, lifted from that game's renderer) — so the person
+// who serves at 200 km/h on Centre Court is the person nursing a pint in the
+// corner here. The rig is authored at tennis scale; PUB_SCALE shrinks it into
+// a room measured in metres.
+// ---------------------------------------------------------------------------
+const PUB_SCALE = 0.32; // a ~5.5-unit athlete becomes a ~1.78 m drinker
+const TU = 1 / PUB_SCALE; // metres → rig units, for props in the hands
 
-// ---------------------------------------------------------------------------
-// Rigs
-// ---------------------------------------------------------------------------
-interface Rig {
-  root: THREE.Group;
-  body: THREE.Mesh;
-  head: THREE.Group;
-  armL: THREE.Group;
-  armR: THREE.Group;
+interface PubRig {
+  holder: THREE.Group; // scaled; carries the character rig
+  anno: THREE.Group; // unscaled; carries the sprites that must not shrink
+  rig: PlayerRig;
   phone: THREE.Mesh;
   phoneLight: THREE.PointLight;
   paddle: THREE.Group;
@@ -109,15 +131,24 @@ interface Rig {
   bubble: THREE.Sprite;
   bubbleKey: string;
   ring: THREE.Mesh;
-  hatMeshes: THREE.Object3D[];
-  avatarId: number;
+  characterId: number;
   seed: number;
   mood: number;
   moodAt: number;
+  yaw: number;
+  prevX: number;
+  prevZ: number;
+  // jump/wave, clocked locally off the server's tick countdown
+  actKind: number;
+  actAt: number;
+  prevActTicks: number;
+  // emote routine, triggered by the emoji someone posts
+  emoteKind: number;
+  emoteAt: number;
 }
 
-const rigs = new Map<string, Rig>();
-const rigPool: Rig[] = [];
+const rigs = new Map<string, PubRig>();
+const rigPool: PubRig[] = [];
 const letterTex: THREE.CanvasTexture[] = [];
 
 const mat = (color: number, extra: Partial<THREE.MeshStandardMaterialParameters> = {}) =>
@@ -145,69 +176,44 @@ function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: numbe
   ctx.closePath();
 }
 
-function makeRig(): Rig {
-  const root = new THREE.Group();
-  const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.28, 0.5, 4, 10), mat(0x888888));
-  body.position.y = 0.95;
-  root.add(body);
-  const legs = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.26, 0.55, 10), mat(0x2b2b33));
-  legs.position.y = 0.42;
-  root.add(legs);
+function makeRig(): PubRig {
+  const holder = new THREE.Group();
+  holder.scale.setScalar(PUB_SCALE);
+  scene3.add(holder);
+  const rig = makePlayerRig(0, holder);
+  rig.racket.visible = false; // nobody drinks with a racket in their hand
 
-  const head = new THREE.Group();
-  head.position.y = 1.62;
-  const skull = new THREE.Mesh(new THREE.SphereGeometry(0.24, 18, 14), mat(0xdddddd));
-  skull.name = 'skull';
-  head.add(skull);
-  // eyes
-  for (const s of [-1, 1]) {
-    const eye = new THREE.Mesh(new THREE.SphereGeometry(0.035, 8, 6), mat(0x111111, { roughness: 0.3 }));
-    eye.position.set(0.09 * s, 0.03, -0.21);
-    head.add(eye);
-  }
-  root.add(head);
-
-  const makeArm = (side: number) => {
-    const g = new THREE.Group();
-    g.position.set(0.34 * side, 1.28, 0);
-    const upper = new THREE.Mesh(new THREE.CapsuleGeometry(0.075, 0.42, 3, 8), mat(0x888888));
-    upper.name = 'sleeve';
-    upper.position.y = -0.24;
-    g.add(upper);
-    const hand = new THREE.Mesh(new THREE.SphereGeometry(0.085, 8, 6), mat(0xdddddd));
-    hand.name = 'hand';
-    hand.position.y = -0.52;
-    g.add(hand);
-    return g;
-  };
-  const armL = makeArm(-1);
-  const armR = makeArm(1);
-  root.add(armL, armR);
-
-  // the phone, in the right hand — hidden unless they are on it
+  // the phone, in the racket hand — hidden unless they are on it
   const phone = new THREE.Mesh(
-    new THREE.BoxGeometry(0.12, 0.2, 0.015),
+    new THREE.BoxGeometry(0.11 * TU, 0.19 * TU, 0.015 * TU),
     new THREE.MeshStandardMaterial({ color: 0x0a0a0a, emissive: 0x7fb8ff, emissiveIntensity: 1.6, roughness: 0.4 })
   );
-  phone.position.set(0, -0.55, -0.1);
-  phone.rotation.x = -0.9;
+  phone.position.set(0, -1.05, 0.32);
+  phone.rotation.x = 0.9;
   phone.visible = false;
-  armR.add(phone);
-  const phoneLight = new THREE.PointLight(0x7fb8ff, 0, 1.4);
-  phoneLight.position.set(0, -0.45, -0.25);
-  armR.add(phoneLight);
+  rig.elbowR.add(phone);
+  const phoneLight = new THREE.PointLight(0x7fb8ff, 0, 1.4 * TU);
+  phoneLight.position.set(0, -0.95, 0.75);
+  rig.elbowR.add(phoneLight);
 
-  // the answer paddle, in the left hand
+  // the answer paddle, in the other hand
   const paddle = new THREE.Group();
-  paddle.position.set(0, -0.55, 0);
-  const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.35, 6), mat(0xd9c39a));
-  stick.position.y = 0.15;
+  paddle.position.set(0, -0.95, 0);
+  const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.02 * TU, 0.02 * TU, 0.35 * TU, 6), mat(0xd9c39a));
+  stick.position.y = -0.45;
   paddle.add(stick);
-  const paddleFace = new THREE.Mesh(new THREE.PlaneGeometry(0.34, 0.34), new THREE.MeshBasicMaterial({ transparent: true, side: THREE.DoubleSide }));
-  paddleFace.position.y = 0.48;
+  const paddleFace = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.34 * TU, 0.34 * TU),
+    new THREE.MeshBasicMaterial({ transparent: true, side: THREE.DoubleSide })
+  );
+  paddleFace.position.y = -1.15;
   paddle.add(paddleFace);
   paddle.visible = false;
-  armL.add(paddle);
+  rig.elbowL.add(paddle);
+
+  // sprites live outside the scaled holder so text keeps its size
+  const anno = new THREE.Group();
+  scene3.add(anno);
 
   const z = textSprite(128, 64);
   z.ctx.font = 'bold 44px "Chakra Petch", Arial';
@@ -218,151 +224,47 @@ function makeRig(): Rig {
   z.sprite.scale.set(0.6, 0.3, 1);
   z.sprite.position.set(0.35, 2.2, 0);
   z.sprite.visible = false;
-  root.add(z.sprite);
+  anno.add(z.sprite);
 
   const label = textSprite(512, 128);
   label.sprite.scale.set(1.35, 0.3375, 1);
   label.sprite.position.y = 2.12;
-  root.add(label.sprite);
+  anno.add(label.sprite);
 
   const bubble = textSprite(512, 192);
   bubble.sprite.scale.set(2.0, 0.75, 1);
   bubble.sprite.position.set(0.15, 2.75, 0);
   bubble.sprite.visible = false;
-  root.add(bubble.sprite);
+  anno.add(bubble.sprite);
 
-  const ring = new THREE.Mesh(new THREE.RingGeometry(0.42, 0.5, 32), new THREE.MeshBasicMaterial({ color: 0xffd60a, transparent: true, opacity: 0.85, side: THREE.DoubleSide }));
+  const ring = new THREE.Mesh(
+    new THREE.RingGeometry(0.42, 0.5, 32),
+    new THREE.MeshBasicMaterial({ color: 0xffd60a, transparent: true, opacity: 0.85, side: THREE.DoubleSide })
+  );
   ring.rotation.x = -Math.PI / 2;
   ring.position.y = 0.02;
   ring.visible = false;
-  root.add(ring);
+  anno.add(ring);
 
-  scene3.add(root);
   return {
-    root, body, head, armL, armR, phone, phoneLight, paddle, paddleFace, paddleLetter: -1,
+    holder, anno, rig, phone, phoneLight, paddle, paddleFace, paddleLetter: -1,
     zzz: z.sprite, label: label.sprite, labelKey: '', bubble: bubble.sprite, bubbleKey: '', ring,
-    hatMeshes: [], avatarId: -1, seed: Math.random() * 10, mood: 0, moodAt: 0,
+    characterId: -1, seed: Math.random() * 10, mood: 0, moodAt: 0,
+    yaw: Math.PI, prevX: 0, prevZ: 0,
+    actKind: -1, actAt: 0, prevActTicks: 0, emoteKind: 0, emoteAt: 0,
   };
 }
 
-function dressRig(rig: Rig, avatarId: number, mc = false) {
-  if (rig.avatarId === avatarId && !mc) return;
-  rig.avatarId = avatarId;
-  const a = AVATARS[avatarId % AVATARS.length];
-  const skin = mc ? 0xe3b58f : a.skin;
-  const shirt = mc ? 0x1d1d22 : a.shirt;
-  (rig.body.material as THREE.MeshStandardMaterial).color.setHex(shirt);
-  rig.head.traverse(o => {
-    if ((o as THREE.Mesh).isMesh && o.name === 'skull') ((o as THREE.Mesh).material as THREE.MeshStandardMaterial).color.setHex(skin);
-  });
-  for (const arm of [rig.armL, rig.armR]) {
-    arm.traverse(o => {
-      if (!(o as THREE.Mesh).isMesh) return;
-      const m = (o as THREE.Mesh).material as THREE.MeshStandardMaterial;
-      if (o.name === 'sleeve') m.color.setHex(shirt);
-      if (o.name === 'hand') m.color.setHex(skin);
-    });
-  }
-  for (const h of rig.hatMeshes) rig.head.remove(h);
-  rig.hatMeshes = [];
-  const add = (o: THREE.Object3D) => { rig.head.add(o); rig.hatMeshes.push(o); };
-  const hairMat = mat(mc ? 0x2a2a2a : a.hair);
-  const style = mc ? 0 : a.hairStyle;
-  if (style === 0) {
-    const cap = new THREE.Mesh(new THREE.SphereGeometry(0.255, 16, 10, 0, Math.PI * 2, 0, Math.PI * 0.5), hairMat);
-    cap.position.y = 0.03;
-    add(cap);
-  } else if (style === 1) {
-    const cap = new THREE.Mesh(new THREE.SphereGeometry(0.26, 16, 10, 0, Math.PI * 2, 0, Math.PI * 0.55), hairMat);
-    cap.position.y = 0.03;
-    add(cap);
-    const back = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.16, 0.45, 12, 1, false, 0, Math.PI), hairMat);
-    back.rotation.y = -Math.PI / 2;
-    back.position.set(0, -0.15, 0.12);
-    add(back);
-  } else if (style === 3) {
-    const hawk = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.22, 0.4), hairMat);
-    hawk.position.y = 0.27;
-    add(hawk);
-  } else if (style === 4) {
-    const cap = new THREE.Mesh(new THREE.SphereGeometry(0.255, 16, 10, 0, Math.PI * 2, 0, Math.PI * 0.5), hairMat);
-    cap.position.y = 0.03;
-    add(cap);
-    const bun = new THREE.Mesh(new THREE.SphereGeometry(0.11, 10, 8), hairMat);
-    bun.position.set(0, 0.2, 0.18);
-    add(bun);
-  }
-  const hat = mc ? 0 : a.hat;
-  if (hat === 1) {
-    const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.29, 0.29, 0.04, 16), mat(0x3a3a3a));
-    brim.position.set(0, 0.12, -0.06);
-    add(brim);
-    const crown = new THREE.Mesh(new THREE.SphereGeometry(0.25, 16, 10, 0, Math.PI * 2, 0, Math.PI * 0.4), mat(0x3a3a3a));
-    crown.position.y = 0.08;
-    add(crown);
-  } else if (hat === 2) {
-    const beanie = new THREE.Mesh(new THREE.SphereGeometry(0.27, 16, 10, 0, Math.PI * 2, 0, Math.PI * 0.5), mat(0xc23b4b));
-    beanie.position.y = 0.05;
-    add(beanie);
-    const bobble = new THREE.Mesh(new THREE.SphereGeometry(0.07, 8, 6), mat(0xf5f5f5));
-    bobble.position.y = 0.33;
-    add(bobble);
-  } else if (hat === 3) {
-    const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.17, 0.18, 8, 1, true), mat(0xffd60a, { metalness: 0.7, roughness: 0.3, side: THREE.DoubleSide }));
-    crown.position.y = 0.28;
-    add(crown);
-  } else if (hat === 4) {
-    const band = new THREE.Mesh(new THREE.TorusGeometry(0.245, 0.03, 8, 20), mat(0xff4b33));
-    band.rotation.x = Math.PI / 2;
-    band.position.y = 0.1;
-    add(band);
-  } else if (hat === 5) {
-    const bucket = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.34, 0.2, 16, 1, true), mat(0x7a8f5a, { side: THREE.DoubleSide }));
-    bucket.position.y = 0.16;
-    add(bucket);
-    const top = new THREE.Mesh(new THREE.CircleGeometry(0.22, 16), mat(0x7a8f5a));
-    top.rotation.x = -Math.PI / 2;
-    top.position.y = 0.26;
-    add(top);
-  }
-  const extra = mc ? 0 : a.extra;
-  if (extra === 1) {
-    for (const s of [-1, 1]) {
-      const lens = new THREE.Mesh(new THREE.TorusGeometry(0.065, 0.012, 6, 16), mat(0x222222));
-      lens.position.set(0.09 * s, 0.03, -0.22);
-      add(lens);
-    }
-  } else if (extra === 2 || extra === 3) {
-    const tash = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.035, 0.05), hairMat);
-    tash.position.set(0, -0.06, -0.22);
-    add(tash);
-    if (extra === 3) {
-      const beard = new THREE.Mesh(new THREE.SphereGeometry(0.19, 12, 8, 0, Math.PI * 2, Math.PI * 0.45, Math.PI * 0.4), hairMat);
-      beard.position.set(0, -0.02, -0.03);
-      add(beard);
-    }
-  } else if (extra === 4) {
-    const scarf = new THREE.Mesh(new THREE.TorusGeometry(0.2, 0.06, 8, 16), mat(0xff8c00));
-    scarf.rotation.x = Math.PI / 2;
-    scarf.position.y = -0.28;
-    add(scarf);
-  }
-  if (mc) {
-    // bow tie + a microphone in the right hand
-    const bow = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.06, 0.04), mat(0xc2183a));
-    bow.position.set(0, -0.3, -0.24);
-    add(bow);
-    const mic = new THREE.Group();
-    const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.025, 0.22, 8), mat(0x222222, { metalness: 0.6, roughness: 0.4 }));
-    const ball = new THREE.Mesh(new THREE.SphereGeometry(0.05, 10, 8), mat(0x888888, { metalness: 0.8, roughness: 0.3 }));
-    ball.position.y = 0.14;
-    mic.add(stem, ball);
-    mic.position.set(0, -0.55, -0.05);
-    mic.rotation.x = -0.6;
-    rig.armR.add(mic);
-  }
+/** Dress a rig as one of the roster. `characterId` is the module's avatarId. */
+function dressRig(r: PubRig, characterId: number) {
+  const char = CHARACTERS[characterId % CHARACTERS.length] ?? CHARACTERS[0];
+  r.characterId = characterId;
+  applyCharacter(r.rig, char);
 }
 
+/** The quiz master: a roster character in a bow tie, permanently behind the
+ *  bar. MC_CHARACTER is who holds the mic. */
+const MC_CHARACTER = 13; // GRANNY — she has run this quiz for thirty years
 function letterTexture(i: number): THREE.CanvasTexture {
   if (letterTex[i]) return letterTex[i];
   const c = document.createElement('canvas');
@@ -382,7 +284,7 @@ function letterTexture(i: number): THREE.CanvasTexture {
   return tex;
 }
 
-function paintLabel(rig: Rig, s: SceneSeat, showStats: boolean) {
+function paintLabel(rig: PubRig, s: SceneSeat, showStats: boolean) {
   const key = `${s.name}|${s.credits}|${s.attention}|${s.team}|${s.online}|${s.isMe}|${showStats}`;
   if (rig.labelKey === key) return;
   rig.labelKey = key;
@@ -413,7 +315,7 @@ function paintLabel(rig: Rig, s: SceneSeat, showStats: boolean) {
   c.needsUpdate = true;
 }
 
-function paintBubble(rig: Rig, text: string) {
+function paintBubble(rig: PubRig, text: string) {
   if (rig.bubbleKey === text) return;
   rig.bubbleKey = text;
   const c = (rig.bubble.material as THREE.SpriteMaterial).map as THREE.CanvasTexture;
@@ -468,14 +370,14 @@ function buildRoom(theme: number, pubName: string) {
   const g = new THREE.Group();
   roomGroup = g;
   scene3.add(g);
-  scene3.fog = new THREE.Fog(T.fog, 14, 30);
+  scene3.fog = new THREE.Fog(T.fog, 18, 36);
   scene3.background = new THREE.Color(T.fog);
 
   // floor: boards
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_D), mat(T.floor, { roughness: 0.95 }));
   floor.rotation.x = -Math.PI / 2;
   g.add(floor);
-  for (let i = -7; i <= 7; i++) {
+  for (let i = -8; i <= 8; i++) {
     const seam = new THREE.Mesh(new THREE.PlaneGeometry(0.02, ROOM_D), mat(0x000000, { transparent: true, opacity: 0.35 }));
     seam.rotation.x = -Math.PI / 2;
     seam.position.set(i * 1.05, 0.002, 0);
@@ -727,10 +629,15 @@ export function initRenderer(canvas: HTMLCanvasElement) {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   scene3 = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 60);
-  scene3.add(new THREE.HemisphereLight(0xffe2c0, 0x2a1a10, 0.55));
-  const amb = new THREE.AmbientLight(0xffffff, 0.18);
-  scene3.add(amb);
+  camera = new THREE.PerspectiveCamera(46, 16 / 10, 0.1, 70);
+  // the regulars are lambert-shaded (rig.ts is tennis's code, and tennis is
+  // an outdoor game) — a pub is dark, so the fill is generous enough to read
+  // a face across the room
+  scene3.add(new THREE.HemisphereLight(0xffe2c0, 0x2a1a10, 0.9));
+  scene3.add(new THREE.AmbientLight(0xfff0dd, 0.42));
+  const key = new THREE.DirectionalLight(0xfff2df, 0.75);
+  key.position.set(-3, 7, 6);
+  scene3.add(key);
 
   const sc = document.createElement('canvas');
   sc.width = 1024;
@@ -740,10 +647,25 @@ export function initRenderer(canvas: HTMLCanvasElement) {
   screenTex.colorSpace = THREE.SRGBColorSpace;
 
   mcRig = makeRig();
-  dressRig(mcRig, 0, true);
-  mcRig.root.position.set(0, 0, BAR_Z - 0.9);
-  mcRig.root.rotation.y = Math.PI; // faces the room (+z)
+  dressRig(mcRig, MC_CHARACTER);
+  // on the duckboard behind the bar, so the room can see her over the pumps
+  mcRig.holder.position.set(0, 0.35, BAR_Z - 0.85);
+  mcRig.anno.position.set(0, 0.35, BAR_Z - 0.85);
   mcRig.label.visible = false;
+  mcRig.ring.visible = false;
+  // the mic, permanently in the hand that would hold a racket
+  const micGrp = new THREE.Group();
+  const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.02 * TU, 0.025 * TU, 0.22 * TU, 8), mat(0x222222, { metalness: 0.6, roughness: 0.4 }));
+  const ball = new THREE.Mesh(new THREE.SphereGeometry(0.05 * TU, 10, 8), mat(0x888888, { metalness: 0.8, roughness: 0.3 }));
+  ball.position.y = -0.44;
+  micGrp.add(stem, ball);
+  micGrp.position.set(0, -1.05, 0.1);
+  micGrp.rotation.x = 0.6;
+  mcRig.rig.elbowR.add(micGrp);
+  // and a bow tie
+  const bow = new THREE.Mesh(new THREE.BoxGeometry(0.14 * TU, 0.06 * TU, 0.04 * TU), mat(0xc2183a));
+  bow.position.set(0, 1.75, 0.62);
+  mcRig.rig.torsoGroup.add(bow);
 }
 
 function resizeToDisplay() {
@@ -757,97 +679,205 @@ function resizeToDisplay() {
   }
 }
 
-function acquireRig(key: string): Rig {
-  let rig = rigs.get(key);
-  if (rig) return rig;
-  rig = rigPool.pop() ?? makeRig();
-  rig.root.visible = true;
-  rig.labelKey = '';
-  rig.bubbleKey = '';
-  rigs.set(key, rig);
-  return rig;
+function acquireRig(key: string): PubRig {
+  let r = rigs.get(key);
+  if (r) return r;
+  r = rigPool.pop() ?? makeRig();
+  r.holder.visible = true;
+  r.anno.visible = true;
+  r.labelKey = '';
+  r.bubbleKey = '';
+  r.emoteKind = 0;
+  r.actKind = -1;
+  r.prevActTicks = 0;
+  rigs.set(key, r);
+  return r;
 }
 
-function poseRig(rig: Rig, s: SceneSeat, t: number, menu: boolean) {
-  const p = seatPos(s.seat);
-  rig.root.position.set(p.x, 0.32, p.z); // perched on the stool
-  // face the bar (a little toward the screen)
-  rig.root.rotation.y = Math.atan2(0 - p.x, BAR_Z - p.z) + Math.PI;
-  const bob = Math.sin(t * 1.7 + rig.seed) * 0.012;
-  rig.body.position.y = 0.95 + bob;
-  rig.head.position.y = 1.62 + bob;
-  rig.head.rotation.set(0, 0, 0);
-  rig.armL.rotation.set(0.15, 0, 0.12);
-  rig.armR.rotation.set(0.15, 0, -0.12);
-  rig.phone.visible = false;
-  rig.phoneLight.intensity = 0;
-  rig.zzz.visible = false;
-  rig.paddle.visible = false;
-  rig.ring.visible = s.isMe && !menu;
-  rig.root.visible = true;
+/** Someone posted an emoji: run the matching body routine, exactly as the
+ *  tennis grounds do. */
+export function triggerEmote(key: string, kind: number) {
+  const r = rigs.get(key);
+  if (!r) return;
+  r.emoteKind = kind;
+  r.emoteAt = performance.now();
+}
+
+// A pose for someone who is head-down in their phone: the whole body says it.
+function phonePose(now: number, seed: number): Pose {
+  const twitch = Math.sin(now / 260 + seed) * 0.04;
+  return {
+    ...ZERO_POSE,
+    leanF: 0.3,
+    crouch: 0.1,
+    thighL: -0.12, calfL: 0.2, thighR: -0.12, calfR: 0.2,
+    shLx: -0.9, shLz: 0.4, elL: -1.5,
+    shRx: -1.15 + twitch, shRz: -0.3, elR: -1.7, // phone held up in front
+  };
+}
+
+// Nodded off at the table.
+function dozePose(now: number, seed: number): Pose {
+  const breathe = Math.sin(now / 1600 + seed) * 0.03;
+  return {
+    ...ZERO_POSE,
+    leanF: 0.45 + breathe,
+    leanS: 0.18,
+    crouch: 0.2,
+    thighL: -0.1, calfL: 0.18, thighR: -0.1, calfR: 0.18,
+    shLx: 0.25, shLz: 0.06, elL: -0.15,
+    shRx: 0.25, shRz: -0.06, elR: -0.15,
+  };
+}
+
+// Paddle up: the answer hand straight overhead, the other on the hip.
+function paddlePose(now: number, seed: number): Pose {
+  const sway = Math.sin(now / 620 + seed) * 0.06;
+  return {
+    ...ZERO_POSE,
+    leanF: 0.05,
+    shLx: -3.0, shLz: 0.2 + sway, elL: -0.2,
+    shRx: 0.3, shRz: -0.5, elR: -1.5,
+  };
+}
+
+function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boolean) {
+  // module coords → three coords: x across, y into the room becomes z
+  const px = s.x;
+  const pz = s.y;
+  r.holder.position.set(px, 0, pz);
+  r.anno.position.set(px, 0, pz);
+
+  const stepDist = Math.hypot(px - r.prevX, pz - r.prevZ);
+  r.prevX = px;
+  r.prevZ = pz;
+  const rig = r.rig;
+  if (stepDist < 3) rig.runPhase += (stepDist / PUB_SCALE) * RUN_STRIDE_RATE;
+
+  const moving = s.dirX !== 0 || s.dirY !== 0;
+  // facing: the way you're walking, else the big screen — the whole point of
+  // being here is the quiz
+  const yawTarget = moving
+    ? Math.atan2(s.dirX, s.dirY)
+    : Math.atan2(0 - px, BAR_Z - 0.5 - pz);
+  r.yaw = blendAngle(r.yaw, yawTarget, moving ? 12 : 4, dt);
+
+  // a fresh jump/wave from the server starts its timeline here
+  if (s.actTicks > 0 && r.prevActTicks === 0) {
+    r.actKind = s.actKind;
+    r.actAt = nowMs;
+  }
+  r.prevActTicks = s.actTicks;
+  const actMs = r.actKind === 1 ? WATCHER_WAVE_MS : WATCHER_JUMP_MS;
+  const actT = r.actKind >= 0 ? (nowMs - r.actAt) / actMs : 2;
+  if (actT > 1) r.actKind = -1;
+
+  if (s.mood !== r.mood) { r.mood = s.mood; r.moodAt = nowMs; }
+  const moodAge = (nowMs - r.moodAt) / 1000;
+  const emoteT = r.emoteKind ? (nowMs - r.emoteAt) / WATCHER_EMOTE_MS[r.emoteKind] : 2;
+  if (emoteT > 1) r.emoteKind = 0;
+
+  const onPhone = s.attention === ATT_PHONE;
+  const dozing = s.attention === ATT_IDLE;
+  const paddleUp = s.answer !== NO_ANSWER && !onPhone;
+
+  let target: Pose;
+  let rate = 12;
+  let hop = 0;
+  if (r.actKind >= 0) {
+    const a = actionPose(r.actKind, actT, nowMs);
+    target = a.pose;
+    hop = a.hop;
+    rate = r.actKind === 1 ? 18 : 30; // the leap snaps, the wave flows
+  } else if (r.emoteKind) {
+    const e = emotePose(r.emoteKind, emoteT, nowMs);
+    target = e.pose;
+    hop = e.hop;
+    rate = 18;
+  } else if (onPhone) {
+    target = phonePose(nowMs, r.seed);
+    rate = 8;
+  } else if (moving) {
+    target = runPose(rig.runPhase, s.dirX);
+    rate = 16;
+  } else if (dozing) {
+    target = dozePose(nowMs, r.seed);
+    rate = 5;
+  } else if (paddleUp) {
+    target = paddlePose(nowMs, r.seed);
+    rate = 14;
+  } else if (s.mood === 1 && moodAge < 3) {
+    const e = emotePose(1, Math.min(0.99, moodAge / 3), nowMs); // cheer
+    target = e.pose;
+    hop = e.hop;
+    rate = 18;
+  } else if (s.mood === 2 && moodAge < 3) {
+    target = emotePose(3, Math.min(0.99, moodAge / 3), nowMs).pose; // sulk
+    rate = 14;
+  } else {
+    target = s.isMe && !menu ? readyPose(nowMs, r.seed) : standPose(nowMs, r.seed);
+  }
+  // legs keep walking under anything the arms are doing
+  if (moving && (r.actKind >= 0 || r.emoteKind || onPhone || paddleUp)) {
+    const legs = runPose(rig.runPhase, s.dirX);
+    target = { ...target, thighL: legs.thighL, calfL: legs.calfL, thighR: legs.thighR, calfR: legs.calfR };
+    hop = 0;
+  }
+  applyPose(rig, target, rate, dt, r.yaw, nowMs);
+  rig.root.position.y += hop;
+
+  // head: down at the phone, else level
+  const ha = 1 - Math.exp(-8 * dt);
+  const headX = onPhone ? -0.5 : dozing ? 0.35 : 0;
+  rig.head.rotation.x += (headX - rig.head.rotation.x) * ha;
+  rig.head.rotation.y -= rig.head.rotation.y * ha;
+
+  // props
+  r.phone.visible = onPhone;
+  r.phoneLight.intensity = onPhone ? 2.2 + Math.sin(nowMs / 110 + r.seed) * 0.3 : 0;
+  r.zzz.visible = dozing;
+  if (dozing) r.zzz.position.y = 2.2 + ((nowMs / 2500 + r.seed) % 1) * 0.3;
+  r.paddle.visible = paddleUp;
+  if (paddleUp && r.paddleLetter !== s.answer) {
+    r.paddleLetter = s.answer;
+    (r.paddleFace.material as THREE.MeshBasicMaterial).map = letterTexture(s.answer);
+    (r.paddleFace.material as THREE.MeshBasicMaterial).needsUpdate = true;
+  }
+  r.ring.visible = s.isMe && !menu;
+
+  // offline regulars fade out rather than vanish
   const dim = !s.online;
-  rig.root.traverse(o => {
+  r.holder.traverse(o => {
     const m = o as THREE.Mesh;
-    if (m.isMesh && (m.material as THREE.MeshStandardMaterial).isMeshStandardMaterial) {
-      const mm = m.material as THREE.MeshStandardMaterial;
+    if (!m.isMesh) return;
+    const mm = m.material as THREE.Material & { opacity: number; transparent: boolean };
+    if (mm.transparent !== dim || mm.opacity !== (dim ? 0.35 : 1)) {
       mm.transparent = dim;
       mm.opacity = dim ? 0.35 : 1;
     }
   });
 
-  if (s.mood !== rig.mood) { rig.mood = s.mood; rig.moodAt = t; }
-  const moodAge = t - rig.moodAt;
-  if (s.attention === ATT_PHONE) {
-    // head down, phone up, blue glow on the face
-    rig.head.rotation.x = 0.55;
-    rig.armR.rotation.set(-1.9, 0.35, -0.35);
-    rig.phone.visible = true;
-    rig.phoneLight.intensity = 2.2 + Math.sin(t * 9 + rig.seed) * 0.3;
-  } else if (s.attention === ATT_IDLE) {
-    rig.head.rotation.z = 0.35;
-    rig.head.rotation.x = 0.25;
-    rig.armL.rotation.set(0.05, 0, 0.05);
-    rig.armR.rotation.set(0.05, 0, -0.05);
-    rig.zzz.visible = true;
-    rig.zzz.position.y = 2.2 + ((t * 0.4 + rig.seed) % 1) * 0.3;
-  } else if (s.mood === 1 && moodAge < 3) {
-    // cheer: arms up, hop
-    const hop = Math.abs(Math.sin(t * 8)) * 0.12;
-    rig.root.position.y += hop;
-    rig.armL.rotation.set(-2.6 + Math.sin(t * 10) * 0.2, 0, 0.4);
-    rig.armR.rotation.set(-2.6 - Math.sin(t * 10) * 0.2, 0, -0.4);
-  } else if (s.mood === 2 && moodAge < 3) {
-    // sulk: head down, arms hang
-    rig.head.rotation.x = 0.7;
-    rig.armL.rotation.set(0.35, 0, 0.05);
-    rig.armR.rotation.set(0.35, 0, -0.05);
-  }
-  if (s.answer !== NO_ANSWER && s.attention !== ATT_PHONE) {
-    rig.paddle.visible = true;
-    rig.armL.rotation.set(-2.3, 0, 0.3);
-    if (rig.paddleLetter !== s.answer) {
-      rig.paddleLetter = s.answer;
-      (rig.paddleFace.material as THREE.MeshBasicMaterial).map = letterTexture(s.answer);
-      (rig.paddleFace.material as THREE.MeshBasicMaterial).needsUpdate = true;
-    }
-  }
-  // bubbles fade after four seconds
-  if (s.bubble && t * 1000 - s.bubble.at < 4500) {
-    paintBubble(rig, s.bubble.text);
-    rig.bubble.visible = true;
-    const age = (t * 1000 - s.bubble.at) / 1000;
-    (rig.bubble.material as THREE.SpriteMaterial).opacity = age > 3.5 ? 1 - (age - 3.5) : 1;
+  // bubbles fade after four and a half seconds
+  if (s.bubble && nowMs - s.bubble.at < 4500) {
+    paintBubble(r, s.bubble.text);
+    r.bubble.visible = true;
+    const age = (nowMs - s.bubble.at) / 1000;
+    (r.bubble.material as THREE.SpriteMaterial).opacity = age > 3.5 ? 1 - (age - 3.5) : 1;
   } else {
-    rig.bubble.visible = false;
+    r.bubble.visible = false;
   }
-  rig.label.visible = !menu;
-  if (!menu) paintLabel(rig, s, true);
+  r.label.visible = !menu;
+  if (!menu) paintLabel(r, s, true);
 }
 
 let lastFrameAt = 0;
+let prevFrameMs = 0;
 export function drawScene(s: Scene) {
   resizeToDisplay();
-  const t = performance.now() / 1000;
+  const nowMs = performance.now();
+  const t = nowMs / 1000;
+  const dt = prevFrameMs ? Math.min(0.1, (nowMs - prevFrameMs) / 1000) : 1 / 60;
+  prevFrameMs = nowMs;
   lastFrameAt = t;
   if (themeBuilt !== s.theme || (signMesh && (signMesh.userData.name !== s.pubName))) {
     buildRoom(s.theme, s.pubName);
@@ -856,30 +886,44 @@ export function drawScene(s: Scene) {
   }
   paintScreen(s);
 
-  // seats
+  // the regulars, wherever they have wandered to
   const seen = new Set<string>();
+  let me: SceneSeat | null = null;
   for (const seat of s.seats) {
     seen.add(seat.key);
-    const rig = acquireRig(seat.key);
-    dressRig(rig, seat.avatarId);
-    poseRig(rig, seat, t, s.menu);
+    const r = acquireRig(seat.key);
+    if (r.characterId !== seat.avatarId) dressRig(r, seat.avatarId);
+    poseRig(r, seat, nowMs, dt, s.menu);
+    if (seat.isMe) me = seat;
   }
-  for (const [key, rig] of rigs) {
+  for (const [key, r] of rigs) {
     if (seen.has(key)) continue;
     rigs.delete(key);
-    rig.root.visible = false;
-    rig.avatarId = -1;
-    rigPool.push(rig);
+    r.holder.visible = false;
+    r.anno.visible = false;
+    r.characterId = -1;
+    rigPool.push(r);
   }
 
   // the quiz master: talks (head bob + mic hand) for a few seconds after a line
-  const talking = t * 1000 - s.mc.at < 4000 && !!s.mc.text;
-  mcRig.head.rotation.x = talking ? Math.sin(t * 14) * 0.06 : 0;
-  mcRig.head.rotation.y = Math.sin(t * 0.8) * 0.25;
-  mcRig.armR.rotation.set(talking ? -2.0 : -0.6, 0, -0.2);
-  mcRig.armL.rotation.set(0.2, 0, 0.25 + (talking ? Math.sin(t * 5) * 0.15 : 0));
-  mcRig.body.position.y = 0.95 + Math.sin(t * 2.3) * 0.01;
-  if (s.mc.text && t * 1000 - s.mc.at < 6000) {
+  const talking = nowMs - s.mc.at < 4000 && !!s.mc.text;
+  const mc = mcRig.rig;
+  mc.head.rotation.x = talking ? Math.sin(t * 14) * 0.06 : 0;
+  mc.head.rotation.y = Math.sin(t * 0.8) * 0.25;
+  applyPose(
+    mc,
+    {
+      ...ZERO_POSE,
+      leanF: 0.03 + Math.sin(t * 2.3) * 0.01,
+      shRx: talking ? -2.1 : -0.6, shRz: -0.25, elR: talking ? -1.5 : -0.7,
+      shLx: -0.25, shLz: 0.25 + (talking ? Math.sin(t * 5) * 0.15 : 0), elL: -0.5,
+    },
+    10,
+    dt,
+    0, // faces the room (+z)
+    nowMs
+  );
+  if (s.mc.text && nowMs - s.mc.at < 6000) {
     paintBubble(mcRig, s.mc.text);
     mcRig.bubble.visible = true;
     (mcRig.bubble.material as THREE.SpriteMaterial).opacity = 1;
@@ -887,32 +931,192 @@ export function drawScene(s: Scene) {
     mcRig.bubble.position.set(1.9, 2.05, 0); // beside the screen, not over it
   } else mcRig.bubble.visible = false;
 
-  // camera
+  // camera: a fixed broadcast shot of the room from the door end. It tracks
+  // you as you walk so you are never off the edge of your own pub.
   if (s.menu) {
     const a = t * 0.12;
-    camera.position.set(Math.sin(a) * 5.5, 2.6 + Math.sin(t * 0.3) * 0.2, 4.5 + Math.cos(a) * 2.5);
+    camera.position.set(Math.sin(a) * 5.5, 2.6 + Math.sin(t * 0.3) * 0.2, 5.5 + Math.cos(a) * 2.5);
     camera.lookAt(0, 1.6, BAR_Z - 1);
   } else {
-    // behind the back row, just above head height, looking at the bar
-    const sway = Math.sin(t * 0.25) * 0.25;
-    camera.position.set(sway, 2.35, 6.4);
-    camera.lookAt(0, 1.55, BAR_Z - 0.5);
+    // the shot tracks you around the floor: it slides with you (clamped so
+    // the bar and the screen never leave the frame) and backs off as you
+    // wander toward the door
+    const sway = Math.sin(t * 0.25) * 0.18;
+    const followX = me ? Math.max(-3.4, Math.min(3.4, me.x * 0.7)) : 0;
+    camTargetX += (followX + sway - camTargetX) * (1 - Math.exp(-2.5 * dt));
+    camera.position.set(camTargetX, 2.7, 9.0);
+    camera.lookAt(camTargetX * 0.85, 1.35, BAR_Z + 0.2);
   }
   // lamp flicker
   lampLights.forEach((l, i) => { l.intensity = 6 + Math.sin(t * 7 + i * 2.1) * 0.15; });
   renderer.render(scene3, camera);
 }
+let camTargetX = 0;
 
-/** Screen-space (CSS px, relative to the canvas) position of a seat's head,
- *  for DOM overlays like the call-out button. Null when not visible. */
+/** Screen-space (CSS px, relative to the canvas) position of a regular's
+ *  head, for DOM overlays like the call-out button. Null when not visible. */
 export function headScreenPos(key: string): { x: number; y: number } | null {
-  const rig = rigs.get(key);
-  if (!rig || !rig.root.visible) return null;
-  const v = new THREE.Vector3(0, 1.95, 0);
-  rig.root.localToWorld(v);
+  const r = rigs.get(key);
+  if (!r || !r.holder.visible) return null;
+  const v = new THREE.Vector3(r.holder.position.x, 1.95, r.holder.position.z);
   v.project(camera);
   if (v.z > 1) return null;
   return { x: ((v.x + 1) / 2) * hostCanvas.clientWidth, y: ((1 - v.y) / 2) * hostCanvas.clientHeight };
 }
 
 export const lastFrame = () => lastFrameAt;
+
+
+// ---------------------------------------------------------------------------
+// Character-select live previews: every card shows its character as a real
+// animated 3D rig. One shared WebGL canvas is laid over the select screen
+// and scissored into a viewport per card (18 separate canvases would blow
+// through the browser's WebGL context limit); rects are re-read every frame
+// so scrolling and hover transforms stay aligned, and every draw is
+// scissored to the scroll panel so characters vanish at its edges. The loop
+// self-throttles: while the select screen is hidden every slot rect is
+// zero and the frame exits before touching the GPU.
+// ---------------------------------------------------------------------------
+interface PreviewSlot {
+  scene: THREE.Scene;
+  rig: PlayerRig;
+  el: HTMLElement;
+  seed: number;
+  clip?: HTMLElement; // per-slot clip container (default: the select grid)
+}
+let previewRenderer: THREE.WebGLRenderer | null = null;
+let previewCam: THREE.PerspectiveCamera | null = null;
+let previewSlots: PreviewSlot[] = [];
+// scroll container the characters are clipped to — without it they would
+// keep drawing above/below the panel once their card scrolls out of it
+let previewClip: HTMLElement | null = null;
+
+export function initCharacterPreviews(
+  canvas: HTMLCanvasElement,
+  slots: { char: Character; el: HTMLElement }[],
+  clipEl: HTMLElement
+) {
+  previewClip = clipEl;
+  previewRenderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  previewRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  previewCam = new THREE.PerspectiveCamera(40, 1, 0.5, 60);
+  previewSlots = slots.map(({ char, el }, i) => {
+    const scene = new THREE.Scene();
+    const rig = makePlayerRig(0, scene);
+    rig.racket.visible = false; // they came for the quiz, not a match
+    applyCharacter(rig, char);
+    const sun = new THREE.DirectionalLight(0xfff2df, 2.4);
+    sun.position.set(-3, 6, 5);
+    scene.add(sun);
+    scene.add(new THREE.HemisphereLight(0xcfe4ff, 0x39406b, 1.15));
+    return { scene, rig, el, seed: i * 1.73 };
+  });
+  requestAnimationFrame(previewFrame);
+}
+
+// Add a preview slot after init — the career-pro card and the creator both
+// show a look that changes at runtime. Returns an updater that re-dresses
+// the slot's rig (applyCharacter no-ops when the look key is unchanged).
+export function registerPreviewSlot(
+  char: Character,
+  el: HTMLElement,
+  clip?: HTMLElement
+): (next: Character) => void {
+  const scene = new THREE.Scene();
+  const rig = makePlayerRig(0, scene);
+  rig.racket.visible = false;
+  applyCharacter(rig, char);
+  const sun = new THREE.DirectionalLight(0xfff2df, 2.4);
+  sun.position.set(-3, 6, 5);
+  scene.add(sun);
+  scene.add(new THREE.HemisphereLight(0xcfe4ff, 0x39406b, 1.15));
+  previewSlots.push({ scene, rig, el, clip, seed: previewSlots.length * 1.73 });
+  return next => applyCharacter(rig, next);
+}
+
+let previewDrew = false; // last frame put pixels on the canvas
+let previewHadVisible = false;
+let previewShownAt = 0; // when slots (re)appeared — drives the entrance fade
+
+function previewFrame() {
+  requestAnimationFrame(previewFrame);
+  const now = performance.now();
+  const r = previewRenderer!;
+  const canvas = r.domElement;
+  const canvasRect = canvas.getBoundingClientRect();
+  const defaultClip = previewClip!.getBoundingClientRect();
+  const clipOf = (s: PreviewSlot) =>
+    s.clip ? s.clip.getBoundingClientRect() : defaultClip;
+
+  // slots collapse to zero rects while their screen is display:none —
+  // one final clear wipes the canvas, then frames become no-ops
+  const visible = previewSlots.filter(s => {
+    const rect = s.el.getBoundingClientRect();
+    const clip = clipOf(s);
+    return (
+      rect.width > 0 &&
+      rect.right > clip.left && rect.left < clip.right &&
+      rect.bottom > clip.top && rect.top < clip.bottom
+    );
+  });
+  if (visible.length === 0 && !previewDrew) {
+    previewHadVisible = false;
+    return;
+  }
+
+  // the cards stagger in over ~0.7s when the screen (re)opens; fade the
+  // canvas alongside them so the characters don't pop in over empty cards
+  if (visible.length > 0 && !previewHadVisible) previewShownAt = now;
+  previewHadVisible = visible.length > 0;
+  canvas.style.opacity = Math.min(1, Math.max(0, (now - previewShownAt - 100) / 450)).toFixed(3);
+
+  const cw = canvas.clientWidth;
+  const chh = canvas.clientHeight;
+  if (cw === 0 || chh === 0) return;
+  if (canvas.width !== Math.floor(cw * r.getPixelRatio()) || canvas.height !== Math.floor(chh * r.getPixelRatio())) {
+    r.setSize(cw, chh, false);
+  }
+
+  // clear the whole canvas (transparent), then scissor per card
+  r.setScissorTest(false);
+  r.setClearColor(0x000000, 0);
+  r.clear();
+  r.setScissorTest(true);
+  previewDrew = visible.length > 0;
+
+  for (const s of visible) {
+    const rect = s.el.getBoundingClientRect();
+    const clip = clipOf(s);
+
+    // idle life: slow showcase sway (mostly front-facing), breathing, and a
+    // relaxed arm hang with a tiny sway — the game's pose system is not
+    // running here, so the joints are posed directly
+    const t = now / 1000 + s.seed;
+    const rig = s.rig;
+    rig.root.rotation.y = Math.sin(t * 0.55) * 0.65;
+    rig.root.position.y = Math.sin(t * 2.0) * 0.035;
+    rig.upper.rotation.x = 0.04 + Math.sin(t * 2.0) * 0.02;
+    rig.shoulderL.rotation.set(-0.22 + Math.sin(t * 1.7) * 0.05, 0, 0.14);
+    rig.elbowL.rotation.x = -0.5;
+    rig.shoulderR.rotation.set(-0.3 + Math.sin(t * 1.7 + 1.2) * 0.05, 0, -0.16);
+    rig.elbowR.rotation.x = -0.55;
+
+    // viewport spans the full slot (so a half-scrolled character clips
+    // rather than squashes); scissor is the slot ∩ scroll panel ∩ canvas
+    const sx0 = Math.max(rect.left, clip.left, canvasRect.left);
+    const sx1 = Math.min(rect.right, clip.right, canvasRect.right);
+    const sy0 = Math.max(rect.top, clip.top, canvasRect.top);
+    const sy1 = Math.min(rect.bottom, clip.bottom, canvasRect.bottom);
+    if (sx1 <= sx0 || sy1 <= sy0) continue;
+    const left = rect.left - canvasRect.left;
+    const bottom = canvasRect.bottom - rect.bottom;
+    r.setViewport(left, bottom, rect.width, rect.height);
+    r.setScissor(sx0 - canvasRect.left, canvasRect.bottom - sy1, sx1 - sx0, sy1 - sy0);
+    previewCam!.aspect = rect.width / rect.height;
+    previewCam!.updateProjectionMatrix();
+    // frames the full height range: GRANNY's shoes up to MYSTO's hat tip
+    previewCam!.position.set(0, 3.3, 9.4);
+    previewCam!.lookAt(0, 2.85, 0);
+    r.render(s.scene, previewCam!);
+  }
+}

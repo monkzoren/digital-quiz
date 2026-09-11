@@ -62,10 +62,26 @@ README.md for how a night goes and how to run it. Key facts:
   not a gate; everyone ready auto-starts with 2+ seats), host `start_quiz`
   works with unready seats, host-only `kick_player` sets `player.kicked`,
   ready/kicked cleared on join/leave/start.
-- Client: `main.ts` owns connection/UI, `render.ts` the three.js pub (seat
-  layout `seatPos`, rigs pooled per identity, big screen is a CanvasTexture
-  repainted only when `screen.key` changes), `avatars.ts` the twelve looks
-  (AVATAR_COUNT must equal the module's). After editing the module:
+- The look IS digital-tennis's, not a lookalike — keep them in sync:
+  `client/index.html`'s stylesheet is that game's `<style>` block verbatim
+  followed by one clearly-marked quiz section; `client/src/characters.ts` is
+  a verbatim copy of its `characters.ts`; `client/src/rig.ts` is lifted from
+  its `render.ts` (face/shirt textures, `buildHair`, `buildBody`,
+  `applyCharacter`/`applyPhysique`, `makePlayerRig`, the pose library) and
+  the character-preview code at the end of `render.ts` is its
+  `initCharacterPreviews`. `player.avatarId` indexes CHARACTERS, so the
+  module's `AVATAR_COUNT` must equal `CHARACTERS.length` (18). When tennis
+  changes any of that, copy it across rather than diverging.
+- Walking about: appended `player.x`/`y`/`dirX`/`dirY`/`actTicks`/`actKind`,
+  the `set_input` / `act` reducers and a 20 Hz `walk_timer` per room
+  (`walk_tick`) — the same shape as tennis's `moveWatchers`, and it skips a
+  row write for anyone standing still. Floor bounds `PUB_*` live in the
+  module; the renderer places rigs from those coords and the camera pans
+  with the local player.
+- Client: `main.ts` owns connection/UI, `render.ts` the three.js pub (spawn
+  spots `seatPos`/`seatSpot`, rigs pooled per identity at `PUB_SCALE` inside
+  a holder group, big screen is a CanvasTexture repainted only when
+  `screen.key` changes). After editing the module:
   `spacetime publish -y` then
   `spacetime generate --lang typescript --out-dir client/src/module_bindings --module-path spacetimedb -y`.
 - `cd client && npm run smoke` is the end-to-end test against a local

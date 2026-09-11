@@ -6,6 +6,7 @@
 import { type Infer as __Infer } from "spacetimedb";
 
 // Import all reducer arg schemas
+import ActReducer from "../act_reducer";
 import AddQuestionReducer from "../add_question_reducer";
 import AddTopicReducer from "../add_topic_reducer";
 import AnswerReducer from "../answer_reducer";
@@ -22,6 +23,7 @@ import SendChatReducer from "../send_chat_reducer";
 import SendEmoteReducer from "../send_emote_reducer";
 import SetAttentionReducer from "../set_attention_reducer";
 import SetAvatarReducer from "../set_avatar_reducer";
+import SetInputReducer from "../set_input_reducer";
 import SetNameReducer from "../set_name_reducer";
 import SetPubSettingsReducer from "../set_pub_settings_reducer";
 import SetPubTopicsReducer from "../set_pub_topics_reducer";
@@ -29,6 +31,7 @@ import SetReadyReducer from "../set_ready_reducer";
 import SetTeamReducer from "../set_team_reducer";
 import StartQuizReducer from "../start_quiz_reducer";
 
+export type ActParams = __Infer<typeof ActReducer>;
 export type AddQuestionParams = __Infer<typeof AddQuestionReducer>;
 export type AddTopicParams = __Infer<typeof AddTopicReducer>;
 export type AnswerParams = __Infer<typeof AnswerReducer>;
@@ -45,6 +48,7 @@ export type SendChatParams = __Infer<typeof SendChatReducer>;
 export type SendEmoteParams = __Infer<typeof SendEmoteReducer>;
 export type SetAttentionParams = __Infer<typeof SetAttentionReducer>;
 export type SetAvatarParams = __Infer<typeof SetAvatarReducer>;
+export type SetInputParams = __Infer<typeof SetInputReducer>;
 export type SetNameParams = __Infer<typeof SetNameReducer>;
 export type SetPubSettingsParams = __Infer<typeof SetPubSettingsReducer>;
 export type SetPubTopicsParams = __Infer<typeof SetPubTopicsReducer>;

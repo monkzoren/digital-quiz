@@ -139,6 +139,12 @@ export const Player = __t.object("Player", {
   online: __t.bool(),
   ready: __t.bool(),
   kicked: __t.bool(),
+  x: __t.f32(),
+  y: __t.f32(),
+  dirX: __t.i8(),
+  dirY: __t.i8(),
+  actTicks: __t.u8(),
+  actKind: __t.u8(),
   credits: __t.i32(),
   stake: __t.u16(),
   answer: __t.u8(),
@@ -215,4 +221,11 @@ export const Topic = __t.object("Topic", {
   lang: __t.string(),
 });
 export type Topic = __Infer<typeof Topic>;
+
+export const WalkTimer = __t.object("WalkTimer", {
+  scheduledId: __t.u64(),
+  scheduledAt: __t.scheduleAt(),
+  lobbyId: __t.u64(),
+});
+export type WalkTimer = __Infer<typeof WalkTimer>;
 

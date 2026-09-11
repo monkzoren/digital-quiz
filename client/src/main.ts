@@ -13,8 +13,14 @@ import EntryRowT from './module_bindings/entry_table';
 import AccountRowT from './module_bindings/account_table';
 import { SPACETIMEDB_URI, DATABASE_NAME } from './config';
 import * as C from './config';
-import { AVATARS, AVATAR_COUNT } from './avatars';
-import { initRenderer, drawScene, headScreenPos, type Scene, type SceneSeat } from './render';
+import { CHARACTERS, STAT_LABELS } from './characters';
+import {
+  initRenderer, drawScene, headScreenPos, initCharacterPreviews, triggerEmote,
+  type Scene, type SceneSeat,
+} from './render';
+import {
+  WATCHER_EMOTE_CHEER, WATCHER_EMOTE_LAUGH, WATCHER_EMOTE_RAGE, WATCHER_EMOTE_SULK,
+} from './rig';
 import { startAttentionChecker, resyncAttention, attentionState } from './attention';
 import {
   accountKind, accountLabel, authDegraded, completeEmailLink, firebaseEnabled, getToken, initAuth,
@@ -362,8 +368,9 @@ $('leg-guest-signin').addEventListener('click', openSignInModal);
 // ---------------------------------------------------------------------------
 // Menu
 // ---------------------------------------------------------------------------
-const avatarSwatch = (id: number) => `#${AVATARS[id % AVATAR_COUNT].shirt.toString(16).padStart(6, '0')}`;
-const avatarInitial = (id: number) => AVATARS[id % AVATAR_COUNT].name[0];
+const AVATAR_COUNT = CHARACTERS.length;
+const avatarSwatch = (id: number) => CHARACTERS[id % AVATAR_COUNT].css;
+const avatarInitial = (id: number) => CHARACTERS[id % AVATAR_COUNT].name[0];
 
 function refreshProfile() {
   const acc = getMyAccount();
@@ -467,22 +474,66 @@ const escapeHtml = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<
 // ---------------------------------------------------------------------------
 let avatarPick = 0;
 let afterAvatar: (() => void) | null = null;
+let charCardsBuilt = false;
+
+// The card grid is built once; every card carries a live 3D rig of its
+// character, drawn by the shared preview canvas (the same screen, the same
+// rigs and the same code as digital-tennis's PLAYER SELECT).
+function buildCharacterCards() {
+  if (charCardsBuilt) return;
+  charCardsBuilt = true;
+  const grid = $('char-grid');
+  // each card carries a live 3D preview of its character: the empty slot
+  // reserves layout space, and render.ts scissors a shared WebGL canvas
+  // (fixed over the screen) into one animated viewport per slot. Same cards,
+  // same rigs, same code as digital-tennis's PLAYER SELECT.
+  const previewSlots: { char: typeof CHARACTERS[number]; el: HTMLElement }[] = [];
+  for (const c of CHARACTERS) {
+    const card = document.createElement('button');
+    card.className = 'sel-card';
+    card.dataset.id = String(c.id);
+    const statHtml = STAT_LABELS.map(([key, label]) => {
+      const v = c.stats[key];
+      let pips = '';
+      for (let i = 1; i <= 5; i++) pips += `<i class="pip${i <= v ? ' on' : ''}"></i>`;
+      return `<div class="stat-row"><span class="stat-name">${label}</span><span class="stat-pips">${pips}</span></div>`;
+    }).join('');
+    card.innerHTML =
+      `<span class="preview-slot" style="--glow:${c.css}"></span>` +
+      `<div class="cname">${c.name}</div><div class="cmeta">${c.flag} ${c.country} · ${c.style}</div>` +
+      `<div class="stat-grid">${statHtml}</div>`;
+    card.addEventListener('click', () => {
+      avatarPick = c.id;
+      refreshCharSelection();
+      call(conn.reducers.setAvatar({ avatarId: c.id }));
+    });
+    grid.appendChild(card);
+    previewSlots.push({ char: c, el: card.querySelector('.preview-slot')! });
+  }
+  staggerChildren(grid);
+  initCharacterPreviews($('char-preview') as HTMLCanvasElement, previewSlots, grid);
+}
+
+// The staggered entrance the tennis screens use: each child animates in a
+// beat after the one before it.
+function staggerChildren(container: HTMLElement) {
+  let i = 0;
+  for (const el of container.children) (el as HTMLElement).style.setProperty('--i', String(i++));
+}
+
+function refreshCharSelection() {
+  const c = CHARACTERS[avatarPick] ?? CHARACTERS[0];
+  for (const card of document.querySelectorAll<HTMLElement>('#char-grid .sel-card')) {
+    card.classList.toggle('selected', Number(card.dataset.id) === avatarPick);
+  }
+  $('char-style').textContent = `${c.flag} ${c.name} — ${c.style}`;
+}
+
 function openAvatarSelect(then: () => void) {
   afterAvatar = then;
   avatarPick = getMyPlayer()?.avatarId ?? 0;
-  const grid = $('avatar-grid');
-  grid.innerHTML = '';
-  AVATARS.forEach((a, i) => {
-    const card = document.createElement('div');
-    card.className = 'av-card' + (i === avatarPick ? ' selected' : '');
-    card.innerHTML = `<div class="av-face" style="background:${avatarSwatch(i)}"></div><div class="av-name">${a.name}</div><div class="av-blurb">${a.blurb}</div>`;
-    card.onclick = () => {
-      avatarPick = i;
-      grid.querySelectorAll('.av-card').forEach((el, k) => el.classList.toggle('selected', k === i));
-      call(conn.reducers.setAvatar({ avatarId: i }));
-    };
-    grid.appendChild(card);
-  });
+  buildCharacterCards();
+  refreshCharSelection();
   showOverlay('avatar');
 }
 $('avatar-done').addEventListener('click', () => {
@@ -815,17 +866,99 @@ $('stake-min').addEventListener('click', () => { const me = getMyPlayer(); if (m
 $('stake-half').addEventListener('click', () => { const me = getMyPlayer(); const room = myRoom(); if (me && room) sendStake(Math.max(Math.min(C.MIN_STAKE, me.credits), Math.min(stakeCap(room, me), Math.floor(me.credits / 2)))); });
 $('stake-max').addEventListener('click', () => { const me = getMyPlayer(); const room = myRoom(); if (me && room) sendStake(stakeCap(room, me)); });
 
-// Keyboard: A-D / 1-4 answer, Enter focuses chat
+// ---------------------------------------------------------------------------
+// Walking about. The same controls as digital-tennis's grounds: WASD or the
+// arrows walk, SPACE jumps, E waves, and a gamepad stick does the same. The
+// answer keys are 1-4 (A-D would fight with the walk keys).
+// ---------------------------------------------------------------------------
+const MOVE_KEYS: Record<string, [number, number]> = {
+  ArrowUp: [0, -1],
+  ArrowDown: [0, 1],
+  ArrowLeft: [-1, 0],
+  ArrowRight: [1, 0],
+  KeyW: [0, -1],
+  KeyS: [0, 1],
+  KeyA: [-1, 0],
+  KeyD: [1, 0],
+};
+const ACT_JUMP = 0;
+const ACT_WAVE = 1;
+const pressed = new Set<string>();
+let lastSentDir = { dirX: 0, dirY: 0 };
+
+const typing = (t: EventTarget | null) => {
+  const el = t as HTMLElement | null;
+  return el?.tagName === 'INPUT' || el?.tagName === 'TEXTAREA';
+};
+
+function keyboardDir(): [number, number] {
+  let dx = 0;
+  let dy = 0;
+  for (const key of pressed) {
+    const v = MOVE_KEYS[key];
+    if (v) { dx += v[0]; dy += v[1]; }
+  }
+  return [dx, dy];
+}
+
+function padDir(): [number, number] | null {
+  for (const gp of navigator.getGamepads?.() ?? []) {
+    if (!gp || !gp.connected) continue;
+    for (const [btn, kind] of [[0, ACT_JUMP], [1, ACT_WAVE]] as const) {
+      const down = gp.buttons[btn]?.pressed ?? false;
+      if (down && !padPrev[btn]) call(conn.reducers.act({ kind }));
+      padPrev[btn] = down;
+    }
+    const ax = gp.axes[0] ?? 0;
+    const ay = gp.axes[1] ?? 0;
+    if (Math.hypot(ax, ay) < 0.35) return [0, 0];
+    return [Math.abs(ax) > 0.35 ? Math.sign(ax) : 0, Math.abs(ay) > 0.35 ? Math.sign(ay) : 0];
+  }
+  return null;
+}
+const padPrev = [false, false];
+
+function sendDir(dx: number, dy: number) {
+  const dirX = Math.sign(dx);
+  const dirY = Math.sign(dy);
+  if (dirX === lastSentDir.dirX && dirY === lastSentDir.dirY) return;
+  lastSentDir = { dirX, dirY };
+  if (!conn || !subscribed) return;
+  call(conn.reducers.setInput({ dirX, dirY }));
+}
+
+function pumpInput() {
+  const me = getMyPlayer();
+  if (!me || me.lobbyId === 0n) {
+    if (lastSentDir.dirX || lastSentDir.dirY) sendDir(0, 0);
+    return;
+  }
+  const pad = padDir();
+  const [kx, ky] = keyboardDir();
+  const [dx, dy] = pad && (pad[0] || pad[1]) ? pad : [kx, ky];
+  sendDir(dx, dy);
+}
+
 window.addEventListener('keydown', e => {
-  if ((e.target as HTMLElement)?.tagName === 'INPUT' || (e.target as HTMLElement)?.tagName === 'TEXTAREA') return;
+  if (typing(e.target)) return;
+  if (e.key === 'Escape') {
+    if (myRoom()) toggleEscMenu();
+    return;
+  }
+  if (MOVE_KEYS[e.code]) {
+    pressed.add(e.code);
+    e.preventDefault();
+    return;
+  }
+  if (e.code === 'Space') { call(conn.reducers.act({ kind: ACT_JUMP })); e.preventDefault(); return; }
+  if (e.code === 'KeyE') { call(conn.reducers.act({ kind: ACT_WAVE })); return; }
   const room = myRoom();
-  if (!room || room.status !== C.L_RUNNING) return;
-  if (e.key === 'Escape') { toggleEscMenu(); return; }
-  if (room.phase !== C.PH_ANSWER) return;
-  const k = e.key.toUpperCase();
-  const idx = 'ABCD'.indexOf(k) >= 0 ? 'ABCD'.indexOf(k) : '1234'.indexOf(k);
+  if (!room || room.status !== C.L_RUNNING || room.phase !== C.PH_ANSWER) return;
+  const idx = '1234'.indexOf(e.key);
   if (idx >= 0 && idx < room.qOptions.length) call(conn.reducers.answer({ choice: idx }));
 });
+window.addEventListener('keyup', e => { pressed.delete(e.code); });
+window.addEventListener('blur', () => { pressed.clear(); sendDir(0, 0); });
 
 // Call-outs: a button floats over anyone on their phone
 function refreshCallouts(room: Lobby, me: Player) {
@@ -903,7 +1036,21 @@ function onChatRow(row: ChatRow) {
   // fresh rows (not the backlog on subscribe) get a bubble over the head
   const ageMs = Date.now() - Number(row.sentAt.microsSinceUnixEpoch / 1000n);
   if (ageMs < 3000 && row.kind !== C.CHAT_MC) {
-    bubbles.set(row.senderId.toHexString(), { text: row.kind === C.CHAT_CALLOUT ? `🗣 ${row.text}` : row.text, at: performance.now() });
+    const senderKey = row.senderId.toHexString();
+    bubbles.set(senderKey, { text: row.kind === C.CHAT_CALLOUT ? `🗣 ${row.text}` : row.text, at: performance.now() });
+    // an emote is body language too — the same routines the tennis grounds run
+    if (row.kind === C.CHAT_EMOTE) triggerEmote(senderKey, emoteKind(row.text));
+  }
+}
+
+// The module's EMOTES order and this must agree (same table as
+// digital-tennis's watcherEmoteKind).
+function emoteKind(text: string): number {
+  switch (text) {
+    case '😂': return WATCHER_EMOTE_LAUGH;
+    case '😭': return WATCHER_EMOTE_SULK;
+    case '😡': return WATCHER_EMOTE_RAGE;
+    default: return WATCHER_EMOTE_CHEER;
   }
 }
 
@@ -1137,6 +1284,7 @@ function buildScene(): Scene {
     const key = p.identity.toHexString();
     return {
       key, name: p.name, avatarId: p.avatarId, seat: p.seat, credits: p.credits, attention: p.attention,
+      x: p.x, y: p.y, dirX: p.dirX, dirY: p.dirY, actTicks: p.actTicks, actKind: p.actKind,
       answer: room.phase === C.PH_ANSWER || room.phase === C.PH_RESULT ? p.answer : C.NO_ANSWER,
       team: room.teamMode ? p.team : 0, online: p.online, mood: moods.get(key) ?? 0, isMe: key === myHex(),
       bubble: bubbles.get(key) ?? null,
@@ -1167,16 +1315,26 @@ function buildScene(): Scene {
 // a few regulars prop up the bar behind the menu
 function demoSeats(now: number): SceneSeat[] {
   const t = now / 1000;
-  return [1, 4, 7, 10].map((seat, i) => ({
-    key: `demo${i}`, name: AVATARS[(i * 3) % AVATAR_COUNT].name, avatarId: (i * 3) % AVATAR_COUNT, seat, credits: 100, team: 0, online: true, isMe: false, bubble: null,
-    attention: Math.floor(t / 9 + i) % 4 === 0 ? C.ATT_PHONE : C.ATT_HERE, answer: C.NO_ANSWER, mood: 0,
-  }));
+  // they mill about the floor on a slow lap, so the menu pub looks alive
+  return [1, 4, 7, 10].map((seat, i) => {
+    const a = t * 0.22 + i * 1.7;
+    const x = Math.sin(a) * (2.4 + i * 0.7);
+    const y = 1.2 + Math.cos(a) * (1.6 + i * 0.4);
+    const speed = 0.22 * (2.4 + i * 0.7);
+    return {
+      key: `demo${i}`, name: CHARACTERS[(i * 5) % AVATAR_COUNT].name, avatarId: (i * 5) % AVATAR_COUNT,
+      seat, credits: 100, team: 0, online: true, isMe: false, bubble: null,
+      x, y, dirX: Math.cos(a) * speed, dirY: -Math.sin(a) * speed, actTicks: 0, actKind: 0,
+      attention: Math.floor(t / 9 + i) % 4 === 0 ? C.ATT_PHONE : C.ATT_HERE, answer: C.NO_ANSWER, mood: 0,
+    };
+  });
 }
 
 initRenderer($('game-canvas') as HTMLCanvasElement);
 let lastUiAt = 0;
 function frame(now: number) {
   requestAnimationFrame(frame);
+  pumpInput();
   if (dirty || now - lastUiAt > 250) { dirty = false; lastUiAt = now; refreshUi(); }
   drawScene(buildScene());
   positionCallouts();

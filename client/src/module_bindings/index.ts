@@ -34,6 +34,7 @@ import {
 } from "spacetimedb";
 
 // Import all reducer arg schemas
+import ActReducer from "./act_reducer";
 import AddQuestionReducer from "./add_question_reducer";
 import AddTopicReducer from "./add_topic_reducer";
 import AnswerReducer from "./answer_reducer";
@@ -50,6 +51,7 @@ import SendChatReducer from "./send_chat_reducer";
 import SendEmoteReducer from "./send_emote_reducer";
 import SetAttentionReducer from "./set_attention_reducer";
 import SetAvatarReducer from "./set_avatar_reducer";
+import SetInputReducer from "./set_input_reducer";
 import SetNameReducer from "./set_name_reducer";
 import SetPubSettingsReducer from "./set_pub_settings_reducer";
 import SetPubTopicsReducer from "./set_pub_topics_reducer";
@@ -192,6 +194,7 @@ const tablesSchema = __schema({
 
 /** The schema information for all reducers in this module. This is defined the same way as the reducers would have been defined in the server, except the body of the reducer is omitted in code generation. */
 const reducersSchema = __reducers(
+  __reducerSchema("act", ActReducer),
   __reducerSchema("add_question", AddQuestionReducer),
   __reducerSchema("add_topic", AddTopicReducer),
   __reducerSchema("answer", AnswerReducer),
@@ -208,6 +211,7 @@ const reducersSchema = __reducers(
   __reducerSchema("send_emote", SendEmoteReducer),
   __reducerSchema("set_attention", SetAttentionReducer),
   __reducerSchema("set_avatar", SetAvatarReducer),
+  __reducerSchema("set_input", SetInputReducer),
   __reducerSchema("set_name", SetNameReducer),
   __reducerSchema("set_pub_settings", SetPubSettingsReducer),
   __reducerSchema("set_pub_topics", SetPubTopicsReducer),

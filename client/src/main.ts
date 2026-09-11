@@ -727,7 +727,7 @@ function refreshHud(room: Lobby, me: Player) {
       kicker.textContent = T.welcome;
       title.textContent = T.intro(room.questionCount, C.START_CREDITS);
     } else if (room.phase === C.PH_BETTING) {
-      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${T.difficulty[room.qDifficulty]} · ${T.pays} ${(room.qPayoutPct / 100).toFixed(1)}×`;
+      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${T.difficulty[room.qDifficulty]} · ${T.pays} ${C.decimal(room.lang, room.qPayoutPct / 100)}×`;
       title.textContent = final ? T.betPromptFinal : T.betPrompt;
       stakePanel.classList.remove('hidden');
       const range = $('stake-range') as HTMLInputElement;
@@ -991,7 +991,7 @@ function renderAwards(room: Lobby, order: Player[]) {
     swing.set(id, Math.max(swing.get(id) ?? 0, e.delta));
   }
   const fastest = [...speed.entries()].filter(([, s]) => s.n >= 2).sort((a, b) => a[1].ms / a[1].n - b[1].ms / b[1].n)[0];
-  if (fastest) awards.push({ t: T.awardFastest, w: byName(fastest[0]), s: T.avgSecs((fastest[1].ms / fastest[1].n / 1000).toFixed(1)) });
+  if (fastest) awards.push({ t: T.awardFastest, w: byName(fastest[0]), s: T.avgSecs(C.decimal(room.lang, fastest[1].ms / fastest[1].n / 1000)) });
   const biggest = [...swing.entries()].sort((a, b) => b[1] - a[1])[0];
   if (biggest && biggest[1] > 0) awards.push({ t: T.awardBiggest, w: byName(biggest[0]), s: T.onOneQuestion(biggest[1]) });
   const sharp = [...order].sort((a, b) => b.correct - a.correct)[0];
@@ -1151,7 +1151,7 @@ function buildScene(): Scene {
   } else if (room.phase === C.PH_INTRO) {
     screen = { key: 'intro', kicker: T.welcome, title: T.scrQuestionsTonight(room.questionCount), lines: [], accent: '#ffd60a', footer: T.scrPhonesAway };
   } else if (room.phase === C.PH_BETTING) {
-    screen = { key: `bet|${room.questionIdx}`, kicker: `${T.scrQuestionOf(room.questionIdx + 1, room.questionCount)}${final ? T.scrLastOrders : ''}`, title: `${room.qIcon} ${room.qTopic}`, lines: [], accent: '#ffb35c', footer: T.scrStakesOpen(T.difficulty[room.qDifficulty], (room.qPayoutPct / 100).toFixed(1)) };
+    screen = { key: `bet|${room.questionIdx}`, kicker: `${T.scrQuestionOf(room.questionIdx + 1, room.questionCount)}${final ? T.scrLastOrders : ''}`, title: `${room.qIcon} ${room.qTopic}`, lines: [], accent: '#ffb35c', footer: T.scrStakesOpen(T.difficulty[room.qDifficulty], C.decimal(room.lang, room.qPayoutPct / 100)) };
   } else if (room.phase === C.PH_ANSWER || room.phase === C.PH_RESULT) {
     const lines = room.qOptions.map((o, i) => `${room.phase === C.PH_RESULT && i === room.qCorrect ? '!' : ''}${'ABCD'[i]}.  ${o}`);
     screen = { key: `q|${room.questionIdx}|${room.phase}|${room.qCorrect}`, kicker: `${room.qIcon} ${room.qTopic} · ${T.question}${room.questionIdx + 1}`, title: room.qText, lines, accent: room.phase === C.PH_RESULT ? '#43e97b' : '#ffd60a', footer: room.phase === C.PH_RESULT ? (room.fastestName ? T.scrFastest(room.fastestName) : T.scrRevealed) : T.scrLockIn };

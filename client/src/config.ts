@@ -245,3 +245,8 @@ const NB: Strings = {
 const STRINGS: Record<string, Strings> = { en: EN, nb: NB };
 /** The wording for a room's language; anything unknown falls back to English. */
 export const tr = (lang: string): Strings => STRINGS[lang] ?? EN;
+
+/** A decimal written the way the room's language writes it — Norwegian uses
+ *  a comma, so the odds read 1,5× rather than 1.5×. */
+export const decimal = (lang: string, n: number, places = 1) =>
+  lang === 'nb' ? n.toFixed(places).replace('.', ',') : n.toFixed(places);

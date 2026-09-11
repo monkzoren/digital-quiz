@@ -6,11 +6,14 @@ and takes a stool in a 3D pub; the quiz master behind the bar runs the
 questions; every seat has a wallet of credits to **bet on each question**;
 and the pub can see who has sneaked off to look at their phone.
 
-**Norsk pubquiz.** The bank ships **650 Norwegian questions across 23
-topics** — Norge rundt, norsk historie, kongehuset, MGP & Eurovision, norsk
-fotball, vintersport, mat & drikke, russetid og høytider, dialekter, norrøn
-mytologi, Flåklypa og Olsenbanden, and general topics written in Norwegian —
-plus 124 English ones. A pub picks its **language** when it opens: a
+**Norsk pubquiz.** The bank ships **812 Norwegian questions across
+27 topics** — Norge rundt, norsk historie, kongehuset, MGP &
+Eurovision, norsk fotball, vintersport & OL, håndball, sportsøyeblikk &
+sitater, mat & drikke, russetid og høytider, dialekter, norrøn mytologi,
+Flåklypa og Olsenbanden, norske oppfinnelser & rekorder, and general topics
+written in Norwegian — plus 124 English ones. Sport is the deepest seam:
+football, winter sport, handball, world sport and famous Norwegian sporting
+moments come to over 200 questions on their own. A pub picks its **language** when it opens: a
 Norwegian night draws only Norwegian packs, the quiz master heckles in
 Norwegian, and the screen, the wallet and the results read in Norwegian too.
 A Norwegian browser opens on `NORSK` and a Norwegian venue by default.

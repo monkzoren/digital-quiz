@@ -302,6 +302,206 @@
         "1968"
       ],
       "d": 2
+    },
+    {
+      "q": "Hvem er kjent som Hjallis og tok tre skøytegull i Oslo-OL 1952?",
+      "a": [
+        "Hjalmar Andersen",
+        "Knut Johannesen",
+        "Ivar Ballangrud",
+        "Johan Olav Koss"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken hendelse i VM i Oslo 1982 ga uttrykket Hvor var du da?",
+      "a": [
+        "Oddvar Brå brakk staven",
+        "Brann i hoppbakken",
+        "Dobbelt norsk i femmila",
+        "Strømbrudd i stadion"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett tok Norge OL-gull i med Pål Trulsen som skipper i 2002?",
+      "a": [
+        "Curling",
+        "Bobsleigh",
+        "Skeleton",
+        "Aking"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem ble den første nordmannen med OL-gull i utfor, i 2018?",
+      "a": [
+        "Aksel Lund Svindal",
+        "Kjetil Jansrud",
+        "Lasse Kjus",
+        "Kjetil André Aamodt"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilken bakke settes verdensrekordene i skiflyging i Norge?",
+      "a": [
+        "Vikersund",
+        "Holmenkollen",
+        "Granåsen",
+        "Rødkleiva"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor lang er strafferunden i skiskyting?",
+      "a": [
+        "150 meter",
+        "100 meter",
+        "200 meter",
+        "75 meter"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilke to skytestillinger brukes i skiskyting?",
+      "a": [
+        "Liggende og stående",
+        "Knestående og liggende",
+        "Sittende og stående",
+        "Liggende og sittende"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles 50-kilometeren i Holmenkollen på folkemunne?",
+      "a": [
+        "Femmila",
+        "Langmila",
+        "Kollenrennet",
+        "Storløpet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor lang er en OL-stafett i langrenn for menn?",
+      "a": [
+        "4 x 10 kilometer",
+        "4 x 5 kilometer",
+        "3 x 10 kilometer",
+        "4 x 15 kilometer"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk hopper vant hoppuka tre år på rad på 1960-tallet?",
+      "a": [
+        "Bjørn Wirkola",
+        "Toralf Engan",
+        "Ingolf Mork",
+        "Lars Grini"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter pokalen som deles ut i norske mesterskap?",
+      "a": [
+        "Kongepokalen",
+        "Gullpokalen",
+        "Mesterpokalen",
+        "Riksbegeret"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk alpinist tok OL-gull i super-G i Sotsji 2014?",
+      "a": [
+        "Kjetil Jansrud",
+        "Aksel Lund Svindal",
+        "Henrik Kristoffersen",
+        "Leif Kristian Haugen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken vintersport har øvelsen storslalåm?",
+      "a": [
+        "Alpint",
+        "Langrenn",
+        "Skiskyting",
+        "Snowboard"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter øvelsen som kombinerer hopp og langrenn?",
+      "a": [
+        "Kombinert",
+        "Skiskyting",
+        "Skicross",
+        "Telemark"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange runder med skyting er det i en skiskytterstafett per utøver?",
+      "a": [
+        "To",
+        "Tre",
+        "Én",
+        "Fire"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor mange ekstraskudd har en skiskytter per standplass i stafett?",
+      "a": [
+        "Tre",
+        "To",
+        "Fem",
+        "Ett"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land er Norges argeste rival i langrenn?",
+      "a": [
+        "Sverige",
+        "Finland",
+        "Russland",
+        "Italia"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter verdenscupen i langrenn som går over flere etapper i januar?",
+      "a": [
+        "Tour de Ski",
+        "Ski Tour",
+        "Vinterturneen",
+        "Nordisk cup"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk skøyteløper er kjent som Kuppern?",
+      "a": [
+        "Knut Johannesen",
+        "Hjalmar Andersen",
+        "Sten Stensen",
+        "Johan Olav Koss"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket land har flest medaljer i vinter-OL gjennom tidene?",
+      "a": [
+        "Norge",
+        "USA",
+        "Tyskland",
+        "Sovjetunionen"
+      ],
+      "d": 2
     }
   ]
 }

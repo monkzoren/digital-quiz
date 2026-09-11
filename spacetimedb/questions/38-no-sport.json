@@ -104,14 +104,14 @@
       "d": 2
     },
     {
-      "q": "Hvor mange spillere har hvert lag på banen i håndball?",
+      "q": "Hvilken norsk seiler har flest OL-medaljer?",
       "a": [
-        "Syv",
-        "Seks",
-        "Fem",
-        "Åtte"
+        "Peder Lunde jr.",
+        "Olaf Tufte",
+        "Siren Sundby",
+        "Herman Horn Johannessen"
       ],
-      "d": 2
+      "d": 3
     },
     {
       "q": "Hvilket norsk landslag har vunnet flere OL-gull i håndball?",
@@ -242,6 +242,166 @@
         "Tomoe Zenimoto Hvas"
       ],
       "d": 3
+    },
+    {
+      "q": "Hvilken norsk spydkaster tok OL-gull både i 2004 og 2008?",
+      "a": [
+        "Andreas Thorkildsen",
+        "Trine Hattestad",
+        "Vebjørn Rodal",
+        "Karsten Warholm"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem tok OL-gull på 800 meter i Atlanta i 1996?",
+      "a": [
+        "Vebjørn Rodal",
+        "Andreas Thorkildsen",
+        "Grete Waitz",
+        "Karsten Warholm"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk spydkaster tok OL-gull i Sydney i 2000?",
+      "a": [
+        "Trine Hattestad",
+        "Ingrid Kristiansen",
+        "Grete Waitz",
+        "Hege Riise"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem er den eneste som har blitt verdensmester i to ulike FIA-mesterskap?",
+      "a": [
+        "Petter Solberg",
+        "Henning Solberg",
+        "Dennis Hauger",
+        "Tommy Rustad"
+      ],
+      "d": 3
+    },
+    {
+      "q": "I hvilket år ble Petter Solberg rallyverdensmester?",
+      "a": [
+        "2003",
+        "1999",
+        "2007",
+        "2011"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk syklist vant VM på landevei i 2010?",
+      "a": [
+        "Thor Hushovd",
+        "Alexander Kristoff",
+        "Edvald Boasson Hagen",
+        "Dag Otto Lauritzen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk syklist vant Milano-Sanremo i 2014?",
+      "a": [
+        "Alexander Kristoff",
+        "Thor Hushovd",
+        "Edvald Boasson Hagen",
+        "Kurt Asle Arvesen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk golfspiller ble den første til å vinne på PGA-touren?",
+      "a": [
+        "Viktor Hovland",
+        "Suzann Pettersen",
+        "Henrik Bjørnstad",
+        "Kristoffer Ventura"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk golfspiller slo det avgjørende puttet i Solheim Cup i 2019?",
+      "a": [
+        "Suzann Pettersen",
+        "Viktor Hovland",
+        "Tonje Daffinrud",
+        "Marianne Skarpnord"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem valgte å ikke forsvare VM-tittelen i sjakk i 2023?",
+      "a": [
+        "Magnus Carlsen",
+        "Aryan Tari",
+        "Jon Ludvig Hammer",
+        "Simen Agdestein"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er Magnus Carlsens høyeste oppnådde rating, en verdensrekord?",
+      "a": [
+        "2882",
+        "2851",
+        "2799",
+        "2920"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem slo Magnus Carlsen VM-matchen mot i 2013?",
+      "a": [
+        "Viswanathan Anand",
+        "Garri Kasparov",
+        "Fabiano Caruana",
+        "Ian Nepomnjasjtsjij"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk maratonløper satte verdensrekord på 1980-tallet?",
+      "a": [
+        "Ingrid Kristiansen",
+        "Grete Waitz",
+        "Kirsten Aune",
+        "Anne Cathrine Olsen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor mange ganger vant Grete Waitz New York Maraton?",
+      "a": [
+        "Ni",
+        "Fem",
+        "Sju",
+        "Elleve"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken idrett er Norges største målt i antall medlemmer?",
+      "a": [
+        "Fotball",
+        "Ski",
+        "Håndball",
+        "Golf"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er Norges største idrettsarrangement for mosjonister?",
+      "a": [
+        "Birkebeinerrennet",
+        "Oslo Maraton",
+        "Holmenkollstafetten",
+        "Styrkeprøven"
+      ],
+      "d": 2
     }
   ]
 }

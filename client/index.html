@@ -158,7 +158,9 @@
     /* ---- lobby ---- */
     #lobby-code { font-size: 40px; letter-spacing: 0.35em; font-weight: 700; color: var(--gold); }
     #lobby-link { font-size: 12px; color: var(--dim); word-break: break-all; }
-    #lobby-body { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+    /* The whole middle of the lobby scrolls: with two dozen topics the
+       pills used to push READY and START off the bottom of the stage. */
+    #lobby-body { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; justify-content: center; max-height: 54cqh; overflow-y: auto; width: 100%; }
     #lobby-roster { display: flex; flex-direction: column; gap: 6px; min-width: 260px; }
     .chip { display: flex; align-items: center; gap: 10px; padding: 7px 10px; background: rgba(255,255,255,0.05); border-radius: var(--r-sm); font-size: 14px; position: relative; }
     .chip .face { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.4); flex: none; }

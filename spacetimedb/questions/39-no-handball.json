@@ -1,0 +1,267 @@
+{
+  "topic": "Håndball",
+  "icon": "🤾",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvor mange spillere har hvert lag på banen i håndball?",
+      "a": [
+        "Syv",
+        "Seks",
+        "Fem",
+        "Åtte"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor lenge varer en håndballkamp for seniorer?",
+      "a": [
+        "To ganger 30 minutter",
+        "To ganger 25 minutter",
+        "Tre ganger 20 minutter",
+        "To ganger 45 minutter"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor langt fra målet er straffekastet i håndball?",
+      "a": [
+        "Sju meter",
+        "Ni meter",
+        "Seks meter",
+        "Elleve meter"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles linjen som ingen utespillere får tråkke innenfor?",
+      "a": [
+        "Sekstimeteren",
+        "Nimeteren",
+        "Sjumeteren",
+        "Midtlinjen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange skritt får en spiller ta med ballen i hånda?",
+      "a": [
+        "Tre",
+        "To",
+        "Fire",
+        "Fem"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter det når en spiller får ballen i lufta og scorer før landing?",
+      "a": [
+        "Kempa",
+        "Kontring",
+        "Gjennombrudd",
+        "Rundtur"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor lenge varer en utvisning i håndball?",
+      "a": [
+        "To minutter",
+        "Fem minutter",
+        "Ett minutt",
+        "Ti minutter"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva betyr rødt kort i håndball?",
+      "a": [
+        "Spilleren er ute resten av kampen",
+        "To minutter utvisning",
+        "Straffekast",
+        "Advarsel"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilke to OL-gull har Norges kvinnelandslag i håndball?",
+      "a": [
+        "2008 og 2012",
+        "2000 og 2004",
+        "1996 og 2000",
+        "2012 og 2016"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilket år vant Norges kvinner sitt første VM-gull i håndball?",
+      "a": [
+        "1999",
+        "1993",
+        "2005",
+        "2011"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket land har vunnet flest EM-gull i håndball for kvinner?",
+      "a": [
+        "Norge",
+        "Danmark",
+        "Frankrike",
+        "Russland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem er den islandske treneren som har ledet Norges kvinner til en rekke titler?",
+      "a": [
+        "Thorir Hergeirsson",
+        "Marit Breivik",
+        "Christian Berge",
+        "Jan Pytlick"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem ledet det norske kvinnelandslaget før Thorir Hergeirsson?",
+      "a": [
+        "Marit Breivik",
+        "Karoline Dyhre Breivang",
+        "Gro Hammerseng",
+        "Mia Hermansson"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk håndballspiller regnes som en av verdens beste bakspillere for herrer?",
+      "a": [
+        "Sander Sagosen",
+        "Bjarte Myrhol",
+        "Christian Berge",
+        "Magnus Jøndal"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk keeper har vunnet alt som er å vinne med landslaget?",
+      "a": [
+        "Katrine Lunde",
+        "Silje Solberg",
+        "Cecilie Leganger",
+        "Kari Aalvik Grimsbø"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk håndballspiller er kjent som kaptein og playmaker for kvinnene?",
+      "a": [
+        "Stine Bredal Oftedal",
+        "Nora Mørk",
+        "Veronica Kristiansen",
+        "Camilla Herrem"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken plassering fikk Norges herrer i VM i håndball i 2017 og 2019?",
+      "a": [
+        "Sølv begge ganger",
+        "Gull i 2019",
+        "Bronse begge ganger",
+        "Fjerdeplass"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk klubb vant Champions League i håndball for kvinner i 2011?",
+      "a": [
+        "Larvik",
+        "Vipers Kristiansand",
+        "Byåsen",
+        "Storhamar"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk klubb vant Champions League for kvinner tre år på rad fra 2021?",
+      "a": [
+        "Vipers Kristiansand",
+        "Larvik",
+        "Storhamar",
+        "Molde"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter posisjonen som spiller nærmest stolpen ute på kanten?",
+      "a": [
+        "Kantspiller",
+        "Strek",
+        "Bakspiller",
+        "Playmaker"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter spilleren som står inne blant forsvarerne og setter sperrer?",
+      "a": [
+        "Strekspiller",
+        "Kantspiller",
+        "Midtback",
+        "Libero"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles det når et lag spiller uten keeper for å ha en ekstra utespiller?",
+      "a": [
+        "Syv mot seks",
+        "Overtall",
+        "Kontringsspill",
+        "Fri mann"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land er Norges argeste håndballrival?",
+      "a": [
+        "Danmark",
+        "Sverige",
+        "Island",
+        "Tyskland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges håndballforbund forkortet?",
+      "a": [
+        "NHF",
+        "NFF",
+        "NIF",
+        "NHL"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk håndballspiller ble toppscorer i OL og er kjent som en scoringsmaskin?",
+      "a": [
+        "Nora Mørk",
+        "Stine Bredal Oftedal",
+        "Camilla Herrem",
+        "Heidi Løke"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva slags gulv spilles håndball på?",
+      "a": [
+        "Parkett innendørs",
+        "Gress",
+        "Kunstgress",
+        "Sand"
+      ],
+      "d": 1
+    }
+  ]
+}

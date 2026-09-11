@@ -1,0 +1,287 @@
+{
+  "topic": "Verdensidrett",
+  "icon": "🌐",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilket land har vunnet flest VM i fotball for herrer?",
+      "a": [
+        "Brasil",
+        "Tyskland",
+        "Italia",
+        "Argentina"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange ganger har Brasil vunnet fotball-VM?",
+      "a": [
+        "Fem",
+        "Fire",
+        "Tre",
+        "Seks"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilken by ble det første moderne OL arrangert i 1896?",
+      "a": [
+        "Athen",
+        "Paris",
+        "London",
+        "Roma"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange ringer er det i det olympiske flagget?",
+      "a": [
+        "Fem",
+        "Fire",
+        "Seks",
+        "Sju"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva symboliserer de olympiske ringene?",
+      "a": [
+        "De fem verdensdelene",
+        "De fem hovedidrettene",
+        "De fem første vertsbyene",
+        "De fem OL-verdiene"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor lang er en maraton?",
+      "a": [
+        "42,195 kilometer",
+        "40 kilometer",
+        "45 kilometer",
+        "38,6 kilometer"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken farge har ledertrøya i Tour de France?",
+      "a": [
+        "Gul",
+        "Grønn",
+        "Hvit",
+        "Rød"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva vinner man den grønne trøya i Tour de France for?",
+      "a": [
+        "Poeng i spurter",
+        "Bratteste fjell",
+        "Beste ungdom",
+        "Mest aggressiv"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket underlag spilles Wimbledon på?",
+      "a": [
+        "Gress",
+        "Grus",
+        "Hardcourt",
+        "Teppe"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken Grand Slam-turnering spilles på grus i Paris?",
+      "a": [
+        "French Open",
+        "Wimbledon",
+        "US Open",
+        "Australian Open"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange Grand Slam-turneringer finnes i tennis?",
+      "a": [
+        "Fire",
+        "Tre",
+        "Fem",
+        "Seks"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem satte verdensrekorden på 100 meter med 9,58?",
+      "a": [
+        "Usain Bolt",
+        "Carl Lewis",
+        "Tyson Gay",
+        "Yohan Blake"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land kommer Usain Bolt fra?",
+      "a": [
+        "Jamaica",
+        "USA",
+        "Trinidad og Tobago",
+        "Bahamas"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange VM-titler har Michael Schumacher i Formel 1?",
+      "a": [
+        "Sju",
+        "Fem",
+        "Seks",
+        "Åtte"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket lag vant flest Formel 1-titler med Michael Schumacher?",
+      "a": [
+        "Ferrari",
+        "McLaren",
+        "Williams",
+        "Mercedes"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange spillere er det på banen i et basketballag?",
+      "a": [
+        "Fem",
+        "Seks",
+        "Sju",
+        "Fire"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter den beste basketballigaen i verden?",
+      "a": [
+        "NBA",
+        "NFL",
+        "NHL",
+        "MLB"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter den beste ishockeyligaen i verden?",
+      "a": [
+        "NHL",
+        "KHL",
+        "SHL",
+        "NBA"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange poeng gir en touchdown i amerikansk fotball?",
+      "a": [
+        "Seks",
+        "Sju",
+        "Tre",
+        "Fem"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange hull spilles i en vanlig golfrunde?",
+      "a": [
+        "18",
+        "9",
+        "20",
+        "16"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles ett slag under par i golf?",
+      "a": [
+        "Birdie",
+        "Eagle",
+        "Bogey",
+        "Albatross"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er den høyeste mulige serien i snooker?",
+      "a": [
+        "147",
+        "155",
+        "140",
+        "180"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er høyeste score med tre piler i dart?",
+      "a": [
+        "180",
+        "150",
+        "171",
+        "200"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett har begrepene grand slam og home run?",
+      "a": [
+        "Baseball",
+        "Cricket",
+        "Rugby",
+        "Lacrosse"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor arrangeres tennisturneringen US Open?",
+      "a": [
+        "New York",
+        "Los Angeles",
+        "Miami",
+        "Chicago"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land har vunnet flest OL-medaljer totalt gjennom tidene?",
+      "a": [
+        "USA",
+        "Sovjetunionen",
+        "Tyskland",
+        "Kina"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor ofte arrangeres sommer-OL?",
+      "a": [
+        "Hvert fjerde år",
+        "Hvert andre år",
+        "Hvert tredje år",
+        "Hvert femte år"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken idrett kalles ofte verdens største sport målt i tilhengere?",
+      "a": [
+        "Fotball",
+        "Cricket",
+        "Basketball",
+        "Friidrett"
+      ],
+      "d": 1
+    }
+  ]
+}

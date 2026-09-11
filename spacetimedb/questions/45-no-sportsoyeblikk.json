@@ -1,0 +1,267 @@
+{
+  "topic": "Sportsøyeblikk & sitater",
+  "icon": "📣",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilket land hadde Norge nettopp slått da Bjørge Lillelien ropte Maggie Thatcher, can you hear me?",
+      "a": [
+        "England",
+        "Brasil",
+        "Sverige",
+        "Tyskland"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket år kom Lilleliens berømte jubelrop?",
+      "a": [
+        "1981",
+        "1994",
+        "1998",
+        "1975"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva ropte Lillelien til slutt i den berømte reportasjen?",
+      "a": [
+        "Your boys took a hell of a beating",
+        "We are the champions",
+        "Norway is the best",
+        "England is going home"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva skjedde med Oddvar Brå under stafetten i VM i Oslo i 1982?",
+      "a": [
+        "Han brakk staven",
+        "Han falt i utforbakken",
+        "Han mistet skien",
+        "Han gikk feil løype"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvordan endte stafetten der Oddvar Brå brakk staven?",
+      "a": [
+        "Norge delte seieren med Sovjetunionen",
+        "Norge tapte",
+        "Norge vant klart",
+        "Løpet ble avlyst"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem scoret straffemålet som sendte Norge videre mot Brasil i VM 1998?",
+      "a": [
+        "Kjetil Rekdal",
+        "Tore André Flo",
+        "Dan Eggen",
+        "Ole Gunnar Solskjær"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilket minutt scoret Solskjær i Champions League-finalen i 1999?",
+      "a": [
+        "I overtiden",
+        "I det 60. minutt",
+        "I det 45. minutt",
+        "I første omgang"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket lag scoret Solskjær mot i den finalen?",
+      "a": [
+        "Bayern München",
+        "Juventus",
+        "Real Madrid",
+        "Barcelona"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange gull tok Johan Olav Koss i Lillehammer-OL i 1994?",
+      "a": [
+        "Tre",
+        "To",
+        "Fire",
+        "Fem"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva gjorde Koss med premiepengene sine etter OL i 1994?",
+      "a": [
+        "Ga dem til Olympic Aid",
+        "Kjøpte en gård",
+        "Startet et firma",
+        "Ga dem til klubben sin"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk løper vant OL-gull på 400 meter hekk med verdensrekord i 2021?",
+      "a": [
+        "Karsten Warholm",
+        "Jakob Ingebrigtsen",
+        "Andreas Thorkildsen",
+        "Vebjørn Rodal"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva gjorde Warholm med drakten sin etter verdensrekordløpet?",
+      "a": [
+        "Han rev den i stykker",
+        "Han kastet den i publikum",
+        "Han byttet med konkurrenten",
+        "Han signerte den"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket år ble Magnus Carlsen verdensmester i sjakk for første gang?",
+      "a": [
+        "2013",
+        "2010",
+        "2016",
+        "2007"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilket land spilte Carlsen sin første VM-match?",
+      "a": [
+        "India",
+        "Russland",
+        "Norge",
+        "USA"
+      ],
+      "d": 3
+    },
+    {
+      "q": "På hjemmebanen til hvilket lag vant Rosenborg i Champions League i 1996?",
+      "a": [
+        "AC Milan",
+        "Inter",
+        "Juventus",
+        "Roma"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem ble verdensmester på landeveissykkel for Norge i 2010?",
+      "a": [
+        "Thor Hushovd",
+        "Alexander Kristoff",
+        "Edvald Boasson Hagen",
+        "Dag Otto Lauritzen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk svømmer ble verdensmester på 100 meter bryst i 2011?",
+      "a": [
+        "Alexander Dale Oen",
+        "Henrik Christiansen",
+        "Lavrans Solli",
+        "Tomoe Zenimoto Hvas"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva var Petter Northug mest beryktet for i langrenn?",
+      "a": [
+        "Spurtene sine",
+        "Starten sin",
+        "Motbakkene sine",
+        "Skiene sine"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land pleide Northug å terge etter seirene sine?",
+      "a": [
+        "Sverige",
+        "Finland",
+        "Russland",
+        "Italia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk kvinne vant Ballon d'Or i fotball i 2018?",
+      "a": [
+        "Ada Hegerberg",
+        "Caroline Graham Hansen",
+        "Hege Riise",
+        "Maren Mjelde"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er Norges beste plassering i et fotball-VM for kvinner?",
+      "a": [
+        "Gull i 1995",
+        "Sølv i 1991",
+        "Bronse i 1999",
+        "Fjerdeplass i 2007"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk utøver ble olympisk mester i alpint som 34-åring i 2006?",
+      "a": [
+        "Kjetil André Aamodt",
+        "Lasse Kjus",
+        "Aksel Lund Svindal",
+        "Finn Christian Jagge"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket norsk lag tok OL-gull i håndball i Beijing i 2008?",
+      "a": [
+        "Kvinnelandslaget",
+        "Herrelandslaget",
+        "Begge",
+        "Ingen av dem"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk hopper ble kalt Ørnen fra Bækkelaget etter Lillehammer-OL?",
+      "a": [
+        "Espen Bredesen",
+        "Bjørn Wirkola",
+        "Roar Ljøkelsøy",
+        "Lasse Ottesen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva het maskotene under Lillehammer-OL i 1994?",
+      "a": [
+        "Håkon og Kristin",
+        "Olav og Sonja",
+        "Bjørn og Elg",
+        "Vinter og Sol"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket år arrangerte Norge fotball-EM for kvinner sammen med Sverige?",
+      "a": [
+        "1997",
+        "2000",
+        "1987",
+        "2005"
+      ],
+      "d": 3
+    }
+  ]
+}

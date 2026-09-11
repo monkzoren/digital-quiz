@@ -1,0 +1,267 @@
+{
+  "topic": "Norske oppfinnelser & rekorder",
+  "icon": "🏆",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilket kjøkkenredskap ble oppfunnet av norske Thor Bjørklund i 1925?",
+      "a": [
+        "Ostehøvelen",
+        "Potetskrelleren",
+        "Eggedeleren",
+        "Kakespaden"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilken by ble ostehøvelen oppfunnet?",
+      "a": [
+        "Lillehammer",
+        "Bergen",
+        "Trondheim",
+        "Stavanger"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken hverdagsgjenstand hevdes ofte å ha en norsk oppfinner i Johan Vaaler?",
+      "a": [
+        "Bindersen",
+        "Stiftemaskinen",
+        "Blyantspisseren",
+        "Tapen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken oppfinnelse står nordmannen Erik Rotheim bak?",
+      "a": [
+        "Sprayboksen",
+        "Lynlåsen",
+        "Termosen",
+        "Kulepennen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket ord for vintersport har Norge gitt til verdensspråkene?",
+      "a": [
+        "Ski",
+        "Sledge",
+        "Skate",
+        "Curl"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket norsk stedsnavn har gitt navn til slalåm?",
+      "a": [
+        "Morgedal i Telemark",
+        "Holmenkollen i Oslo",
+        "Voss på Vestlandet",
+        "Hemsedal i Buskerud"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem regnes som den moderne skisportens far, fra Morgedal?",
+      "a": [
+        "Sondre Norheim",
+        "Fridtjof Nansen",
+        "Bjørn Wirkola",
+        "Ivar Aasen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk oppfinnelse brukes over hele verden for å kutte ost i tynne skiver?",
+      "a": [
+        "Ostehøvelen",
+        "Ostekniven",
+        "Osteskjæreren",
+        "Ostesaksen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva har Norge nest lengst av i verden, etter Canada?",
+      "a": [
+        "Kystlinje",
+        "Jernbane",
+        "Tunneler",
+        "Grenser"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land spiser mest frossenpizza per innbygger i verden?",
+      "a": [
+        "Norge",
+        "Italia",
+        "USA",
+        "Sverige"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken frossenpizza kalles ofte Norges nasjonalrett på spøk?",
+      "a": [
+        "Grandiosa",
+        "Big One",
+        "Pizza Gourmet",
+        "Ristorante"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er Europas dypeste innsjø, som ligger i Norge?",
+      "a": [
+        "Hornindalsvatnet",
+        "Mjøsa",
+        "Tyrifjorden",
+        "Femunden"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor høyt over Lysefjorden ligger Preikestolen?",
+      "a": [
+        "Rundt 600 meter",
+        "Rundt 300 meter",
+        "Rundt 900 meter",
+        "Rundt 150 meter"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva sender Oslo til London hver jul siden 1947?",
+      "a": [
+        "Et juletre til Trafalgar Square",
+        "En julekake",
+        "En kongelig hilsen",
+        "Et kor"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvorfor sender Norge juletreet til London?",
+      "a": [
+        "Takk for hjelpen under krigen",
+        "En handelsavtale",
+        "En kongelig tradisjon",
+        "En vennskapsby-avtale"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva oppbevares i frøhvelvet på Svalbard?",
+      "a": [
+        "Frø fra hele verden",
+        "Gull",
+        "Arkiver",
+        "Olje"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter verdens nordligste permanente bosetting med sivil befolkning?",
+      "a": [
+        "Longyearbyen på Svalbard",
+        "Hammerfest",
+        "Vardø",
+        "Nordkapp"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk vei ble kåret til århundrets norske byggverk i 2005?",
+      "a": [
+        "Atlanterhavsveien",
+        "Trollstigen",
+        "Lærdalstunnelen",
+        "Svinesundbrua"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er Vigelandsparken i Oslo kjent som?",
+      "a": [
+        "Verdens største skulpturpark av én kunstner",
+        "Norges eldste park",
+        "Verdens største rosehage",
+        "Nordens største lekepark"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange skulpturer laget Gustav Vigeland til parken, omtrent?",
+      "a": [
+        "Over 200",
+        "Rundt 50",
+        "Rundt 1000",
+        "Rundt 20"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken sinte lille guttefigur er Vigelandsparkens mest kjente skulptur?",
+      "a": [
+        "Sinnataggen",
+        "Monolitten",
+        "Tenkeren",
+        "Livshjulet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land har flest elbiler per innbygger?",
+      "a": [
+        "Norge",
+        "Kina",
+        "Nederland",
+        "Sverige"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Omtrent hvor mange hytter finnes det i Norge?",
+      "a": [
+        "Rundt 450 000",
+        "Rundt 100 000",
+        "Rundt 1 million",
+        "Rundt 50 000"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er Norge verdens største produsent av, blant oppdrettsfisk?",
+      "a": [
+        "Atlanterhavslaks",
+        "Torsk",
+        "Ørret",
+        "Kveite"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk oppfinner står bak den moderne fiskekroken Mustad ble kjent for?",
+      "a": [
+        "Mustad-familien",
+        "Thor Bjørklund",
+        "Erik Rotheim",
+        "Johan Vaaler"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket norsk selskap lager panteautomater som brukes over hele verden?",
+      "a": [
+        "Tomra",
+        "Infinitum",
+        "Ringnes",
+        "Elopak"
+      ],
+      "d": 3
+    }
+  ]
+}

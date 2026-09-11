@@ -282,6 +282,206 @@
         "Gul"
       ],
       "d": 1
+    },
+    {
+      "q": "Hvilken norsk klubb vant 2-1 borte mot AC Milan på San Siro i 1996?",
+      "a": [
+        "Rosenborg",
+        "Brann",
+        "Vålerenga",
+        "Molde"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken legendarisk trener ledet Rosenborg gjennom gullårene?",
+      "a": [
+        "Nils Arne Eggen",
+        "Egil Olsen",
+        "Åge Hareide",
+        "Kjetil Rekdal"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva het Nils Arne Eggens kjente filosofi og bok?",
+      "a": [
+        "Godfoten",
+        "Kollektivet",
+        "Angrepsspillet",
+        "Vinnerkultur"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk spiller vant Champions League med Liverpool i 2005?",
+      "a": [
+        "John Arne Riise",
+        "Ole Gunnar Solskjær",
+        "Morten Gamst Pedersen",
+        "Brede Hangeland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk spiller har flest A-landskamper for herrer?",
+      "a": [
+        "John Arne Riise",
+        "Thorbjørn Svenssen",
+        "Henning Berg",
+        "Erik Thorstvedt"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken plassering nådde Norge som best på FIFA-rankingen?",
+      "a": [
+        "Andreplass",
+        "Femteplass",
+        "Førsteplass",
+        "Tiendeplass"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem scoret Norges seiersmål mot Spania i EM 2000?",
+      "a": [
+        "Steffen Iversen",
+        "Tore André Flo",
+        "John Carew",
+        "Ole Gunnar Solskjær"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem var landslagssjef da Norge spilte EM i 2000?",
+      "a": [
+        "Nils Johan Semb",
+        "Egil Olsen",
+        "Åge Hareide",
+        "Per-Mathias Høgmo"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken klubb tok sitt aller første seriegull i 2011, trent av Solskjær?",
+      "a": [
+        "Molde",
+        "Bodø/Glimt",
+        "Strømsgodset",
+        "Sarpsborg 08"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem har scoret flest mål i Eliteserien gjennom tidene?",
+      "a": [
+        "Sigurd Rushfeldt",
+        "Harald Brattbakk",
+        "Ole Gunnar Solskjær",
+        "Frode Johnsen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk dommer ble beryktet etter Chelsea mot Barcelona i 2009?",
+      "a": [
+        "Tom Henning Øvrebø",
+        "Terje Hauge",
+        "Svein Oddvar Moen",
+        "Espen Eskås"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken bane spiller Bodø/Glimt sine hjemmekamper på?",
+      "a": [
+        "Aspmyra",
+        "Lerkendal",
+        "Alfheim",
+        "Marienlyst"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange lag er det i Eliteserien?",
+      "a": [
+        "16",
+        "14",
+        "12",
+        "18"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er forkortelsen for Norges Fotballforbund?",
+      "a": [
+        "NFF",
+        "NIF",
+        "NFL",
+        "FFN"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket norsk lag spilte gruppespill i Champions League i 2007?",
+      "a": [
+        "Rosenborg",
+        "Brann",
+        "Vålerenga",
+        "Lillestrøm"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter det tradisjonelle Oslo-derbyet fra gamle dager?",
+      "a": [
+        "Vålerenga mot Lyn",
+        "Brann mot Viking",
+        "Start mot Odd",
+        "Ham-Kam mot Kongsvinger"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken av Flo-brødrene spilte for Chelsea?",
+      "a": [
+        "Tore André Flo",
+        "Jostein Flo",
+        "Jarle Flo",
+        "Håvard Flo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk midtbanespiller spilte over 300 kamper for Blackburn?",
+      "a": [
+        "Morten Gamst Pedersen",
+        "Henning Berg",
+        "Stig Inge Bjørnebye",
+        "Vegard Heggem"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor mange mål vant Norge over Brasil med i VM 1998?",
+      "a": [
+        "2-1",
+        "1-0",
+        "3-2",
+        "2-0"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket år spilte Norge sitt første VM i fotball?",
+      "a": [
+        "1938",
+        "1954",
+        "1994",
+        "1930"
+      ],
+      "d": 3
     }
   ]
 }

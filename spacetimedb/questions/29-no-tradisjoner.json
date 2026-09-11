@@ -194,7 +194,7 @@
       "d": 3
     },
     {
-      "q": "Hva spises tradisjonelt i fastelavn?",
+      "q": "Hvilket hvetebakverk med krem spises tradisjonelt søndagen før fasten?",
       "a": [
         "Fastelavnsboller",
         "Lefse",
@@ -214,7 +214,7 @@
       "d": 1
     },
     {
-      "q": "Hva heter det tradisjonelle 17. mai-toget for barn?",
+      "q": "Hva heter 17. mai-toget der skoleelevene går med flagg og korps?",
       "a": [
         "Barnetoget",
         "Folketoget",

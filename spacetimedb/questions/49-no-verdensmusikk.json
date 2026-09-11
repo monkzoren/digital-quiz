@@ -25,7 +25,7 @@
     { "q": "Hvem regnes som fadoens største sanger gjennom tidene?", "a": ["Amália Rodrigues", "Mariza", "Cesária Évora", "Dulce Pontes"], "d": 3 },
     { "q": "Fra hvilken del av verden kommer trommen djembe?", "a": ["Vest-Afrika", "Sør-Amerika", "Sørøst-Asia", "Karibia"], "d": 2 },
     { "q": "Hvilket land er hjemlandet til tønnetrommen steelpan?", "a": ["Trinidad og Tobago", "Jamaica", "Cuba", "Haiti"], "d": 2 },
-    { "q": "Hvilken kubansk musikkstil ble verdenskjent gjennom Buena Vista Social Club?", "a": ["Son cubano", "Bachata", "Cumbia", "Vallenato"], "d": 3 },
+    { "q": "Hvilken musikkstil ble verdenskjent gjennom Buena Vista Social Club?", "a": ["Son cubano", "Bachata", "Cumbia", "Vallenato"], "d": 3 },
     { "q": "Hvilken colombiansk artist synger «Hips Don't Lie»?", "a": ["Shakira", "Karol G", "Jennifer Lopez", "Gloria Estefan"], "d": 1 },
     { "q": "Hvilket land er musikkstilen cumbia opprinnelig fra?", "a": ["Colombia", "Mexico", "Peru", "Venezuela"], "d": 3 },
     { "q": "Hvilken puertorikansk artist var verdens mest strømmede artist i 2020 og 2021?", "a": ["Bad Bunny", "Daddy Yankee", "J Balvin", "Ozuna"], "d": 2 },

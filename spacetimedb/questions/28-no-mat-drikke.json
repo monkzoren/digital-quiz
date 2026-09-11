@@ -14,7 +14,7 @@
       "d": 2
     },
     {
-      "q": "Hvilken norsk rett lages av tørrfisk som legges i lut?",
+      "q": "Hvilken norsk fiskerett bløtlegges i et sterkt basisk bad før den serveres til jul?",
       "a": [
         "Lutefisk",
         "Rakfisk",
@@ -124,12 +124,12 @@
       "d": 1
     },
     {
-      "q": "Hvilke to hovedingredienser er i fårikål?",
+      "q": "Hvilket krydder brukes helt, ikke malt, når man lager fårikål?",
       "a": [
-        "Får og kål",
-        "Svin og kål",
-        "Lam og potet",
-        "Storfe og kålrot"
+        "Hel pepper",
+        "Karve",
+        "Laurbærblad",
+        "Einebær"
       ],
       "d": 1
     },

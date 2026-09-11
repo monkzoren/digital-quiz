@@ -18,7 +18,7 @@
     { "q": "Hva kalles verdensmesterskapet i League of Legends?", "a": ["Worlds", "The International", "The Major", "The Grand Cup"], "d": 2 },
     { "q": "Hvilket land har dominert VM i League of Legends?", "a": ["Sør-Korea", "USA", "Brasil", "Tyskland"], "d": 2 },
     { "q": "Hva er kallenavnet til Lee Sang-hyeok, esportens største stjerne i League of Legends?", "a": ["Faker", "Uzi", "Caps", "Bjergsen"], "d": 2 },
-    { "q": "Hvilket spill spilles i «Overwatch League»?", "a": ["Overwatch", "Valorant", "Apex Legends", "Paladins"], "d": 1 },
+    { "q": "Hvilket Blizzard-spill hadde en egen liga med bylag som Seoul Dynasty og London Spitfire?", "a": ["Overwatch", "Valorant", "Apex Legends", "Paladins"], "d": 1 },
     { "q": "Hva går esportspillet Rocket League ut på?", "a": ["Fotball med biler", "Racing i rakettskip", "Basketball med droner", "Ishockey med roboter"], "d": 1 },
     { "q": "I hvilket land arrangeres storturneringen Intel Extreme Masters Katowice?", "a": ["Polen", "Tyskland", "Tsjekkia", "Ungarn"], "d": 2 },
     { "q": "Hvor mange spillere starter en vanlig runde med Fortnite battle royale?", "a": ["100", "50", "64", "150"], "d": 1 },

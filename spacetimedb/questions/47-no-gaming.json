@@ -17,7 +17,7 @@
     { "q": "Hvilket spill er tidenes mest solgte?", "a": ["Minecraft", "Tetris", "Grand Theft Auto V", "Wii Sports"], "d": 2 },
     { "q": "Hvem fant opp Tetris?", "a": ["Aleksej Pasjitnov", "Shigeru Miyamoto", "Hideo Kojima", "Will Wright"], "d": 3 },
     { "q": "I hvilket land ble Tetris laget?", "a": ["Sovjetunionen", "USA", "Japan", "Polen"], "d": 2 },
-    { "q": "Hva heter hovedpersonen i Metal Gear Solid?", "a": ["Solid Snake", "Sam Fisher", "Nathan Drake", "Marcus Fenix"], "d": 2 },
+    { "q": "Hva heter hovedpersonen i spillserien Metal Gear?", "a": ["Solid Snake", "Sam Fisher", "Nathan Drake", "Marcus Fenix"], "d": 2 },
     { "q": "Hvem designet Super Mario og The Legend of Zelda?", "a": ["Shigeru Miyamoto", "Satoru Iwata", "Hideo Kojima", "Yu Suzuki"], "d": 2 },
     { "q": "Hvilket selskap driver spillbutikken Steam?", "a": ["Valve", "Epic Games", "Electronic Arts", "Blizzard"], "d": 1 },
     { "q": "Hva heter arkeologen i Tomb Raider?", "a": ["Lara Croft", "Samus Aran", "Jill Valentine", "Chell"], "d": 1 },
@@ -37,7 +37,7 @@
     { "q": "Hva heter prinsessen Mario stadig må redde?", "a": ["Peach", "Daisy", "Rosalina", "Zelda"], "d": 2 },
     { "q": "Hva samler Sonic på gjennom banene?", "a": ["Ringer", "Mynter", "Stjerner", "Diamanter"], "d": 2 },
     { "q": "I hvilket spill møter du den eksploderende fienden «Creeper»?", "a": ["Minecraft", "Terraria", "Roblox", "Fortnite"], "d": 1 },
-    { "q": "Hva heter det ene laget i Counter-Strike, i tillegg til terroristene?", "a": ["Counter-Terrorists", "Politiet", "Marines", "SWAT"], "d": 2 },
+    { "q": "Hvilket lag skal hindre at bomben går av i Counter-Strike?", "a": ["Counter-Terrorists", "Politiet", "Marines", "SWAT"], "d": 2 },
     { "q": "Hvilket spill fra 2018 følger Kratos og sønnen Atreus?", "a": ["God of War", "Horizon Zero Dawn", "Ghost of Tsushima", "Assassin's Creed"], "d": 2 },
     { "q": "Hva heter Microsofts spillkonsoll?", "a": ["Xbox", "PlayStation", "Dreamcast", "Switch"], "d": 1 },
     { "q": "Hvilket spill går ut på å bygge og drive en gård du arver etter bestefaren?", "a": ["Stardew Valley", "Animal Crossing", "Harvest Land", "Farm Sim"], "d": 2 }

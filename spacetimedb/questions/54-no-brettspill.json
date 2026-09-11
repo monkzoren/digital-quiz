@@ -5,7 +5,7 @@
   "questions": [
     { "q": "Hvor mange brikker har hver spiller når et sjakkparti starter?", "a": ["16", "12", "20", "8"], "d": 1 },
     { "q": "Hvilken sjakkbrikke kan bare flytte diagonalt?", "a": ["Løperen", "Tårnet", "Springeren", "Bonden"], "d": 1 },
-    { "q": "Hva kalles det når kongen er truet i sjakk?", "a": ["Sjakk", "Matt", "Patt", "Rokade"], "d": 1 },
+    { "q": "Hva kalles det når kongen står i fare for å bli slått i neste trekk?", "a": ["Sjakk", "Matt", "Patt", "Rokade"], "d": 1 },
     { "q": "Hvilken nordmann ble verdensmester i sjakk i 2013?", "a": ["Magnus Carlsen", "Simen Agdestein", "Aryan Tari", "Jon Ludvig Hammer"], "d": 1 },
     { "q": "Hvem slo Magnus Carlsen i VM-kampen i 2013?", "a": ["Viswanathan Anand", "Sergej Karjakin", "Fabiano Caruana", "Ian Nepomnjasjtsjij"], "d": 2 },
     { "q": "Hvor mange ruter er det på et sjakkbrett?", "a": ["64", "81", "100", "49"], "d": 1 },

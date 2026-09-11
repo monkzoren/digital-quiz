@@ -2,7 +2,7 @@
 // 50 topics, 1344 questions.
 export type BankQuestion = { q: string; a: string[]; d: number };
 export type BankTopic = { topic: string; icon: string; lang: string; questions: BankQuestion[] };
-export const BANK_VERSION = "ff624b801681";
+export const BANK_VERSION = "5de01731c77e";
 export const BANK: BankTopic[] = [
   {
     "topic": "General Knowledge",
@@ -481,7 +481,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "In which city was the Berlin Wall?",
+        "q": "Which German city was divided by a wall from 1961 to 1989?",
         "a": [
           "Berlin",
           "Munich",
@@ -735,7 +735,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "What kind of animal is Simba in \"The Lion King\"?",
+        "q": "What kind of animal is Simba in Disney’s 1994 animated classic?",
         "a": [
           "Lion",
           "Tiger",
@@ -912,10 +912,10 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "What instrument does a pianist play?",
+        "q": "Which instrument did Antonio Stradivari famously make?",
         "a": [
-          "Piano",
           "Violin",
+          "Piano",
           "Harp",
           "Cello"
         ],
@@ -1610,7 +1610,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "What is the League of Legends world championship usually called?",
+        "q": "What one-word nickname do fans use for the biggest annual League of Legends tournament?",
         "a": [
           "Worlds",
           "The International",
@@ -1897,7 +1897,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Which Cuban style became world famous through Buena Vista Social Club?",
+        "q": "Which music style became world famous through Buena Vista Social Club?",
         "a": [
           "Son cubano",
           "Bachata",
@@ -2748,7 +2748,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hva het perioden med borgerkriger i Norge på 1100- og 1200-tallet?",
+        "q": "Hva het den urolige perioden med strid om kongemakten i Norge på 1100- og 1200-tallet?",
         "a": [
           "Borgerkrigstiden",
           "Vikingtiden",
@@ -2855,7 +2855,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvem giftet Harald seg med i 1968?",
+        "q": "Hvem giftet tronarvingen seg med i 1968, etter ni år med hemmelig forhold?",
         "a": [
           "Sonja Haraldsen",
           "Mette-Marit Tjessem Høiby",
@@ -2965,7 +2965,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket landområde i Antarktis er oppkalt etter dronning Maud?",
+        "q": "Hvilket norsk biland i Antarktis er oppkalt etter kong Haakons dronning?",
         "a": [
           "Dronning Maud Land",
           "Maudbukta",
@@ -3202,7 +3202,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket norsk hiphop-duo het tidligere Karpe Diem?",
+        "q": "Hvilken norsk hiphop-duo kortet ned navnet sitt i 2018?",
         "a": [
           "Karpe",
           "Nico & Vinz",
@@ -3292,7 +3292,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hvilken norsk gruppe ga ut albumet Kvelertak i 2010?",
+        "q": "Hvilket norsk rockeband synger på norsk og slo gjennom med sitt selvtitulerte debutalbum i 2010?",
         "a": [
           "Kvelertak",
           "Turbonegro",
@@ -3312,11 +3312,11 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken musikkfestival arrangeres på Bergenhus festning?",
+        "q": "Hvilken musikkfestival arrangeres i Tønsberg hver sommer?",
         "a": [
+          "Slottsfjell",
           "Bergenfest",
           "Øyafestivalen",
-          "Slottsfjell",
           "Palmesus"
         ],
         "d": 3
@@ -3489,7 +3489,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hva var Norges plassering i Eurovision-finalen i 1985 da vi vant?",
+        "q": "Hvilken plassering fikk Norge i Eurovision-finalen i 1985?",
         "a": [
           "Første",
           "Andre",
@@ -3598,7 +3598,7 @@ export const BANK: BankTopic[] = [
       {
         "q": "Hva heter lederen av Olsenbanden?",
         "a": [
-          "Egon Olsen",
+          "Egon",
           "Benny",
           "Kjell",
           "Valborg"
@@ -3676,7 +3676,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken NRK-dramaserie fra 2015 handler om tungtvannsaksjonen?",
+        "q": "Hvilken NRK-dramaserie fra 2015 handler om sabotasjen mot tysk atomforskning på Vemork?",
         "a": [
           "Kampen om tungtvannet",
           "Atlantic Crossing",
@@ -3816,7 +3816,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken norsk filmfigur reiser rundt med sopelime og heter noe med Sabeltann?",
+        "q": "Hvilken norsk filmfigur er sjørøverkaptein på skipet Den sorte dame?",
         "a": [
           "Kaptein Sabeltann",
           "Kaptein Krok",
@@ -3846,11 +3846,11 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hva heter NRKs langvarige lørdagsunderholdning med lotto og show?",
+        "q": "Hvilket NRK-program lar to lag konkurrere i å kjenne igjen og fremføre låter?",
         "a": [
-          "Lørdagsrevyen",
-          "Nytt på nytt",
           "Beat for beat",
+          "Nytt på nytt",
+          "Stjernekamp",
           "Kvelden før kvelden"
         ],
         "d": 3
@@ -4440,7 +4440,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hvilken norsk langrennsløper er kjent for sine spurter og kallenavnet Northug?",
+        "q": "Hvilken norsk langrennsløper tok 13 VM-gull og var beryktet for spurtene sine?",
         "a": [
           "Petter Northug",
           "Bjørn Dæhlie",
@@ -4590,7 +4590,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hva heter fellesstarten i langrenn der alle starter samtidig?",
+        "q": "Hva heter starttypen i langrenn der hele feltet sendes av gårde på samme tid?",
         "a": [
           "Fellesstart",
           "Jaktstart",
@@ -4620,7 +4620,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hvilken norsk alpinist vant verdenscupen sammenlagt i 1999 og var kjent som Lasse?",
+        "q": "Hvilken norsk alpinist vant verdenscupen sammenlagt i 1999?",
         "a": [
           "Lasse Kjus",
           "Kjetil André Aamodt",
@@ -4780,7 +4780,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hva heter øvelsen som kombinerer hopp og langrenn?",
+        "q": "Hva heter øvelsen der utøverne både hopper på ski og går langrenn?",
         "a": [
           "Kombinert",
           "Skiskyting",
@@ -4867,7 +4867,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken norsk rett lages av tørrfisk som legges i lut?",
+        "q": "Hvilken norsk fiskerett bløtlegges i et sterkt basisk bad før den serveres til jul?",
         "a": [
           "Lutefisk",
           "Rakfisk",
@@ -4977,12 +4977,12 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hvilke to hovedingredienser er i fårikål?",
+        "q": "Hvilket krydder brukes helt, ikke malt, når man lager fårikål?",
         "a": [
-          "Får og kål",
-          "Svin og kål",
-          "Lam og potet",
-          "Storfe og kålrot"
+          "Hel pepper",
+          "Karve",
+          "Laurbærblad",
+          "Einebær"
         ],
         "d": 1
       },
@@ -5354,7 +5354,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hva spises tradisjonelt i fastelavn?",
+        "q": "Hvilket hvetebakverk med krem spises tradisjonelt søndagen før fasten?",
         "a": [
           "Fastelavnsboller",
           "Lefse",
@@ -5374,7 +5374,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hva heter det tradisjonelle 17. mai-toget for barn?",
+        "q": "Hva heter 17. mai-toget der skoleelevene går med flagg og korps?",
         "a": [
           "Barnetoget",
           "Folketoget",
@@ -5641,7 +5641,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hva kalles den tjukke l-lyden som finnes i mange østnorske dialekter?",
+        "q": "Hva kalles l-lyden som lages med tungespissen bøyd bakover, og som er vanlig i østnorske dialekter?",
         "a": [
           "Tjukk l",
           "Rulle-l",
@@ -5868,7 +5868,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket dyr er kjent for store bestandssvingninger og lemenår?",
+        "q": "Hvilket lite gnager på fjellet er kjent for dramatiske bestandssvingninger?",
         "a": [
           "Lemen",
           "Reven",
@@ -6008,7 +6008,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hva slags vær kalles mildvær midt på vinteren?",
+        "q": "Hva kalles det når temperaturen stiger over null og snøen smelter midt på vinteren?",
         "a": [
           "Mildvær eller tøvær",
           "Snøstorm",
@@ -6492,7 +6492,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hva heter slangen som ligger rundt hele Midgard?",
+        "q": "Hva heter den enorme slangen som ligger i havet og biter seg selv i halen, Tors argeste fiende?",
         "a": [
           "Midgardsormen",
           "Nidhogg",
@@ -6542,7 +6542,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hvilken ukedag er oppkalt etter Tor?",
+        "q": "Hvilken ukedag er oppkalt etter guden som eier hammeren Mjølner?",
         "a": [
           "Torsdag",
           "Tirsdag",
@@ -6929,7 +6929,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hvilken bro forbinder Norge og Sverige ved Svinesund?",
+        "q": "Hvilken bro krysser E6 over grensen til Sverige?",
         "a": [
           "Svinesundbrua",
           "Øresundbrua",
@@ -7026,7 +7026,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hva het NRKs klassiske barneprogram med dukker og sang på ettermiddagen?",
+        "q": "Hva har NRKs daglige programpost for de minste seerne hett helt siden 1960?",
         "a": [
           "Barne-TV",
           "Lekestue",
@@ -7036,7 +7036,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket barneprogram foregikk på Sesam stasjon?",
+        "q": "I hvilket NRK-barneprogram bodde figurene Max Mekker og Alfa?",
         "a": [
           "Sesam stasjon",
           "Portveien 2",
@@ -7303,7 +7303,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket norsk selskap er en av verdens største aluminiumsprodusenter?",
+        "q": "Hvilket selskap med hovedkontor i Oslo er en av verdens største aluminiumsprodusenter?",
         "a": [
           "Norsk Hydro",
           "Elkem",
@@ -7413,7 +7413,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket norsk friluftsmerke ble grunnlagt av Helly Juell Hansen i 1877?",
+        "q": "Hvilket norsk friluftsmerke ble grunnlagt i Moss i 1877 av en skipskaptein og kona hans?",
         "a": [
           "Helly Hansen",
           "Bergans",
@@ -7740,7 +7740,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hva kalles den norske skatteoppgaven man leverer hvert år?",
+        "q": "Hva kalles skjemaet der du melder inn inntekt og formue hvert år?",
         "a": [
           "Skattemeldingen",
           "Skattekortet",
@@ -7897,7 +7897,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken norsk syklist er kjent som Dag Otto?",
+        "q": "Hvilken norsk syklist vant en etappe i Tour de France i 1987 og ble siden TV-kommentator?",
         "a": [
           "Dag Otto Lauritzen",
           "Thor Hushovd",
@@ -9058,7 +9058,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hva heter jordas eneste naturlige måne?",
+        "q": "Hva heter jordas eneste naturlige satellitt?",
         "a": [
           "Månen",
           "Titan",
@@ -9205,7 +9205,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket dyr er Simba i Løvenes konge?",
+        "q": "Hvilket dyr er Simba i Disney-filmen fra 1994?",
         "a": [
           "En løve",
           "En tiger",
@@ -10463,7 +10463,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken norsk oppfinner står bak den moderne fiskekroken Mustad ble kjent for?",
+        "q": "Hvem står bak den moderne fiskekroken som ble produsert på Gjøvik og solgt over hele verden?",
         "a": [
           "Mustad-familien",
           "Thor Bjørklund",
@@ -10630,7 +10630,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hva heter hovedpersonen i Metal Gear Solid?",
+        "q": "Hva heter hovedpersonen i spillserien Metal Gear?",
         "a": [
           "Solid Snake",
           "Sam Fisher",
@@ -10830,7 +10830,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hva heter det ene laget i Counter-Strike, i tillegg til terroristene?",
+        "q": "Hvilket lag skal hindre at bomben går av i Counter-Strike?",
         "a": [
           "Counter-Terrorists",
           "Politiet",
@@ -11027,7 +11027,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilket spill spilles i «Overwatch League»?",
+        "q": "Hvilket Blizzard-spill hadde en egen liga med bylag som Seoul Dynasty og London Spitfire?",
         "a": [
           "Overwatch",
           "Valorant",
@@ -11424,7 +11424,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken kubansk musikkstil ble verdenskjent gjennom Buena Vista Social Club?",
+        "q": "Hvilken musikkstil ble verdenskjent gjennom Buena Vista Social Club?",
         "a": [
           "Son cubano",
           "Bachata",
@@ -12295,7 +12295,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hva kalles Metallicas album fra 1991 med helsvart cover?",
+        "q": "Hva kalles Metallicas selvtitulerte album fra 1991 på folkemunne?",
         "a": [
           "The Black Album",
           "Master of Puppets",
@@ -12582,7 +12582,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hva kalles fansen til Taylor Swift?",
+        "q": "Hva kalles fansen til artisten bak «The Eras Tour»?",
         "a": [
           "Swifties",
           "Little Monsters",
@@ -12642,7 +12642,7 @@ export const BANK: BankTopic[] = [
         "d": 2
       },
       {
-        "q": "Hvilken Adele-låt åpner med linjen «Hello, it's me»?",
+        "q": "Hvilken Adele-låt fra 2015 åpner med linjen «I was wondering if after all these years you’d like to meet»?",
         "a": [
           "Hello",
           "Someone Like You",
@@ -12879,7 +12879,7 @@ export const BANK: BankTopic[] = [
         "d": 1
       },
       {
-        "q": "Hva kalles det når kongen er truet i sjakk?",
+        "q": "Hva kalles det når kongen står i fare for å bli slått i neste trekk?",
         "a": [
           "Sjakk",
           "Matt",
@@ -13296,7 +13296,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hvilken serie følger demonjegeren Tanjiro og søsteren Nezuko?",
+        "q": "Hvilken serie følger Tanjiro og søsteren Nezuko?",
         "a": [
           "Demon Slayer",
           "Jujutsu Kaisen",
@@ -13406,7 +13406,7 @@ export const BANK: BankTopic[] = [
         "d": 3
       },
       {
-        "q": "Hvilken anime følger en gjeng dusørjegere om bord i romskipet Bebop?",
+        "q": "Hvilken anime følger en gjeng dusørjegere i rommet på 2070-tallet?",
         "a": [
           "Cowboy Bebop",
           "Outlaw Star",

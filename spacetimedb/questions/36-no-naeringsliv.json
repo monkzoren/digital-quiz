@@ -94,7 +94,7 @@
       "d": 2
     },
     {
-      "q": "Hvilket norsk selskap er en av verdens største aluminiumsprodusenter?",
+      "q": "Hvilket selskap med hovedkontor i Oslo er en av verdens største aluminiumsprodusenter?",
       "a": [
         "Norsk Hydro",
         "Elkem",
@@ -204,7 +204,7 @@
       "d": 2
     },
     {
-      "q": "Hvilket norsk friluftsmerke ble grunnlagt av Helly Juell Hansen i 1877?",
+      "q": "Hvilket norsk friluftsmerke ble grunnlagt i Moss i 1877 av en skipskaptein og kona hans?",
       "a": [
         "Helly Hansen",
         "Bergans",

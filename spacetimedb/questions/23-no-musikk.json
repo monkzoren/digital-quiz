@@ -164,7 +164,7 @@
       "d": 2
     },
     {
-      "q": "Hvilket norsk hiphop-duo het tidligere Karpe Diem?",
+      "q": "Hvilken norsk hiphop-duo kortet ned navnet sitt i 2018?",
       "a": [
         "Karpe",
         "Nico & Vinz",
@@ -254,7 +254,7 @@
       "d": 3
     },
     {
-      "q": "Hvilken norsk gruppe ga ut albumet Kvelertak i 2010?",
+      "q": "Hvilket norsk rockeband synger på norsk og slo gjennom med sitt selvtitulerte debutalbum i 2010?",
       "a": [
         "Kvelertak",
         "Turbonegro",
@@ -274,11 +274,11 @@
       "d": 2
     },
     {
-      "q": "Hvilken musikkfestival arrangeres på Bergenhus festning?",
+      "q": "Hvilken musikkfestival arrangeres i Tønsberg hver sommer?",
       "a": [
+        "Slottsfjell",
         "Bergenfest",
         "Øyafestivalen",
-        "Slottsfjell",
         "Palmesus"
       ],
       "d": 3

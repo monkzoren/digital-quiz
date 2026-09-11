@@ -134,7 +134,7 @@
       "d": 2
     },
     {
-      "q": "Hvilket dyr er kjent for store bestandssvingninger og lemenår?",
+      "q": "Hvilket lite gnager på fjellet er kjent for dramatiske bestandssvingninger?",
       "a": [
         "Lemen",
         "Reven",
@@ -274,7 +274,7 @@
       "d": 2
     },
     {
-      "q": "Hva slags vær kalles mildvær midt på vinteren?",
+      "q": "Hva kalles det når temperaturen stiger over null og snøen smelter midt på vinteren?",
       "a": [
         "Mildvær eller tøvær",
         "Snøstorm",

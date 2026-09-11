@@ -94,7 +94,7 @@
       "d": 1
     },
     {
-      "q": "Hvilken norsk langrennsløper er kjent for sine spurter og kallenavnet Northug?",
+      "q": "Hvilken norsk langrennsløper tok 13 VM-gull og var beryktet for spurtene sine?",
       "a": [
         "Petter Northug",
         "Bjørn Dæhlie",
@@ -244,7 +244,7 @@
       "d": 1
     },
     {
-      "q": "Hva heter fellesstarten i langrenn der alle starter samtidig?",
+      "q": "Hva heter starttypen i langrenn der hele feltet sendes av gårde på samme tid?",
       "a": [
         "Fellesstart",
         "Jaktstart",
@@ -274,7 +274,7 @@
       "d": 1
     },
     {
-      "q": "Hvilken norsk alpinist vant verdenscupen sammenlagt i 1999 og var kjent som Lasse?",
+      "q": "Hvilken norsk alpinist vant verdenscupen sammenlagt i 1999?",
       "a": [
         "Lasse Kjus",
         "Kjetil André Aamodt",
@@ -434,7 +434,7 @@
       "d": 1
     },
     {
-      "q": "Hva heter øvelsen som kombinerer hopp og langrenn?",
+      "q": "Hva heter øvelsen der utøverne både hopper på ski og går langrenn?",
       "a": [
         "Kombinert",
         "Skiskyting",

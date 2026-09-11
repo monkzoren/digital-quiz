@@ -18,7 +18,7 @@
     { "q": "Which Nigerian artist is behind the global hit «Essence»?", "a": ["Wizkid", "Burna Boy", "Davido", "Rema"], "d": 3 },
     { "q": "Which melancholy Portuguese song tradition is on the UNESCO heritage list?", "a": ["Fado", "Flamenco", "Rebetiko", "Tarantella"], "d": 3 },
     { "q": "Which island nation is the home of the steelpan drum?", "a": ["Trinidad and Tobago", "Jamaica", "Cuba", "Haiti"], "d": 2 },
-    { "q": "Which Cuban style became world famous through Buena Vista Social Club?", "a": ["Son cubano", "Bachata", "Cumbia", "Vallenato"], "d": 3 },
+    { "q": "Which music style became world famous through Buena Vista Social Club?", "a": ["Son cubano", "Bachata", "Cumbia", "Vallenato"], "d": 3 },
     { "q": "Which Puerto Rican artist was the world's most streamed artist in 2020 and 2021?", "a": ["Bad Bunny", "Daddy Yankee", "J Balvin", "Ozuna"], "d": 2 },
     { "q": "What is the music style of Bad Bunny and Daddy Yankee called?", "a": ["Reggaeton", "Bachata", "Salsa", "Merengue"], "d": 1 },
     { "q": "Which long wind instrument comes from Aboriginal Australia?", "a": ["The didgeridoo", "The bagpipes", "The pan flute", "The shakuhachi"], "d": 1 },

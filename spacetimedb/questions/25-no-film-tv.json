@@ -46,7 +46,7 @@
     {
       "q": "Hva heter lederen av Olsenbanden?",
       "a": [
-        "Egon Olsen",
+        "Egon",
         "Benny",
         "Kjell",
         "Valborg"
@@ -124,7 +124,7 @@
       "d": 2
     },
     {
-      "q": "Hvilken NRK-dramaserie fra 2015 handler om tungtvannsaksjonen?",
+      "q": "Hvilken NRK-dramaserie fra 2015 handler om sabotasjen mot tysk atomforskning på Vemork?",
       "a": [
         "Kampen om tungtvannet",
         "Atlantic Crossing",
@@ -264,7 +264,7 @@
       "d": 2
     },
     {
-      "q": "Hvilken norsk filmfigur reiser rundt med sopelime og heter noe med Sabeltann?",
+      "q": "Hvilken norsk filmfigur er sjørøverkaptein på skipet Den sorte dame?",
       "a": [
         "Kaptein Sabeltann",
         "Kaptein Krok",
@@ -294,11 +294,11 @@
       "d": 3
     },
     {
-      "q": "Hva heter NRKs langvarige lørdagsunderholdning med lotto og show?",
+      "q": "Hvilket NRK-program lar to lag konkurrere i å kjenne igjen og fremføre låter?",
       "a": [
-        "Lørdagsrevyen",
-        "Nytt på nytt",
         "Beat for beat",
+        "Nytt på nytt",
+        "Stjernekamp",
         "Kvelden før kvelden"
       ],
       "d": 3

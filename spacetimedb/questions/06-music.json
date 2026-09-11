@@ -44,10 +44,10 @@
       "d": 2
     },
     {
-      "q": "What instrument does a pianist play?",
+      "q": "Which instrument did Antonio Stradivari famously make?",
       "a": [
-        "Piano",
         "Violin",
+        "Piano",
         "Harp",
         "Cello"
       ],

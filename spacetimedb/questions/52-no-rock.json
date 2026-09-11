@@ -1,0 +1,347 @@
+{
+  "topic": "Rock & metal",
+  "icon": "🤘",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilket band står bak «Bohemian Rhapsody»?",
+      "a": [
+        "Queen",
+        "The Who",
+        "Deep Purple",
+        "Genesis"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var vokalist i Queen?",
+      "a": [
+        "Freddie Mercury",
+        "Brian May",
+        "Roger Taylor",
+        "Robert Plant"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilket band spiller Mick Jagger og Keith Richards?",
+      "a": [
+        "The Rolling Stones",
+        "The Kinks",
+        "The Beatles",
+        "The Animals"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken by kommer The Beatles fra?",
+      "a": [
+        "Liverpool",
+        "Manchester",
+        "London",
+        "Birmingham"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var trommeslager i The Beatles?",
+      "a": [
+        "Ringo Starr",
+        "Pete Best",
+        "George Harrison",
+        "Keith Moon"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket Pink Floyd-album fra 1973 har et prisme på coveret?",
+      "a": [
+        "The Dark Side of the Moon",
+        "The Wall",
+        "Wish You Were Here",
+        "Animals"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band står bak «Stairway to Heaven»?",
+      "a": [
+        "Led Zeppelin",
+        "Deep Purple",
+        "Black Sabbath",
+        "The Doors"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket band står bak «Smells Like Teen Spirit»?",
+      "a": [
+        "Nirvana",
+        "Pearl Jam",
+        "Soundgarden",
+        "Alice in Chains"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var vokalist i Nirvana?",
+      "a": [
+        "Kurt Cobain",
+        "Eddie Vedder",
+        "Chris Cornell",
+        "Layne Staley"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken musikkstil fra Seattle preget tidlig 90-tall?",
+      "a": [
+        "Grunge",
+        "Britpop",
+        "Nu metal",
+        "Punk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band står bak «Enter Sandman»?",
+      "a": [
+        "Metallica",
+        "Megadeth",
+        "Slayer",
+        "Anthrax"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles Metallicas album fra 1991 med helsvart cover?",
+      "a": [
+        "The Black Album",
+        "Master of Puppets",
+        "Ride the Lightning",
+        "Load"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band ble Ozzy Osbourne først kjent med?",
+      "a": [
+        "Black Sabbath",
+        "Iron Maiden",
+        "Judas Priest",
+        "Motörhead"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket maskekledde band kommer fra Iowa?",
+      "a": [
+        "Slipknot",
+        "Korn",
+        "System of a Down",
+        "Ghost"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken metalsjanger ble Norge verdenskjent for på 1990-tallet?",
+      "a": [
+        "Black metal",
+        "Thrash metal",
+        "Power metal",
+        "Nu metal"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket norsk black metal-band ble ledet av Euronymous?",
+      "a": [
+        "Mayhem",
+        "Darkthrone",
+        "Emperor",
+        "Gorgoroth"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk band står bak «Mother North»?",
+      "a": [
+        "Satyricon",
+        "Dimmu Borgir",
+        "Immortal",
+        "Enslaved"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket norsk metalband ledes av Ivar Bjørnson og Grutle Kjellson?",
+      "a": [
+        "Enslaved",
+        "Kvelertak",
+        "Turbonegro",
+        "Shining"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket norsk band ga ut albumene «Meir» og «Nattesferd»?",
+      "a": [
+        "Kvelertak",
+        "Madrugada",
+        "Motorpsycho",
+        "Turbonegro"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band står bak «Thunderstruck»?",
+      "a": [
+        "AC/DC",
+        "Guns N' Roses",
+        "Van Halen",
+        "Def Leppard"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land kommer AC/DC fra?",
+      "a": [
+        "Australia",
+        "Storbritannia",
+        "USA",
+        "New Zealand"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem er vokalist i U2?",
+      "a": [
+        "Bono",
+        "The Edge",
+        "Adam Clayton",
+        "Larry Mullen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land kommer U2 fra?",
+      "a": [
+        "Irland",
+        "Skottland",
+        "England",
+        "Wales"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket band står bak «Hotel California»?",
+      "a": [
+        "Eagles",
+        "Fleetwood Mac",
+        "The Doobie Brothers",
+        "Steely Dan"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken amerikansk rockeartist kalles «The Boss»?",
+      "a": [
+        "Bruce Springsteen",
+        "Tom Petty",
+        "Bob Seger",
+        "John Mellencamp"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken gitarist spilte «Purple Haze»?",
+      "a": [
+        "Jimi Hendrix",
+        "Eric Clapton",
+        "Jimmy Page",
+        "Jeff Beck"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilken alder døde Hendrix, Joplin, Morrison og Cobain — den såkalte klubben?",
+      "a": [
+        "27",
+        "25",
+        "30",
+        "33"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band står bak «Wonderwall»?",
+      "a": [
+        "Oasis",
+        "Blur",
+        "Pulp",
+        "The Verve"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilke to brødre kranglet seg gjennom karrieren i Oasis?",
+      "a": [
+        "Gallagher",
+        "Followill",
+        "Robinson",
+        "Young"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band står bak «Seven Nation Army»?",
+      "a": [
+        "The White Stripes",
+        "The Black Keys",
+        "Arctic Monkeys",
+        "The Strokes"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band står bak «Paranoid Android» og albumet OK Computer?",
+      "a": [
+        "Radiohead",
+        "Blur",
+        "Muse",
+        "Coldplay"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band står bak «Basket Case» og «American Idiot»?",
+      "a": [
+        "Green Day",
+        "The Offspring",
+        "Blink-182",
+        "Sum 41"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket norsk band med Sivert Høyem som vokalist ga ut albumet «Industrial Silence»?",
+      "a": [
+        "Madrugada",
+        "Kaizers Orchestra",
+        "deLillos",
+        "DumDum Boys"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk band fra Bryne er kjent for oljefat og slegge på scenen?",
+      "a": [
+        "Kaizers Orchestra",
+        "Kvelertak",
+        "Motorpsycho",
+        "Gåte"
+      ],
+      "d": 2
+    }
+  ]
+}

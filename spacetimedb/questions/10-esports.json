@@ -1,0 +1,27 @@
+{
+  "topic": "Esports",
+  "icon": "🕹️",
+  "lang": "en",
+  "questions": [
+    { "q": "Which game is played at the tournament The International?", "a": ["Dota 2", "League of Legends", "Counter-Strike", "Valorant"], "d": 2 },
+    { "q": "Which company develops League of Legends?", "a": ["Riot Games", "Valve", "Blizzard", "Epic Games"], "d": 1 },
+    { "q": "What is the name of Riot Games' tactical shooter from 2020?", "a": ["Valorant", "Overwatch", "Apex Legends", "Rainbow Six Siege"], "d": 1 },
+    { "q": "How many players are on each team in League of Legends?", "a": ["5", "4", "6", "3"], "d": 1 },
+    { "q": "How many players are on each side in Counter-Strike?", "a": ["5", "6", "4", "3"], "d": 1 },
+    { "q": "What is the nickname of Ukrainian Counter-Strike legend Oleksandr Kostyliev?", "a": ["s1mple", "ZywOo", "device", "NiKo"], "d": 2 },
+    { "q": "Which Danish team dominated Counter-Strike around 2018 and 2019?", "a": ["Astralis", "Heroic", "North", "Copenhagen Flames"], "d": 2 },
+    { "q": "What is the League of Legends world championship usually called?", "a": ["Worlds", "The International", "The Major", "The Grand Cup"], "d": 2 },
+    { "q": "Which country has dominated the League of Legends World Championship?", "a": ["South Korea", "The USA", "Brazil", "Germany"], "d": 2 },
+    { "q": "What is the nickname of League of Legends superstar Lee Sang-hyeok?", "a": ["Faker", "Uzi", "Caps", "Bjergsen"], "d": 2 },
+    { "q": "What is Rocket League best described as?", "a": ["Football played with cars", "Racing in rocket ships", "Basketball with drones", "Ice hockey with robots"], "d": 1 },
+    { "q": "In which country is the Intel Extreme Masters Katowice held?", "a": ["Poland", "Germany", "Czechia", "Hungary"], "d": 2 },
+    { "q": "How many players start a standard Fortnite battle royale match?", "a": ["100", "50", "64", "150"], "d": 1 },
+    { "q": "Who won the Fortnite World Cup solo final in 2019?", "a": ["Kyle «Bugha» Giersdorf", "Ninja", "Tfue", "Mongraal"], "d": 3 },
+    { "q": "Which streaming platform is the home of esports?", "a": ["Twitch", "Netflix", "Vimeo", "Disney+"], "d": 1 },
+    { "q": "Which company owns Twitch?", "a": ["Amazon", "Google", "Microsoft", "Meta"], "d": 2 },
+    { "q": "How is the prize pool of The International largely funded?", "a": ["Battle Pass sales to players", "Government funding", "TV rights", "Ticket sales"], "d": 3 },
+    { "q": "What is it called in Counter-Strike when one player eliminates all five opponents in a round?", "a": ["An ace", "A clutch", "A flick", "A rush"], "d": 2 },
+    { "q": "What is it called when a player wins a round alone against the odds?", "a": ["A clutch", "An ace", "An eco", "A peek"], "d": 2 },
+    { "q": "Which Valve game features creeps, towers and an Ancient to destroy?", "a": ["Dota 2", "Team Fortress 2", "Artifact", "Half-Life"], "d": 2 }
+  ]
+}

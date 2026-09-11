@@ -1,0 +1,227 @@
+{
+  "topic": "Video Games",
+  "icon": "🎮",
+  "lang": "en",
+  "questions": [
+    {
+      "q": "Which console family does Microsoft make?",
+      "a": [
+        "Xbox",
+        "PlayStation",
+        "Dreamcast",
+        "Switch"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the name of Mario's brother?",
+      "a": [
+        "Luigi",
+        "Wario",
+        "Toad",
+        "Yoshi"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In which country was Minecraft created?",
+      "a": [
+        "Sweden",
+        "Norway",
+        "Finland",
+        "Denmark"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which studio is behind Grand Theft Auto?",
+      "a": [
+        "Rockstar Games",
+        "Ubisoft",
+        "Electronic Arts",
+        "Activision"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What kind of animal is Sega's mascot Sonic?",
+      "a": [
+        "A hedgehog",
+        "A fox",
+        "An echidna",
+        "A squirrel"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Who is the hero you control in The Legend of Zelda?",
+      "a": [
+        "Link",
+        "Zelda",
+        "Ganon",
+        "Epona"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which video game has sold the most copies of all time?",
+      "a": [
+        "Minecraft",
+        "Tetris",
+        "Grand Theft Auto V",
+        "Wii Sports"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In which country was Tetris created?",
+      "a": [
+        "The Soviet Union",
+        "The USA",
+        "Japan",
+        "Poland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who designed Super Mario and The Legend of Zelda?",
+      "a": [
+        "Shigeru Miyamoto",
+        "Satoru Iwata",
+        "Hideo Kojima",
+        "Yu Suzuki"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which company runs the Steam store?",
+      "a": [
+        "Valve",
+        "Epic Games",
+        "Electronic Arts",
+        "Blizzard"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the name of the archaeologist in Tomb Raider?",
+      "a": [
+        "Lara Croft",
+        "Samus Aran",
+        "Jill Valentine",
+        "Chell"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which arcade character eats dots while being chased by ghosts?",
+      "a": [
+        "Pac-Man",
+        "Donkey Kong",
+        "Q*bert",
+        "Frogger"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which company created World of Warcraft?",
+      "a": [
+        "Blizzard Entertainment",
+        "Bethesda",
+        "BioWare",
+        "Square Enix"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which studio made The Witcher 3: Wild Hunt?",
+      "a": [
+        "CD Projekt Red",
+        "Ubisoft",
+        "Bethesda",
+        "Rockstar Games"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Japanese studio is behind Dark Souls and Elden Ring?",
+      "a": [
+        "FromSoftware",
+        "Capcom",
+        "Konami",
+        "Square Enix"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which author helped build the world of Elden Ring?",
+      "a": [
+        "George R.R. Martin",
+        "Neil Gaiman",
+        "J.K. Rowling",
+        "Stephen King"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Nintendo hybrid console launched in 2017?",
+      "a": [
+        "Switch",
+        "Wii U",
+        "3DS",
+        "GameCube"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which exploding creature is a Minecraft trademark?",
+      "a": [
+        "The Creeper",
+        "The Slime",
+        "The Ghast",
+        "The Husk"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which 2018 game follows Kratos and his son Atreus?",
+      "a": [
+        "God of War",
+        "Horizon Zero Dawn",
+        "Ghost of Tsushima",
+        "Assassin's Creed"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which game has you inherit and run your grandfather's farm?",
+      "a": [
+        "Stardew Valley",
+        "Animal Crossing",
+        "Farming Simulator",
+        "Harvest Land"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who is the protagonist of the Halo games?",
+      "a": [
+        "Master Chief",
+        "Commander Shepard",
+        "Doom Slayer",
+        "Marcus Fenix"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Norwegian studio made Age of Conan and Conan Exiles?",
+      "a": [
+        "Funcom",
+        "Krillbite Studio",
+        "Rain Games",
+        "Megapop"
+      ],
+      "d": 3
+    }
+  ]
+}

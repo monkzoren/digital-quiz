@@ -1,0 +1,28 @@
+{
+  "topic": "K-Pop & J-Pop",
+  "icon": "💜",
+  "lang": "en",
+  "questions": [
+    { "q": "Which country does K-pop come from?", "a": ["South Korea", "Japan", "China", "Vietnam"], "d": 1 },
+    { "q": "Which group is behind «Dynamite» and «Butter»?", "a": ["BTS", "BLACKPINK", "EXO", "TWICE"], "d": 1 },
+    { "q": "How many members does BTS have?", "a": ["Seven", "Five", "Nine", "Four"], "d": 2 },
+    { "q": "What is the BTS fandom called?", "a": ["ARMY", "BLINK", "ONCE", "STAY"], "d": 2 },
+    { "q": "Which Korean artist broke through with «Gangnam Style» in 2012?", "a": ["PSY", "Rain", "G-Dragon", "Taeyang"], "d": 1 },
+    { "q": "What was «Gangnam Style» the first video ever to do on YouTube?", "a": ["Pass one billion views", "Be uploaded in 4K", "Get a million comments", "Stay online for ten years"], "d": 2 },
+    { "q": "Which girl group is behind «How You Like That»?", "a": ["BLACKPINK", "TWICE", "Red Velvet", "ITZY"], "d": 1 },
+    { "q": "How many members does BLACKPINK have?", "a": ["Four", "Five", "Three", "Seven"], "d": 2 },
+    { "q": "Which BLACKPINK member is from Thailand?", "a": ["Lisa", "Jennie", "Jisoo", "Rosé"], "d": 3 },
+    { "q": "Which Korean series became Netflix's most watched show after its 2021 release?", "a": ["Squid Game", "Kingdom", "Hellbound", "Sweet Home"], "d": 1 },
+    { "q": "What is the global wave of Korean pop culture called?", "a": ["Hallyu", "Hanbok", "Hangul", "Hanok"], "d": 3 },
+    { "q": "Which Korean film won the Best Picture Oscar in 2020?", "a": ["Parasite", "Oldboy", "Burning", "Train to Busan"], "d": 2 },
+    { "q": "Who directed Parasite?", "a": ["Bong Joon-ho", "Park Chan-wook", "Kim Ki-duk", "Lee Chang-dong"], "d": 3 },
+    { "q": "Which girl group broke through with «Ditto» and «OMG»?", "a": ["NewJeans", "IVE", "aespa", "LE SSERAFIM"], "d": 3 },
+    { "q": "What is a K-pop artist in training before their debut called?", "a": ["A trainee", "A rookie", "An idol", "A sunbae"], "d": 2 },
+    { "q": "What is the Korean alphabet called?", "a": ["Hangul", "Kanji", "Hanzi", "Katakana"], "d": 2 },
+    { "q": "Which K-pop act headlined Coachella in 2023, the first Korean act to do so?", "a": ["BLACKPINK", "BTS", "TWICE", "SEVENTEEN"], "d": 3 },
+    { "q": "What are Japanese comics called?", "a": ["Manga", "Anime", "Manhwa", "Manhua"], "d": 1 },
+    { "q": "What is Japan's most famous animation studio?", "a": ["Studio Ghibli", "Toei Animation", "Madhouse", "Kyoto Animation"], "d": 1 },
+    { "q": "Who co-founded Studio Ghibli and directed Spirited Away?", "a": ["Hayao Miyazaki", "Makoto Shinkai", "Isao Takahata", "Mamoru Hosoda"], "d": 2 },
+    { "q": "What is the capital of South Korea?", "a": ["Seoul", "Busan", "Incheon", "Pyongyang"], "d": 1 }
+  ]
+}

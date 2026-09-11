@@ -13,14 +13,17 @@ rig itself are digital-tennis's, carried over verbatim — BLAZE serving on
 Centre Court and BLAZE nursing a pint in the corner are the same person, the
 same model and the same walk.
 
-**Norsk pubquiz.** The bank ships **812 Norwegian questions across
-27 topics** — Norge rundt, norsk historie, kongehuset, MGP &
+**Norsk pubquiz.** The bank ships **1136 Norwegian questions across
+37 topics** — Norge rundt, norsk historie, kongehuset, MGP &
 Eurovision, norsk fotball, vintersport & OL, håndball, sportsøyeblikk &
 sitater, mat & drikke, russetid og høytider, dialekter, norrøn mytologi,
 Flåklypa og Olsenbanden, norske oppfinnelser & rekorder, and general topics
-written in Norwegian — plus 124 English ones. Sport is the deepest seam:
+written in Norwegian — plus 208 English ones. Sport is the deepest seam:
 football, winter sport, handball, world sport and famous Norwegian sporting
-moments come to over 200 questions on their own. A pub picks its **language** when it opens: a
+moments come to over 200 questions on their own, and the geek end of the bank
+— videospill, esport, brettspill, anime & manga, internett & memes — and the
+music shelf — verdensmusikk, K-pop, hiphop & R&B, rock & metal and pop &
+hitlister — add ten more topics on top. A pub picks its **language** when it opens: a
 Norwegian night draws only Norwegian packs, the quiz master heckles in
 Norwegian, and the screen, the wallet and the results read in Norwegian too.
 A Norwegian browser opens on `NORSK` and a Norwegian venue by default.

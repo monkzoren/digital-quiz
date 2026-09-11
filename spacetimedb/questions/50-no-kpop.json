@@ -1,0 +1,307 @@
+{
+  "topic": "K-pop & den koreanske bølgen",
+  "icon": "💜",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilket land kommer K-pop fra?",
+      "a": [
+        "Sør-Korea",
+        "Japan",
+        "Kina",
+        "Vietnam"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken gruppe står bak «Dynamite» og «Butter»?",
+      "a": [
+        "BTS",
+        "BLACKPINK",
+        "EXO",
+        "TWICE"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange medlemmer har BTS?",
+      "a": [
+        "Sju",
+        "Fem",
+        "Ni",
+        "Fire"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles fansen til BTS?",
+      "a": [
+        "ARMY",
+        "BLINK",
+        "ONCE",
+        "STAY"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket selskap står bak BTS?",
+      "a": [
+        "HYBE",
+        "SM Entertainment",
+        "JYP Entertainment",
+        "YG Entertainment"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken koreansk artist slo gjennom med «Gangnam Style» i 2012?",
+      "a": [
+        "PSY",
+        "Rain",
+        "G-Dragon",
+        "Taeyang"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva var «Gangnam Style» den første videoen til å gjøre på YouTube?",
+      "a": [
+        "Passere en milliard visninger",
+        "Bli lastet opp i 4K",
+        "Få en million kommentarer",
+        "Ligge ute i ti år"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken jentegruppe står bak «How You Like That»?",
+      "a": [
+        "BLACKPINK",
+        "TWICE",
+        "Red Velvet",
+        "ITZY"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange medlemmer har BLACKPINK?",
+      "a": [
+        "Fire",
+        "Fem",
+        "Tre",
+        "Sju"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket BLACKPINK-medlem er fra Thailand?",
+      "a": [
+        "Lisa",
+        "Jennie",
+        "Jisoo",
+        "Rosé"
+      ],
+      "d": 3
+    },
+    {
+      "q": "I hvilket land vokste BLACKPINKs Rosé opp?",
+      "a": [
+        "Australia",
+        "New Zealand",
+        "Canada",
+        "Storbritannia"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken koreansk serie ble Netflix' mest sette serie etter lanseringen i 2021?",
+      "a": [
+        "Squid Game",
+        "Kingdom",
+        "Hellbound",
+        "Sweet Home"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles den koreanske kulturbølgen som har spredt seg over verden?",
+      "a": [
+        "Hallyu",
+        "Hanbok",
+        "Hangul",
+        "Hanok"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken koreansk film vant Oscar for beste film i 2020?",
+      "a": [
+        "Parasitt",
+        "Oldboy",
+        "Burning",
+        "Train to Busan"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem regisserte Parasitt?",
+      "a": [
+        "Bong Joon-ho",
+        "Park Chan-wook",
+        "Kim Ki-duk",
+        "Lee Chang-dong"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken jentegruppe står bak «Fancy» og «What Is Love?»?",
+      "a": [
+        "TWICE",
+        "BLACKPINK",
+        "Red Velvet",
+        "Girls' Generation"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken guttegruppe står bak «God's Menu»?",
+      "a": [
+        "Stray Kids",
+        "SEVENTEEN",
+        "NCT",
+        "ATEEZ"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken jentegruppe slo gjennom med «Ditto» og «OMG»?",
+      "a": [
+        "NewJeans",
+        "IVE",
+        "aespa",
+        "LE SSERAFIM"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles det i K-pop når en gruppe slipper ny musikk og starter promoteringen?",
+      "a": [
+        "Comeback",
+        "Debut",
+        "Encore",
+        "Showcase"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva kalles en artist som går i lære hos et K-pop-selskap før debuten?",
+      "a": [
+        "Trainee",
+        "Rookie",
+        "Idol",
+        "Sunbae"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Sør-Koreas hovedstad?",
+      "a": [
+        "Seoul",
+        "Busan",
+        "Incheon",
+        "Pyongyang"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter det koreanske alfabetet?",
+      "a": [
+        "Hangul",
+        "Kanji",
+        "Hanzi",
+        "Katakana"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken K-pop-gruppe var første koreanske hovedattraksjon på Coachella, i 2023?",
+      "a": [
+        "BLACKPINK",
+        "BTS",
+        "TWICE",
+        "SEVENTEEN"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva kalles japansk populærmusikk?",
+      "a": [
+        "J-pop",
+        "Ji-pop",
+        "Nihon-pop",
+        "Tokyo-pop"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket japansk ord brukes om tegneseriene som ofte blir til anime?",
+      "a": [
+        "Manga",
+        "Anime",
+        "Manhwa",
+        "Hanzi"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken japansk sang toppet den amerikanske singellisten i 1963, kjent i vesten som «Sukiyaki»?",
+      "a": [
+        "Ue o Muite Arukō",
+        "Sakura Sakura",
+        "Kimi no Na wa",
+        "Tokyo Bon"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Japans mest berømte animasjonsstudio?",
+      "a": [
+        "Studio Ghibli",
+        "Toei Animation",
+        "Madhouse",
+        "Kyoto Animation"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem grunnla Studio Ghibli og regisserte Chihiro og heksene?",
+      "a": [
+        "Hayao Miyazaki",
+        "Makoto Shinkai",
+        "Isao Takahata",
+        "Mamoru Hosoda"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles den koreanske versjonen av tegneserier, ofte lest på mobil?",
+      "a": [
+        "Manhwa",
+        "Manga",
+        "Manhua",
+        "Webtoon-manga"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken dansestil er et kjennetegn ved K-pop-musikkvideoer?",
+      "a": [
+        "Synkron gruppekoreografi",
+        "Steppdans",
+        "Breakdance-battle",
+        "Folkedans"
+      ],
+      "d": 1
+    }
+  ]
+}

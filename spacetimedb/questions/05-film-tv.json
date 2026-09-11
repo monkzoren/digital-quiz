@@ -1,0 +1,146 @@
+{
+  "topic": "Film & TV",
+  "icon": "🎬",
+  "questions": [
+    {
+      "q": "Who directed \"Jurassic Park\" (1993)?",
+      "a": [
+        "Steven Spielberg",
+        "James Cameron",
+        "George Lucas",
+        "Ridley Scott"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What kind of animal is Simba in \"The Lion King\"?",
+      "a": [
+        "Lion",
+        "Tiger",
+        "Leopard",
+        "Cheetah"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which wizarding school does Harry Potter attend?",
+      "a": [
+        "Hogwarts",
+        "Durmstrang",
+        "Beauxbatons",
+        "Ilvermorny"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In \"The Matrix\", which pill does Neo take?",
+      "a": [
+        "Red",
+        "Blue",
+        "Green",
+        "White"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who played Jack in \"Titanic\" (1997)?",
+      "a": [
+        "Leonardo DiCaprio",
+        "Brad Pitt",
+        "Matt Damon",
+        "Johnny Depp"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the name of the coffee shop in \"Friends\"?",
+      "a": [
+        "Central Perk",
+        "The Grind",
+        "Cafe Nervosa",
+        "Monk’s"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which film features the line \"I’ll be back\"?",
+      "a": [
+        "The Terminator",
+        "RoboCop",
+        "Predator",
+        "Die Hard"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which film won the first ever Academy Award for Best Picture?",
+      "a": [
+        "Wings",
+        "Sunrise",
+        "The Jazz Singer",
+        "Metropolis"
+      ],
+      "d": 3
+    },
+    {
+      "q": "In \"Breaking Bad\", what is Walter White’s alias?",
+      "a": [
+        "Heisenberg",
+        "Schrödinger",
+        "Feynman",
+        "Oppenheimer"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who composed the score for \"Star Wars\"?",
+      "a": [
+        "John Williams",
+        "Hans Zimmer",
+        "Howard Shore",
+        "James Horner"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the name of the fictional town in \"Stranger Things\"?",
+      "a": [
+        "Hawkins",
+        "Derry",
+        "Twin Peaks",
+        "Riverdale"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which superhero is known as the Caped Crusader?",
+      "a": [
+        "Batman",
+        "Superman",
+        "Spider-Man",
+        "Iron Man"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In \"Finding Nemo\", what type of fish is Nemo?",
+      "a": [
+        "Clownfish",
+        "Blue tang",
+        "Angelfish",
+        "Goldfish"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which actor played the Joker in \"The Dark Knight\" (2008)?",
+      "a": [
+        "Heath Ledger",
+        "Jack Nicholson",
+        "Joaquin Phoenix",
+        "Jared Leto"
+      ],
+      "d": 3
+    }
+  ]
+}

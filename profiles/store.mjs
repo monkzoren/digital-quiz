@@ -1,0 +1,83 @@
+// The durable half: one SQLite file, one row per player. This is the thing
+// that survives a SpacetimeDB wipe, and it is a single file — back it up with
+// `cp`, inspect it with `sqlite3`, move it between hosts.
+//
+// node:sqlite ships with Node itself, so this service has NO dependencies and
+// no native build step.
+import { DatabaseSync } from 'node:sqlite';
+import { mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
+
+// Mirrors the account table in spacetimedb/src/index.ts (and the args of
+// restore_account). Columns are append-only here too: a deploy that drops
+// one loses that field for every player, exactly as it would there.
+const COLUMNS = [
+  'uid', 'provider', 'displayName', 'avatarId', 'xp', 'level',
+  'quizzes', 'quizWins', 'questions', 'correct', 'bestCredits', 'phoneChecks', 'rev',
+];
+
+// Columns appended after a store file may already exist on disk are ALTERed
+// in when missing (CREATE TABLE IF NOT EXISTS never touches an existing
+// table) — old rows pick up the default, the way the module's own appended
+// columns behave. Nothing appended yet.
+const APPENDED = [];
+
+export class Store {
+  constructor(path) {
+    mkdirSync(dirname(path), { recursive: true });
+    this.db = new DatabaseSync(path);
+    this.db.exec('PRAGMA journal_mode = WAL');
+    this.db.exec(`
+      CREATE TABLE IF NOT EXISTS account (
+        identity     TEXT PRIMARY KEY,
+        uid          TEXT NOT NULL DEFAULT '',
+        provider     INTEGER NOT NULL DEFAULT 0,
+        displayName  TEXT NOT NULL DEFAULT '',
+        avatarId     INTEGER NOT NULL DEFAULT 0,
+        xp           INTEGER NOT NULL DEFAULT 0,
+        level        INTEGER NOT NULL DEFAULT 1,
+        quizzes      INTEGER NOT NULL DEFAULT 0,
+        quizWins     INTEGER NOT NULL DEFAULT 0,
+        questions    INTEGER NOT NULL DEFAULT 0,
+        correct      INTEGER NOT NULL DEFAULT 0,
+        bestCredits  INTEGER NOT NULL DEFAULT 0,
+        phoneChecks  INTEGER NOT NULL DEFAULT 0,
+        rev          INTEGER NOT NULL DEFAULT 0,
+        updatedAt    TEXT NOT NULL
+      )
+    `);
+    const have = new Set(
+      this.db.prepare('PRAGMA table_info(account)').all().map(r => r.name)
+    );
+    for (const [col, ddl] of APPENDED) {
+      if (!have.has(col)) this.db.exec(`ALTER TABLE account ADD COLUMN ${col} ${ddl}`);
+    }
+    const sets = COLUMNS.map(c => `${c} = ?`).join(', ');
+    this.upsertStmt = this.db.prepare(
+      `INSERT INTO account (identity, ${COLUMNS.join(', ')}, updatedAt)
+       VALUES (?, ${COLUMNS.map(() => '?').join(', ')}, datetime('now'))
+       ON CONFLICT(identity) DO UPDATE SET ${sets}, updatedAt = datetime('now')`
+    );
+    this.allStmt = this.db.prepare(`SELECT identity, ${COLUMNS.join(', ')} FROM account`);
+  }
+
+  all() {
+    return this.allStmt.all();
+  }
+
+  /** Store a profile. Callers only reach here when the incoming rev is newer. */
+  put(row) {
+    const values = COLUMNS.map(c => row[c] ?? 0);
+    this.upsertStmt.run(row.identity, ...values, ...values);
+  }
+
+  count() {
+    return this.db.prepare('SELECT COUNT(*) AS n FROM account').get().n;
+  }
+
+  close() {
+    this.db.close();
+  }
+}
+
+export { COLUMNS };

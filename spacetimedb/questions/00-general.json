@@ -1,0 +1,136 @@
+{
+  "topic": "General Knowledge",
+  "icon": "🧠",
+  "questions": [
+    {
+      "q": "How many sides does a hexagon have?",
+      "a": [
+        "Six",
+        "Five",
+        "Seven",
+        "Eight"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the largest planet in our solar system?",
+      "a": [
+        "Jupiter",
+        "Saturn",
+        "Neptune",
+        "Earth"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many minutes are there in a full day?",
+      "a": [
+        "1,440",
+        "1,240",
+        "1,640",
+        "2,400"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the currency of Japan?",
+      "a": [
+        "Yen",
+        "Won",
+        "Yuan",
+        "Ringgit"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which language has the most native speakers in the world?",
+      "a": [
+        "Mandarin Chinese",
+        "English",
+        "Spanish",
+        "Hindi"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What does the Roman numeral XL represent?",
+      "a": [
+        "40",
+        "60",
+        "90",
+        "400"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many keys does a standard piano have?",
+      "a": [
+        "88",
+        "76",
+        "96",
+        "100"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the collective noun for a group of owls?",
+      "a": [
+        "A parliament",
+        "A murder",
+        "A congress",
+        "A school"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which word is spelled the same forwards and backwards?",
+      "a": [
+        "Level",
+        "Lever",
+        "Layer",
+        "Lower"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How many time zones does Russia span?",
+      "a": [
+        "11",
+        "7",
+        "9",
+        "13"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What colour do you get by mixing blue and yellow?",
+      "a": [
+        "Green",
+        "Purple",
+        "Orange",
+        "Brown"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which is the only letter not appearing in any US state name?",
+      "a": [
+        "Q",
+        "Z",
+        "X",
+        "J"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the fear of long words called?",
+      "a": [
+        "Hippopotomonstrosesquippedaliophobia",
+        "Logophobia",
+        "Verbophobia",
+        "Sesquiphobia"
+      ],
+      "d": 3
+    }
+  ]
+}

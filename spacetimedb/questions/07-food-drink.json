@@ -1,0 +1,146 @@
+{
+  "topic": "Food & Drink",
+  "icon": "🍺",
+  "questions": [
+    {
+      "q": "Which fruit is traditionally used to make guacamole?",
+      "a": [
+        "Avocado",
+        "Tomato",
+        "Lime",
+        "Mango"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is sushi traditionally wrapped in?",
+      "a": [
+        "Seaweed",
+        "Rice paper",
+        "Lettuce",
+        "Tofu skin"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which country is famous for inventing pizza?",
+      "a": [
+        "Italy",
+        "Greece",
+        "France",
+        "Spain"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the main ingredient in hummus?",
+      "a": [
+        "Chickpeas",
+        "Lentils",
+        "Beans",
+        "Peas"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which spirit is the base of a mojito?",
+      "a": [
+        "Rum",
+        "Vodka",
+        "Gin",
+        "Tequila"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What type of pastry is used for profiteroles?",
+      "a": [
+        "Choux",
+        "Puff",
+        "Shortcrust",
+        "Filo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which nut is used to make marzipan?",
+      "a": [
+        "Almond",
+        "Peanut",
+        "Hazelnut",
+        "Cashew"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the most expensive spice in the world by weight?",
+      "a": [
+        "Saffron",
+        "Vanilla",
+        "Cardamom",
+        "Truffle salt"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which cheese is traditionally used in a tiramisu?",
+      "a": [
+        "Mascarpone",
+        "Ricotta",
+        "Mozzarella",
+        "Cream cheese"
+      ],
+      "d": 3
+    },
+    {
+      "q": "From which country does the drink sake originate?",
+      "a": [
+        "Japan",
+        "China",
+        "Korea",
+        "Thailand"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the Scoville scale used to measure?",
+      "a": [
+        "Chilli heat",
+        "Sweetness",
+        "Alcohol content",
+        "Acidity"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which drink is made from fermented apples?",
+      "a": [
+        "Cider",
+        "Mead",
+        "Ale",
+        "Perry"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which grain is used to make traditional Scotch whisky?",
+      "a": [
+        "Barley",
+        "Corn",
+        "Rye",
+        "Wheat"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What does IPA stand for in beer?",
+      "a": [
+        "India Pale Ale",
+        "Imperial Pale Ale",
+        "Irish Pale Ale",
+        "International Pale Ale"
+      ],
+      "d": 3
+    }
+  ]
+}

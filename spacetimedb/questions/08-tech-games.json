@@ -1,0 +1,146 @@
+{
+  "topic": "Tech & Games",
+  "icon": "🎮",
+  "questions": [
+    {
+      "q": "What does \"www\" stand for in a web address?",
+      "a": [
+        "World Wide Web",
+        "Wide World Web",
+        "World Web Wide",
+        "Web World Wide"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which company makes the PlayStation?",
+      "a": [
+        "Sony",
+        "Nintendo",
+        "Microsoft",
+        "Sega"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the name of Mario’s brother?",
+      "a": [
+        "Luigi",
+        "Wario",
+        "Toad",
+        "Yoshi"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What does CPU stand for?",
+      "a": [
+        "Central Processing Unit",
+        "Computer Processing Unit",
+        "Central Program Unit",
+        "Core Processing Unit"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In which game do you build with blocks in a procedurally generated world?",
+      "a": [
+        "Minecraft",
+        "Terraria",
+        "Roblox",
+        "Fortnite"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which company created the iPhone?",
+      "a": [
+        "Apple",
+        "Samsung",
+        "Google",
+        "Nokia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many bits are in a byte?",
+      "a": [
+        "8",
+        "4",
+        "16",
+        "10"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What was the first video game console released by Nintendo in North America?",
+      "a": [
+        "Nintendo Entertainment System",
+        "Game Boy",
+        "Super Nintendo",
+        "Nintendo 64"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which programming language is named after a snake?",
+      "a": [
+        "Python",
+        "Cobra",
+        "Viper",
+        "Mamba"
+      ],
+      "d": 3
+    },
+    {
+      "q": "In \"Pac-Man\", what colour is the ghost named Blinky?",
+      "a": [
+        "Red",
+        "Pink",
+        "Blue",
+        "Orange"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What year was the first iPhone released?",
+      "a": [
+        "2007",
+        "2005",
+        "2009",
+        "2010"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which animal is the Linux mascot?",
+      "a": [
+        "Penguin",
+        "Fox",
+        "Cat",
+        "Elephant"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What does HTML stand for?",
+      "a": [
+        "HyperText Markup Language",
+        "HighText Machine Language",
+        "HyperText Machine Language",
+        "Home Tool Markup Language"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which game popularised the battle royale genre on consoles in 2017?",
+      "a": [
+        "PlayerUnknown’s Battlegrounds",
+        "Apex Legends",
+        "Call of Duty: Warzone",
+        "H1Z1"
+      ],
+      "d": 3
+    }
+  ]
+}

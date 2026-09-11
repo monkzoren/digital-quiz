@@ -1,0 +1,146 @@
+{
+  "topic": "Sport",
+  "icon": "⚽",
+  "questions": [
+    {
+      "q": "How many players are on a football (soccer) team on the pitch?",
+      "a": [
+        "11",
+        "10",
+        "12",
+        "9"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In which sport would you perform a slam dunk?",
+      "a": [
+        "Basketball",
+        "Volleyball",
+        "Tennis",
+        "Rugby"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many rings are on the Olympic flag?",
+      "a": [
+        "Five",
+        "Four",
+        "Six",
+        "Seven"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many points is a touchdown worth in American football?",
+      "a": [
+        "6",
+        "7",
+        "3",
+        "5"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In tennis, what score comes after deuce when a player wins a point?",
+      "a": [
+        "Advantage",
+        "Game",
+        "Love",
+        "Forty"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How long is a marathon, to the nearest kilometre?",
+      "a": [
+        "42 km",
+        "40 km",
+        "45 km",
+        "38 km"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which country hosted the 2016 Summer Olympics?",
+      "a": [
+        "Brazil",
+        "China",
+        "United Kingdom",
+        "Japan"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many holes are played in a standard round of golf?",
+      "a": [
+        "18",
+        "9",
+        "20",
+        "16"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the maximum break in snooker?",
+      "a": [
+        "147",
+        "155",
+        "140",
+        "180"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which country has won the most FIFA World Cups?",
+      "a": [
+        "Brazil",
+        "Germany",
+        "Italy",
+        "Argentina"
+      ],
+      "d": 3
+    },
+    {
+      "q": "In darts, what is the highest score with three darts?",
+      "a": [
+        "180",
+        "150",
+        "171",
+        "200"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What colour jersey does the Tour de France leader wear?",
+      "a": [
+        "Yellow",
+        "Green",
+        "White",
+        "Polka dot"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many players are on an ice hockey team on the ice?",
+      "a": [
+        "6",
+        "5",
+        "7",
+        "8"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is a score of one under par called in golf?",
+      "a": [
+        "Birdie",
+        "Eagle",
+        "Bogey",
+        "Albatross"
+      ],
+      "d": 3
+    }
+  ]
+}

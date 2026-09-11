@@ -1,0 +1,146 @@
+{
+  "topic": "Science & Nature",
+  "icon": "🔬",
+  "questions": [
+    {
+      "q": "What is the chemical symbol for water?",
+      "a": [
+        "H2O",
+        "CO2",
+        "O2",
+        "HO"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many legs does a spider have?",
+      "a": [
+        "Eight",
+        "Six",
+        "Ten",
+        "Twelve"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What gas do plants absorb from the air?",
+      "a": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the hardest natural substance on Earth?",
+      "a": [
+        "Diamond",
+        "Titanium",
+        "Quartz",
+        "Graphite"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the largest organ of the human body?",
+      "a": [
+        "Skin",
+        "Liver",
+        "Brain",
+        "Lungs"
+      ],
+      "d": 2
+    },
+    {
+      "q": "At what temperature are Celsius and Fahrenheit equal?",
+      "a": [
+        "-40°",
+        "0°",
+        "32°",
+        "-20°"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which planet is known as the Red Planet?",
+      "a": [
+        "Mars",
+        "Venus",
+        "Mercury",
+        "Jupiter"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the most abundant gas in Earth’s atmosphere?",
+      "a": [
+        "Nitrogen",
+        "Oxygen",
+        "Argon",
+        "Carbon dioxide"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the chemical symbol for gold?",
+      "a": [
+        "Au",
+        "Ag",
+        "Gd",
+        "Go"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How many bones are in the adult human body?",
+      "a": [
+        "206",
+        "186",
+        "226",
+        "256"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the speed of light, roughly, in km per second?",
+      "a": [
+        "300,000",
+        "30,000",
+        "3,000,000",
+        "150,000"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which animal is the largest living mammal?",
+      "a": [
+        "Blue whale",
+        "African elephant",
+        "Giraffe",
+        "Orca"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What part of the plant conducts photosynthesis?",
+      "a": [
+        "Leaves",
+        "Roots",
+        "Stem",
+        "Flowers"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the powerhouse of the cell?",
+      "a": [
+        "Mitochondria",
+        "Nucleus",
+        "Ribosome",
+        "Golgi body"
+      ],
+      "d": 3
+    }
+  ]
+}

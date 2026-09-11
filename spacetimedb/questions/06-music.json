@@ -1,0 +1,146 @@
+{
+  "topic": "Music",
+  "icon": "🎵",
+  "questions": [
+    {
+      "q": "How many strings does a standard guitar have?",
+      "a": [
+        "Six",
+        "Four",
+        "Five",
+        "Seven"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which band sang \"Hey Jude\"?",
+      "a": [
+        "The Beatles",
+        "The Rolling Stones",
+        "The Who",
+        "Queen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which artist is known as the \"King of Pop\"?",
+      "a": [
+        "Michael Jackson",
+        "Elvis Presley",
+        "Prince",
+        "Freddie Mercury"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which band released the album \"The Dark Side of the Moon\"?",
+      "a": [
+        "Pink Floyd",
+        "Led Zeppelin",
+        "Genesis",
+        "Yes"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What instrument does a pianist play?",
+      "a": [
+        "Piano",
+        "Violin",
+        "Harp",
+        "Cello"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who sang \"Rolling in the Deep\"?",
+      "a": [
+        "Adele",
+        "Beyoncé",
+        "Rihanna",
+        "Lady Gaga"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Swedish group sang \"Dancing Queen\"?",
+      "a": [
+        "ABBA",
+        "Roxette",
+        "Ace of Base",
+        "Europe"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many symphonies did Beethoven complete?",
+      "a": [
+        "Nine",
+        "Seven",
+        "Twelve",
+        "Five"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Queen song features the line \"Is this the real life?\"",
+      "a": [
+        "Bohemian Rhapsody",
+        "We Are the Champions",
+        "Don’t Stop Me Now",
+        "Somebody to Love"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What was Elvis Presley’s middle name?",
+      "a": [
+        "Aaron",
+        "Alan",
+        "Andrew",
+        "Arthur"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which composer wrote \"The Four Seasons\"?",
+      "a": [
+        "Vivaldi",
+        "Bach",
+        "Mozart",
+        "Handel"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which instrument has 88 keys?",
+      "a": [
+        "Piano",
+        "Organ",
+        "Accordion",
+        "Harpsichord"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which rapper released \"The Marshall Mathers LP\"?",
+      "a": [
+        "Eminem",
+        "Dr. Dre",
+        "Jay-Z",
+        "50 Cent"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In which city did The Beatles form?",
+      "a": [
+        "Liverpool",
+        "Manchester",
+        "London",
+        "Birmingham"
+      ],
+      "d": 3
+    }
+  ]
+}

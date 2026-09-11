@@ -1,0 +1,146 @@
+{
+  "topic": "Geography",
+  "icon": "🌍",
+  "questions": [
+    {
+      "q": "What is the capital of France?",
+      "a": [
+        "Paris",
+        "Lyon",
+        "Marseille",
+        "Nice"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which is the largest ocean on Earth?",
+      "a": [
+        "Pacific",
+        "Atlantic",
+        "Indian",
+        "Arctic"
+      ],
+      "d": 1
+    },
+    {
+      "q": "On which continent is Brazil?",
+      "a": [
+        "South America",
+        "Africa",
+        "North America",
+        "Europe"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the capital of Australia?",
+      "a": [
+        "Canberra",
+        "Sydney",
+        "Melbourne",
+        "Perth"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which is the longest river in the world?",
+      "a": [
+        "Nile",
+        "Amazon",
+        "Yangtze",
+        "Mississippi"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Mount Everest sits on the border of Nepal and which country?",
+      "a": [
+        "China",
+        "India",
+        "Bhutan",
+        "Pakistan"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which country has the most islands?",
+      "a": [
+        "Sweden",
+        "Indonesia",
+        "Philippines",
+        "Canada"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the smallest country in the world by area?",
+      "a": [
+        "Vatican City",
+        "Monaco",
+        "San Marino",
+        "Liechtenstein"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the capital of Canada?",
+      "a": [
+        "Ottawa",
+        "Toronto",
+        "Vancouver",
+        "Montreal"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which desert is the largest hot desert in the world?",
+      "a": [
+        "Sahara",
+        "Gobi",
+        "Kalahari",
+        "Arabian"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which two countries share the longest international border?",
+      "a": [
+        "Canada and the USA",
+        "Russia and China",
+        "Argentina and Chile",
+        "Russia and Kazakhstan"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which country is shaped like a boot?",
+      "a": [
+        "Italy",
+        "Spain",
+        "Portugal",
+        "Greece"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the capital of Norway?",
+      "a": [
+        "Oslo",
+        "Bergen",
+        "Stockholm",
+        "Helsinki"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Lake Baikal, the deepest lake on Earth, is in which country?",
+      "a": [
+        "Russia",
+        "Mongolia",
+        "Kazakhstan",
+        "China"
+      ],
+      "d": 3
+    }
+  ]
+}

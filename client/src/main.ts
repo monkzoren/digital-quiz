@@ -394,7 +394,7 @@ function refreshProfile() {
   const acc_ = acc.questions ? Math.round((acc.correct / acc.questions) * 100) : 0;
   $('profile-stats').innerHTML =
     `<span>QUIZZES <b>${acc.quizzes}</b></span><span>WINS <b>${acc.quizWins}</b></span>` +
-    `<span>ACCURACY <b>${acc_}%</b></span><span>BEST POT <b>${acc.bestCredits}¢</b></span>` +
+    `<span>ACCURACY <b>${acc_}%</b></span><span>BEST SCORE <b>${acc.bestCredits}${C.PTS}</b></span>` +
     `<span title="Times caught on the phone">📱 <b>${acc.phoneChecks}</b></span>`;
 }
 $('profile-name').addEventListener('click', () => openNameModal(() => refreshProfile()));
@@ -442,7 +442,6 @@ $('c-go').addEventListener('click', () => {
     isPublic: ($('c-public') as HTMLInputElement).checked,
     theme: Number(($('c-theme') as HTMLSelectElement).value),
     questions: num('c-questions', C.QUESTIONS_MIN, C.QUESTIONS_MAX, C.QUESTIONS_DEFAULT),
-    betSecs: num('c-bet', C.BET_SECS_MIN, C.BET_SECS_MAX, C.BET_SECS_DEFAULT),
     answerSecs: num('c-answer', C.ANSWER_SECS_MIN, C.ANSWER_SECS_MAX, C.ANSWER_SECS_DEFAULT),
     teamMode: ($('c-teams') as HTMLInputElement).checked,
     lang: ($('c-lang') as HTMLSelectElement).value,
@@ -616,12 +615,11 @@ function refreshLobby(room: Lobby, me: Player) {
   }
   // settings (host edits, everyone sees the summary)
   const settings = $('lobby-settings');
-  const fields = ['s-lang', 's-theme', 's-questions', 's-bet', 's-answer', 's-teams'];
+  const fields = ['s-lang', 's-theme', 's-questions', 's-answer', 's-teams'];
   for (const id of fields) ($(id) as HTMLInputElement).disabled = !host;
   if (!settingsDirty || lastRoomIdShown !== room.id) {
     ($('s-theme') as HTMLSelectElement).value = String(room.theme);
     ($('s-questions') as HTMLInputElement).value = String(room.questionCount);
-    ($('s-bet') as HTMLInputElement).value = String(room.betSecs);
     ($('s-answer') as HTMLInputElement).value = String(room.answerSecs);
     ($('s-teams') as HTMLInputElement).checked = room.teamMode;
     ($('s-lang') as HTMLSelectElement).value = room.lang;
@@ -654,7 +652,7 @@ function refreshLobby(room: Lobby, me: Player) {
   const lang = C.langLabel(room.lang);
   $('lobby-summary').textContent =
     `${lang.flag} ${lang.label} · ${room.questionCount} QUESTIONS FROM A POOL OF ${pool} · ` +
-    `STAKES ${room.betSecs}S · ANSWERS ${room.answerSecs}S${room.teamMode ? ' · TEAMS' : ''}`;
+    `ANSWERS ${room.answerSecs}S${room.teamMode ? ' · TEAMS' : ''}`;
   settings.classList.toggle('hidden', room.status === C.L_RUNNING);
 
   const unready = players.filter(p => !p.ready).length;
@@ -666,7 +664,7 @@ function refreshLobby(room: Lobby, me: Player) {
   startBtn.textContent = room.status === C.L_FINISHED ? 'ANOTHER ROUND' : unready ? `START ANYWAY (${unready} NOT READY)` : 'START THE QUIZ';
   startBtn.disabled = players.length === 0;
 }
-for (const id of ['s-questions', 's-bet', 's-answer']) {
+for (const id of ['s-questions', 's-answer']) {
   $(id).addEventListener('focus', () => { settingsDirty = true; });
   $(id).addEventListener('change', pushSettings);
   $(id).addEventListener('blur', () => { settingsDirty = false; });
@@ -683,7 +681,6 @@ function pushSettings() {
   };
   call(conn.reducers.setPubSettings({
     questions: num('s-questions', C.QUESTIONS_MIN, C.QUESTIONS_MAX, room.questionCount),
-    betSecs: num('s-bet', C.BET_SECS_MIN, C.BET_SECS_MAX, room.betSecs),
     answerSecs: num('s-answer', C.ANSWER_SECS_MIN, C.ANSWER_SECS_MAX, room.answerSecs),
     teamMode: ($('s-teams') as HTMLInputElement).checked,
     theme: Number(($('s-theme') as HTMLSelectElement).value),
@@ -701,8 +698,6 @@ $('btn-leave').addEventListener('click', () => call(conn.reducers.leavePub({})))
 // The quiz HUD
 // ---------------------------------------------------------------------------
 let mcSaidAt = 0;
-let stakeDragging = false;
-let lastStakeSent = -1;
 let lastPhaseKey = '';
 const chatSeen = new Set<string>();
 const bubbles = new Map<string, { text: string; at: number }>();
@@ -721,10 +716,6 @@ function onPhaseChange(room: Lobby, old: Lobby) {
   } else if (room.phase === C.PH_ANSWER) {
     moods = new Map();
     playTone(660, 0.08);
-  } else if (room.phase === C.PH_BETTING) {
-    moods = new Map();
-    lastStakeSent = -1;
-    playTone(440, 0.08);
   } else if (room.phase === C.PH_DONE) {
     playTone(990, 0.3);
   }
@@ -751,11 +742,6 @@ function playTone(freq: number, secs: number) {
 
 const secsLeft = (room: Lobby) => Math.max(0, Number(room.phaseEndsAt.microsSinceUnixEpoch - BigInt(Date.now()) * 1000n) / 1_000_000);
 const phaseLen = (room: Lobby) => Math.max(0.001, Number(room.phaseEndsAt.microsSinceUnixEpoch - room.phaseStartedAt.microsSinceUnixEpoch) / 1_000_000);
-const stakeCap = (room: Lobby, me: Player) => {
-  const final = room.questionIdx >= room.questionCount - 1;
-  const floor = Math.min(C.MIN_STAKE, me.credits);
-  return final ? me.credits : Math.max(floor, Math.floor((me.credits * C.STAKE_CAP_PCT) / 100));
-};
 
 function refreshHud(room: Lobby, me: Player) {
   showOverlay(null);
@@ -767,44 +753,27 @@ function refreshHud(room: Lobby, me: Player) {
     ? T.warmingUp
     : `${T.question} ${room.questionIdx + 1}/${room.questionCount}${final ? ` · ${T.lastOrders}` : ''}`;
   $('hud-mc').textContent = room.mcText ? `“${room.mcText}”` : '';
-  $('hud-wallet').innerHTML = `${T.wallet} <b id="wallet-val">${me.credits}</b>¢`;
-  ($('stake-min') as HTMLButtonElement).textContent = T.min;
-  ($('stake-half') as HTMLButtonElement).textContent = T.half;
-  ($('stake-max') as HTMLButtonElement).textContent = T.max;
+  $('hud-score').innerHTML = `${T.score} <b id="score-val">${me.credits}</b>${C.PTS}`;
   ($('btn-esc') as HTMLButtonElement).textContent = T.menu;
   (chatInput as HTMLInputElement).placeholder = T.chatPlaceholder;
   const mine = myAnswer(room, me);
-  const phaseKey = `${room.id}|${room.questionIdx}|${room.phase}|${room.qOptions.join('|')}|${room.qCorrect}|${mine}|${me.stake}|${me.credits}`;
+  const phaseKey = `${room.id}|${room.questionIdx}|${room.phase}|${room.qOptions.join('|')}|${room.qCorrect}|${mine}|${me.credits}`;
   const changed = phaseKey !== lastPhaseKey;
   lastPhaseKey = phaseKey;
 
   const kicker = $('q-kicker');
   const title = $('q-title');
-  const stakePanel = $('stake-panel');
   const options = $('q-options');
   const result = $('result-panel');
   if (changed) {
-    stakePanel.classList.add('hidden');
     options.classList.add('hidden');
     result.classList.add('hidden');
     $('answer-note').textContent = '';
     if (room.phase === C.PH_INTRO) {
       kicker.textContent = T.welcome;
-      title.textContent = T.intro(room.questionCount, C.START_CREDITS);
-    } else if (room.phase === C.PH_BETTING) {
-      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${T.difficulty[room.qDifficulty]} · ${T.pays} ${C.decimal(room.lang, room.qPayoutPct / 100)}×`;
-      title.textContent = final ? T.betPromptFinal : T.betPrompt;
-      stakePanel.classList.remove('hidden');
-      const range = $('stake-range') as HTMLInputElement;
-      const cap = stakeCap(room, me);
-      range.min = String(Math.min(C.MIN_STAKE, me.credits));
-      range.max = String(Math.max(cap, Number(range.min)));
-      range.step = '1';
-      if (!stakeDragging) range.value = String(me.stake);
-      $('stake-val').innerHTML = `${range.value}<small>¢</small>`;
-      $('stake-note').textContent = T.betNote(Math.round((Number(range.value) * room.qPayoutPct) / 100), Number(range.value), me.credits);
+      title.textContent = T.intro(room.questionCount, C.POINTS_PER_CORRECT);
     } else if (room.phase === C.PH_ANSWER || room.phase === C.PH_RESULT) {
-      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${T.difficulty[room.qDifficulty]} · ${T.stake} ${me.stake}¢`;
+      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${T.difficulty[room.qDifficulty]}`;
       title.textContent = room.qText;
       options.classList.remove('hidden');
       options.innerHTML = '';
@@ -828,8 +797,8 @@ function refreshHud(room: Lobby, me: Player) {
         const d = me.lastDelta;
         const speed = room.fastestName ? ` · ${T.fastest}: ${escapeHtml(room.fastestName)}` : '';
         result.innerHTML = mine === C.NO_ANSWER
-          ? `<span class="delta down">${T.noAnswer} −${me.stake}¢</span>${speed}`
-          : `<span class="delta ${d >= 0 ? 'up' : 'down'}">${me.lastCorrect ? T.correct : T.wrong} ${d >= 0 ? '+' : ''}${d}¢</span>${speed}`;
+          ? `<span class="delta down">${T.noAnswer}</span>${speed}`
+          : `<span class="delta ${d > 0 ? 'up' : 'down'}">${me.lastCorrect ? T.correct : T.wrong} +${d}${C.PTS}</span>${speed}`;
       }
     }
   }
@@ -847,13 +816,13 @@ function refreshHud(room: Lobby, me: Player) {
     const totals = new Map<number, number>();
     for (const p of order) totals.set(p.team, (totals.get(p.team) ?? 0) + p.credits);
     const teams = [...totals.entries()].filter(([t]) => t !== C.TEAM_NONE).sort((a, b) => b[1] - a[1]);
-    for (const [t, cr] of teams) html += `<div class="st-row team" style="border-color:${C.TEAM_COLORS[t]}"><span class="name" style="color:${C.TEAM_COLORS[t]}">TEAM ${C.TEAM_NAMES[t]}</span><span class="cr">${cr}¢</span></div>`;
+    for (const [t, cr] of teams) html += `<div class="st-row team" style="border-color:${C.TEAM_COLORS[t]}"><span class="name" style="color:${C.TEAM_COLORS[t]}">TEAM ${C.TEAM_NAMES[t]}</span><span class="cr">${cr}${C.PTS}</span></div>`;
   }
   order.forEach((p, i) => {
     const me_ = p.identity.toHexString() === myHex();
-    const delta = room.phase === C.PH_RESULT ? `<span class="d ${p.lastDelta >= 0 ? 'up' : 'down'}">${p.lastDelta >= 0 ? '+' : ''}${p.lastDelta}</span>` : '';
+    const delta = room.phase === C.PH_RESULT ? `<span class="d ${p.lastDelta > 0 ? 'up' : 'down'}">+${p.lastDelta}</span>` : '';
     const flag = p.attention === C.ATT_PHONE ? ' 📱' : p.attention === C.ATT_IDLE ? ' 💤' : p.answeredAt !== 0n && room.phase === C.PH_ANSWER ? ' ✔' : '';
-    html += `<div class="st-row${me_ ? ' me' : ''}"><span class="pos">${i + 1}</span><span class="name" style="${room.teamMode && p.team ? `color:${C.TEAM_COLORS[p.team]}` : ''}">${escapeHtml(p.name || 'GUEST')}${flag}</span>${delta}<span class="cr">${p.credits}¢</span></div>`;
+    html += `<div class="st-row${me_ ? ' me' : ''}"><span class="pos">${i + 1}</span><span class="name" style="${room.teamMode && p.team ? `color:${C.TEAM_COLORS[p.team]}` : ''}">${escapeHtml(p.name || 'GUEST')}${flag}</span>${delta}<span class="cr">${p.credits}${C.PTS}</span></div>`;
   });
   st.innerHTML = html;
 
@@ -862,25 +831,6 @@ function refreshHud(room: Lobby, me: Player) {
   $('phone-self').classList.toggle('hidden', me.attention !== C.ATT_PHONE);
   refreshCallouts(room, me);
 }
-
-// Stake slider
-const stakeRange = $('stake-range') as HTMLInputElement;
-function sendStake(v: number) {
-  if (v === lastStakeSent) return;
-  lastStakeSent = v;
-  call(conn.reducers.placeStake({ stake: v }));
-}
-stakeRange.addEventListener('input', () => {
-  stakeDragging = true;
-  const room = myRoom();
-  const v = Number(stakeRange.value);
-  $('stake-val').innerHTML = `${v}<small>¢</small>`;
-  if (room) $('stake-note').textContent = `WIN +${Math.round((v * room.qPayoutPct) / 100)}¢ · LOSE −${v}¢`;
-});
-stakeRange.addEventListener('change', () => { stakeDragging = false; sendStake(Number(stakeRange.value)); lastPhaseKey = ''; });
-$('stake-min').addEventListener('click', () => { const me = getMyPlayer(); if (me) sendStake(Math.min(C.MIN_STAKE, me.credits)); });
-$('stake-half').addEventListener('click', () => { const me = getMyPlayer(); const room = myRoom(); if (me && room) sendStake(Math.max(Math.min(C.MIN_STAKE, me.credits), Math.min(stakeCap(room, me), Math.floor(me.credits / 2)))); });
-$('stake-max').addEventListener('click', () => { const me = getMyPlayer(); const room = myRoom(); if (me && room) sendStake(stakeCap(room, me)); });
 
 // ---------------------------------------------------------------------------
 // Walking about. The same controls as digital-tennis's grounds: WASD or the
@@ -1093,7 +1043,7 @@ function renderEscMenu() {
   for (const p of roomPlayers(room.id)) {
     const chip = document.createElement('div');
     chip.className = 'chip' + (p.identity.toHexString() === room.hostId.toHexString() ? ' host' : '');
-    chip.innerHTML = `<div class="face" style="background:${avatarSwatch(p.avatarId)}"></div><span class="name">${escapeHtml(p.name || 'GUEST')}</span><span class="tag">${p.credits}¢${p.attention === C.ATT_PHONE ? ' · 📱' : ''}</span>`;
+    chip.innerHTML = `<div class="face" style="background:${avatarSwatch(p.avatarId)}"></div><span class="name">${escapeHtml(p.name || 'GUEST')}</span><span class="tag">${p.credits}${C.PTS}${p.attention === C.ATT_PHONE ? ' · 📱' : ''}</span>`;
     if (host && p.identity.toHexString() !== myHex()) {
       const kick = document.createElement('button');
       kick.className = 'kick';
@@ -1127,7 +1077,7 @@ function refreshResults(room: Lobby, me: Player) {
     const row = document.createElement('div');
     row.className = 'res-row';
     const phone = p.phoneChecks ? ` · 📱 ×${p.phoneChecks} (${Math.round(Number(p.phoneMicros / 1_000_000n))}s)` : '';
-    row.innerHTML = `<span class="pos">${i + 1}</span><div class="face" style="width:28px;height:28px;border-radius:50%;background:${avatarSwatch(p.avatarId)}"></div><span class="name">${escapeHtml(p.name || 'GUEST')}${p.identity.toHexString() === myHex() ? ' ★' : ''}<div class="meta">${T.correctOf(p.correct, room.questionCount)}${p.tabs ? ` · ${T.tabs(p.tabs)}` : ''}${phone}</div></span><span class="cr">${p.credits}¢</span>`;
+    row.innerHTML = `<span class="pos">${i + 1}</span><div class="face" style="width:28px;height:28px;border-radius:50%;background:${avatarSwatch(p.avatarId)}"></div><span class="name">${escapeHtml(p.name || 'GUEST')}${p.identity.toHexString() === myHex() ? ' ★' : ''}<div class="meta">${T.correctOf(p.correct, room.questionCount)}${phone}</div></span><span class="cr">${p.credits}${C.PTS}</span>`;
     list.appendChild(row);
   });
   if (key !== resultsShownFor) {
@@ -1151,7 +1101,6 @@ function renderAwards(room: Lobby, order: Player[]) {
   const byName = (id: string) => order.find(p => p.identity.toHexString() === id)?.name ?? '?';
   // fastest finger: most "fastest correct" — approximate with lowest average answer time among correct
   const speed = new Map<string, { n: number; ms: number }>();
-  const swing = new Map<string, number>();
   for (const e of entries) {
     const id = e.identity.toHexString();
     if (e.correct && e.answerMillis) {
@@ -1159,18 +1108,13 @@ function renderAwards(room: Lobby, order: Player[]) {
       s.n++; s.ms += e.answerMillis;
       speed.set(id, s);
     }
-    swing.set(id, Math.max(swing.get(id) ?? 0, e.delta));
   }
   const fastest = [...speed.entries()].filter(([, s]) => s.n >= 2).sort((a, b) => a[1].ms / a[1].n - b[1].ms / b[1].n)[0];
   if (fastest) awards.push({ t: T.awardFastest, w: byName(fastest[0]), s: T.avgSecs(C.decimal(room.lang, fastest[1].ms / fastest[1].n / 1000)) });
-  const biggest = [...swing.entries()].sort((a, b) => b[1] - a[1])[0];
-  if (biggest && biggest[1] > 0) awards.push({ t: T.awardBiggest, w: byName(biggest[0]), s: T.onOneQuestion(biggest[1]) });
   const sharp = [...order].sort((a, b) => b.correct - a.correct)[0];
   if (sharp && sharp.correct > 0) awards.push({ t: T.awardSharpest, w: sharp.name, s: T.rightOf(sharp.correct, room.questionCount) });
   const phone = [...order].sort((a, b) => Number(b.phoneMicros - a.phoneMicros))[0];
   if (phone && phone.phoneMicros > 0n) awards.push({ t: T.awardPhone, w: phone.name, s: T.secsOnPhone(Math.round(Number(phone.phoneMicros / 1_000_000n)), phone.calledOut) });
-  const tab = [...order].sort((a, b) => b.tabs - a.tabs)[0];
-  if (tab && tab.tabs > 0) awards.push({ t: T.awardTab, w: tab.name, s: T.topUps(tab.tabs) });
   $('awards').innerHTML = awards.map(a => `<div class="award"><div class="t">${a.t}</div><div class="w">${escapeHtml(a.w)}</div><div class="s">${escapeHtml(a.s)}</div></div>`).join('');
 }
 $('btn-again').addEventListener('click', () => call(conn.reducers.startQuiz({})));
@@ -1332,14 +1276,12 @@ function buildScene(): Scene {
   const final = room.questionIdx >= room.questionCount - 1;
   if (room.status === C.L_FINISHED) {
     const order = standingsOf(room);
-    screen = { key: `done|${room.drawn.length}`, kicker: T.scrFinal, title: room.championName ? T.scrWins(room.championName) : T.scrDone, lines: order.slice(0, 4).map((p, i) => `${i + 1}. ${p.name}  ${p.credits}¢`), accent: '#ffd60a', footer: C.PUBS[room.theme] };
+    screen = { key: `done|${room.drawn.length}`, kicker: T.scrFinal, title: room.championName ? T.scrWins(room.championName) : T.scrDone, lines: order.slice(0, 4).map((p, i) => `${i + 1}. ${p.name}  ${p.credits}${C.PTS}`), accent: '#ffd60a', footer: C.PUBS[room.theme] };
   } else if (room.phase === C.PH_INTRO) {
     screen = { key: 'intro', kicker: T.welcome, title: T.scrQuestionsTonight(room.questionCount), lines: [], accent: '#ffd60a', footer: T.scrPhonesAway };
-  } else if (room.phase === C.PH_BETTING) {
-    screen = { key: `bet|${room.questionIdx}`, kicker: `${T.scrQuestionOf(room.questionIdx + 1, room.questionCount)}${final ? T.scrLastOrders : ''}`, title: `${room.qIcon} ${room.qTopic}`, lines: [], accent: '#ffb35c', footer: T.scrStakesOpen(T.difficulty[room.qDifficulty], C.decimal(room.lang, room.qPayoutPct / 100)) };
   } else if (room.phase === C.PH_ANSWER || room.phase === C.PH_RESULT) {
     const lines = room.qOptions.map((o, i) => `${room.phase === C.PH_RESULT && i === room.qCorrect ? '!' : ''}${'ABCD'[i]}.  ${o}`);
-    screen = { key: `q|${room.questionIdx}|${room.phase}|${room.qCorrect}`, kicker: `${room.qIcon} ${room.qTopic} · ${T.question}${room.questionIdx + 1}`, title: room.qText, lines, accent: room.phase === C.PH_RESULT ? '#43e97b' : '#ffd60a', footer: room.phase === C.PH_RESULT ? (room.fastestName ? T.scrFastest(room.fastestName) : T.scrRevealed) : T.scrLockIn };
+    screen = { key: `q|${room.questionIdx}|${room.phase}|${room.qCorrect}`, kicker: `${room.qIcon} ${room.qTopic} · ${T.question}${room.questionIdx + 1}${final ? T.scrLastOrders : ''}`, title: room.qText, lines, accent: room.phase === C.PH_RESULT ? '#43e97b' : '#ffd60a', footer: room.phase === C.PH_RESULT ? (room.fastestName ? T.scrFastest(room.fastestName) : T.scrRevealed) : T.scrLockIn };
   } else {
     screen = { key: `lobby|${roomPlayers(room.id).length}`, kicker: C.PUBS[room.theme], title: T.scrRoomCode(room.code), lines: [], accent: '#ffd60a', footer: T.scrAtTheBar(roomPlayers(room.id).length) };
   }

@@ -1,6 +1,6 @@
 // End-to-end smoke test against a LOCAL SpacetimeDB: two anonymous clients
-// open a pub, start a 3-question quiz, stake, answer, and the script checks
-// the module drove every phase, paid out, awarded XP and cleaned up.
+// open a pub, start a 3-question quiz, answer it, and the script checks the
+// module drove every phase, scored it, awarded XP and cleaned up.
 //
 //   spacetime start                       # in another terminal
 //   spacetime publish -y                  # from the repo root
@@ -68,7 +68,7 @@ if (!threw) fail('duplicate answers were accepted');
 ok('duplicate answers rejected');
 
 // the pub
-await a.reducers.createPub({ isPublic: true, theme: 1, questions: 3, betSecs: 5, answerSecs: 8, teamMode: false, lang: 'en' });
+await a.reducers.createPub({ isPublic: true, theme: 1, questions: 3, answerSecs: 8, teamMode: false, lang: 'en' });
 await until('A seated in a pub', () => me(a).lobbyId !== 0n);
 const code = room(a)!.code;
 await b.reducers.joinPub({ code });
@@ -86,15 +86,10 @@ await until('intro phase', () => room(a)?.phase === 1);
 
 let correctA = 0;
 for (let q = 0; q < 3; q++) {
-  await until(`betting Q${q + 1}`, () => room(a)?.phase === 2 && room(a)?.questionIdx === q, 20000);
-  const r = room(a)!;
-  if (!r.qTopic || r.qText !== '' || r.qOptions.length !== 0 || r.qCorrect !== 255) fail('betting phase leaked the question');
-  if (me(a).stake !== 5) fail(`ante not applied: stake ${me(a).stake}`);
-  await a.reducers.placeStake({ stake: q === 2 ? me(a).credits : 30 });
-  await until('stake set', () => me(a).stake === (q === 2 ? me(a).credits : 30));
-  await until(`answering Q${q + 1}`, () => room(a)?.phase === 3, 20000);
+  await until(`answering Q${q + 1}`, () => room(a)?.phase === 3 && room(a)?.questionIdx === q, 20000);
   const ra = room(a)!;
-  if (ra.qOptions.length !== 4 || !ra.qText || ra.qCorrect !== 255) fail('answer phase shape wrong');
+  if (ra.qOptions.length !== 4 || !ra.qText || !ra.qTopic) fail('answer phase shape wrong');
+  if (ra.qCorrect !== 255) fail('the answer key was up with the question');
   // A guesses 0; B guesses 1
   await a.reducers.answer({ choice: 0 });
   // the PUBLIC row only says they are in; the choice itself is private
@@ -129,11 +124,14 @@ for (let q = 0; q < 3; q++) {
   if (ma.answer !== 0 || asSeenBy(a, b).answer !== 1) fail('answers were not revealed at the result');
   const expected = rr.qCorrect === 0;
   if (ma.lastCorrect !== expected) fail('lastCorrect mismatch');
+  // flat scoring: 10 for a right answer, nothing for a wrong one, never less
+  if (ma.lastDelta !== (expected ? 10 : 0)) fail(`scored ${ma.lastDelta} for a ${expected ? 'right' : 'wrong'} answer`);
   if (expected) correctA++;
+  if (ma.credits !== correctA * 10) fail(`score ${ma.credits} != ${correctA} correct × 10`);
   const entries = [...a.db.entry.iter()].filter(e => e.lobbyId === rr.id && e.questionIdx === q);
   if (entries.length !== 2) fail(`expected 2 entries, got ${entries.length}`);
   if (q === 0 && !entries.find(e => e.identity.toHexString() === b.identity!.toHexString())!.onPhone) fail('B not flagged onPhone for Q1');
-  ok(`Q${q + 1}: key=${'ABCD'[rr.qCorrect]} A ${ma.lastCorrect ? 'right' : 'wrong'} (${ma.lastDelta >= 0 ? '+' : ''}${ma.lastDelta}) credits=${ma.credits}`);
+  ok(`Q${q + 1}: key=${'ABCD'[rr.qCorrect]} A ${ma.lastCorrect ? 'right' : 'wrong'} (+${ma.lastDelta}) score=${ma.credits}`);
 }
 await until('quiz finished', () => room(a)?.status === 2 && room(a)?.phase === 5, 20000);
 const done = room(a)!;
@@ -162,7 +160,7 @@ ok('rematch drew fresh questions');
 await a.reducers.leavePub({});
 await until('A out of the old pub', () => me(a).lobbyId === 0n);
 await b.reducers.leavePub({});
-await a.reducers.createPub({ isPublic: false, theme: 3, questions: 8, betSecs: 5, answerSecs: 8, teamMode: false, lang: 'nb' });
+await a.reducers.createPub({ isPublic: false, theme: 3, questions: 8, answerSecs: 8, teamMode: false, lang: 'nb' });
 await until('norsk pub open', () => room(a)?.lang === 'nb');
 const nbTopics = new Set([...a.db.topic.iter()].filter(t => t.lang === 'nb').map(t => String(t.id)));
 await a.reducers.startQuiz({});
@@ -171,9 +169,8 @@ await until('norsk quiz running', () => room(a)?.status === 1 && room(a)!.drawn.
 // the room through its questions and check each topic is a Norwegian one
 const seenTopics = new Set<string>();
 for (let q = 0; q < 3; q++) {
-  await until(`norsk betting Q${q + 1}`, () => room(a)?.phase === 2 && room(a)?.questionIdx === q, 25000);
+  await until(`norsk answering Q${q + 1}`, () => room(a)?.phase === 3 && room(a)?.questionIdx === q, 25000);
   seenTopics.add(room(a)!.qTopic);
-  await until(`norsk answering Q${q + 1}`, () => room(a)?.phase === 3, 25000);
   await a.reducers.answer({ choice: 0 });
 }
 const nbNames = new Set([...a.db.topic.iter()].filter(t => nbTopics.has(String(t.id))).map(t => t.name));

@@ -6,7 +6,7 @@ import { BANK, BANK_VERSION } from './bank';
 // Digital Quiz — the arcade pub quiz.
 //
 // One SpacetimeDB module is the whole backend: pubs (rooms), the quiz master's
-// question flow, the credit wallets everyone bets from, the attention checker
+// question flow, the running scores everyone answers for, the attention checker
 // that catches people on their phones, and the accounts that persist across
 // engine wipes through the profile service. Everything the players see is a
 // public table; the only secret is the answer key, which never leaves the
@@ -19,9 +19,6 @@ import { BANK, BANK_VERSION } from './bank';
 const QUESTIONS_MIN = 3;
 const QUESTIONS_MAX = 30;
 const QUESTIONS_DEFAULT = 10;
-const BET_SECS_MIN = 5;
-const BET_SECS_MAX = 30;
-const BET_SECS_DEFAULT = 10;
 const ANSWER_SECS_MIN = 8;
 const ANSWER_SECS_MAX = 60;
 const ANSWER_SECS_DEFAULT = 20;
@@ -30,20 +27,16 @@ const RESULT_SECS = 8; // answer reveal + banter
 const ALL_IN_GRACE_SECS = 2; // once everyone has locked in, the clock jumps to here
 const FINAL_SECS_BONUS = 5; // the last question gets a longer look
 
-// Credits. Every seat starts with the same wallet; the landlord's tab keeps a
-// broke player in the game (they can never bet more than they have, but they
-// always have SOMETHING to bet).
-const START_CREDITS = 100;
-const MIN_STAKE = 5; // the automatic ante on every question
-const TAB_FLOOR = 10; // a wallet below this is topped up to it at each reveal
-const FASTEST_BONUS = 15; // flat, for the quickest correct answer (2+ seats)
-const STREAK_BONUS = 5; // per question of a 3+ correct streak
-// Payout multiplier on a correct answer, by difficulty (percent of stake, as
-// PROFIT on top of the returned stake). The final question pays double
-// whatever its difficulty, and its stake cap is the whole wallet.
-const PAYOUT_PCT = [0, 100, 150, 200]; // index = difficulty 1..3
-const FINAL_PAYOUT_PCT = 200;
-const STAKE_CAP_PCT = 50; // of the wallet, on every question but the last
+// Scoring. Flat and knowledge-only: every seat starts on nothing, a correct
+// answer is worth the same whatever the question and whoever answers first,
+// and a wrong answer costs nothing. Mirrored in client/src/config.ts.
+const START_SCORE = 0;
+const POINTS_PER_CORRECT = 10;
+// The room used to run a betting phase before every question, with stakes,
+// odds and a landlord's tab. That is gone; the columns it wrote
+// (`player.stake`, `player.tabs`, `lobby.qPayoutPct`, `lobby.betSecs`) stay
+// behind because these tables are append-only, and are left at zero.
+const BET_SECS_RETIRED = 0;
 
 // Lobby lifecycle
 const L_OPEN = 0;
@@ -53,9 +46,10 @@ const L_FINISHED = 2;
 // Quiz phases (lobby.phase)
 const PH_LOBBY = 0;
 const PH_INTRO = 1;
-const PH_BETTING = 2; // category + odds up, stakes open, question hidden
-const PH_ANSWER = 3; // question + options up, first lock-in counts
-const PH_RESULT = 4; // answer key + payouts + banter
+// 2 is retired: it used to be the betting phase, and the numbering of the
+// phases that outlived it is left alone.
+const PH_ANSWER = 3; // topic + question + options up, first lock-in counts
+const PH_RESULT = 4; // answer key + points + banter
 const PH_DONE = 5;
 
 const NO_ANSWER = 255;
@@ -162,7 +156,7 @@ const PUBS = [
 // banter differs room to room; {name} is filled in by the module. A room
 // playing LANG_ANY (or any language with no patter) gets the English set.
 type McLines = {
-  welcome: string[]; betting: string[]; allCorrect: string[]; nobody: string[];
+  welcome: string[]; topic: string[]; allCorrect: string[]; nobody: string[];
   mixed: string[]; phone: string[]; final: string[]; done: string[];
 };
 const MC: Record<string, McLines> = {
@@ -172,11 +166,11 @@ const MC: Record<string, McLines> = {
       'Welcome, welcome. House rules: no googling, no sulking, tip your quiz master.',
       'Right then. One winner, and the losers buy the round.',
     ],
-    betting: [
-      'Next category up — how confident are you feeling? Get your credits down.',
-      'Place your bets. Bold or broke, your call.',
-      'Stakes open! Big money on this one, or is that just the drink talking?',
-      'Here comes the category. Load up or play it safe.',
+    topic: [
+      'Next category up — let us see who has been paying attention.',
+      'Here comes one for the thinkers. Ten points if you know it.',
+      'Right, this category separates the readers from the rest.',
+      'Next one. No conferring, and no looking at your neighbour.',
     ],
     allCorrect: [
       'Everyone got it? Suspiciously well-read table, this.',
@@ -184,12 +178,12 @@ const MC: Record<string, McLines> = {
     ],
     nobody: [
       'Nobody? NOBODY? I despair.',
-      'Not a single one of you. The landlord thanks you for your donations.',
+      'Not a single one of you. No points, no glory, no excuses.',
       'Tumbleweed. That one’s going on the wall of shame.',
     ],
     mixed: [
       'Some of you knew that. The rest of you — drink up and move on.',
-      'A split table! Wallets are moving now.',
+      'A split table! The board is moving now.',
       'Half of you nailed it. The other half were guessing, and I could tell.',
     ],
     phone: [
@@ -198,11 +192,11 @@ const MC: Record<string, McLines> = {
       'I see you, {name}. Whoever you’re texting can’t help you with this.',
     ],
     final: [
-      'LAST ORDERS! Final question — stake it all if you dare, double odds on the table.',
-      'Last question of the night. All-in is allowed. Regret is mandatory.',
+      'LAST ORDERS! Final question — everything rests on this one.',
+      'Last question of the night. Get it right and you go home happy.',
     ],
     done: [
-      'That’s the quiz! {name} takes the pot. Everyone else: the drinks are on you.',
+      'That’s the quiz! {name} tops the board. Everyone else: the drinks are on you.',
       'And we’re done. {name} wins, and let the record show it was never in doubt.',
     ],
   },
@@ -212,11 +206,11 @@ const MC: Record<string, McLines> = {
       'Velkommen til quiz. Husregler: ingen googling, ingen sutring, og tips quizmasteren.',
       'Da er vi i gang. Én vinner — resten spanderer.',
     ],
-    betting: [
-      'Ny kategori — hvor stødig føler du deg? Sett inn poletter.',
-      'Innsatsen er åpen. Frekk eller feig, du bestemmer.',
-      'Store penger på denne, eller er det bare pilsen som snakker?',
-      'Her kommer kategorien. Satse alt, eller spille det trygt?',
+    topic: [
+      'Ny kategori — nå får vi se hvem som har fulgt med.',
+      'Her kommer en for de skarpe. Ti poeng hvis du kan den.',
+      'Denne kategorien skiller lesehestene fra resten.',
+      'Neste spørsmål. Ingen konferering, og ikke skjel på naboen.',
     ],
     allCorrect: [
       'Alle sammen? Mistenkelig velinformert bord, dette her.',
@@ -224,12 +218,12 @@ const MC: Record<string, McLines> = {
     ],
     nobody: [
       'Ingen? INGEN? Jeg fortviler.',
-      'Ikke én eneste av dere. Vertshuset takker for gaven.',
+      'Ikke én eneste av dere. Ingen poeng, ingen ære, ingen unnskyldninger.',
       'Helt stille. Den der havner på skammens vegg.',
     ],
     mixed: [
       'Noen av dere kunne den. Resten får drikke opp og gå videre.',
-      'Delt bord! Nå flytter det seg penger.',
+      'Delt bord! Nå flytter det seg på tavla.',
       'Halvparten satt den. Den andre halvparten gjettet, og det så jeg.',
     ],
     phone: [
@@ -238,11 +232,11 @@ const MC: Record<string, McLines> = {
       'Jeg ser deg, {name}. Den du tekster kan ikke hjelpe deg nå.',
     ],
     final: [
-      'SISTE RUNDE! Siste spørsmål — sats alt hvis du tør, dobbel odds på bordet.',
-      'Siste spørsmål for kvelden. All in er lov. Anger er obligatorisk.',
+      'SISTE RUNDE! Siste spørsmål — alt står på denne.',
+      'Siste spørsmål for kvelden. Tar du den, går du hjem fornøyd.',
     ],
     done: [
-      'Det var quizen! {name} tar potten. Resten: dere spanderer.',
+      'Det var quizen! {name} topper tavla. Resten: dere spanderer.',
       'Og der er vi ferdige. {name} vinner, og la det være sagt — det var aldri tvil.',
     ],
   },
@@ -261,25 +255,25 @@ const Lobby = table(
     isPublic: t.bool(),
     theme: t.u8(), // index into PUBS
     questionCount: t.u8(),
-    betSecs: t.u8(),
+    betSecs: t.u8(), // retired with the betting phase; always 0
     answerSecs: t.u8(),
     teamMode: t.bool(),
     createdAt: t.timestamp(),
     // --- live quiz state ---
     phase: t.u8(), // PH_*
-    questionIdx: t.u8(), // 0-based, valid from PH_BETTING on
+    questionIdx: t.u8(), // 0-based, valid from the first question on
     phaseEndsAt: t.timestamp(), // the client counts down to this
     phaseStartedAt: t.timestamp(),
     timerGen: t.u32(), // bumps on every schedule; a stale timer is ignored
     drawn: t.array(t.u64()), // question ids used in this room, in play order
     topics: t.array(t.u64()), // topic ids this pub draws from (empty = every topic)
-    // The question on the screen. Category/difficulty/odds go up at
-    // PH_BETTING; text and options at PH_ANSWER; the key ONLY at PH_RESULT
-    // (correct = NO_ANSWER until then), so no client can peek.
+    // The question on the screen. Category, difficulty, text and options all
+    // go up at PH_ANSWER; the key ONLY at PH_RESULT (correct = NO_ANSWER
+    // until then), so no client can peek.
     qTopic: t.string(),
     qIcon: t.string(),
     qDifficulty: t.u8(),
-    qPayoutPct: t.u16(),
+    qPayoutPct: t.u16(), // retired with the betting phase; always 0
     qText: t.string(),
     qOptions: t.array(t.string()),
     qCorrect: t.u8(),
@@ -329,17 +323,17 @@ const Player = table(
     online: t.bool(),
     ready: t.bool(),
     kicked: t.bool(),
-    // --- the wallet and the current question ---
-    credits: t.i32(),
-    stake: t.u16(),
+    // --- the score and the current question ---
+    credits: t.i32(), // the running score (the column kept its wallet-era name)
+    stake: t.u16(), // retired with the betting phase; always 0
     answer: t.u8(), // NO_ANSWER until locked in
     answeredAt: t.u64(), // micros; 0 = not yet
-    lastDelta: t.i32(), // what the last result did to the wallet
+    lastDelta: t.i32(), // points the last result was worth
     lastCorrect: t.bool(),
     correct: t.u16(), // this quiz
     answered: t.u16(),
     streak: t.u8(),
-    tabs: t.u16(), // landlord top-ups this quiz
+    tabs: t.u16(), // retired with the landlord's tab; always 0
     // --- attention checker ---
     attention: t.u8(), // ATT_*
     attentionSince: t.u64(), // micros the current state began
@@ -374,10 +368,10 @@ const Entry = table(
     questionIdx: t.u8(),
     identity: t.identity(),
     name: t.string(),
-    stake: t.u16(),
+    stake: t.u16(), // retired with the betting phase; always 0
     answer: t.u8(),
     correct: t.bool(),
-    delta: t.i32(),
+    delta: t.i32(), // points this question was worth
     answerMillis: t.u32(), // time to lock in, 0 = never did
     onPhone: t.bool(), // caught away during this question
   }
@@ -696,14 +690,15 @@ function freeSeat(ctx: Ctx, lobbyId: bigint): number {
 
 /** A seat's per-question slate, wiped between questions. */
 function freshQuestionFields(p: PlayerRow): PlayerRow {
-  return { ...p, stake: 0, answer: NO_ANSWER, answeredAt: 0n, awayThisQ: p.attention === ATT_PHONE };
+  return { ...p, answer: NO_ANSWER, answeredAt: 0n, awayThisQ: p.attention === ATT_PHONE };
 }
 
 /** A seat's per-quiz slate, wiped when a quiz (re)starts. */
 function freshQuizFields(p: PlayerRow): PlayerRow {
   return {
     ...freshQuestionFields(p),
-    credits: START_CREDITS,
+    credits: START_SCORE,
+    stake: 0,
     lastDelta: 0,
     lastCorrect: false,
     correct: 0,
@@ -898,7 +893,7 @@ function startQuiz(ctx: Ctx, lobby: LobbyRow) {
     status: L_RUNNING,
     questionIdx: 0,
     drawn,
-    qTopic: '', qIcon: '', qDifficulty: 0, qPayoutPct: 0, qText: '', qOptions: [], qCorrect: NO_ANSWER,
+    qTopic: '', qIcon: '', qDifficulty: 0, qText: '', qOptions: [], qCorrect: NO_ANSWER,
     fastestName: '',
     championName: '',
   };
@@ -934,36 +929,14 @@ function clearPicks(ctx: Ctx, lobbyId: bigint) {
   for (const row of ctx.db.pick.byLobby.filter(lobbyId)) ctx.db.pick.identity.delete(row.identity);
 }
 
-function openBetting(ctx: Ctx, lobby: LobbyRow, idx: number) {
+/** Put a question up: topic, difficulty, text and the shuffled options all
+ *  at once. The key stays hidden until settleQuestion. */
+function openQuestion(ctx: Ctx, lobby: LobbyRow, idx: number) {
   clearPicks(ctx, lobby.id);
   const q = questionAt(ctx, lobby, idx);
   const topic = ctx.db.topic.id.find(q.topicId);
   const final = idx >= lobby.questionCount - 1;
-  // Ante up: every seat is in for MIN_STAKE (or what they have). The
-  // landlord's tab keeps anyone broke at the table.
-  for (const p of lobbyPlayers(ctx, lobby.id)) {
-    let credits = p.credits;
-    let tabs = p.tabs;
-    if (credits < TAB_FLOOR) { credits = TAB_FLOOR; tabs++; }
-    ctx.db.player.identity.update({ ...freshQuestionFields(p), credits, tabs, stake: Math.min(MIN_STAKE, credits) });
-  }
-  let next: LobbyRow = {
-    ...lobby,
-    questionIdx: idx,
-    qTopic: topic?.name ?? 'Mystery Round',
-    qIcon: topic?.icon ?? '❔',
-    qDifficulty: q.difficulty,
-    qPayoutPct: final ? FINAL_PAYOUT_PCT : PAYOUT_PCT[q.difficulty],
-    qText: '',
-    qOptions: [],
-    qCorrect: NO_ANSWER,
-  };
-  next = mcSay(ctx, next, mcLine(ctx, next, final ? 'final' : 'betting'));
-  setPhase(ctx, next, PH_BETTING, lobby.betSecs);
-}
-
-function openAnswers(ctx: Ctx, lobby: LobbyRow) {
-  const q = questionAt(ctx, lobby, lobby.questionIdx);
+  for (const p of lobbyPlayers(ctx, lobby.id)) ctx.db.player.identity.update(freshQuestionFields(p));
   const answers = [q.correct, ...q.wrong];
   // Shuffle the four options; the key is re-derived at result time from the
   // text (answers are distinct within a question).
@@ -972,9 +945,18 @@ function openAnswers(ctx: Ctx, lobby: LobbyRow) {
     const j = Math.floor(ctx.random() * (i + 1)) % (i + 1);
     [order[i], order[j]] = [order[j], order[i]];
   }
-  const next: LobbyRow = { ...lobby, qText: q.text, qOptions: order.map(i => answers[i]), qCorrect: NO_ANSWER };
-  const secs = lobby.answerSecs + (isFinal(lobby) ? FINAL_SECS_BONUS : 0);
-  setPhase(ctx, next, PH_ANSWER, secs);
+  let next: LobbyRow = {
+    ...lobby,
+    questionIdx: idx,
+    qTopic: topic?.name ?? 'Mystery Round',
+    qIcon: topic?.icon ?? '❔',
+    qDifficulty: q.difficulty,
+    qText: q.text,
+    qOptions: order.map(i => answers[i]),
+    qCorrect: NO_ANSWER,
+  };
+  next = mcSay(ctx, next, mcLine(ctx, next, final ? 'final' : 'topic'));
+  setPhase(ctx, next, PH_ANSWER, lobby.answerSecs + (final ? FINAL_SECS_BONUS : 0));
 }
 
 function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
@@ -989,7 +971,8 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
     ctx.db.pick.identity.delete(row.identity);
   }
   const choiceOf = (p: PlayerRow) => picked.get(p.identity.toHexString()) ?? NO_ANSWER;
-  // Who was quickest and right?
+  // Who was quickest and right? Worth no points — it is just bragging
+  // rights on the screen.
   let fastest: PlayerRow | null = null;
   for (const p of seats) {
     if (choiceOf(p) === correctIdx && p.answeredAt !== 0n && (!fastest || p.answeredAt < fastest.answeredAt)) fastest = p;
@@ -999,18 +982,11 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
   for (const p of seats) {
     const choice = choiceOf(p);
     const correct = choice === correctIdx;
-    let delta: number;
+    // Flat scoring: a correct answer is worth POINTS_PER_CORRECT, anything
+    // else is worth nothing. Nobody ever loses points.
+    const delta = correct ? POINTS_PER_CORRECT : 0;
     let streak = p.streak;
-    if (correct) {
-      right++;
-      streak++;
-      delta = Math.round((p.stake * lobby.qPayoutPct) / 100);
-      if (streak >= 3) delta += STREAK_BONUS * streak;
-      if (fastest && seats.length > 1 && sameId(fastest.identity, p.identity)) delta += FASTEST_BONUS;
-    } else {
-      streak = 0;
-      delta = -p.stake;
-    }
+    if (correct) { right++; streak++; } else streak = 0;
     if (p.awayThisQ && !onPhoneName) onPhoneName = p.name;
     ctx.db.entry.insert({
       id: 0n,
@@ -1018,7 +994,7 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
       questionIdx: lobby.questionIdx,
       identity: p.identity,
       name: p.name,
-      stake: p.stake,
+      stake: 0,
       answer: choice,
       correct,
       delta,
@@ -1046,7 +1022,7 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
   setPhase(ctx, next, PH_RESULT, RESULT_SECS);
 }
 
-/** Standings: credits, then correct answers, then quickest total time. */
+/** Standings: score, then correct answers, then seat order. */
 function standings(ctx: Ctx, lobby: LobbyRow): PlayerRow[] {
   return lobbyPlayers(ctx, lobby.id).sort(
     (a, b) => b.credits - a.credits || b.correct - a.correct || a.seat - b.seat
@@ -1084,17 +1060,14 @@ export const advance_phase = spacetimedb.reducer(
 function stepPhase(ctx: Ctx, lobby: LobbyRow) {
   switch (lobby.phase) {
     case PH_INTRO:
-      openBetting(ctx, lobby, 0);
-      return;
-    case PH_BETTING:
-      openAnswers(ctx, lobby);
+      openQuestion(ctx, lobby, 0);
       return;
     case PH_ANSWER:
       settleQuestion(ctx, lobby);
       return;
     case PH_RESULT:
       if (isFinal(lobby)) finishQuiz(ctx, lobby);
-      else openBetting(ctx, lobby, lobby.questionIdx + 1);
+      else openQuestion(ctx, lobby, lobby.questionIdx + 1);
       return;
   }
 }
@@ -1297,7 +1270,8 @@ function legNum(o: Record<string, unknown>, key: string, def: number, lo: number
 
 /**
  * Open a room for a championship leg. Relay only. `venue` is "pub:N";
- * `settings` is the director's JSON: { questions, betSecs, answerSecs, lang }.
+ * `settings` is the director's JSON: { questions, answerSecs, lang }
+ * (a `betSecs` from an older director is accepted and ignored).
  * The championship host becomes the room host (same identity here as on the
  * hub — one Firebase project across every game); if they never turn up,
  * whoever joins first takes the seat (claimChampionshipHost).
@@ -1319,7 +1293,6 @@ export const create_championship_room = spacetimedb.reducer(
       isPublic: false,
       theme,
       questionCount: Math.round(legNum(o, 'questions', QUESTIONS_DEFAULT, QUESTIONS_MIN, QUESTIONS_MAX)),
-      betSecs: Math.round(legNum(o, 'betSecs', BET_SECS_DEFAULT, BET_SECS_MIN, BET_SECS_MAX)),
       answerSecs: Math.round(legNum(o, 'answerSecs', ANSWER_SECS_DEFAULT, ANSWER_SECS_MIN, ANSWER_SECS_MAX)),
       teamMode: false,
       lang: cleanLang(typeof o['lang'] === 'string' ? (o['lang'] as string) : LANG_ANY),
@@ -1340,7 +1313,7 @@ function claimChampionshipHost(ctx: Ctx, lobby: LobbyRow): LobbyRow {
 // ---------------------------------------------------------------------------
 // Rooms
 // ---------------------------------------------------------------------------
-type LobbyOpts = { isPublic: boolean; theme: number; questionCount: number; betSecs: number; answerSecs: number; teamMode: boolean; lang: string };
+type LobbyOpts = { isPublic: boolean; theme: number; questionCount: number; answerSecs: number; teamMode: boolean; lang: string };
 
 function insertLobby(ctx: Ctx, o: LobbyOpts): LobbyRow {
   return ctx.db.lobby.insert({
@@ -1351,7 +1324,7 @@ function insertLobby(ctx: Ctx, o: LobbyOpts): LobbyRow {
     isPublic: o.isPublic,
     theme: clamp(o.theme, 0, PUBS.length - 1),
     questionCount: clamp(o.questionCount, QUESTIONS_MIN, QUESTIONS_MAX),
-    betSecs: clamp(o.betSecs, BET_SECS_MIN, BET_SECS_MAX),
+    betSecs: BET_SECS_RETIRED,
     answerSecs: clamp(o.answerSecs, ANSWER_SECS_MIN, ANSWER_SECS_MAX),
     teamMode: o.teamMode,
     createdAt: ctx.timestamp,
@@ -1392,8 +1365,8 @@ function destroyLobby(ctx: Ctx, lobby: LobbyRow) {
   ctx.db.lobby.id.delete(lobby.id);
 }
 
-/** Take a seat in a room. Mid-quiz joiners sit down with the starting wallet
- *  and simply miss what has been asked — nothing waits for them. */
+/** Take a seat in a room. Mid-quiz joiners sit down on nothing and simply
+ *  miss what has been asked — nothing waits for them. */
 function seatPlayer(ctx: Ctx, lobby: LobbyRow, player: PlayerRow) {
   const seat = freeSeat(ctx, lobby.id);
   const base = freshQuizFields(player);
@@ -1410,8 +1383,6 @@ function seatPlayer(ctx: Ctx, lobby: LobbyRow, player: PlayerRow) {
     actKind: 0,
     team: TEAM_NONE,
     kicked: false,
-    // a late seat during betting/answers is still in for the ante
-    stake: lobby.status === L_RUNNING && (lobby.phase === PH_BETTING || lobby.phase === PH_ANSWER) ? MIN_STAKE : 0,
   });
   disarmReaper(ctx, lobby.id);
   armWalk(ctx, lobby.id);
@@ -1492,7 +1463,7 @@ export const onConnect = spacetimedb.clientConnected(ctx => {
       dirY: 0,
       actTicks: 0,
       actKind: 0,
-      credits: START_CREDITS,
+      credits: START_SCORE,
       stake: 0,
       answer: NO_ANSWER,
       answeredAt: 0n,
@@ -1651,7 +1622,7 @@ export const set_team = spacetimedb.reducer({ team: t.u8() }, (ctx, { team }) =>
 });
 
 export const create_pub = spacetimedb.reducer(
-  { isPublic: t.bool(), theme: t.u8(), questions: t.u8(), betSecs: t.u8(), answerSecs: t.u8(), teamMode: t.bool(), lang: t.string() },
+  { isPublic: t.bool(), theme: t.u8(), questions: t.u8(), answerSecs: t.u8(), teamMode: t.bool(), lang: t.string() },
   (ctx, o) => {
     const player = getPlayer(ctx);
     if (!player.name) throw new SenderError('Pick a name first');
@@ -1660,7 +1631,6 @@ export const create_pub = spacetimedb.reducer(
       isPublic: o.isPublic,
       theme: o.theme,
       questionCount: o.questions,
-      betSecs: o.betSecs,
       answerSecs: o.answerSecs,
       teamMode: o.teamMode,
       lang: o.lang,
@@ -1670,7 +1640,7 @@ export const create_pub = spacetimedb.reducer(
 );
 
 export const set_pub_settings = spacetimedb.reducer(
-  { questions: t.u8(), betSecs: t.u8(), answerSecs: t.u8(), teamMode: t.bool(), theme: t.u8(), lang: t.string() },
+  { questions: t.u8(), answerSecs: t.u8(), teamMode: t.bool(), theme: t.u8(), lang: t.string() },
   (ctx, o) => {
     const player = getPlayer(ctx);
     if (player.lobbyId === 0n) throw new SenderError('Not in a pub');
@@ -1681,7 +1651,6 @@ export const set_pub_settings = spacetimedb.reducer(
     ctx.db.lobby.id.update({
       ...lobby,
       questionCount: clamp(o.questions, QUESTIONS_MIN, QUESTIONS_MAX),
-      betSecs: clamp(o.betSecs, BET_SECS_MIN, BET_SECS_MAX),
       answerSecs: clamp(o.answerSecs, ANSWER_SECS_MIN, ANSWER_SECS_MAX),
       teamMode: o.teamMode,
       theme: clamp(o.theme, 0, PUBS.length - 1),
@@ -1753,20 +1722,6 @@ export const kick_player = spacetimedb.reducer({ target: t.identity() }, (ctx, {
 // ---------------------------------------------------------------------------
 // Playing
 // ---------------------------------------------------------------------------
-export const place_stake = spacetimedb.reducer({ stake: t.u16() }, (ctx, { stake }) => {
-  const player = getPlayer(ctx);
-  if (player.lobbyId === 0n) throw new SenderError('Not in a pub');
-  const lobby = ctx.db.lobby.id.find(player.lobbyId);
-  if (!lobby || lobby.status !== L_RUNNING || lobby.phase !== PH_BETTING) throw new SenderError('Stakes are closed');
-  // The final question is all-in territory; before that a stake tops out at
-  // half the wallet, so one shove can never end the night on question two.
-  // Mirrored in client/src/config.ts (STAKE_CAP_PCT).
-  const floor = Math.min(MIN_STAKE, player.credits);
-  const cap = isFinal(lobby) ? player.credits : Math.max(floor, Math.floor((player.credits * STAKE_CAP_PCT) / 100));
-  const clean = clamp(stake, floor, Math.max(0, cap));
-  ctx.db.player.identity.update({ ...player, stake: clean });
-});
-
 export const answer = spacetimedb.reducer({ choice: t.u8() }, (ctx, { choice }) => {
   const player = getPlayer(ctx);
   if (player.lobbyId === 0n) throw new SenderError('Not in a pub');
@@ -1775,14 +1730,14 @@ export const answer = spacetimedb.reducer({ choice: t.u8() }, (ctx, { choice }) 
   if (choice >= lobby.qOptions.length) throw new SenderError('No such option');
   // A pick can be changed for as long as the clock runs — the last one on the
   // paddle at the buzzer is the answer. `answeredAt` is re-stamped on every
-  // change, so the fastest-finger bonus belongs to the answer they actually
+  // change, so the fastest-finger line names the answer they actually
   // stood behind; leaving the first stamp would let anyone slap A down the
   // instant the question lands and then switch at the death, still 'fastest'.
   const prev = ctx.db.pick.identity.find(ctx.sender);
   const first = player.answeredAt === 0n;
   if (!first && prev && prev.lobbyId === lobby.id && prev.questionIdx === lobby.questionIdx && prev.choice === choice) return;
   // the choice goes in the private table; the public row only records THAT
-  // they answered, and when (the fastest-finger bonus needs the clock)
+  // they answered, and when (the fastest-finger line needs the clock)
   ctx.db.pick.identity.delete(ctx.sender);
   ctx.db.pick.insert({ identity: ctx.sender, lobbyId: lobby.id, questionIdx: lobby.questionIdx, choice });
   ctx.db.player.identity.update({ ...player, answeredAt: micros(ctx) });
@@ -1808,7 +1763,7 @@ export const set_attention = spacetimedb.reducer({ state: t.u8() }, (ctx, { stat
   const now = micros(ctx);
   const lobby = player.lobbyId === 0n ? undefined : ctx.db.lobby.id.find(player.lobbyId);
   const live = !!lobby && lobby.status === L_RUNNING;
-  const inQuestion = live && (lobby!.phase === PH_BETTING || lobby!.phase === PH_ANSWER);
+  const inQuestion = live && lobby!.phase === PH_ANSWER;
   let { phoneChecks, phoneMicros, awayThisQ } = player;
   if (state === ATT_PHONE && live) {
     phoneChecks++;

@@ -3700,7 +3700,7 @@
        stylesheet, verbatim — the tokens, the buttons, the overlays, the
        modals, the select cards are THE SAME, not a lookalike. Below are the
        few components tennis has no equivalent of (the question card, the
-       stake dial, the standings ladder, the question writer), built out of
+       standings ladder, the question writer), built out of
        the same tokens so they belong to the same game.
        ================================================================== */
     #stage { width: min(1280px, 96vw, calc(100dvh * 16 / 10)); aspect-ratio: 16 / 10; }
@@ -3887,8 +3887,8 @@
     #hud-clock.hot { color: var(--red); animation: pulse 0.6s infinite alternate; }
     @keyframes pulse { from { opacity: 1; } to { opacity: 0.45; } }
     #hud-mc { position: absolute; top: 52px; left: 50%; translate: -50%; max-width: 62%; text-align: center; color: var(--gold-hi); font-size: 13px; font-style: italic; letter-spacing: 1px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
-    #hud-wallet { position: absolute !important; top: 10px; left: 14px; }
-    #hud-wallet b { color: var(--gold); }
+    #hud-score { position: absolute !important; top: 10px; left: 14px; }
+    #hud-score b { color: var(--gold); }
     #standings { position: absolute; top: 52px; left: 14px; display: flex; flex-direction: column; gap: 3px; width: 200px; max-height: 46%; overflow: hidden; }
     .st-row { display: flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 7px; background: rgba(5, 8, 34, 0.72); border: 1px solid var(--line); font-size: 11px; font-weight: 700; letter-spacing: 1px; }
     .st-row.me { border-color: var(--gold); }
@@ -3914,10 +3914,6 @@
     .opt.mine { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
     .opt.right { background: linear-gradient(180deg, #5cf59a, #1f9e6b); color: #04170d; }
     .opt.wrong { background: linear-gradient(180deg, #ff6a4a, var(--red-deep)); }
-    #stake-panel { display: flex; flex-direction: column; gap: 7px; }
-    #stake-val { font-size: 34px; font-style: italic; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
-    #stake-val small { font-size: 15px; }
-    #stake-note { font-size: 10px; color: var(--dim); letter-spacing: 1px; }
     #answer-note { font-size: 10px; font-weight: 700; color: var(--dim); letter-spacing: 1px; }
     #result-panel { font-size: 13px; font-weight: 600; letter-spacing: 1px; display: flex; flex-direction: column; gap: 4px; }
     #result-panel .delta.up { color: var(--green); }
@@ -3985,22 +3981,12 @@
           <div class="plate" id="hud-clock">--</div>
           <div class="plate" id="hud-q">Q 1/10</div>
         </div>
-        <div class="plate" id="hud-wallet">WALLET <b id="wallet-val">100</b>¢</div>
+        <div class="plate" id="hud-score">SCORE <b id="score-val">0</b>p</div>
         <div id="hud-mc"></div>
         <div id="standings"></div>
         <div id="q-card">
           <div id="q-kicker">GET READY</div>
           <div id="q-title"></div>
-          <div id="stake-panel" class="hidden">
-            <div id="stake-val">5<small>¢</small></div>
-            <input id="stake-range" type="range" min="5" max="50" step="5" value="5" />
-            <div class="row">
-              <button id="stake-min" class="small ghost">MIN</button>
-              <button id="stake-half" class="small ghost">HALF</button>
-              <button id="stake-max" class="small ghost">MAX</button>
-            </div>
-            <div id="stake-note"></div>
-          </div>
           <div id="q-options" class="hidden"></div>
           <div id="answer-note"></div>
           <div id="result-panel" class="hidden"></div>
@@ -4067,7 +4053,6 @@
             <label class="field">SPRÅK / LANGUAGE<select id="c-lang"></select></label>
             <label class="field">PUB<select id="c-theme"></select></label>
             <label class="field">QUESTIONS<input id="c-questions" type="number" min="3" max="30" value="10" /></label>
-            <label class="field">STAKES OPEN (S)<input id="c-bet" type="number" min="5" max="30" value="10" /></label>
             <label class="field">ANSWER TIME (S)<input id="c-answer" type="number" min="8" max="60" value="20" /></label>
           </div>
           <div class="row format-checks" style="margin-top:10px">
@@ -4118,7 +4103,6 @@
               <label class="field">SPRÅK / LANGUAGE<select id="s-lang"></select></label>
               <label class="field">PUB<select id="s-theme"></select></label>
               <label class="field">QUESTIONS<input id="s-questions" type="number" min="3" max="30" /></label>
-              <label class="field">STAKES OPEN (S)<input id="s-bet" type="number" min="5" max="30" /></label>
               <label class="field">ANSWER TIME (S)<input id="s-answer" type="number" min="8" max="60" /></label>
             </div>
             <div class="row format-checks" style="margin-top:8px"><label class="check"><input id="s-teams" type="checkbox" /> TEAMS</label></div>

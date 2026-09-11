@@ -4,8 +4,8 @@ An arcade pub quiz for the browser, and the quiz leg of the Digital
 championship suite (tennis · golf · racing · quiz). You pick one of the
 **Digital Tennis roster** — the same eighteen characters, the same select
 screen, the same UI — and walk into a 3D pub; the quiz master behind the bar
-runs the questions; every seat has a wallet of credits to **bet on each
-question**; and the pub can see who has sneaked off to look at their phone.
+runs the questions; every right answer is worth **ten points** and nothing
+else is; and the pub can see who has sneaked off to look at their phone.
 
 **It is the same game, presented the same way.** The stylesheet, the menus,
 the modals, the character select with its live 3D cards, and the character
@@ -25,18 +25,18 @@ moments come to over 200 questions on their own, and the geek end of the bank
 music shelf — verdensmusikk, K-pop, hiphop & R&B, rock & metal and pop &
 hitlister — add ten more topics on top. A pub picks its **language** when it opens: a
 Norwegian night draws only Norwegian packs, the quiz master heckles in
-Norwegian, and the screen, the wallet and the results read in Norwegian too.
+Norwegian, and the screen, the scoreboard and the results read in Norwegian too.
 A Norwegian browser opens on `NORSK` and a Norwegian venue by default.
 
-SpacetimeDB is the entire backend — pubs, the question flow, wallets and
-payouts, the answer key, the attention tally and the accounts all live in one
+SpacetimeDB is the entire backend — pubs, the question flow, the scoring,
+the answer key, the attention tally and the accounts all live in one
 module. The client is a Vite + TypeScript app with a three.js pub.
 
 ## How a night goes
 
 1. **Open a pub** (or join one by code / link / the public list). Pick the
-   **language**, the venue, how many questions, how long stakes stay open and
-   how long the table has to answer, and whether it's teams. The host also
+   **language**, the venue, how many questions, how long the table has to
+   answer, and whether it's teams. The host also
    picks the **topics** the quiz draws from — only topics in the pub's
    language are offered, so a Norwegian night can never pull an English pack
    mid-quiz.
@@ -45,25 +45,24 @@ module. The client is a Vite + TypeScript app with a three.js pub.
    (a 20 Hz tick per room), exactly like the spectators on the tennis grounds.
    Everyone **readies up** at the bar (a signal, not a gate — the host can
    start anyway, and the room starts itself when everyone is ready).
-3. Each question runs in three beats, all timed by the module:
-   - **Stakes open** — the screen shows the **topic, difficulty and odds**,
-     not the question. Everyone is in for the 5¢ ante; slide up to half your
-     wallet if you fancy the topic. Easy pays 1×, medium 1.5×, hard 2×.
-   - **Answer** — the question and four options go up. First lock-in counts
-     (click an option, or 1–4 on the keyboard — A–D belong to the walk keys). When everyone is in, the clock jumps.
-   - **Result** — the key is revealed, wallets move, the quiz master has a
-     word. The fastest correct answer earns a bonus; three or more in a row
-     earns a streak bonus.
-4. **Last orders**: the final question pays double and you can stake the
-   lot. A wallet that runs dry gets topped up by the landlord (it goes on
-   your tab, and on the scoreboard).
-5. Final standings, awards (fastest finger, biggest win, sharpest, phone
-   addict, on the tab), XP, and **ANOTHER ROUND** — a rematch never repeats
-   a question until the pool runs out.
+3. Each question runs in two beats, both timed by the module:
+   - **Answer** — the topic, the difficulty, the question and four options
+     all go up together. First lock-in counts (click an option, or 1–4 on the
+     keyboard — A–D belong to the walk keys). When everyone is in, the clock
+     jumps.
+   - **Result** — the key is revealed, **ten points** go to everyone who got
+     it (a wrong answer or no answer is worth nothing, and nobody ever loses
+     points), and the quiz master has a word. The quickest correct answer is
+     named on the screen — for the bragging, not for points.
+4. **Last orders**: the final question is worth the same ten points, but the
+   table gets a few extra seconds on it.
+5. Final standings, awards (fastest finger, sharpest, phone addict), XP, and
+   **ANOTHER ROUND** — a rematch never repeats a question until the pool runs
+   out.
 
 **Teams:** with teams on, every seat picks RED/BLUE/GREEN/GOLD in the lobby;
-everyone still answers and bets individually and the team standings are the
-sum of the wallets.
+everyone still answers individually and the team standings are the sum of
+the seats' scores.
 
 **The activity checker.** If your tab goes to the background, your window
 loses focus, or you stop touching anything for a while, the pub is told. Your
@@ -73,7 +72,7 @@ your head that heckles you in the chat. The quiz master will name you at the
 result. Time on the phone and the number of times you were caught are kept
 by the module (never by the client), shown at the end and added to your
 account's lifetime tally for the hall of shame. Nothing pauses for you: miss
-the answer window and your stake is gone.
+the answer window and the points are gone.
 
 Chat, emotes (speech bubbles over the avatars), a stale-page banner, and the
 same accounts as every Digital game (Firebase anonymous sign-in with an
@@ -85,7 +84,7 @@ you across devices and survive engine wipes).
 A pub plays in one language (`lobby.lang`): `nb`, `en`, or "both", which
 draws from everything. The language decides three things — which topics the
 draw may use, which patter the quiz master speaks, and the wording of the
-quiz itself (the big screen, the question card, the wallet, the results and
+quiz itself (the big screen, the question card, the scoreboard, the results and
 the awards). Menu, lobby and the question writer stay in English; they are
 the tooling around the quiz rather than the quiz.
 
@@ -122,7 +121,7 @@ file per topic:
 ```
 
 The **first answer is the correct one** (the module shuffles at play time);
-`d` is the difficulty, 1 easy · 2 medium · 3 hard, which sets the odds; and
+`d` is the difficulty, 1 easy · 2 medium · 3 hard, shown with the question; and
 `lang` is the language the questions are written in (`nb` or `en`, default
 `en`). Add a question, or a whole new file for a new topic, and redeploy: `gen-bank.mjs`
 compiles the packs into `src/bank.ts` on every build/publish (validating the
@@ -146,7 +145,7 @@ tab when running without Firebase.
 
 `cd client && npm run smoke` runs an end-to-end test against the local
 server: two clients open a pub, write a question, run a three-question quiz
-with stakes, answers, a phone check and a call-out, and check payouts, XP,
+with answers, a phone check and a call-out, and check the scoring, XP,
 the rematch draw and cleanup.
 
 ## Self-hosting
@@ -176,7 +175,8 @@ The championship hub opens a quiz leg through its relay: `create_championship_ro
 `digital-championship-relay` — the same string in every sibling game) with
 the hub's six-letter code, the championship host as room host, `venue`
 `pub:N` and the director's JSON settings
-`{ questions, betSecs, answerSecs, lang }`.
+`{ questions, answerSecs, lang }` (a `betSecs` left over from the betting
+era is accepted and ignored).
 One entrant plays alone against the clock; any number more play the normal
 quiz. When it finishes the module writes the finishing order **once** to the
 public `leg_result` table (a rematch never rescores) and the relay carries it
@@ -186,7 +186,7 @@ the host seat.
 ## Layout
 
 ```
-spacetimedb/src/index.ts   the module: schema, quiz engine, wallets, attention, accounts, championship
+spacetimedb/src/index.ts   the module: schema, quiz engine, scoring, attention, accounts, championship
 spacetimedb/src/bank.ts    GENERATED from questions/*.json by gen-bank.mjs
 spacetimedb/questions/     the built-in question packs — edit these
                            (20-43 are the Norwegian ones)

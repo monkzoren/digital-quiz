@@ -308,7 +308,7 @@ function paintLabel(rig: PubRig, s: SceneSeat, showStats: boolean) {
   ctx.textBaseline = 'middle';
   const name = (s.name || 'GUEST').toUpperCase();
   const flag = s.attention === ATT_PHONE ? ' 📱' : s.attention === ATT_IDLE ? ' 💤' : '';
-  const line = showStats ? `${name}${flag}  ·  ${s.credits}¢` : `${name}${flag}`;
+  const line = showStats ? `${name}${flag}  ·  ${s.credits}p` : `${name}${flag}`;
   const w = Math.min(500, ctx.measureText(line).width + 40);
   ctx.fillStyle = s.attention === ATT_PHONE ? 'rgba(90, 30, 30, 0.85)' : 'rgba(10, 10, 20, 0.7)';
   roundRect(ctx, 256 - w / 2, 22, w, 84, 20);

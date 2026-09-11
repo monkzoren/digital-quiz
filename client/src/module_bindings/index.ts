@@ -45,7 +45,6 @@ import DeleteQuestionReducer from "./delete_question_reducer";
 import JoinPubReducer from "./join_pub_reducer";
 import KickPlayerReducer from "./kick_player_reducer";
 import LeavePubReducer from "./leave_pub_reducer";
-import PlaceStakeReducer from "./place_stake_reducer";
 import RestoreAccountReducer from "./restore_account_reducer";
 import SendChatReducer from "./send_chat_reducer";
 import SendEmoteReducer from "./send_emote_reducer";
@@ -213,7 +212,6 @@ const reducersSchema = __reducers(
   __reducerSchema("join_pub", JoinPubReducer),
   __reducerSchema("kick_player", KickPlayerReducer),
   __reducerSchema("leave_pub", LeavePubReducer),
-  __reducerSchema("place_stake", PlaceStakeReducer),
   __reducerSchema("restore_account", RestoreAccountReducer),
   __reducerSchema("send_chat", SendChatReducer),
   __reducerSchema("send_emote", SendEmoteReducer),

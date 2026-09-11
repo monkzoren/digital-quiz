@@ -1,0 +1,207 @@
+{
+  "topic": "MGP & Eurovision",
+  "icon": "🎤",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvor mange ganger har Norge vunnet Eurovision Song Contest?",
+      "a": [
+        "Tre ganger",
+        "To ganger",
+        "Fire ganger",
+        "Én gang"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem vant Eurovision for Norge i 2009 med Fairytale?",
+      "a": [
+        "Alexander Rybak",
+        "Didrik Solli-Tangen",
+        "Tooji",
+        "Margaret Berger"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket instrument spilte Alexander Rybak i Fairytale?",
+      "a": [
+        "Fiolin",
+        "Piano",
+        "Gitar",
+        "Trekkspill"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken duo vant Eurovision for Norge i 1985 med La det swinge?",
+      "a": [
+        "Bobbysocks",
+        "Secret Garden",
+        "Dollie de Luxe",
+        "Ylvis"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem vant for Norge i 1995 med det nesten ordløse Nocturne?",
+      "a": [
+        "Secret Garden",
+        "Bobbysocks",
+        "Elisabeth Andreassen",
+        "Jahn Teigen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter den norske uttakskonkurransen til Eurovision?",
+      "a": [
+        "Melodi Grand Prix",
+        "Stjernekamp",
+        "Idol",
+        "Grand Prix Norge"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken gruppe representerte Norge i 2022 med Give That Wolf a Banana?",
+      "a": [
+        "Subwoolfer",
+        "KEiiNO",
+        "Ulvene",
+        "TIX"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk gruppe ble nummer to på folkeavstemningen i 2019 med Spirit in the Sky?",
+      "a": [
+        "KEiiNO",
+        "Subwoolfer",
+        "Alexander Rybak",
+        "JOWST"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk artist er kjent for null poeng i 1978 med Mil etter mil?",
+      "a": [
+        "Jahn Teigen",
+        "Ole Paus",
+        "Åge Aleksandersen",
+        "Finn Kalvik"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilken by ble Eurovision arrangert i Norge i 1986?",
+      "a": [
+        "Bergen",
+        "Oslo",
+        "Trondheim",
+        "Stavanger"
+      ],
+      "d": 3
+    },
+    {
+      "q": "I hvilket år arrangerte Oslo Eurovision sist?",
+      "a": [
+        "2010",
+        "1996",
+        "2004",
+        "2014"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange poeng fikk Alexander Rybak i 2009, en rekord den gang?",
+      "a": [
+        "387",
+        "292",
+        "423",
+        "358"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket element brukte KEiiNO i sitt bidrag, i tillegg til pop?",
+      "a": [
+        "Joik",
+        "Jodling",
+        "Opera",
+        "Rap på latin"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk artist vant MGP i 2021 med Fallen Angel?",
+      "a": [
+        "TIX",
+        "Subwoolfer",
+        "Ulrikke",
+        "Raylee"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva var Norges plassering i Eurovision-finalen i 1985 da vi vant?",
+      "a": [
+        "Første",
+        "Andre",
+        "Tredje",
+        "Sjette"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange ganger har Norge endt på siste plass med null poeng?",
+      "a": [
+        "Fire ganger",
+        "To ganger",
+        "Én gang",
+        "Seks ganger"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken kanal arrangerer og sender Melodi Grand Prix?",
+      "a": [
+        "NRK",
+        "TV 2",
+        "TVNorge",
+        "Discovery"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk låtskriver står bak Fairytale?",
+      "a": [
+        "Alexander Rybak selv",
+        "Rolf Løvland",
+        "Stig Anderson",
+        "Kjetil Mørland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem komponerte Nocturne, vinnerlåten i 1995?",
+      "a": [
+        "Rolf Løvland",
+        "Alexander Rybak",
+        "Rikard Nordraak",
+        "Erik Hassle"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva het maskotene som skjulte ansiktet i Subwoolfers opptreden?",
+      "a": [
+        "Gule ulvemasker",
+        "Sølvhjelmer",
+        "Trollmasker",
+        "Bjørnehoder"
+      ],
+      "d": 2
+    }
+  ]
+}

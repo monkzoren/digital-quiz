@@ -9,7 +9,7 @@
 // ---------------------------------------------------------------------------
 import * as THREE from 'three';
 import { AVATARS } from './avatars';
-import { ATT_IDLE, ATT_PHONE, NO_ANSWER, TEAM_COLORS } from './config';
+import { ATT_IDLE, ATT_PHONE, NO_ANSWER, PUB_LOOK, TEAM_COLORS } from './config';
 
 export interface SceneSeat {
   key: string; // identity hex
@@ -41,6 +41,8 @@ export interface Scene {
   mc: { text: string; at: number };
   /** Menu mode: slow orbit, no seat labels. */
   menu: boolean;
+  /** The room's language — main.ts has already localized `screen`. */
+  lang: string;
   hostKey: string;
 }
 
@@ -454,6 +456,7 @@ function paintBubble(rig: Rig, text: string) {
 // The room
 // ---------------------------------------------------------------------------
 function buildRoom(theme: number, pubName: string) {
+  // theme is the VENUE; several venues share an interior (see PUB_LOOK)
   if (roomGroup) {
     scene3.remove(roomGroup);
     roomGroup.traverse(o => {
@@ -461,7 +464,7 @@ function buildRoom(theme: number, pubName: string) {
       if (m.isMesh) { m.geometry.dispose(); }
     });
   }
-  const T = THEMES[theme] ?? THEMES[0];
+  const T = THEMES[PUB_LOOK[theme] ?? 0] ?? THEMES[0];
   const g = new THREE.Group();
   roomGroup = g;
   scene3.add(g);

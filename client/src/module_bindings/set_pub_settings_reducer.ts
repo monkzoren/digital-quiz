@@ -16,4 +16,5 @@ export default {
   answerSecs: __t.u8(),
   teamMode: __t.bool(),
   theme: __t.u8(),
+  lang: __t.string(),
 };

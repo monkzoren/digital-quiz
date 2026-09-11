@@ -318,6 +318,7 @@
         <div id="create-panel" class="panel hidden">
           <div class="panel-label">TONIGHT'S FORMAT</div>
           <div class="grid">
+            <label class="field">SPRÅK / LANGUAGE<select id="c-lang"></select></label>
             <label class="field">PUB<select id="c-theme"></select></label>
             <label class="field">QUESTIONS<input id="c-questions" type="number" min="3" max="30" value="10" /></label>
             <label class="field">STAKES OPEN (S)<input id="c-bet" type="number" min="5" max="30" value="10" /></label>
@@ -359,6 +360,7 @@
           <div class="panel" id="lobby-settings">
             <div class="panel-label">FORMAT</div>
             <div class="grid">
+              <label class="field">SPRÅK / LANGUAGE<select id="s-lang"></select></label>
               <label class="field">PUB<select id="s-theme"></select></label>
               <label class="field">QUESTIONS<input id="s-questions" type="number" min="3" max="30" /></label>
               <label class="field">STAKES OPEN (S)<input id="s-bet" type="number" min="5" max="30" /></label>
@@ -437,6 +439,7 @@
             <div class="row" style="margin-top:8px">
               <input id="qw-topic-icon" placeholder="🍀" maxlength="4" style="width:58px;text-align:center" />
               <input id="qw-topic-name" placeholder="NEW TOPIC" maxlength="32" style="width:150px" />
+              <select id="qw-topic-lang" style="width:110px"></select>
               <button id="qw-topic-add" class="small">ADD</button>
             </div>
           </div>

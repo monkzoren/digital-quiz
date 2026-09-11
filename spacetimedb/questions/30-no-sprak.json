@@ -1,0 +1,287 @@
+{
+  "topic": "Språk & dialekter",
+  "icon": "🗣️",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvor mange offisielle skriftspråk har Norge?",
+      "a": [
+        "To",
+        "Ett",
+        "Tre",
+        "Fire"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Norges to skriftspråk?",
+      "a": [
+        "Bokmål og nynorsk",
+        "Bokmål og riksmål",
+        "Nynorsk og samisk",
+        "Riksmål og landsmål"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem skapte landsmålet, som ble til nynorsk?",
+      "a": [
+        "Ivar Aasen",
+        "Knud Knudsen",
+        "Henrik Wergeland",
+        "Aasmund Olavsson Vinje"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange bokstaver har det norske alfabetet?",
+      "a": [
+        "29",
+        "26",
+        "28",
+        "30"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken bokstav kommer sist i det norske alfabetet?",
+      "a": [
+        "Å",
+        "Ø",
+        "Æ",
+        "Z"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva betyr uttrykket helt texas?",
+      "a": [
+        "Vilt og kaotisk",
+        "Veldig kjedelig",
+        "Svært dyrt",
+        "Langt unna"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva betyr det å være harry?",
+      "a": [
+        "Å være tarvelig eller smakløs",
+        "Å være rik",
+        "Å være sjenert",
+        "Å være fra Bergen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva betyr attpåtil?",
+      "a": [
+        "I tillegg",
+        "Etterpå",
+        "Nesten",
+        "Aldri"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk ord beskriver livet ute i naturen og har ingen god engelsk oversettelse?",
+      "a": [
+        "Friluftsliv",
+        "Utepils",
+        "Hygge",
+        "Dugnad"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken dialektgruppe bruker eg i stedet for jeg?",
+      "a": [
+        "Vestlandsk",
+        "Østlandsk",
+        "Trøndersk",
+        "Nordnorsk"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket pronomen bruker trøndere ofte om seg selv?",
+      "a": [
+        "Æ",
+        "Eg",
+        "Jæ",
+        "I"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles den skurrende r-lyden bak i halsen på Sørlandet og Vestlandet?",
+      "a": [
+        "Skarre-r",
+        "Rulle-r",
+        "Tjukk r",
+        "Sløyfe-r"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva betyr ordet grine på Østlandet?",
+      "a": [
+        "Å gråte",
+        "Å le",
+        "Å kjefte",
+        "Å sove"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva betyr grine mange steder på Vestlandet?",
+      "a": [
+        "Å le eller flire",
+        "Å gråte",
+        "Å klage",
+        "Å synge"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva sier man til noen man møter kort tid etter et selskap?",
+      "a": [
+        "Takk for sist",
+        "Takk for maten",
+        "God bedring",
+        "Ha det bra"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva betyr et døgn?",
+      "a": [
+        "24 timer",
+        "12 timer",
+        "En uke",
+        "En arbeidsdag"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er pålegg?",
+      "a": [
+        "Det man har på brødskiva",
+        "En regning",
+        "En irettesettelse fra sjefen",
+        "Et lag med snø"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange samiske språk har offisiell status i Norge?",
+      "a": [
+        "Tre",
+        "Ett",
+        "To",
+        "Fem"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva betyr bures på nordsamisk?",
+      "a": [
+        "Hei",
+        "Takk",
+        "Farvel",
+        "Ja"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva kalles den tjukke l-lyden som finnes i mange østnorske dialekter?",
+      "a": [
+        "Tjukk l",
+        "Rulle-l",
+        "Skarre-l",
+        "Dobbel l"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Norges offisielle organ for språkspørsmål?",
+      "a": [
+        "Språkrådet",
+        "Akademiet",
+        "Ordboken",
+        "Norsk Språkforbund"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva betyr uttrykket å være i beit?",
+      "a": [
+        "Å være i knipe",
+        "Å være sulten",
+        "Å være forelsket",
+        "Å være på ferie"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva betyr uff da?",
+      "a": [
+        "Et uttrykk for medfølelse eller ergrelse",
+        "En hilsen",
+        "En skål",
+        "Et farvel"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket språk er norsk bokmål historisk utviklet fra?",
+      "a": [
+        "Dansk",
+        "Svensk",
+        "Islandsk",
+        "Tysk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva betyr det norske ordet kos?",
+      "a": [
+        "God, avslappet stemning",
+        "Kaldt vær",
+        "Hardt arbeid",
+        "Fest med mange gjester"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er fellesbetegnelsen for bokmål og nynorsk?",
+      "a": [
+        "Målformer",
+        "Dialekter",
+        "Sidemål",
+        "Riksspråk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles det skriftspråket elever lærer i tillegg til hovedmålet?",
+      "a": [
+        "Sidemål",
+        "Bimål",
+        "Andrespråk",
+        "Fremmedmål"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva betyr uttrykket å ta av?",
+      "a": [
+        "Å bli veldig populært eller å fly opp",
+        "Å gi opp",
+        "Å bli sint",
+        "Å legge på seg"
+      ],
+      "d": 2
+    }
+  ]
+}

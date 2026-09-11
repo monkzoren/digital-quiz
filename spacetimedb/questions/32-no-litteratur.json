@@ -1,0 +1,307 @@
+{
+  "topic": "Litteratur & eventyr",
+  "icon": "📚",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvem skrev skuespillet Et dukkehjem?",
+      "a": [
+        "Henrik Ibsen",
+        "Bjørnstjerne Bjørnson",
+        "Knut Hamsun",
+        "Alexander Kielland"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter hovedpersonen i Et dukkehjem?",
+      "a": [
+        "Nora",
+        "Hedda",
+        "Solveig",
+        "Kristin"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev Peer Gynt?",
+      "a": [
+        "Henrik Ibsen",
+        "Edvard Grieg",
+        "Henrik Wergeland",
+        "Jonas Lie"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem venter trofast på Peer Gynt?",
+      "a": [
+        "Solveig",
+        "Anitra",
+        "Åse",
+        "Ingrid"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev romanen Sult?",
+      "a": [
+        "Knut Hamsun",
+        "Sigrid Undset",
+        "Arne Garborg",
+        "Amalie Skram"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev trilogien Kristin Lavransdatter?",
+      "a": [
+        "Sigrid Undset",
+        "Amalie Skram",
+        "Cora Sandel",
+        "Camilla Collett"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk forfatter fikk Nobelprisen i litteratur i 1928?",
+      "a": [
+        "Sigrid Undset",
+        "Knut Hamsun",
+        "Bjørnstjerne Bjørnson",
+        "Henrik Ibsen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem var den første nordmannen som fikk Nobelprisen i litteratur, i 1903?",
+      "a": [
+        "Bjørnstjerne Bjørnson",
+        "Knut Hamsun",
+        "Henrik Ibsen",
+        "Sigrid Undset"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem samlet og ga ut de norske folkeeventyrene?",
+      "a": [
+        "Asbjørnsen og Moe",
+        "Ibsen og Bjørnson",
+        "Aasen og Vinje",
+        "Egner og Prøysen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket eventyr handler om tre bukker som skal til seters?",
+      "a": [
+        "De tre bukkene Bruse",
+        "Askeladden",
+        "Smørbukk",
+        "Gutten og fanden"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem bor under brua i De tre bukkene Bruse?",
+      "a": [
+        "Et troll",
+        "En bjørn",
+        "En rev",
+        "En kjempe"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Askeladdens to brødre?",
+      "a": [
+        "Per og Pål",
+        "Ola og Kari",
+        "Jo og Hans",
+        "Truls og Tor"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva roper Askeladden når han finner noe på veien?",
+      "a": [
+        "Jeg fant, jeg fant",
+        "Se her, se her",
+        "Så heldig jeg er",
+        "Mitt, mitt"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter slottet i eventyret som ligger øst for sol og vest for måne?",
+      "a": [
+        "Soria Moria",
+        "Gyldenborg",
+        "Eventyrborgen",
+        "Kongsgården"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev Sofies verden?",
+      "a": [
+        "Jostein Gaarder",
+        "Jo Nesbø",
+        "Erlend Loe",
+        "Lars Saabye Christensen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem skrev bøkene om politietterforskeren Harry Hole?",
+      "a": [
+        "Jo Nesbø",
+        "Jostein Gaarder",
+        "Anne Holt",
+        "Karin Fossum"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilket band spilte Jo Nesbø før forfatterkarrieren?",
+      "a": [
+        "Di Derre",
+        "Vamp",
+        "DDE",
+        "Postgirobygget"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem skrev det selvbiografiske verket Min kamp i seks bind?",
+      "a": [
+        "Karl Ove Knausgård",
+        "Erlend Loe",
+        "Tomas Espedal",
+        "Dag Solstad"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev Naiv. Super?",
+      "a": [
+        "Erlend Loe",
+        "Jostein Gaarder",
+        "Lars Saabye Christensen",
+        "Jo Nesbø"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev Dyrene i Hakkebakkeskogen?",
+      "a": [
+        "Thorbjørn Egner",
+        "Alf Prøysen",
+        "Anne-Cath. Vestly",
+        "Ivo Caprino"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem er skurken i Hakkebakkeskogen?",
+      "a": [
+        "Mikkel Rev",
+        "Klatremus",
+        "Morten Skogmus",
+        "Bamsefar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva handler Egners lov om i Kardemomme by?",
+      "a": [
+        "At man ikke skal plage andre og ellers være grei",
+        "At alle må jobbe",
+        "At man skal be til Gud",
+        "At barn må legge seg tidlig"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter politimesteren i Kardemomme by?",
+      "a": [
+        "Bastian",
+        "Tobias",
+        "Kasper",
+        "Jesper"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev Karius og Baktus?",
+      "a": [
+        "Thorbjørn Egner",
+        "Alf Prøysen",
+        "Torbjørn Nilsen",
+        "Anne-Cath. Vestly"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva bor Karius og Baktus i?",
+      "a": [
+        "Tennene til Jens",
+        "En skogshule",
+        "Et gammelt hus",
+        "En brønn"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem skrev bøkene om Teskjekjerringa?",
+      "a": [
+        "Alf Prøysen",
+        "Thorbjørn Egner",
+        "Anne-Cath. Vestly",
+        "Astrid Lindgren"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev Mormor og de åtte ungene i skogen?",
+      "a": [
+        "Anne-Cath. Vestly",
+        "Alf Prøysen",
+        "Thorbjørn Egner",
+        "Torbjørn Egner"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev diktet Terje Vigen?",
+      "a": [
+        "Henrik Ibsen",
+        "Henrik Wergeland",
+        "Nordahl Grieg",
+        "Herman Wildenvey"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk forfatter er mest spilt på teaterscener i verden?",
+      "a": [
+        "Henrik Ibsen",
+        "Jon Fosse",
+        "Bjørnstjerne Bjørnson",
+        "Knut Hamsun"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev Beatles og Halvbroren?",
+      "a": [
+        "Lars Saabye Christensen",
+        "Karl Ove Knausgård",
+        "Roy Jacobsen",
+        "Erlend Loe"
+      ],
+      "d": 3
+    }
+  ]
+}

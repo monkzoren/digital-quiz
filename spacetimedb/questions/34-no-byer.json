@@ -1,0 +1,307 @@
+{
+  "topic": "Byer & lokalkunnskap",
+  "icon": "🏙️",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilken norsk by kalles regnbyen?",
+      "a": [
+        "Bergen",
+        "Stavanger",
+        "Ålesund",
+        "Bodø"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange fjell sier man at Bergen ligger mellom?",
+      "a": [
+        "Syv",
+        "Fem",
+        "Tre",
+        "Ni"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter banen opp til utsiktspunktet i Bergen?",
+      "a": [
+        "Fløibanen",
+        "Ulriksbanen",
+        "Fjellheisen",
+        "Skansen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken bydel i Bergen står på UNESCOs verdensarvliste?",
+      "a": [
+        "Bryggen",
+        "Nordnes",
+        "Sandviken",
+        "Møhlenpris"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva het Oslo fra 1624 til 1925?",
+      "a": [
+        "Christiania",
+        "Bjørvika",
+        "Akersborg",
+        "Osloby"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken konge ga Oslo navnet Christiania?",
+      "a": [
+        "Christian IV",
+        "Christian II",
+        "Frederik III",
+        "Haakon V"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Oslos paradegate fra Slottet til Østbanen?",
+      "a": [
+        "Karl Johans gate",
+        "Bogstadveien",
+        "Grensen",
+        "Storgata"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken by er kjent som oljehovedstaden i Norge?",
+      "a": [
+        "Stavanger",
+        "Bergen",
+        "Kristiansund",
+        "Hammerfest"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter domkirken i Trondheim?",
+      "a": [
+        "Nidarosdomen",
+        "Trondheimskatedralen",
+        "Olavskirken",
+        "Vår Frue"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva het Trondheim i middelalderen?",
+      "a": [
+        "Nidaros",
+        "Trondhjemsborg",
+        "Kaupang",
+        "Skiringssal"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by ble gjenoppbygd i jugendstil etter en storbrann i 1904?",
+      "a": [
+        "Ålesund",
+        "Molde",
+        "Kristiansund",
+        "Bodø"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by har Norges største dyrepark?",
+      "a": [
+        "Kristiansand",
+        "Bergen",
+        "Trondheim",
+        "Stavanger"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem er den berømte sjørøveren i Kristiansand dyrepark?",
+      "a": [
+        "Kaptein Sabeltann",
+        "Kaptein Krok",
+        "Svartskjegg",
+        "Kaptein Blodhud"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk bergstad står på UNESCOs verdensarvliste?",
+      "a": [
+        "Røros",
+        "Rjukan",
+        "Kongsberg",
+        "Notodden"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva var Røros kjent for i flere hundre år?",
+      "a": [
+        "Kobberverk",
+        "Sølvgruver",
+        "Jernverk",
+        "Gullvasking"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk by er kjent for bergkunst fra steinalderen på verdensarvlisten?",
+      "a": [
+        "Alta",
+        "Bodø",
+        "Vadsø",
+        "Mo i Rana"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket industristed på verdensarvlisten er kjent for tungtvann?",
+      "a": [
+        "Rjukan",
+        "Odda",
+        "Sauda",
+        "Årdal"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Norges eldste universitet, grunnlagt i 1811?",
+      "a": [
+        "Universitetet i Oslo",
+        "NTNU",
+        "Universitetet i Bergen",
+        "UiT"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by huser NTNU?",
+      "a": [
+        "Trondheim",
+        "Oslo",
+        "Bergen",
+        "Tromsø"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter fornøyelsesparken like utenfor Oslo?",
+      "a": [
+        "TusenFryd",
+        "Hunderfossen",
+        "Kongeparken",
+        "Bø Sommarland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken fornøyelsespark ligger ved Lillehammer og har troll?",
+      "a": [
+        "Hunderfossen",
+        "TusenFryd",
+        "Kongeparken",
+        "Dyreparken"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter det berømte torget i Bergen der fisk selges?",
+      "a": [
+        "Fisketorget",
+        "Torgallmenningen",
+        "Bryggetorget",
+        "Sjøboden"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk by ligger lengst øst?",
+      "a": [
+        "Vardø",
+        "Kirkenes",
+        "Vadsø",
+        "Hammerfest"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Norges nordligste by med bystatus fra 1789?",
+      "a": [
+        "Hammerfest",
+        "Tromsø",
+        "Honningsvåg",
+        "Vardø"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket landemerke i Tromsø kalles Ishavskatedralen?",
+      "a": [
+        "Tromsdalen kirke",
+        "Tromsø domkirke",
+        "Polaria",
+        "Fjellheisen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk stavkirke står på UNESCOs verdensarvliste?",
+      "a": [
+        "Urnes stavkirke",
+        "Heddal stavkirke",
+        "Borgund stavkirke",
+        "Lom stavkirke"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er Operaen i Oslo spesielt kjent for?",
+      "a": [
+        "At publikum kan gå på taket",
+        "At den flyter på vannet",
+        "At den er bygd i tre",
+        "At den roterer"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken bro forbinder Norge og Sverige ved Svinesund?",
+      "a": [
+        "Svinesundbrua",
+        "Øresundbrua",
+        "Nordbrua",
+        "Grensebrua"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter hoppbakken i Trondheim?",
+      "a": [
+        "Granåsen",
+        "Lysgårdsbakken",
+        "Vikersund",
+        "Midtstua"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Norges travleste flyplass?",
+      "a": [
+        "Oslo lufthavn Gardermoen",
+        "Bergen Flesland",
+        "Stavanger Sola",
+        "Trondheim Værnes"
+      ],
+      "d": 1
+    }
+  ]
+}

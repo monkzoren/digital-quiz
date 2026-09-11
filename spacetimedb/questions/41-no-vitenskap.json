@@ -1,0 +1,307 @@
+{
+  "topic": "Vitenskap & teknologi",
+  "icon": "🔬",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva er det kjemiske symbolet for vann?",
+      "a": [
+        "H2O",
+        "CO2",
+        "O2",
+        "NaCl"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange bein har en voksen menneskekropp?",
+      "a": [
+        "206",
+        "186",
+        "226",
+        "150"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken planet er nærmest sola?",
+      "a": [
+        "Merkur",
+        "Venus",
+        "Mars",
+        "Jorden"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken planet kalles den røde planeten?",
+      "a": [
+        "Mars",
+        "Venus",
+        "Jupiter",
+        "Merkur"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken gass er mest utbredt i jordas atmosfære?",
+      "a": [
+        "Nitrogen",
+        "Oksygen",
+        "Karbondioksid",
+        "Argon"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er det kjemiske symbolet for gull?",
+      "a": [
+        "Au",
+        "Ag",
+        "Go",
+        "Gu"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket organ er kroppens største?",
+      "a": [
+        "Huden",
+        "Leveren",
+        "Hjernen",
+        "Lungene"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles cellenes kraftverk?",
+      "a": [
+        "Mitokondriene",
+        "Cellekjernen",
+        "Ribosomene",
+        "Golgiapparatet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor fort beveger lyset seg, omtrent?",
+      "a": [
+        "300 000 km i sekundet",
+        "30 000 km i sekundet",
+        "3 000 km i sekundet",
+        "3 millioner km i sekundet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er det hardeste naturlige stoffet?",
+      "a": [
+        "Diamant",
+        "Titan",
+        "Kvarts",
+        "Stål"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem formulerte relativitetsteorien?",
+      "a": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Niels Bohr",
+        "Max Planck"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem beskrev tyngdekraften etter et eple ifølge legenden?",
+      "a": [
+        "Isaac Newton",
+        "Galileo Galilei",
+        "Einstein",
+        "Kepler"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva står DNA for på norsk, forkortet?",
+      "a": [
+        "Deoksyribonukleinsyre",
+        "Dobbeltnukleinsyre",
+        "Digital nukleinsyre",
+        "Desoksyaminosyre"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Ved hvilken temperatur er celsius og fahrenheit like?",
+      "a": [
+        "Minus 40 grader",
+        "0 grader",
+        "32 grader",
+        "100 grader"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter prosessen der planter lager energi fra sollys?",
+      "a": [
+        "Fotosyntese",
+        "Respirasjon",
+        "Osmose",
+        "Fermentering"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange bit er det i en byte?",
+      "a": [
+        "Åtte",
+        "Fire",
+        "Seks",
+        "Ti"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva står CPU for?",
+      "a": [
+        "Central Processing Unit",
+        "Computer Power Unit",
+        "Central Program Unit",
+        "Core Processing Unit"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket programmeringsspråk er oppkalt etter en slange?",
+      "a": [
+        "Python",
+        "Cobra",
+        "Viper",
+        "Java"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket selskap lanserte den første iPhonen?",
+      "a": [
+        "Apple",
+        "Samsung",
+        "Nokia",
+        "Motorola"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilket år kom den første iPhonen?",
+      "a": [
+        "2007",
+        "2005",
+        "2010",
+        "2003"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva står www for?",
+      "a": [
+        "World Wide Web",
+        "Wide World Web",
+        "World Web Wide",
+        "Web World Wide"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket dyr er maskoten til operativsystemet Linux?",
+      "a": [
+        "En pingvin",
+        "En rev",
+        "En gnu",
+        "En katt"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er verdens mest utbredte blodtype?",
+      "a": [
+        "O positiv",
+        "A negativ",
+        "AB positiv",
+        "B negativ"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor mange hjertekamre har mennesket?",
+      "a": [
+        "Fire",
+        "To",
+        "Tre",
+        "Seks"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva måler Richters skala?",
+      "a": [
+        "Jordskjelv",
+        "Vindstyrke",
+        "Radioaktivitet",
+        "Lydstyrke"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva måler Scoville-skalaen?",
+      "a": [
+        "Styrken i chili",
+        "Surhetsgrad",
+        "Sukkerinnhold",
+        "Alkoholstyrke"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem oppdaget penicillin?",
+      "a": [
+        "Alexander Fleming",
+        "Louis Pasteur",
+        "Robert Koch",
+        "Marie Curie"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem var den første kvinnen som fikk nobelpris?",
+      "a": [
+        "Marie Curie",
+        "Rosalind Franklin",
+        "Ada Lovelace",
+        "Dorothy Hodgkin"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor lang tid bruker lyset fra sola til jorda?",
+      "a": [
+        "Rundt åtte minutter",
+        "Rundt ett sekund",
+        "Rundt én time",
+        "Rundt ett døgn"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter jordas eneste naturlige måne?",
+      "a": [
+        "Månen",
+        "Titan",
+        "Europa",
+        "Phobos"
+      ],
+      "d": 1
+    }
+  ]
+}

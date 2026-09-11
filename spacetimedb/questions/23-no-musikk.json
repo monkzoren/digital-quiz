@@ -1,0 +1,307 @@
+{
+  "topic": "Norsk musikk",
+  "icon": "🎸",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilken norsk gruppe hadde verdenshit med Take On Me?",
+      "a": [
+        "a-ha",
+        "Röyksopp",
+        "Madcon",
+        "Bobbysocks"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem er vokalist i a-ha?",
+      "a": [
+        "Morten Harket",
+        "Magne Furuholmen",
+        "Paul Waaktaar-Savoy",
+        "Sivert Høyem"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk DJ står bak Firestone?",
+      "a": [
+        "Kygo",
+        "Alan Walker",
+        "Matoma",
+        "Cashmere Cat"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem komponerte musikken til Peer Gynt?",
+      "a": [
+        "Edvard Grieg",
+        "Johan Svendsen",
+        "Ole Bull",
+        "Rikard Nordraak"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilken by ble Edvard Grieg født?",
+      "a": [
+        "Bergen",
+        "Oslo",
+        "Trondheim",
+        "Ålesund"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Griegs hjem utenfor Bergen?",
+      "a": [
+        "Troldhaugen",
+        "Lysøen",
+        "Bjerkebæk",
+        "Aulestad"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken musikksjanger ble Norge internasjonalt beryktet for på 1990-tallet?",
+      "a": [
+        "Black metal",
+        "Trance",
+        "Country",
+        "Reggae"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem skrev teksten til nasjonalsangen Ja, vi elsker dette landet?",
+      "a": [
+        "Bjørnstjerne Bjørnson",
+        "Henrik Ibsen",
+        "Henrik Wergeland",
+        "Ivar Aasen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem komponerte melodien til Ja, vi elsker dette landet?",
+      "a": [
+        "Rikard Nordraak",
+        "Edvard Grieg",
+        "Ole Bull",
+        "Johan Halvorsen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk fiolinvirtuos fra 1800-tallet bygde et eventyrslott på Lysøen?",
+      "a": [
+        "Ole Bull",
+        "Edvard Grieg",
+        "Johan Svendsen",
+        "Christian Sinding"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem synger Mitt lille land?",
+      "a": [
+        "Ole Paus",
+        "Halvdan Sivertsen",
+        "Bjørn Eidsvåg",
+        "Lars Lillo-Stenberg"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken artist står bak Faded og vokste opp i Bergen?",
+      "a": [
+        "Alan Walker",
+        "Kygo",
+        "Seeb",
+        "Astrid S"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk elektronikaduo står bak albumet Melody A.M.?",
+      "a": [
+        "Röyksopp",
+        "Seeb",
+        "Lemaitre",
+        "Datarock"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken artist fra Ålesund slo gjennom med Don't Kill My Vibe?",
+      "a": [
+        "Sigrid",
+        "Astrid S",
+        "Aurora",
+        "Dagny"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk artist er kjent for Runaway og Half The World Away?",
+      "a": [
+        "Aurora",
+        "Sigrid",
+        "Ane Brun",
+        "Marion Raven"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk duo hadde hit med Beggin?",
+      "a": [
+        "Madcon",
+        "Nico & Vinz",
+        "Envy",
+        "Karpe"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk hiphop-duo het tidligere Karpe Diem?",
+      "a": [
+        "Karpe",
+        "Nico & Vinz",
+        "Madcon",
+        "Gatas Parlament"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Vamps mest kjente låt, sunget på haugesundsdialekt?",
+      "a": [
+        "Tir n'a noir",
+        "Månemannen",
+        "Liten fuggel",
+        "Alt du ville ha"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev visa Du ska få en dag i mårå?",
+      "a": [
+        "Alf Prøysen",
+        "Alf Cranner",
+        "Erik Bye",
+        "Lillebjørn Nilsen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken visesanger skrev Sommerfuggel i vinterland?",
+      "a": [
+        "Halvdan Sivertsen",
+        "Jan Eggum",
+        "Øystein Sunde",
+        "Finn Kalvik"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk band ledes av Bjarne Brøndbo og synger på trøndersk?",
+      "a": [
+        "DDE",
+        "Vamps",
+        "Postgirobygget",
+        "CC Cowboys"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk rocker er kjent for Eg ser?",
+      "a": [
+        "Bjørn Eidsvåg",
+        "Åge Aleksandersen",
+        "Jan Eggum",
+        "Jonas Fjeld"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket instrument er hardingfela en variant av?",
+      "a": [
+        "Fiolin",
+        "Cello",
+        "Gitar",
+        "Harpe"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva skiller hardingfela fra en vanlig fele?",
+      "a": [
+        "Den har understrenger som klinger med",
+        "Den har seks buer",
+        "Den spilles med fingrene",
+        "Den har ingen hals"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter den tradisjonelle norske dansen i tretakt?",
+      "a": [
+        "Springar",
+        "Halling",
+        "Reinlender",
+        "Polka"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk gruppe ga ut albumet Kvelertak i 2010?",
+      "a": [
+        "Kvelertak",
+        "Turbonegro",
+        "Motorpsycho",
+        "Dimmu Borgir"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk artist synger Kveldssong for deg og meg?",
+      "a": [
+        "Odd Nordstoga",
+        "Sondre Justad",
+        "Stein Torleif Bjella",
+        "Bjørn Eidsvåg"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken musikkfestival arrangeres på Bergenhus festning?",
+      "a": [
+        "Bergenfest",
+        "Øyafestivalen",
+        "Slottsfjell",
+        "Palmesus"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken festival arrangeres på Tøyen i Oslo hver sommer?",
+      "a": [
+        "Øyafestivalen",
+        "Bergenfest",
+        "Palmesus",
+        "Trænafestivalen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk band ble dannet i Trondheim i 1989 og har gitt ut over tjue album?",
+      "a": [
+        "Motorpsycho",
+        "Kvelertak",
+        "DumDum Boys",
+        "Turbonegro"
+      ],
+      "d": 3
+    }
+  ]
+}

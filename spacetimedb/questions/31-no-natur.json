@@ -1,0 +1,307 @@
+{
+  "topic": "Natur & friluftsliv",
+  "icon": "🌲",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva heter Norges nasjonalfugl?",
+      "a": [
+        "Fossekallen",
+        "Ørnen",
+        "Lundefuglen",
+        "Rypa"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er Norges nasjonalblomst?",
+      "a": [
+        "Bergfrue",
+        "Blåveis",
+        "Hvitveis",
+        "Røsslyng"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilke fire store rovdyr har Norge på fastlandet?",
+      "a": [
+        "Bjørn, ulv, gaupe og jerv",
+        "Bjørn, ulv, rev og grevling",
+        "Isbjørn, ulv, gaupe og jerv",
+        "Ulv, gaupe, rev og oter"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr kalles skogens konge?",
+      "a": [
+        "Elgen",
+        "Bjørnen",
+        "Ulven",
+        "Hjorten"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter nordlyset på latin?",
+      "a": [
+        "Aurora borealis",
+        "Aurora australis",
+        "Lumen polaris",
+        "Nordica lux"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva skaper nordlyset?",
+      "a": [
+        "Partikler fra sola som treffer atmosfæren",
+        "Måneskinn i skyene",
+        "Refleksjon fra snøen",
+        "Elektrisitet i bakken"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor i Norge kan man oppleve midnattssol?",
+      "a": [
+        "Nord for polarsirkelen",
+        "Sør for Dovre",
+        "Bare på Svalbard",
+        "Overalt om sommeren"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er allemannsretten?",
+      "a": [
+        "Retten til å ferdes og oppholde seg i utmark",
+        "Retten til å jakte overalt",
+        "Retten til gratis hytte",
+        "Retten til å fiske i hagedammer"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor langt fra nærmeste bebodde hus må man sette opp telt i utmark?",
+      "a": [
+        "Minst 150 meter",
+        "Minst 50 meter",
+        "Minst 500 meter",
+        "Minst 1 kilometer"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor lenge kan man vanligvis telte på samme sted i utmark uten å spørre grunneier?",
+      "a": [
+        "To døgn",
+        "Én natt",
+        "En uke",
+        "Ubegrenset"
+      ],
+      "d": 3
+    },
+    {
+      "q": "I hvilken periode er det generelt bålforbud i eller nær skogsmark?",
+      "a": [
+        "15. april til 15. september",
+        "1. mai til 1. august",
+        "1. juni til 1. oktober",
+        "Hele året"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges eldste nasjonalpark, opprettet i 1962?",
+      "a": [
+        "Rondane",
+        "Jotunheimen",
+        "Hardangervidda",
+        "Dovrefjell"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor i Norge finnes det moskus?",
+      "a": [
+        "Dovrefjell",
+        "Hardangervidda",
+        "Finnmarksvidda",
+        "Lofoten"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr er kjent for store bestandssvingninger og lemenår?",
+      "a": [
+        "Lemen",
+        "Reven",
+        "Haren",
+        "Ekornet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken fugl med fargerikt nebb hekker i norske fuglefjell?",
+      "a": [
+        "Lunde",
+        "Måke",
+        "Skarv",
+        "Terne"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket tre er vanligst i norsk skog?",
+      "a": [
+        "Gran",
+        "Furu",
+        "Bjørk",
+        "Eik"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor finnes Europas siste store villreinstamme?",
+      "a": [
+        "Hardangervidda",
+        "Dovrefjell",
+        "Finnmarksvidda",
+        "Jotunheimen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva står DNT for?",
+      "a": [
+        "Den Norske Turistforening",
+        "Det Norske Turlag",
+        "Den Norske Turforening",
+        "Dugnad og Natur i Turmark"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva betyr en rød T malt på en stein i fjellet?",
+      "a": [
+        "Den merker en turrute",
+        "Den advarer mot ras",
+        "Den viser til nærmeste vei",
+        "Den markerer eiendomsgrense"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er en sherpatrapp?",
+      "a": [
+        "Steintrapp bygget i bratt turterreng",
+        "En trapp inne på en fjellstue",
+        "En stige opp en isbre",
+        "En trapp opp til en hoppbakke"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er Norges største rovdyr på Svalbard?",
+      "a": [
+        "Isbjørn",
+        "Brunbjørn",
+        "Jerv",
+        "Polarrev"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva slags landskapsform er en fjord dannet av?",
+      "a": [
+        "Isbreer",
+        "Jordskjelv",
+        "Vulkanutbrudd",
+        "Vinderosjon"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles perioden i nord der sola ikke står opp i det hele tatt?",
+      "a": [
+        "Mørketiden",
+        "Skumringstiden",
+        "Polarsommeren",
+        "Vintersolverv"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er Norges mest utbredte ville bær, ofte plukket på myr?",
+      "a": [
+        "Multe",
+        "Blåbær",
+        "Tyttebær",
+        "Krekling"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket sjødyr kan man se på hvalsafari i Nord-Norge om vinteren?",
+      "a": [
+        "Spekkhogger",
+        "Delfin",
+        "Hvithai",
+        "Sjøhest"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er en juv?",
+      "a": [
+        "Et trangt, dypt gjel",
+        "En liten øy",
+        "En fjelltopp",
+        "En isbre"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva kalles fjellkjeden som deler Norge og Sverige?",
+      "a": [
+        "Kjølen",
+        "Dovrefjell",
+        "Jotunheimen",
+        "Saltfjellet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva slags vær kalles mildvær midt på vinteren?",
+      "a": [
+        "Mildvær eller tøvær",
+        "Snøstorm",
+        "Kuling",
+        "Frostrøyk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken årstid får hele Svalbard midnattssol?",
+      "a": [
+        "Sommeren",
+        "Vinteren",
+        "Høsten",
+        "Våren"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er et fjellvettregel-prinsipp?",
+      "a": [
+        "Å vende i tide, det er ingen skam å snu",
+        "Å gå alene for å spare tid",
+        "Å aldri ta med kart",
+        "Å følge nærmeste spor"
+      ],
+      "d": 1
+    }
+  ]
+}

@@ -390,8 +390,27 @@ $('profile-avatar').addEventListener('click', () => openAvatarSelect(() => showO
 function fillThemeSelect(sel: HTMLSelectElement) {
   sel.innerHTML = C.PUBS.map((p, i) => `<option value="${i}">${p}</option>`).join('');
 }
+function fillLangSelect(sel: HTMLSelectElement, withAny = true) {
+  sel.innerHTML = C.LANGS.filter(l => withAny || l.code !== C.LANG_ANY)
+    .map(l => `<option value="${l.code}">${l.flag} ${l.label}</option>`)
+    .join('');
+}
 fillThemeSelect($('c-theme') as HTMLSelectElement);
 fillThemeSelect($('s-theme') as HTMLSelectElement);
+fillLangSelect($('c-lang') as HTMLSelectElement);
+fillLangSelect($('s-lang') as HTMLSelectElement);
+fillLangSelect($('qw-topic-lang') as HTMLSelectElement, false);
+// A Norwegian browser opens on a Norwegian pub without hunting for the setting.
+($('c-lang') as HTMLSelectElement).value = C.defaultLang();
+($('qw-topic-lang') as HTMLSelectElement).value = C.defaultLang();
+// The venue list follows the language: a Norwegian night gets the Norwegian
+// pubs up front (the other venues are still there, one scroll away).
+function preferVenueFor(lang: string) {
+  const sel = $('c-theme') as HTMLSelectElement;
+  sel.value = String(lang === 'nb' ? 3 : 0);
+}
+preferVenueFor(C.defaultLang());
+$('c-lang').addEventListener('change', () => preferVenueFor(($('c-lang') as HTMLSelectElement).value));
 
 $('btn-create').addEventListener('click', () => withName(() => $('create-panel').classList.remove('hidden')));
 $('c-cancel').addEventListener('click', () => $('create-panel').classList.add('hidden'));
@@ -407,6 +426,7 @@ $('c-go').addEventListener('click', () => {
     betSecs: num('c-bet', C.BET_SECS_MIN, C.BET_SECS_MAX, C.BET_SECS_DEFAULT),
     answerSecs: num('c-answer', C.ANSWER_SECS_MIN, C.ANSWER_SECS_MAX, C.ANSWER_SECS_DEFAULT),
     teamMode: ($('c-teams') as HTMLInputElement).checked,
+    lang: ($('c-lang') as HTMLSelectElement).value,
   }));
   $('create-panel').classList.add('hidden');
 });
@@ -533,7 +553,7 @@ function refreshLobby(room: Lobby, me: Player) {
   }
   // settings (host edits, everyone sees the summary)
   const settings = $('lobby-settings');
-  const fields = ['s-theme', 's-questions', 's-bet', 's-answer', 's-teams'];
+  const fields = ['s-lang', 's-theme', 's-questions', 's-bet', 's-answer', 's-teams'];
   for (const id of fields) ($(id) as HTMLInputElement).disabled = !host;
   if (!settingsDirty || lastRoomIdShown !== room.id) {
     ($('s-theme') as HTMLSelectElement).value = String(room.theme);
@@ -541,9 +561,12 @@ function refreshLobby(room: Lobby, me: Player) {
     ($('s-bet') as HTMLInputElement).value = String(room.betSecs);
     ($('s-answer') as HTMLInputElement).value = String(room.answerSecs);
     ($('s-teams') as HTMLInputElement).checked = room.teamMode;
+    ($('s-lang') as HTMLSelectElement).value = room.lang;
   }
   lastRoomIdShown = room.id;
-  const topics = allTopics();
+  // Only topics the room can actually draw from: a Norwegian night never
+  // shows (or draws) an English pack.
+  const topics = allTopics().filter(t => room.lang === C.LANG_ANY || t.lang === room.lang);
   const chosen = new Set(room.topics.map(String));
   const pills = $('s-topics');
   pills.innerHTML = '';
@@ -565,7 +588,10 @@ function refreshLobby(room: Lobby, me: Player) {
     pills.appendChild(pill);
   }
   const pool = topics.filter(t => chosen.size === 0 || chosen.has(String(t.id))).reduce((n, t) => n + t.questionCount, 0);
-  $('lobby-summary').textContent = `${room.questionCount} QUESTIONS FROM A POOL OF ${pool} · STAKES ${room.betSecs}S · ANSWERS ${room.answerSecs}S${room.teamMode ? ' · TEAMS' : ''}`;
+  const lang = C.langLabel(room.lang);
+  $('lobby-summary').textContent =
+    `${lang.flag} ${lang.label} · ${room.questionCount} QUESTIONS FROM A POOL OF ${pool} · ` +
+    `STAKES ${room.betSecs}S · ANSWERS ${room.answerSecs}S${room.teamMode ? ' · TEAMS' : ''}`;
   settings.classList.toggle('hidden', room.status === C.L_RUNNING);
 
   const unready = players.filter(p => !p.ready).length;
@@ -583,6 +609,7 @@ for (const id of ['s-questions', 's-bet', 's-answer']) {
   $(id).addEventListener('blur', () => { settingsDirty = false; });
 }
 $('s-theme').addEventListener('change', pushSettings);
+$('s-lang').addEventListener('change', pushSettings);
 $('s-teams').addEventListener('change', pushSettings);
 function pushSettings() {
   const room = myRoom();
@@ -597,6 +624,7 @@ function pushSettings() {
     answerSecs: num('s-answer', C.ANSWER_SECS_MIN, C.ANSWER_SECS_MAX, room.answerSecs),
     teamMode: ($('s-teams') as HTMLInputElement).checked,
     theme: Number(($('s-theme') as HTMLSelectElement).value),
+    lang: ($('s-lang') as HTMLSelectElement).value,
   }));
 }
 $('copy-link').addEventListener('click', () => {
@@ -669,11 +697,19 @@ const stakeCap = (room: Lobby, me: Player) => {
 function refreshHud(room: Lobby, me: Player) {
   showOverlay(null);
   hud.classList.remove('hidden');
+  const T = C.tr(room.lang);
   const final = room.questionIdx >= room.questionCount - 1;
   $('hud-pub').textContent = (C.PUBS[room.theme] ?? 'THE PUB').toUpperCase();
-  $('hud-q').textContent = room.phase === C.PH_INTRO ? 'WARMING UP' : `Q ${room.questionIdx + 1}/${room.questionCount}${final ? ' · LAST ORDERS' : ''}`;
+  $('hud-q').textContent = room.phase === C.PH_INTRO
+    ? T.warmingUp
+    : `${T.question} ${room.questionIdx + 1}/${room.questionCount}${final ? ` · ${T.lastOrders}` : ''}`;
   $('hud-mc').textContent = room.mcText ? `“${room.mcText}”` : '';
-  $('wallet-val').textContent = String(me.credits);
+  $('hud-wallet').innerHTML = `${T.wallet} <b id="wallet-val">${me.credits}</b>¢`;
+  ($('stake-min') as HTMLButtonElement).textContent = T.min;
+  ($('stake-half') as HTMLButtonElement).textContent = T.half;
+  ($('stake-max') as HTMLButtonElement).textContent = T.max;
+  ($('btn-esc') as HTMLButtonElement).textContent = T.menu;
+  (chatInput as HTMLInputElement).placeholder = T.chatPlaceholder;
   const phaseKey = `${room.id}|${room.questionIdx}|${room.phase}|${room.qOptions.join('|')}|${room.qCorrect}|${me.answer}|${me.stake}|${me.credits}`;
   const changed = phaseKey !== lastPhaseKey;
   lastPhaseKey = phaseKey;
@@ -688,11 +724,11 @@ function refreshHud(room: Lobby, me: Player) {
     options.classList.add('hidden');
     result.classList.add('hidden');
     if (room.phase === C.PH_INTRO) {
-      kicker.textContent = 'WELCOME';
-      title.textContent = `${room.questionCount} questions. ${C.START_CREDITS}¢ each. Stake on the topic, then answer. The final question pays double.`;
+      kicker.textContent = T.welcome;
+      title.textContent = T.intro(room.questionCount, C.START_CREDITS);
     } else if (room.phase === C.PH_BETTING) {
-      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${C.DIFFICULTY[room.qDifficulty]} · PAYS ${(room.qPayoutPct / 100).toFixed(1)}×`;
-      title.textContent = final ? 'Last orders — stake anything up to the lot.' : 'How well do you know this topic? Stake your credits.';
+      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${T.difficulty[room.qDifficulty]} · ${T.pays} ${(room.qPayoutPct / 100).toFixed(1)}×`;
+      title.textContent = final ? T.betPromptFinal : T.betPrompt;
       stakePanel.classList.remove('hidden');
       const range = $('stake-range') as HTMLInputElement;
       const cap = stakeCap(room, me);
@@ -701,9 +737,9 @@ function refreshHud(room: Lobby, me: Player) {
       range.step = '1';
       if (!stakeDragging) range.value = String(me.stake);
       $('stake-val').innerHTML = `${range.value}<small>¢</small>`;
-      $('stake-note').textContent = `WIN +${Math.round((Number(range.value) * room.qPayoutPct) / 100)}¢ · LOSE −${range.value}¢ · WALLET ${me.credits}¢`;
+      $('stake-note').textContent = T.betNote(Math.round((Number(range.value) * room.qPayoutPct) / 100), Number(range.value), me.credits);
     } else if (room.phase === C.PH_ANSWER || room.phase === C.PH_RESULT) {
-      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${C.DIFFICULTY[room.qDifficulty]} · STAKE ${me.stake}¢`;
+      kicker.textContent = `${room.qIcon} ${room.qTopic} · ${T.difficulty[room.qDifficulty]} · ${T.stake} ${me.stake}¢`;
       title.textContent = room.qText;
       options.classList.remove('hidden');
       options.innerHTML = '';
@@ -723,10 +759,10 @@ function refreshHud(room: Lobby, me: Player) {
       if (room.phase === C.PH_RESULT) {
         result.classList.remove('hidden');
         const d = me.lastDelta;
-        const speed = room.fastestName ? ` · FASTEST: ${escapeHtml(room.fastestName)}` : '';
+        const speed = room.fastestName ? ` · ${T.fastest}: ${escapeHtml(room.fastestName)}` : '';
         result.innerHTML = me.answer === C.NO_ANSWER
-          ? `<span class="delta down">NO ANSWER −${me.stake}¢</span>${speed}`
-          : `<span class="delta ${d >= 0 ? 'up' : 'down'}">${me.lastCorrect ? 'CORRECT' : 'WRONG'} ${d >= 0 ? '+' : ''}${d}¢</span>${speed}`;
+          ? `<span class="delta down">${T.noAnswer} −${me.stake}¢</span>${speed}`
+          : `<span class="delta ${d >= 0 ? 'up' : 'down'}">${me.lastCorrect ? T.correct : T.wrong} ${d >= 0 ? '+' : ''}${d}¢</span>${speed}`;
       }
     }
   }
@@ -755,6 +791,7 @@ function refreshHud(room: Lobby, me: Player) {
   st.innerHTML = html;
 
   // self phone banner (you can't see it while away, but it greets you back)
+  $('phone-self').innerHTML = `${T.onPhone}<small>${T.onPhoneSub}</small>`;
   $('phone-self').classList.toggle('hidden', me.attention !== C.ATT_PHONE);
   refreshCallouts(room, me);
 }
@@ -806,7 +843,8 @@ function refreshCallouts(room: Lobby, me: Player) {
       el.onclick = () => call(conn.reducers.callOut({ target: p.identity }));
       layer.appendChild(el);
     }
-    el.textContent = p.attention === C.ATT_PHONE ? `📱 CALL OUT ${p.name}` : `💤 WAKE ${p.name}`;
+    const T = C.tr(room.lang);
+    el.textContent = p.attention === C.ATT_PHONE ? T.callOut(p.name) : T.wake(p.name);
     have.delete(key);
   }
   for (const el of have.values()) el.remove();
@@ -909,7 +947,8 @@ function refreshResults(room: Lobby, me: Player) {
   hud.classList.add('hidden');
   const key = `${room.id}|${room.drawn.length}|${roomPlayers(room.id).length}`;
   const order = standingsOf(room);
-  $('results-title').textContent = room.championName ? `${room.championName.toUpperCase()} TAKES THE POT` : 'LAST ORDERS';
+  const T = C.tr(room.lang);
+  $('results-title').textContent = room.championName ? T.takesThePot(room.championName.toUpperCase()) : T.thatsTheQuiz;
   $('results-sub').textContent = room.championshipLeg !== 0n ? 'CHAMPIONSHIP LEG — THE RESULT HAS GONE TO THE HUB' : (C.PUBS[room.theme] ?? '').toUpperCase();
   const list = $('results-list');
   list.innerHTML = '';
@@ -917,7 +956,7 @@ function refreshResults(room: Lobby, me: Player) {
     const row = document.createElement('div');
     row.className = 'res-row';
     const phone = p.phoneChecks ? ` · 📱 ×${p.phoneChecks} (${Math.round(Number(p.phoneMicros / 1_000_000n))}s)` : '';
-    row.innerHTML = `<span class="pos">${i + 1}</span><div class="face" style="width:28px;height:28px;border-radius:50%;background:${avatarSwatch(p.avatarId)}"></div><span class="name">${escapeHtml(p.name || 'GUEST')}${p.identity.toHexString() === myHex() ? ' (YOU)' : ''}<div class="meta">${p.correct}/${room.questionCount} CORRECT${p.tabs ? ` · ${p.tabs} TAB${p.tabs > 1 ? 'S' : ''}` : ''}${phone}</div></span><span class="cr">${p.credits}¢</span>`;
+    row.innerHTML = `<span class="pos">${i + 1}</span><div class="face" style="width:28px;height:28px;border-radius:50%;background:${avatarSwatch(p.avatarId)}"></div><span class="name">${escapeHtml(p.name || 'GUEST')}${p.identity.toHexString() === myHex() ? ' ★' : ''}<div class="meta">${T.correctOf(p.correct, room.questionCount)}${p.tabs ? ` · ${T.tabs(p.tabs)}` : ''}${phone}</div></span><span class="cr">${p.credits}¢</span>`;
     list.appendChild(row);
   });
   if (key !== resultsShownFor) {
@@ -925,6 +964,8 @@ function refreshResults(room: Lobby, me: Player) {
     renderAwards(room, order);
   }
   const host = isHost(room);
+  $('btn-again').textContent = T.again;
+  $('btn-results-leave').textContent = T.leave;
   $('btn-again').classList.toggle('hidden', !host);
   // XP reveal: my newest quiz_log row for this room
   let mine: any = null;
@@ -933,6 +974,7 @@ function refreshResults(room: Lobby, me: Player) {
   void me;
 }
 function renderAwards(room: Lobby, order: Player[]) {
+  const T = C.tr(room.lang);
   const entries = roomEntries(room.id);
   const awards: { t: string; w: string; s: string }[] = [];
   const byName = (id: string) => order.find(p => p.identity.toHexString() === id)?.name ?? '?';
@@ -949,15 +991,15 @@ function renderAwards(room: Lobby, order: Player[]) {
     swing.set(id, Math.max(swing.get(id) ?? 0, e.delta));
   }
   const fastest = [...speed.entries()].filter(([, s]) => s.n >= 2).sort((a, b) => a[1].ms / a[1].n - b[1].ms / b[1].n)[0];
-  if (fastest) awards.push({ t: 'FASTEST FINGER', w: byName(fastest[0]), s: `${(fastest[1].ms / fastest[1].n / 1000).toFixed(1)}s average` });
+  if (fastest) awards.push({ t: T.awardFastest, w: byName(fastest[0]), s: T.avgSecs((fastest[1].ms / fastest[1].n / 1000).toFixed(1)) });
   const biggest = [...swing.entries()].sort((a, b) => b[1] - a[1])[0];
-  if (biggest && biggest[1] > 0) awards.push({ t: 'BIGGEST WIN', w: byName(biggest[0]), s: `+${biggest[1]}¢ on one question` });
+  if (biggest && biggest[1] > 0) awards.push({ t: T.awardBiggest, w: byName(biggest[0]), s: T.onOneQuestion(biggest[1]) });
   const sharp = [...order].sort((a, b) => b.correct - a.correct)[0];
-  if (sharp && sharp.correct > 0) awards.push({ t: 'SHARPEST', w: sharp.name, s: `${sharp.correct}/${room.questionCount} right` });
+  if (sharp && sharp.correct > 0) awards.push({ t: T.awardSharpest, w: sharp.name, s: T.rightOf(sharp.correct, room.questionCount) });
   const phone = [...order].sort((a, b) => Number(b.phoneMicros - a.phoneMicros))[0];
-  if (phone && phone.phoneMicros > 0n) awards.push({ t: '📱 PHONE ADDICT', w: phone.name, s: `${Math.round(Number(phone.phoneMicros / 1_000_000n))}s on the phone · called out ×${phone.calledOut}` });
+  if (phone && phone.phoneMicros > 0n) awards.push({ t: T.awardPhone, w: phone.name, s: T.secsOnPhone(Math.round(Number(phone.phoneMicros / 1_000_000n)), phone.calledOut) });
   const tab = [...order].sort((a, b) => b.tabs - a.tabs)[0];
-  if (tab && tab.tabs > 0) awards.push({ t: 'ON THE TAB', w: tab.name, s: `${tab.tabs} landlord top-up${tab.tabs > 1 ? 's' : ''}` });
+  if (tab && tab.tabs > 0) awards.push({ t: T.awardTab, w: tab.name, s: T.topUps(tab.tabs) });
   $('awards').innerHTML = awards.map(a => `<div class="award"><div class="t">${a.t}</div><div class="w">${escapeHtml(a.w)}</div><div class="s">${escapeHtml(a.s)}</div></div>`).join('');
 }
 $('btn-again').addEventListener('click', () => call(conn.reducers.startQuiz({})));
@@ -977,18 +1019,23 @@ function refreshWriter() {
   for (const t of topics) {
     const row = document.createElement('div');
     row.className = 'qw-topic' + (t.id === qwTopic ? ' on' : '');
-    row.innerHTML = `<span>${escapeHtml(t.icon)} ${escapeHtml(t.name)}</span><span class="n">${t.questionCount}${t.builtin ? '' : ' · ' + escapeHtml(t.authorName || 'PLAYER')}</span>`;
+    row.innerHTML =
+      `<span>${escapeHtml(t.icon)} ${escapeHtml(t.name)}</span>` +
+      `<span class="n">${C.langLabel(t.lang).flag} ${t.questionCount}${t.builtin ? '' : ' · ' + escapeHtml(t.authorName || 'PLAYER')}</span>`;
     row.onclick = () => { qwTopic = t.id; refreshWriter(); };
     list.appendChild(row);
   }
   const mine = [...conn.db.myQuestions.iter()].sort((a, b) => (a.id > b.id ? -1 : 1));
   const mineEl = $('qw-mine');
   mineEl.innerHTML = mine.length ? '' : '<div class="subtitle">NONE YET</div>';
-  const topicName = new Map(topics.map(t => [String(t.id), t.name]));
+  const topicById = new Map(topics.map(t => [String(t.id), t]));
   for (const q of mine) {
     const row = document.createElement('div');
     row.className = 'qw-mine-row';
-    row.innerHTML = `<span>${escapeHtml(q.text)}<div class="t">${escapeHtml(topicName.get(String(q.topicId)) ?? '?')} · ${C.DIFFICULTY[q.difficulty]} · ✔ ${escapeHtml(q.correct)}</div></span>`;
+    // the difficulty label follows the TOPIC's language, so a Norwegian pack
+    // reads MIDDELS rather than MEDIUM
+    const topic = topicById.get(String(q.topicId));
+    row.innerHTML = `<span>${escapeHtml(q.text)}<div class="t">${escapeHtml(topic?.name ?? '?')} · ${C.tr(topic?.lang ?? 'en').difficulty[q.difficulty]} · ✔ ${escapeHtml(q.correct)}</div></span>`;
     const del = document.createElement('button');
     del.className = 'kick';
     del.textContent = '✕';
@@ -1001,7 +1048,8 @@ function refreshWriter() {
 $('qw-topic-add').addEventListener('click', () => {
   const name = ($('qw-topic-name') as HTMLInputElement).value;
   const icon = ($('qw-topic-icon') as HTMLInputElement).value;
-  call(conn.reducers.addTopic({ name, icon }).then(() => {
+  const lang = ($('qw-topic-lang') as HTMLSelectElement).value;
+  call(conn.reducers.addTopic({ name, icon, lang }).then(() => {
     ($('qw-topic-name') as HTMLInputElement).value = '';
     showToast('TOPIC ADDED', 'var(--green)');
   }));
@@ -1080,8 +1128,8 @@ function buildScene(): Scene {
   const now = performance.now();
   if (!room || !me) {
     return {
-      theme: 0, pubName: C.PUBS[0], phase: C.PH_LOBBY, seats: demoSeats(now), menu: true, hostKey: '',
-      screen: { key: 'menu', kicker: 'TONIGHT', title: 'PUB QUIZ', lines: [], accent: '#ffd60a', footer: 'open a pub or join one' },
+      theme: 0, pubName: C.PUBS[0], phase: C.PH_LOBBY, seats: demoSeats(now), menu: true, hostKey: '', lang: C.defaultLang(),
+      screen: { key: 'menu', kicker: C.tr(C.defaultLang()).scrTonight, title: C.tr(C.defaultLang()).scrPubQuiz, lines: [], accent: '#ffd60a', footer: C.tr(C.defaultLang()).scrOpenOrJoin },
       timeFrac: 1, mc: { text: '', at: 0 },
     };
   }
@@ -1095,23 +1143,24 @@ function buildScene(): Scene {
     };
   });
   let screen: Scene['screen'];
+  const T = C.tr(room.lang);
   const final = room.questionIdx >= room.questionCount - 1;
   if (room.status === C.L_FINISHED) {
     const order = standingsOf(room);
-    screen = { key: `done|${room.drawn.length}`, kicker: 'FINAL STANDINGS', title: room.championName ? `${room.championName} wins!` : 'That’s the quiz', lines: order.slice(0, 4).map((p, i) => `${i + 1}. ${p.name}  ${p.credits}¢`), accent: '#ffd60a', footer: C.PUBS[room.theme] };
+    screen = { key: `done|${room.drawn.length}`, kicker: T.scrFinal, title: room.championName ? T.scrWins(room.championName) : T.scrDone, lines: order.slice(0, 4).map((p, i) => `${i + 1}. ${p.name}  ${p.credits}¢`), accent: '#ffd60a', footer: C.PUBS[room.theme] };
   } else if (room.phase === C.PH_INTRO) {
-    screen = { key: 'intro', kicker: 'WELCOME', title: `${room.questionCount} questions tonight`, lines: [], accent: '#ffd60a', footer: 'phones away' };
+    screen = { key: 'intro', kicker: T.welcome, title: T.scrQuestionsTonight(room.questionCount), lines: [], accent: '#ffd60a', footer: T.scrPhonesAway };
   } else if (room.phase === C.PH_BETTING) {
-    screen = { key: `bet|${room.questionIdx}`, kicker: `Question ${room.questionIdx + 1} of ${room.questionCount}${final ? ' — LAST ORDERS' : ''}`, title: `${room.qIcon} ${room.qTopic}`, lines: [], accent: '#ffb35c', footer: `${C.DIFFICULTY[room.qDifficulty]} · pays ${(room.qPayoutPct / 100).toFixed(1)}× · stakes open` };
+    screen = { key: `bet|${room.questionIdx}`, kicker: `${T.scrQuestionOf(room.questionIdx + 1, room.questionCount)}${final ? T.scrLastOrders : ''}`, title: `${room.qIcon} ${room.qTopic}`, lines: [], accent: '#ffb35c', footer: T.scrStakesOpen(T.difficulty[room.qDifficulty], (room.qPayoutPct / 100).toFixed(1)) };
   } else if (room.phase === C.PH_ANSWER || room.phase === C.PH_RESULT) {
     const lines = room.qOptions.map((o, i) => `${room.phase === C.PH_RESULT && i === room.qCorrect ? '!' : ''}${'ABCD'[i]}.  ${o}`);
-    screen = { key: `q|${room.questionIdx}|${room.phase}|${room.qCorrect}`, kicker: `${room.qIcon} ${room.qTopic} · Q${room.questionIdx + 1}`, title: room.qText, lines, accent: room.phase === C.PH_RESULT ? '#43e97b' : '#ffd60a', footer: room.phase === C.PH_RESULT ? (room.fastestName ? `fastest: ${room.fastestName}` : 'answer revealed') : 'lock in A · B · C · D' };
+    screen = { key: `q|${room.questionIdx}|${room.phase}|${room.qCorrect}`, kicker: `${room.qIcon} ${room.qTopic} · ${T.question}${room.questionIdx + 1}`, title: room.qText, lines, accent: room.phase === C.PH_RESULT ? '#43e97b' : '#ffd60a', footer: room.phase === C.PH_RESULT ? (room.fastestName ? T.scrFastest(room.fastestName) : T.scrRevealed) : T.scrLockIn };
   } else {
-    screen = { key: `lobby|${roomPlayers(room.id).length}`, kicker: C.PUBS[room.theme], title: `Room code ${room.code}`, lines: [], accent: '#ffd60a', footer: `${roomPlayers(room.id).length} at the bar` };
+    screen = { key: `lobby|${roomPlayers(room.id).length}`, kicker: C.PUBS[room.theme], title: T.scrRoomCode(room.code), lines: [], accent: '#ffd60a', footer: T.scrAtTheBar(roomPlayers(room.id).length) };
   }
   const total = phaseLen(room);
   return {
-    theme: room.theme, pubName: C.PUBS[room.theme] ?? C.PUBS[0], phase: room.phase, seats, menu: false, hostKey: room.hostId.toHexString(),
+    theme: room.theme, pubName: C.PUBS[room.theme] ?? C.PUBS[0], phase: room.phase, seats, menu: false, hostKey: room.hostId.toHexString(), lang: room.lang,
     screen, timeFrac: room.status === C.L_RUNNING ? secsLeft(room) / total : 1, mc: { text: room.mcText, at: mcSaidAt },
   };
 }

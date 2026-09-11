@@ -111,6 +111,7 @@ export const Lobby = __t.object("Lobby", {
   mcText: __t.string(),
   championName: __t.string(),
   championshipLeg: __t.u64(),
+  lang: __t.string(),
 });
 export type Lobby = __Infer<typeof Lobby>;
 
@@ -211,6 +212,7 @@ export const Topic = __t.object("Topic", {
   questionCount: __t.u32(),
   authorName: __t.string(),
   createdAt: __t.timestamp(),
+  lang: __t.string(),
 });
 export type Topic = __Infer<typeof Topic>;
 

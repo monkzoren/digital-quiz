@@ -1,0 +1,307 @@
+{
+  "topic": "Norsk historie",
+  "icon": "🏛️",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "I hvilket år ble unionen med Sverige oppløst?",
+      "a": [
+        "1905",
+        "1814",
+        "1884",
+        "1920"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken dato ble Grunnloven underskrevet på Eidsvoll i 1814?",
+      "a": [
+        "17. mai",
+        "7. juni",
+        "1. mai",
+        "4. juli"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem ble Norges konge i 1905?",
+      "a": [
+        "Haakon VII",
+        "Olav V",
+        "Harald V",
+        "Christian Frederik"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor falt Olav den hellige i 1030?",
+      "a": [
+        "Stiklestad",
+        "Hafrsfjord",
+        "Svolder",
+        "Nesjar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken dato invaderte Tyskland Norge i 1940?",
+      "a": [
+        "9. april",
+        "1. september",
+        "17. mai",
+        "8. mai"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var nazistenes ministerpresident i Norge under krigen?",
+      "a": [
+        "Vidkun Quisling",
+        "Josef Terboven",
+        "Knut Hamsun",
+        "Jonas Lie"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken konge samlet Norge til ett rike etter slaget i Hafrsfjord?",
+      "a": [
+        "Harald Hårfagre",
+        "Olav Tryggvason",
+        "Håkon den gode",
+        "Erik Blodøks"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor kom svartedauden til Norge i 1349?",
+      "a": [
+        "Bergen",
+        "Oslo",
+        "Trondheim",
+        "Tønsberg"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem ledet den første ekspedisjonen som nådde Sydpolen?",
+      "a": [
+        "Roald Amundsen",
+        "Fridtjof Nansen",
+        "Robert Scott",
+        "Thor Heyerdahl"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilket år nådde Amundsen Sydpolen?",
+      "a": [
+        "1911",
+        "1905",
+        "1920",
+        "1898"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken flåte seilte Thor Heyerdahl over Stillehavet i 1947?",
+      "a": [
+        "Kon-Tiki",
+        "Ra II",
+        "Fram",
+        "Gjøa"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var Norges statsminister ved unionsoppløsningen i 1905?",
+      "a": [
+        "Christian Michelsen",
+        "Johan Sverdrup",
+        "Gunnar Knudsen",
+        "Einar Gerhardsen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Når fikk norske kvinner allmenn stemmerett?",
+      "a": [
+        "1913",
+        "1905",
+        "1920",
+        "1930"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor satt den norske regjeringen under andre verdenskrig?",
+      "a": [
+        "London",
+        "Stockholm",
+        "Washington",
+        "Moskva"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket anlegg saboterte motstandsfolkene for å stoppe tysk atomforskning?",
+      "a": [
+        "Tungtvannsanlegget på Vemork",
+        "Kongsberg våpenfabrikk",
+        "Raufoss ammunisjonsfabrikk",
+        "Herøya"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Når ble Norge medlem av NATO?",
+      "a": [
+        "1949",
+        "1945",
+        "1955",
+        "1960"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange ganger har det norske folk stemt nei til EU/EF?",
+      "a": [
+        "To ganger",
+        "Én gang",
+        "Tre ganger",
+        "Aldri"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket år ble det funnet olje på Ekofisk?",
+      "a": [
+        "1969",
+        "1959",
+        "1975",
+        "1980"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem var Norges første kvinnelige statsminister?",
+      "a": [
+        "Gro Harlem Brundtland",
+        "Erna Solberg",
+        "Kirsti Kolle Grøndahl",
+        "Anne Enger"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken statsminister ble kalt landsfaderen etter krigen?",
+      "a": [
+        "Einar Gerhardsen",
+        "Trygve Bratteli",
+        "Per Borten",
+        "Kåre Willoch"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk konge ble kalt folkekongen og døde i 1991?",
+      "a": [
+        "Olav V",
+        "Haakon VII",
+        "Harald V",
+        "Olav IV"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalte Ibsen tiden i union med Danmark?",
+      "a": [
+        "Firehundreårsnatten",
+        "Den store stillheten",
+        "Den lange vinteren",
+        "Det tapte riket"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem var den første generalsekretæren i FN, og norsk?",
+      "a": [
+        "Trygve Lie",
+        "Fridtjof Nansen",
+        "Christian Michelsen",
+        "Halvdan Koht"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva fikk Fridtjof Nansen Nobels fredspris for i 1922?",
+      "a": [
+        "Flyktningarbeid",
+        "Polferden med Fram",
+        "Hjerneforskning",
+        "Fredsmekling i Europa"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket skip brukte Nansen i drivisen over Polhavet?",
+      "a": [
+        "Fram",
+        "Gjøa",
+        "Maud",
+        "Belgica"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket år ble Norge kristnet ifølge tradisjonen, ved Moster?",
+      "a": [
+        "1024",
+        "972",
+        "1066",
+        "1130"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva het perioden med borgerkriger i Norge på 1100- og 1200-tallet?",
+      "a": [
+        "Borgerkrigstiden",
+        "Vikingtiden",
+        "Hanseatertiden",
+        "Reformasjonen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken by var Norges hovedstad i middelalderen før Oslo?",
+      "a": [
+        "Bergen",
+        "Trondheim",
+        "Tønsberg",
+        "Stavanger"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem malte Skrik?",
+      "a": [
+        "Edvard Munch",
+        "Christian Krohg",
+        "Harald Sohlberg",
+        "Theodor Kittelsen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket år ble Norge fritt fra tysk okkupasjon?",
+      "a": [
+        "1945",
+        "1944",
+        "1946",
+        "1943"
+      ],
+      "d": 1
+    }
+  ]
+}

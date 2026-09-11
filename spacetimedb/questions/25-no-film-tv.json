@@ -1,0 +1,307 @@
+{
+  "topic": "Norsk film & TV",
+  "icon": "🎬",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilken norsk animasjonsfilm fra 1975 handler om oppfinneren Reodor Felgen?",
+      "a": [
+        "Flåklypa Grand Prix",
+        "Karius og Baktus",
+        "Kaptein Sabeltann",
+        "Solan og Ludvig"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Reodor Felgens to hjelpere?",
+      "a": [
+        "Solan og Ludvig",
+        "Per og Pål",
+        "Pinky og Langemann",
+        "Klatremus og Mikkel"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter racerbilen i Flåklypa Grand Prix?",
+      "a": [
+        "Il Tempo Gigante",
+        "Il Tempo Furioso",
+        "La Bomba",
+        "Grand Turismo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem regisserte og lagde dukkene til Flåklypa Grand Prix?",
+      "a": [
+        "Ivo Caprino",
+        "Thorbjørn Egner",
+        "Terje Formoe",
+        "Arne Skouen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter lederen av Olsenbanden?",
+      "a": [
+        "Egon Olsen",
+        "Benny",
+        "Kjell",
+        "Valborg"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva sier Egon Olsen når han klekker ut et nytt kupp?",
+      "a": [
+        "Jeg har en plan",
+        "Nå tar vi dem",
+        "Skal vi danse",
+        "Dette går til helvete"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken NRK-serie om norske ungdommer ble en internasjonal suksess?",
+      "a": [
+        "Skam",
+        "Lykkeland",
+        "Exit",
+        "Hjem"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket TV-fenomen sendte NRK Hurtigruten i sanntid fra Bergen til Kirkenes?",
+      "a": [
+        "Sakte-TV",
+        "Direkte-TV",
+        "Langsomt Norge",
+        "Reise-TV"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk film om en flodbølge i en fjord kom i 2015?",
+      "a": [
+        "Bølgen",
+        "Skjelvet",
+        "Kon-Tiki",
+        "Utøya 22. juli"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk film ble Oscar-nominert i 2013 og handler om en flåteferd over Stillehavet?",
+      "a": [
+        "Kon-Tiki",
+        "Elling",
+        "Max Manus",
+        "Trolljegeren"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk film fra 2001 om to særegne romkamerater ble Oscar-nominert?",
+      "a": [
+        "Elling",
+        "Buddy",
+        "Detektiv Downs",
+        "Bare Bea"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk krigsfilm fra 2008 handler om en motstandsmann i Oslo?",
+      "a": [
+        "Max Manus",
+        "Kongens nei",
+        "Den 12. mann",
+        "Flukten fra Gestapo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken NRK-dramaserie fra 2015 handler om tungtvannsaksjonen?",
+      "a": [
+        "Kampen om tungtvannet",
+        "Atlantic Crossing",
+        "Frontkjemperne",
+        "Nordsjøen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem spilte Marve Fleksnes?",
+      "a": [
+        "Rolv Wesenlund",
+        "Harald Heide-Steen jr.",
+        "Trond Kirkvaag",
+        "Arve Opsahl"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem spilte Olsenbandens Benny?",
+      "a": [
+        "Sverre Holm",
+        "Arve Opsahl",
+        "Carsten Byhring",
+        "Aud Schønemann"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken julekalender handler om nisser som bor inne i et fjell?",
+      "a": [
+        "Jul i Blåfjell",
+        "Jul i Skomakergata",
+        "Amalies jul",
+        "Snøfall"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket NRK-program sender deltakere fra Lindesnes til Nordkapp?",
+      "a": [
+        "71° Nord",
+        "Farmen",
+        "Alt for Norge",
+        "Mesternes mester"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk humorduo står bak Uti vår hage?",
+      "a": [
+        "Bård Tufte Johansen og Harald Eia",
+        "Ylvis-brødrene",
+        "Trond-Viggo og Knut",
+        "Atle Antonsen og Johan Golden"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk duo hadde verdenshit med The Fox?",
+      "a": [
+        "Ylvis",
+        "Madcon",
+        "Nico & Vinz",
+        "Karpe"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter NRKs fredagskveldsprogram der nyheter blir til humor?",
+      "a": [
+        "Nytt på nytt",
+        "Torsdag kveld fra Nydalen",
+        "Lindmo",
+        "Debatten"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk film er den mest sette på kino gjennom tidene?",
+      "a": [
+        "Flåklypa Grand Prix",
+        "Max Manus",
+        "Olsenbanden og Dynamitt-Harry",
+        "Bølgen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk regissør står bak Trolljegeren?",
+      "a": [
+        "André Øvredal",
+        "Joachim Trier",
+        "Roar Uthaug",
+        "Erik Poppe"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk regissør laget Verdens verste menneske?",
+      "a": [
+        "Joachim Trier",
+        "Roar Uthaug",
+        "Erik Poppe",
+        "Bent Hamer"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken NRK-serie følger oljeeventyret i Stavanger på 1960-tallet?",
+      "a": [
+        "Lykkeland",
+        "Exit",
+        "Nordsjøen",
+        "Svartsjøen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk TV-serie handler om rike finansmenn i Oslo?",
+      "a": [
+        "Exit",
+        "Lykkeland",
+        "Hjem til jul",
+        "Side om side"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket program lar kjendiser konkurrere i sang på NRK lørdager?",
+      "a": [
+        "Stjernekamp",
+        "Idol",
+        "The Voice",
+        "Maskorama"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk filmfigur reiser rundt med sopelime og heter noe med Sabeltann?",
+      "a": [
+        "Kaptein Sabeltann",
+        "Kaptein Krok",
+        "Pinky",
+        "Langemann"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk skrekkfilm handler om nazizombier i fjellet?",
+      "a": [
+        "Død snø",
+        "Villmark",
+        "Fritt vilt",
+        "Rovdyr"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk film fra 2006 handler om ungdommer på Jotunheimen som jaktes?",
+      "a": [
+        "Fritt vilt",
+        "Villmark",
+        "Død snø",
+        "Rovdyr"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter NRKs langvarige lørdagsunderholdning med lotto og show?",
+      "a": [
+        "Lørdagsrevyen",
+        "Nytt på nytt",
+        "Beat for beat",
+        "Kvelden før kvelden"
+      ],
+      "d": 3
+    }
+  ]
+}

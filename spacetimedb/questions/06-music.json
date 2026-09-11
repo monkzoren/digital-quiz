@@ -1,6 +1,7 @@
 {
   "topic": "Music",
   "icon": "🎵",
+  "lang": "en",
   "questions": [
     {
       "q": "How many strings does a standard guitar have?",

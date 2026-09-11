@@ -13,4 +13,5 @@ import {
 export default {
   name: __t.string(),
   icon: __t.string(),
+  lang: __t.string(),
 };

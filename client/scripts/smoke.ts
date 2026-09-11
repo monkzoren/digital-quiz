@@ -47,10 +47,16 @@ await a.reducers.setName({ name: 'ALICE' });
 await b.reducers.setName({ name: 'BOB' });
 await a.reducers.setAvatar({ avatarId: 3 });
 await until('bank synced into topic table', () => [...a.db.topic.iter()].length >= 9);
+const langs = new Set([...a.db.topic.iter()].map(t => t.lang));
+if (!langs.has('nb') || !langs.has('en')) fail(`bank is missing a language: ${[...langs].join()}`);
+for (const l of ['en', 'nb']) {
+  const n = [...a.db.topic.iter()].filter(t => t.lang === l).reduce((s, t) => s + t.questionCount, 0);
+  ok(`${l}: ${[...a.db.topic.iter()].filter(t => t.lang === l).length} topics, ${n} questions`);
+}
 
 // authoring
 const TOPIC = `Smoke ${Date.now().toString(36).slice(-5)}`; // topics persist, so keep re-runs unique
-await a.reducers.addTopic({ name: TOPIC, icon: '🧪' });
+await a.reducers.addTopic({ name: TOPIC, icon: '🧪', lang: 'en' });
 await until('topic added', () => !![...a.db.topic.iter()].find(t => t.name === TOPIC));
 const smokeTopic = [...a.db.topic.iter()].find(t => t.name === TOPIC)!;
 await a.reducers.addQuestion({ topicId: smokeTopic.id, difficulty: 2, text: 'Is this a smoke test?', correct: 'Yes', wrong: ['No', 'Maybe', 'Ask again'] });
@@ -62,7 +68,7 @@ if (!threw) fail('duplicate answers were accepted');
 ok('duplicate answers rejected');
 
 // the pub
-await a.reducers.createPub({ isPublic: true, theme: 1, questions: 3, betSecs: 5, answerSecs: 8, teamMode: false });
+await a.reducers.createPub({ isPublic: true, theme: 1, questions: 3, betSecs: 5, answerSecs: 8, teamMode: false, lang: 'en' });
 await until('A seated in a pub', () => me(a).lobbyId !== 0n);
 const code = room(a)!.code;
 await b.reducers.joinPub({ code });
@@ -136,7 +142,31 @@ await until('rematch running', () => room(a)?.status === 1);
 const again = room(a)!;
 if (again.drawn.length !== 6 || again.drawn.slice(3).some(id => firstDrawn.includes(String(id)))) fail('rematch repeated a question');
 ok('rematch drew fresh questions');
+// A Norwegian pub must never draw an English pack — the whole point of
+// tagging the bank by language.
+await a.reducers.leavePub({});
+await until('A out of the old pub', () => me(a).lobbyId === 0n);
 await b.reducers.leavePub({});
+await a.reducers.createPub({ isPublic: false, theme: 3, questions: 8, betSecs: 5, answerSecs: 8, teamMode: false, lang: 'nb' });
+await until('norsk pub open', () => room(a)?.lang === 'nb');
+const nbTopics = new Set([...a.db.topic.iter()].filter(t => t.lang === 'nb').map(t => String(t.id)));
+await a.reducers.startQuiz({});
+await until('norsk quiz running', () => room(a)?.status === 1 && room(a)!.drawn.length === 8);
+// the questions themselves are private; the topic on screen is not, so walk
+// the room through its questions and check each topic is a Norwegian one
+const seenTopics = new Set<string>();
+for (let q = 0; q < 3; q++) {
+  await until(`norsk betting Q${q + 1}`, () => room(a)?.phase === 2 && room(a)?.questionIdx === q, 25000);
+  seenTopics.add(room(a)!.qTopic);
+  await until(`norsk answering Q${q + 1}`, () => room(a)?.phase === 3, 25000);
+  await a.reducers.answer({ choice: 0 });
+}
+const nbNames = new Set([...a.db.topic.iter()].filter(t => nbTopics.has(String(t.id))).map(t => t.name));
+for (const t of seenTopics) if (!nbNames.has(t)) fail(`norsk pub drew a non-Norwegian topic: ${t}`);
+ok(`norsk pub drew only Norwegian topics (${[...seenTopics].join(', ')})`);
+if (!/[æøåÆØÅ]|^[A-ZÆØÅ]/.test(room(a)!.mcText)) fail('quiz master said nothing');
+ok(`quiz master in Norwegian: "${room(a)!.mcText.slice(0, 60)}"`);
+await a.reducers.leavePub({});
 await until('B left', () => me(b).lobbyId === 0n);
 await a.reducers.leavePub({});
 await until('room destroyed', () => [...a.db.lobby.iter()].length === 0);

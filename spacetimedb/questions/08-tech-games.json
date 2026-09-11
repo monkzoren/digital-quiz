@@ -1,6 +1,7 @@
 {
   "topic": "Tech & Games",
   "icon": "🎮",
+  "lang": "en",
   "questions": [
     {
       "q": "What does \"www\" stand for in a web address?",

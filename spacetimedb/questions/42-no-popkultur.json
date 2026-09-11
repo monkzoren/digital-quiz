@@ -1,0 +1,307 @@
+{
+  "topic": "Film, TV & popkultur",
+  "icon": "🍿",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvem regisserte Jurassic Park fra 1993?",
+      "a": [
+        "Steven Spielberg",
+        "James Cameron",
+        "George Lucas",
+        "Ridley Scott"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken pille tar Neo i The Matrix?",
+      "a": [
+        "Den røde",
+        "Den blå",
+        "Den grønne",
+        "Den hvite"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter kafeen i TV-serien Friends?",
+      "a": [
+        "Central Perk",
+        "The Grind",
+        "Cafe Nervosa",
+        "Monks"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken skuespiller spilte Jack i Titanic?",
+      "a": [
+        "Leonardo DiCaprio",
+        "Brad Pitt",
+        "Matt Damon",
+        "Johnny Depp"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem komponerte musikken til Star Wars?",
+      "a": [
+        "John Williams",
+        "Hans Zimmer",
+        "Howard Shore",
+        "Ennio Morricone"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by er Batman beskytter av?",
+      "a": [
+        "Gotham City",
+        "Metropolis",
+        "Central City",
+        "Star City"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken skuespiller spilte Jokeren i The Dark Knight?",
+      "a": [
+        "Heath Ledger",
+        "Jack Nicholson",
+        "Joaquin Phoenix",
+        "Jared Leto"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken fiktiv by er åsted for Stranger Things?",
+      "a": [
+        "Hawkins",
+        "Derry",
+        "Twin Peaks",
+        "Riverdale"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket hus i Harry Potter tilhører Harry?",
+      "a": [
+        "Griffing",
+        "Smygard",
+        "Ravnklo",
+        "Håsblås"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Harry Potters ugle?",
+      "a": [
+        "Hedvig",
+        "Errol",
+        "Pigwidgeon",
+        "Fawkes"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken serie har dragemoren Daenerys?",
+      "a": [
+        "Game of Thrones",
+        "The Witcher",
+        "Vikings",
+        "The Last Kingdom"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Walter Whites alias i Breaking Bad?",
+      "a": [
+        "Heisenberg",
+        "Schrödinger",
+        "Feynman",
+        "Oppenheimer"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken film vant Oscar for beste film i 2020, og var sørkoreansk?",
+      "a": [
+        "Parasitt",
+        "1917",
+        "Joker",
+        "Roma"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr er Simba i Løvenes konge?",
+      "a": [
+        "En løve",
+        "En tiger",
+        "En leopard",
+        "En gepard"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken animasjonsfilm handler om en klovnefisk som leter etter sønnen?",
+      "a": [
+        "Finding Nemo",
+        "Løvenes konge",
+        "Shrek",
+        "Toy Story"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket studio står bak Toy Story?",
+      "a": [
+        "Pixar",
+        "DreamWorks",
+        "Illumination",
+        "Studio Ghibli"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken japansk regissør står bak Min nabo Totoro?",
+      "a": [
+        "Hayao Miyazaki",
+        "Akira Kurosawa",
+        "Isao Takahata",
+        "Makoto Shinkai"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken skuespiller spiller Iron Man i Marvel-filmene?",
+      "a": [
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Chris Hemsworth",
+        "Mark Ruffalo"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk-klingende Marvel-helt har hammer?",
+      "a": [
+        "Tor",
+        "Loke",
+        "Odin",
+        "Heimdall"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter den koreanske serien der deltakere spiller barneleker om penger?",
+      "a": [
+        "Squid Game",
+        "Alice in Borderland",
+        "Money Heist",
+        "Extracurricular"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken serie følger familien Roy og et mediekonsern?",
+      "a": [
+        "Succession",
+        "Billions",
+        "Industry",
+        "Mad Men"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken artist har flest Grammy-priser gjennom tidene?",
+      "a": [
+        "Beyoncé",
+        "Taylor Swift",
+        "Quincy Jones",
+        "Stevie Wonder"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket band ga ut albumet Dark Side of the Moon?",
+      "a": [
+        "Pink Floyd",
+        "Led Zeppelin",
+        "The Who",
+        "Genesis"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem synger Rolling in the Deep?",
+      "a": [
+        "Adele",
+        "Beyoncé",
+        "Rihanna",
+        "Amy Winehouse"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket band består av John, Paul, George og Ringo?",
+      "a": [
+        "The Beatles",
+        "The Rolling Stones",
+        "The Kinks",
+        "The Who"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken svensk gruppe vant Eurovision i 1974 med Waterloo?",
+      "a": [
+        "ABBA",
+        "Roxette",
+        "Ace of Base",
+        "Europe"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket spill handler om å bygge med blokker i en åpen verden?",
+      "a": [
+        "Minecraft",
+        "Fortnite",
+        "Roblox",
+        "Terraria"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken figur er Nintendos maskot?",
+      "a": [
+        "Mario",
+        "Sonic",
+        "Link",
+        "Kirby"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Marios bror?",
+      "a": [
+        "Luigi",
+        "Wario",
+        "Toad",
+        "Yoshi"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken farge har spøkelset Blinky i Pac-Man?",
+      "a": [
+        "Rød",
+        "Rosa",
+        "Blå",
+        "Oransje"
+      ],
+      "d": 3
+    }
+  ]
+}

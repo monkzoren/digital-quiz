@@ -1,0 +1,247 @@
+{
+  "topic": "Norsk sport",
+  "icon": "🏅",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilken norsk sjakkspiller ble verdensmester i 2013?",
+      "a": [
+        "Magnus Carlsen",
+        "Simen Agdestein",
+        "Aryan Tari",
+        "Jon Ludvig Hammer"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor gammel var Magnus Carlsen da han ble stormester?",
+      "a": [
+        "13 år",
+        "15 år",
+        "11 år",
+        "17 år"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk friidrettsutøver vant OL-gull på 400 meter hekk i Tokyo?",
+      "a": [
+        "Karsten Warholm",
+        "Jakob Ingebrigtsen",
+        "Filip Ingebrigtsen",
+        "Henrik Ingebrigtsen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken distanse vant Jakob Ingebrigtsen OL-gull på i Tokyo?",
+      "a": [
+        "1500 meter",
+        "800 meter",
+        "5000 meter",
+        "Maraton"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange løpende brødre er det i Ingebrigtsen-familien på toppnivå?",
+      "a": [
+        "Tre",
+        "To",
+        "Fire",
+        "Fem"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett utøver Viktor Hovland?",
+      "a": [
+        "Golf",
+        "Tennis",
+        "Sjakk",
+        "Seiling"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken idrett utøver Casper Ruud?",
+      "a": [
+        "Tennis",
+        "Golf",
+        "Badminton",
+        "Bordtennis"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk løper vant New York Maraton ni ganger?",
+      "a": [
+        "Grete Waitz",
+        "Ingrid Kristiansen",
+        "Hege Riise",
+        "Marit Bjørgen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk syklist vant den grønne poengtrøya i Tour de France?",
+      "a": [
+        "Thor Hushovd",
+        "Edvald Boasson Hagen",
+        "Alexander Kristoff",
+        "Dag Otto Lauritzen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk syklist er kjent som Dag Otto?",
+      "a": [
+        "Dag Otto Lauritzen",
+        "Thor Hushovd",
+        "Kurt Asle Arvesen",
+        "Gabriel Rasch"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange spillere har hvert lag på banen i håndball?",
+      "a": [
+        "Syv",
+        "Seks",
+        "Fem",
+        "Åtte"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk landslag har vunnet flere OL-gull i håndball?",
+      "a": [
+        "Kvinnelandslaget",
+        "Herrelandslaget",
+        "Ingen av dem",
+        "Begge like mange"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett er Norges mest utbredte barneidrett?",
+      "a": [
+        "Fotball",
+        "Håndball",
+        "Langrenn",
+        "Turn"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er forkortelsen for Norges idrettsforbund?",
+      "a": [
+        "NIF",
+        "NOK",
+        "NIL",
+        "NOF"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken avdeling har ansvaret for norsk toppidrett?",
+      "a": [
+        "Olympiatoppen",
+        "Idrettshøgskolen",
+        "Toppidrettssenteret",
+        "Norges Idrettsakademi"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken idrett er Norges nasjonalidrett i praksis?",
+      "a": [
+        "Langrenn",
+        "Fotball",
+        "Håndball",
+        "Skøyter"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor arrangeres Norges største fotballturnering for barn og unge?",
+      "a": [
+        "Norway Cup i Oslo",
+        "Dana Cup",
+        "Gothia Cup",
+        "Adidas Cup"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket år ble Norway Cup arrangert for første gang?",
+      "a": [
+        "1972",
+        "1985",
+        "1965",
+        "1992"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk kunstløper vant tre OL-gull på 1920- og 30-tallet?",
+      "a": [
+        "Sonja Henie",
+        "Grete Waitz",
+        "Anette Sagen",
+        "Marit Bjørgen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett utøvde Bjørn Wirkola på høyt nivå, i tillegg til hopp?",
+      "a": [
+        "Fotball",
+        "Håndball",
+        "Boksing",
+        "Roing"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket norsk lag vant EM-gull i håndball for kvinner flere ganger på 2000-tallet?",
+      "a": [
+        "Norge",
+        "Danmark",
+        "Sverige",
+        "Frankrike"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk roer vant OL-gull i singlesculler i 2004 og 2008?",
+      "a": [
+        "Olaf Tufte",
+        "Kjetil Borch",
+        "Alf Hansen",
+        "Rolf Thorsen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "I hvilken idrett er Olaf Tufte en norsk OL-vinner?",
+      "a": [
+        "Roing",
+        "Padling",
+        "Seiling",
+        "Svømming"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk svømmer tok VM-gull på 100 meter bryst i 2011?",
+      "a": [
+        "Alexander Dale Oen",
+        "Lavrans Solli",
+        "Henrik Christiansen",
+        "Tomoe Zenimoto Hvas"
+      ],
+      "d": 3
+    }
+  ]
+}

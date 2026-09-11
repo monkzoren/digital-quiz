@@ -18,4 +18,5 @@ export default __t.row({
   questionCount: __t.u32().name("question_count"),
   authorName: __t.string().name("author_name"),
   createdAt: __t.timestamp().name("created_at"),
+  lang: __t.string(),
 });

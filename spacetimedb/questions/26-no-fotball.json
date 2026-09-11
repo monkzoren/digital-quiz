@@ -1,0 +1,287 @@
+{
+  "topic": "Norsk fotball",
+  "icon": "⚽",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilken nordmann scoret i Champions League-finalen for Manchester United i 1999?",
+      "a": [
+        "Ole Gunnar Solskjær",
+        "Henning Berg",
+        "Ronny Johnsen",
+        "John Arne Riise"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva var Ole Gunnar Solskjærs kallenavn i England?",
+      "a": [
+        "The Baby-faced Assassin",
+        "The Viking",
+        "The Iceman",
+        "The Silent Striker"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk klubb har flest seriegull for herrer?",
+      "a": [
+        "Rosenborg",
+        "Vålerenga",
+        "Brann",
+        "Molde"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange strake seriegull tok Rosenborg fra 1992 til 2004?",
+      "a": [
+        "13",
+        "9",
+        "11",
+        "15"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem scoret straffemålet da Norge slo Brasil i VM 1998?",
+      "a": [
+        "Kjetil Rekdal",
+        "Tore André Flo",
+        "Dan Eggen",
+        "Håvard Flo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor langt kom Norge i VM 1998?",
+      "a": [
+        "Åttendedelsfinalen",
+        "Kvartfinalen",
+        "Gruppespillet",
+        "Semifinalen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kommentator ropte Maggie Thatcher, can you hear me etter seier over England i 1981?",
+      "a": [
+        "Bjørge Lillelien",
+        "Arne Scheie",
+        "Davy Wathne",
+        "Knut Bjørnsen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk spiller vant Ballon d'Or for kvinner i 2018?",
+      "a": [
+        "Ada Hegerberg",
+        "Caroline Graham Hansen",
+        "Hege Riise",
+        "Isabell Herlovsen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilket år vant Norges kvinnelandslag VM i fotball?",
+      "a": [
+        "1995",
+        "1991",
+        "1999",
+        "2003"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket år tok Norges kvinner OL-gull i fotball?",
+      "a": [
+        "2000",
+        "1996",
+        "2004",
+        "2008"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Norges nasjonalstadion for fotball?",
+      "a": [
+        "Ullevaal stadion",
+        "Lerkendal",
+        "Brann stadion",
+        "Intility Arena"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken klubb spiller sine hjemmekamper på Lerkendal?",
+      "a": [
+        "Rosenborg",
+        "Ranheim",
+        "Molde",
+        "Bodø/Glimt"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken klubb kommer fra Bergen?",
+      "a": [
+        "Brann",
+        "Viking",
+        "Start",
+        "Odd"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken klubb kommer fra Stavanger?",
+      "a": [
+        "Viking",
+        "Brann",
+        "Start",
+        "Sandnes Ulf"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem var landslagssjef for Norge i VM 1994 og 1998?",
+      "a": [
+        "Egil Drillo Olsen",
+        "Nils Johan Semb",
+        "Åge Hareide",
+        "Ståle Solbakken"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva var Drillos spillestil kjent som?",
+      "a": [
+        "Direkte og effektiv fotball",
+        "Tiki-taka",
+        "Catenaccio",
+        "Totalfotball"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor gammel var Martin Ødegaard da han debuterte for A-landslaget?",
+      "a": [
+        "15 år",
+        "17 år",
+        "16 år",
+        "18 år"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken engelsk klubb ble Martin Ødegaard kaptein for?",
+      "a": [
+        "Arsenal",
+        "Manchester United",
+        "Chelsea",
+        "Liverpool"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken klubb hentet Erling Braut Haaland fra Molde i 2019?",
+      "a": [
+        "Red Bull Salzburg",
+        "Borussia Dortmund",
+        "Manchester City",
+        "Ajax"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk keeper spilte for Tottenham på 1990-tallet?",
+      "a": [
+        "Erik Thorstvedt",
+        "Frode Grodås",
+        "Thomas Myhre",
+        "Espen Johnsen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk klubb fra Nordland vant sitt første seriegull i 2020?",
+      "a": [
+        "Bodø/Glimt",
+        "Tromsø",
+        "Mjøndalen",
+        "Kristiansund"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges øverste divisjon for herrer?",
+      "a": [
+        "Eliteserien",
+        "Tippeligaen",
+        "Toppserien",
+        "OBOS-ligaen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Norges øverste divisjon for kvinner?",
+      "a": [
+        "Toppserien",
+        "Eliteserien",
+        "Damelaget",
+        "OBOS-ligaen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk landslagsspiller på 1990-tallet ble kalt Mini?",
+      "a": [
+        "Jahn Ivar Jakobsen",
+        "Ole Gunnar Solskjær",
+        "Tore André Flo",
+        "Steffen Iversen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk midtbanespiller ble kalt Myggen?",
+      "a": [
+        "Erik Mykland",
+        "Kjetil Rekdal",
+        "Øyvind Leonhardsen",
+        "Stig Inge Bjørnebye"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor spilles den norske cupfinalen tradisjonelt?",
+      "a": [
+        "Ullevaal stadion",
+        "Lerkendal",
+        "Brann stadion",
+        "Marienlyst"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk spiller var kaptein for Norge i VM 1994 og spilte i Rosenborg?",
+      "a": [
+        "Rune Bratseth",
+        "Erik Mykland",
+        "Jostein Flo",
+        "Gunnar Halle"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken farge har hjemmedrakten til det norske fotballandslaget?",
+      "a": [
+        "Rød",
+        "Blå",
+        "Hvit",
+        "Gul"
+      ],
+      "d": 1
+    }
+  ]
+}

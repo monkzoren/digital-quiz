@@ -1,0 +1,307 @@
+{
+  "topic": "Norrøn mytologi & folketro",
+  "icon": "🧌",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvem er den øverste guden i norrøn mytologi?",
+      "a": [
+        "Odin",
+        "Tor",
+        "Loke",
+        "Frøy"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken gud eier hammeren Mjølner?",
+      "a": [
+        "Tor",
+        "Odin",
+        "Balder",
+        "Heimdall"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Tors hammer?",
+      "a": [
+        "Mjølner",
+        "Gungne",
+        "Draupne",
+        "Gram"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem er den listige guden som stadig skaper trøbbel?",
+      "a": [
+        "Loke",
+        "Balder",
+        "Njord",
+        "Ty"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter verdenstreet i norrøn mytologi?",
+      "a": [
+        "Yggdrasil",
+        "Bifrost",
+        "Valhall",
+        "Midgard"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter gudenes rike?",
+      "a": [
+        "Åsgard",
+        "Midgard",
+        "Utgard",
+        "Jotunheim"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter menneskenes verden?",
+      "a": [
+        "Midgard",
+        "Åsgard",
+        "Helheim",
+        "Alvheim"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter hallen der falne krigere samles hos Odin?",
+      "a": [
+        "Valhall",
+        "Åsgard",
+        "Folkvang",
+        "Gimle"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem henter de falne krigerne til Valhall?",
+      "a": [
+        "Valkyrjene",
+        "Nornene",
+        "Diser",
+        "Alvene"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter regnbuebroen mellom Åsgard og Midgard?",
+      "a": [
+        "Bifrost",
+        "Gjallarbru",
+        "Yggdrasil",
+        "Ginnungagap"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Odins to ravner?",
+      "a": [
+        "Hugin og Munin",
+        "Geri og Freke",
+        "Hrim og Fross",
+        "Skoll og Hate"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Odins åttebeinte hest?",
+      "a": [
+        "Sleipner",
+        "Gullfakse",
+        "Skinfakse",
+        "Blodhov"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles ragnarok?",
+      "a": [
+        "Gudenes skjebne og verdens undergang",
+        "Gudenes fest",
+        "Vinterens begynnelse",
+        "Odins bryllup"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken ulv sluker Odin i ragnarok?",
+      "a": [
+        "Fenrir",
+        "Skoll",
+        "Hate",
+        "Garm"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter slangen som ligger rundt hele Midgard?",
+      "a": [
+        "Midgardsormen",
+        "Nidhogg",
+        "Jormund",
+        "Fafner"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken gudinne er knyttet til kjærlighet og fruktbarhet?",
+      "a": [
+        "Frøya",
+        "Frigg",
+        "Idunn",
+        "Skade"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken gud vokter Bifrost og blåser i Gjallarhornet?",
+      "a": [
+        "Heimdall",
+        "Ty",
+        "Balder",
+        "Brage"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken gud mistet hånden i gapet på Fenrir?",
+      "a": [
+        "Ty",
+        "Tor",
+        "Heimdall",
+        "Njord"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem passer eplene som gir gudene evig ungdom?",
+      "a": [
+        "Idunn",
+        "Frøya",
+        "Frigg",
+        "Sif"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken ukedag er oppkalt etter Tor?",
+      "a": [
+        "Torsdag",
+        "Tirsdag",
+        "Onsdag",
+        "Fredag"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken gud har gitt navn til onsdag?",
+      "a": [
+        "Odin",
+        "Tor",
+        "Ty",
+        "Frøy"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva skjer med troll når sola treffer dem?",
+      "a": [
+        "De sprekker eller blir til stein",
+        "De blir usynlige",
+        "De sovner",
+        "De krymper"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter skogsvesenet med kurumpe som lokker til seg menn?",
+      "a": [
+        "Huldra",
+        "Nøkken",
+        "Draugen",
+        "Deildegasten"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket vannvesen lokker folk i dypet og kan vise seg som en hvit hest?",
+      "a": [
+        "Nøkken",
+        "Draugen",
+        "Huldra",
+        "Tussen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva varsler draugen ifølge kystfolkets tro?",
+      "a": [
+        "Død på sjøen",
+        "Godt fiske",
+        "Storm neste dag",
+        "Nordlys"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva må man sette ut til fjøsnissen på julaften?",
+      "a": [
+        "Grøt med smørøye",
+        "Et glass melk",
+        "En pepperkake",
+        "En skål bær"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange hoder har trollet ofte i norske eventyr?",
+      "a": [
+        "Tre",
+        "Ett",
+        "Fem",
+        "Sju"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kunstner er kjent for sine illustrasjoner av norske troll?",
+      "a": [
+        "Theodor Kittelsen",
+        "Edvard Munch",
+        "Christian Krohg",
+        "Erik Werenskiold"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter dvergenes og gudenes skattkammer-ring som Odin eier?",
+      "a": [
+        "Draupne",
+        "Mjølner",
+        "Gungne",
+        "Brisingamen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Odins spyd?",
+      "a": [
+        "Gungne",
+        "Gram",
+        "Tyrfing",
+        "Skofnung"
+      ],
+      "d": 3
+    }
+  ]
+}

@@ -17,4 +17,5 @@ export default {
   betSecs: __t.u8(),
   answerSecs: __t.u8(),
   teamMode: __t.bool(),
+  lang: __t.string(),
 };

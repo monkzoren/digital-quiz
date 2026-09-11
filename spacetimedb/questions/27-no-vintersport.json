@@ -1,0 +1,307 @@
+{
+  "topic": "Vintersport & OL",
+  "icon": "⛷️",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilken norsk by arrangerte vinter-OL i 1994?",
+      "a": [
+        "Lillehammer",
+        "Oslo",
+        "Trondheim",
+        "Bergen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilke to norske byer har arrangert vinter-OL?",
+      "a": [
+        "Oslo og Lillehammer",
+        "Bergen og Oslo",
+        "Trondheim og Lillehammer",
+        "Oslo og Hamar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem er tidenes mest vinnende utøver i vinter-OL?",
+      "a": [
+        "Marit Bjørgen",
+        "Ole Einar Bjørndalen",
+        "Bjørn Dæhlie",
+        "Therese Johaug"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange OL-gull tok Ole Einar Bjørndalen totalt?",
+      "a": [
+        "Åtte",
+        "Seks",
+        "Ti",
+        "Fire"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett kombinerer langrenn og skyting?",
+      "a": [
+        "Skiskyting",
+        "Kombinert",
+        "Skikross",
+        "Telemark"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange skudd skyter man per standplass i skiskyting?",
+      "a": [
+        "Fem",
+        "Fire",
+        "Seks",
+        "Tre"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges mest kjente hoppbakke?",
+      "a": [
+        "Holmenkollbakken",
+        "Vikersundbakken",
+        "Granåsen",
+        "Lysgårdsbakken"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken bakke i Norge er en skiflygingsbakke?",
+      "a": [
+        "Vikersund",
+        "Holmenkollen",
+        "Granåsen",
+        "Midtstubakken"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles landingen der en hopper setter én fot foran den andre?",
+      "a": [
+        "Telemarksnedslag",
+        "Slalåmnedslag",
+        "Parallellandning",
+        "Hallingnedslag"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk langrennsløper er kjent for sine spurter og kallenavnet Northug?",
+      "a": [
+        "Petter Northug",
+        "Bjørn Dæhlie",
+        "Johannes Høsflot Klæbo",
+        "Martin Johnsrud Sundby"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange gull tok Johan Olav Koss på skøyter i Lillehammer-OL?",
+      "a": [
+        "Tre",
+        "To",
+        "Fire",
+        "Ett"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem har flest OL-medaljer i alpint gjennom tidene?",
+      "a": [
+        "Kjetil André Aamodt",
+        "Aksel Lund Svindal",
+        "Lasse Kjus",
+        "Henrik Kristoffersen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken vintersport kalles ofte kosteidretten?",
+      "a": [
+        "Curling",
+        "Skøyter",
+        "Bandy",
+        "Ishockey"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva ble det norske curlinglaget internasjonalt kjent for?",
+      "a": [
+        "Fargerike bukser",
+        "Å synge under kamp",
+        "Rekordraske kamper",
+        "Gullhjelmer"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mye må sekken veie i Birkebeinerrennet?",
+      "a": [
+        "3,5 kilo",
+        "5 kilo",
+        "2 kilo",
+        "7 kilo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor går Birkebeinerrennet?",
+      "a": [
+        "Fra Rena til Lillehammer",
+        "Fra Oslo til Hamar",
+        "Fra Geilo til Voss",
+        "Rundt Mjøsa"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva symboliserer sekken i Birkebeinerrennet?",
+      "a": [
+        "Kongsbarnet Håkon Håkonsson",
+        "Matpakka til birkebeinerne",
+        "Et skjold",
+        "Kongens gull"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk skiløper vant åtte OL-gull på 1990-tallet?",
+      "a": [
+        "Bjørn Dæhlie",
+        "Vegard Ulvang",
+        "Thomas Alsgaard",
+        "Espen Bredesen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilken idrett var Sonja Henie verdensstjerne?",
+      "a": [
+        "Kunstløp",
+        "Alpint",
+        "Langrenn",
+        "Hopp"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange OL-gull tok Sonja Henie?",
+      "a": [
+        "Tre",
+        "To",
+        "Fire",
+        "Ett"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk hopper ble kalt Ørnen fra Bækkelaget i 1994?",
+      "a": [
+        "Espen Bredesen",
+        "Lasse Ottesen",
+        "Roar Ljøkelsøy",
+        "Bjørn Einar Romøren"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk langrennsløper har flest VM-gull for kvinner?",
+      "a": [
+        "Marit Bjørgen",
+        "Therese Johaug",
+        "Bente Skari",
+        "Vibeke Skofterud"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter det norske skiskytterlandslagets mest kjente brødrepar?",
+      "a": [
+        "Tarjei og Johannes Thingnes Bø",
+        "Petter og Tomas Northug",
+        "Jakob og Filip Ingebrigtsen",
+        "Aksel og Lasse Svindal"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett utøver Johannes Høsflot Klæbo?",
+      "a": [
+        "Langrenn",
+        "Skiskyting",
+        "Hopp",
+        "Kombinert"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter fellesstarten i langrenn der alle starter samtidig?",
+      "a": [
+        "Fellesstart",
+        "Jaktstart",
+        "Intervallstart",
+        "Prolog"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land vant flest gull i vinter-OL i Pyeongchang 2018?",
+      "a": [
+        "Norge",
+        "Tyskland",
+        "Canada",
+        "Sverige"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter langrennsstilen der man går i sporet med parallelle ski?",
+      "a": [
+        "Klassisk",
+        "Skøyting",
+        "Fristil",
+        "Telemark"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk alpinist vant verdenscupen sammenlagt i 1999 og var kjent som Lasse?",
+      "a": [
+        "Lasse Kjus",
+        "Kjetil André Aamodt",
+        "Finn Christian Jagge",
+        "Atle Skårdal"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem tente OL-ilden ved å hoppe på ski i Lillehammer 1994?",
+      "a": [
+        "Stein Gruben",
+        "Espen Bredesen",
+        "Ole Gunnar Fidjestøl",
+        "Toralf Engan"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket år var forrige vinter-OL med norsk arrangør før Lillehammer?",
+      "a": [
+        "1952",
+        "1936",
+        "1960",
+        "1968"
+      ],
+      "d": 2
+    }
+  ]
+}

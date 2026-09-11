@@ -1,6 +1,7 @@
 {
   "topic": "Sport",
   "icon": "⚽",
+  "lang": "en",
   "questions": [
     {
       "q": "How many players are on a football (soccer) team on the pitch?",

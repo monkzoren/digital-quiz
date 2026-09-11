@@ -1,0 +1,287 @@
+{
+  "topic": "Tradisjoner & høytider",
+  "icon": "🎉",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva feirer Norge 17. mai?",
+      "a": [
+        "Grunnlovsdagen",
+        "Frigjøringsdagen",
+        "Kongens fødselsdag",
+        "Unionsoppløsningen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken dato er frigjøringsdagen i Norge?",
+      "a": [
+        "8. mai",
+        "17. mai",
+        "9. april",
+        "7. juni"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles feiringen for avgangselever på videregående?",
+      "a": [
+        "Russetiden",
+        "Fadderuka",
+        "Vitnemålsuka",
+        "Eksamensfeiring"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken farge har russedressen for studiespesialisering?",
+      "a": [
+        "Rød",
+        "Blå",
+        "Svart",
+        "Grønn"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken russefarge hører til økonomi og handel?",
+      "a": [
+        "Blå",
+        "Rød",
+        "Grønn",
+        "Hvit"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Når avsluttes russetiden tradisjonelt?",
+      "a": [
+        "17. mai",
+        "1. juni",
+        "1. mai",
+        "24. juni"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva deler russen ut til barn?",
+      "a": [
+        "Russekort",
+        "Russeflagg",
+        "Russekaker",
+        "Russeballonger"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva feires sankthansaften 23. juni?",
+      "a": [
+        "Midtsommer og johannesdagen",
+        "Vintersolverv",
+        "Olsok",
+        "Høsttakkefest"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er det vanligste sankthans-ritualet?",
+      "a": [
+        "Å tenne bål",
+        "Å plante tre",
+        "Å bade i fjorden",
+        "Å bake boller"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Når åpner nordmenn julegavene?",
+      "a": [
+        "På julaften 24. desember",
+        "Første juledag",
+        "Nyttårsaften",
+        "Lille julaften"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter dagene mellom jul og nyttår?",
+      "a": [
+        "Romjulen",
+        "Mellomjulen",
+        "Juleuka",
+        "Nyttårsuka"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva legges i risengrynsgrøten til jul?",
+      "a": [
+        "En mandel",
+        "En mynt",
+        "En rosin",
+        "En liten nisse"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er påskekrim?",
+      "a": [
+        "Tradisjonen med å lese og se krim i påsken",
+        "En politiaksjon i påsken",
+        "En krimfestival i Oslo",
+        "En påskesang"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilke to ting forbindes sterkest med norsk påskefjell?",
+      "a": [
+        "Appelsin og Kvikk Lunsj",
+        "Vafler og kaffe",
+        "Pinnekjøtt og akevitt",
+        "Rømmegrøt og saft"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er en dugnad?",
+      "a": [
+        "Frivillig felles arbeidsinnsats",
+        "En folkefest med musikk",
+        "En auksjon",
+        "Et årsmøte"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er utepils?",
+      "a": [
+        "Årets første øl utendørs",
+        "Øl brygget om sommeren",
+        "Øl kjøpt på ferie",
+        "Alkoholfritt øl"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Når feires samefolkets dag?",
+      "a": [
+        "6. februar",
+        "1. mai",
+        "24. juni",
+        "13. januar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er olsok, 29. juli?",
+      "a": [
+        "Minnedagen for Olav den helliges død",
+        "Kongens navnedag",
+        "Fiskernes festdag",
+        "Starten på slåtten"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er morsdag i Norge?",
+      "a": [
+        "Andre søndag i februar",
+        "Andre søndag i mai",
+        "Første søndag i mars",
+        "8. mars"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva spises tradisjonelt i fastelavn?",
+      "a": [
+        "Fastelavnsboller",
+        "Lefse",
+        "Kransekake",
+        "Krumkaker"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er et julebord?",
+      "a": [
+        "Firmafest før jul",
+        "Bordet maten står på julaften",
+        "En julemarked-bod",
+        "En kirkelig seremoni"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter det tradisjonelle 17. mai-toget for barn?",
+      "a": [
+        "Barnetoget",
+        "Folketoget",
+        "Russetoget",
+        "Flaggtoget"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva roper man i barnetoget når man passerer Slottet?",
+      "a": [
+        "Hurra",
+        "Skål",
+        "Hipp hipp",
+        "Ja vi elsker"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er en bunad?",
+      "a": [
+        "Norsk folkedrakt",
+        "En festlue",
+        "En vinterjakke",
+        "En brudekjole"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken tradisjon innebærer å gå fra dør til dør i mørketiden og tigge godteri?",
+      "a": [
+        "Julebukk",
+        "Halloween",
+        "Nyttårsvandring",
+        "Sankthansgang"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva innebærer tradisjonen med syv slag til jul?",
+      "a": [
+        "Å bake syv ulike sorter småkaker",
+        "Å skåle syv ganger",
+        "Syv retter på julaften",
+        "Syv julesanger i kirken"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken dag er lille julaften?",
+      "a": [
+        "23. desember",
+        "24. desember",
+        "22. desember",
+        "25. desember"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Når ringer kirkeklokkene julen inn de fleste steder i Norge?",
+      "a": [
+        "Klokken 17 på julaften",
+        "Klokken 12 på julaften",
+        "Midnatt natt til første juledag",
+        "Klokken 20 på lille julaften"
+      ],
+      "d": 2
+    }
+  ]
+}

@@ -6,6 +6,15 @@ and takes a stool in a 3D pub; the quiz master behind the bar runs the
 questions; every seat has a wallet of credits to **bet on each question**;
 and the pub can see who has sneaked off to look at their phone.
 
+**Norsk pubquiz.** The bank ships **650 Norwegian questions across 23
+topics** — Norge rundt, norsk historie, kongehuset, MGP & Eurovision, norsk
+fotball, vintersport, mat & drikke, russetid og høytider, dialekter, norrøn
+mytologi, Flåklypa og Olsenbanden, and general topics written in Norwegian —
+plus 124 English ones. A pub picks its **language** when it opens: a
+Norwegian night draws only Norwegian packs, the quiz master heckles in
+Norwegian, and the screen, the wallet and the results read in Norwegian too.
+A Norwegian browser opens on `NORSK` and a Norwegian venue by default.
+
 SpacetimeDB is the entire backend — pubs, the question flow, wallets and
 payouts, the answer key, the attention tally and the accounts all live in one
 module. The client is a Vite + TypeScript app with a three.js pub.
@@ -13,9 +22,11 @@ module. The client is a Vite + TypeScript app with a three.js pub.
 ## How a night goes
 
 1. **Open a pub** (or join one by code / link / the public list). Pick the
-   venue, how many questions, how long stakes stay open and how long the
-   table has to answer, and whether it's teams. The host also picks the
-   **topics** the quiz draws from.
+   **language**, the venue, how many questions, how long stakes stay open and
+   how long the table has to answer, and whether it's teams. The host also
+   picks the **topics** the quiz draws from — only topics in the pub's
+   language are offered, so a Norwegian night can never pull an English pack
+   mid-quiz.
 2. Everyone **readies up** at the bar (a signal, not a gate — the host can
    start anyway, and the room starts itself when everyone is ready).
 3. Each question runs in three beats, all timed by the module:
@@ -53,6 +64,20 @@ same accounts as every Digital game (Firebase anonymous sign-in with an
 optional upgrade to Google / email, so level, XP and the quiz record follow
 you across devices and survive engine wipes).
 
+## Languages
+
+A pub plays in one language (`lobby.lang`): `nb`, `en`, or "both", which
+draws from everything. The language decides three things — which topics the
+draw may use, which patter the quiz master speaks, and the wording of the
+quiz itself (the big screen, the question card, the wallet, the results and
+the awards). Menu, lobby and the question writer stay in English; they are
+the tooling around the quiz rather than the quiz.
+
+Adding a language means four places: `LANGS` in `spacetimedb/src/index.ts`
+(plus a set of quiz-master lines in `MC`), `LANGS` in
+`spacetimedb/gen-bank.mjs`, `LANGS` in `client/src/config.ts`, and a string
+table next to `EN`/`NB` there.
+
 ## Adding questions and topics
 
 Two ways, and they end up in the same place — the `topic` and `question`
@@ -70,17 +95,20 @@ file per topic:
 
 ```json
 {
-  "topic": "Science & Nature",
-  "icon": "🔬",
+  "topic": "Norsk historie",
+  "icon": "🏛️",
+  "lang": "nb",
   "questions": [
-    { "q": "What is the chemical symbol for water?", "a": ["H2O", "CO2", "O2", "HO"], "d": 1 }
+    { "q": "I hvilket år ble unionen med Sverige oppløst?",
+      "a": ["1905", "1814", "1884", "1920"], "d": 1 }
   ]
 }
 ```
 
 The **first answer is the correct one** (the module shuffles at play time);
-`d` is the difficulty, 1 easy · 2 medium · 3 hard, which sets the odds. Add a
-question, or a whole new file for a new topic, and redeploy: `gen-bank.mjs`
+`d` is the difficulty, 1 easy · 2 medium · 3 hard, which sets the odds; and
+`lang` is the language the questions are written in (`nb` or `en`, default
+`en`). Add a question, or a whole new file for a new topic, and redeploy: `gen-bank.mjs`
 compiles the packs into `src/bank.ts` on every build/publish (validating the
 shape and refusing duplicates), and the module syncs the packs into the
 tables the first time it sees the new version — keyed on topic + text, so
@@ -131,7 +159,8 @@ The championship hub opens a quiz leg through its relay: `create_championship_ro
 (gated on the relay's server-key-minted token, issuer
 `digital-championship-relay` — the same string in every sibling game) with
 the hub's six-letter code, the championship host as room host, `venue`
-`pub:N` and the director's JSON settings `{ questions, betSecs, answerSecs }`.
+`pub:N` and the director's JSON settings
+`{ questions, betSecs, answerSecs, lang }`.
 One entrant plays alone against the clock; any number more play the normal
 quiz. When it finishes the module writes the finishing order **once** to the
 public `leg_result` table (a rematch never rescores) and the relay carries it
@@ -144,11 +173,12 @@ the host seat.
 spacetimedb/src/index.ts   the module: schema, quiz engine, wallets, attention, accounts, championship
 spacetimedb/src/bank.ts    GENERATED from questions/*.json by gen-bank.mjs
 spacetimedb/questions/     the built-in question packs — edit these
+                           (20-43 are the Norwegian ones)
 client/src/main.ts         connection, UI, input
 client/src/render.ts       the three.js pub
 client/src/attention.ts    the activity checker
 client/src/avatars.ts      the twelve regulars
-client/src/config.ts       mirrors of the module's display constants
+client/src/config.ts       mirrors of the module's constants + the UI wording per language
 client/src/auth.ts         Firebase (same as every Digital game)
 client/scripts/smoke.ts    end-to-end test
 profiles/                  the SQLite mirror of `account`

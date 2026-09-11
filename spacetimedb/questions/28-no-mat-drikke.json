@@ -1,0 +1,307 @@
+{
+  "topic": "Mat & drikke",
+  "icon": "🧀",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva er hovedingrediensen i brunost?",
+      "a": [
+        "Myse",
+        "Fløte",
+        "Sukker og mel",
+        "Geitetalg"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk rett lages av tørrfisk som legges i lut?",
+      "a": [
+        "Lutefisk",
+        "Rakfisk",
+        "Klippfisk",
+        "Boknafisk"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er smalahove?",
+      "a": [
+        "Et saueho",
+        "En pølse av innmat",
+        "En potetrett",
+        "En fiskekake"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er fenalår laget av?",
+      "a": [
+        "Saltet og tørket lammelår",
+        "Røkt svinekjøtt",
+        "Reinsdyrbog",
+        "Elgstek"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kjøttrett spises av mange på julaften på Vestlandet?",
+      "a": [
+        "Pinnekjøtt",
+        "Ribbe",
+        "Lutefisk",
+        "Kalkun"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er den vanligste julemiddagen på Østlandet?",
+      "a": [
+        "Ribbe",
+        "Pinnekjøtt",
+        "Lutefisk",
+        "Torsk"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er akevitt hovedsakelig laget av?",
+      "a": [
+        "Poteter",
+        "Bygg",
+        "Druer",
+        "Epler"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva må linjeakevitt ha gjort før den selges?",
+      "a": [
+        "Krysset ekvator på et skip",
+        "Ligget i kjeller i ti år",
+        "Vært frosset ned",
+        "Blitt destillert tre ganger"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er rakfisk?",
+      "a": [
+        "Gjæret ørret",
+        "Røkt laks",
+        "Tørket torsk",
+        "Saltet sild"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken alkoholgrense gjelder for øl som selges i vanlig dagligvarebutikk?",
+      "a": [
+        "4,7 prosent",
+        "3,5 prosent",
+        "6 prosent",
+        "2,5 prosent"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter det statlige utsalget for sterk drikke i Norge?",
+      "a": [
+        "Vinmonopolet",
+        "Systembolaget",
+        "Alko",
+        "Bryggeriet"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er Norges offisielle nasjonalrett, kåret av folket?",
+      "a": [
+        "Fårikål",
+        "Kjøttkaker",
+        "Lutefisk",
+        "Raspeballer"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilke to hovedingredienser er i fårikål?",
+      "a": [
+        "Får og kål",
+        "Svin og kål",
+        "Lam og potet",
+        "Storfe og kålrot"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Når feires fårikålens festdag?",
+      "a": [
+        "Siste torsdag i september",
+        "Første søndag i oktober",
+        "17. mai",
+        "Midtsommer"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter den norske tursjokoladen med rødt og gult papir?",
+      "a": [
+        "Kvikk Lunsj",
+        "Stratos",
+        "Firkløver",
+        "Melkesjokolade"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk brus har appelsinsmak og et gult merke?",
+      "a": [
+        "Solo",
+        "Villa",
+        "Fanta",
+        "Urge"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles raspeballer i andre deler av landet?",
+      "a": [
+        "Komle eller kumle",
+        "Lompe",
+        "Lefse",
+        "Sodd"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er multe kalt på folkemunne?",
+      "a": [
+        "Myrens gull",
+        "Fjellets perle",
+        "Skogens sølv",
+        "Nordlysbær"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken fisk er Norges viktigste sjømateksport?",
+      "a": [
+        "Laks",
+        "Torsk",
+        "Sild",
+        "Makrell"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er lompe laget av?",
+      "a": [
+        "Potet",
+        "Hvetemel",
+        "Havre",
+        "Rug"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er den tradisjonelle trønderske festretten med kjøttboller i suppe?",
+      "a": [
+        "Sodd",
+        "Lapskaus",
+        "Betasuppe",
+        "Fiskesuppe"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er hovedingrediensen i gudbrandsdalsost?",
+      "a": [
+        "Geitemelk og myse",
+        "Kumelk og fløte",
+        "Sauemelk",
+        "Reinsdyrmelk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange slag kaker skal man tradisjonelt bake til jul?",
+      "a": [
+        "Syv",
+        "Fem",
+        "Tolv",
+        "Tre"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er en kransekake bygget opp av?",
+      "a": [
+        "Ringer av mandelmasse",
+        "Lag av sukkerbrød",
+        "Vaffelplater",
+        "Marsipanroser"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter den norske pølsa som spises med lompe på 17. mai?",
+      "a": [
+        "Wienerpølse",
+        "Chorizo",
+        "Bratwurst",
+        "Medisterpølse"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er Norge blant verdenstoppen i å drikke mest av per innbygger?",
+      "a": [
+        "Kaffe",
+        "Te",
+        "Melk",
+        "Appelsinjuice"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er klippfisk?",
+      "a": [
+        "Saltet og tørket torsk",
+        "Fersk torsk i skiver",
+        "Røkt laks",
+        "Hermetisk sild"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk by er kjent for klippfisk og bacalao?",
+      "a": [
+        "Kristiansund",
+        "Bergen",
+        "Tromsø",
+        "Stavanger"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er lefse?",
+      "a": [
+        "Et tynt, mykt flatbrød",
+        "En fiskekake",
+        "En ost",
+        "En suppe"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er brunost kalt i internasjonale butikker?",
+      "a": [
+        "Brown cheese",
+        "Sweet curd",
+        "Viking cheese",
+        "Norwegian fudge"
+      ],
+      "d": 2
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "topic": "Olje, penger & merkevarer",
+  "icon": "💰",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva heter Norges største energiselskap i dag?",
+      "a": [
+        "Equinor",
+        "Aker BP",
+        "Hydro",
+        "Yara"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva het Equinor før navnebyttet i 2018?",
+      "a": [
+        "Statoil",
+        "Norsk Olje",
+        "Statkraft",
+        "Petoro"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket oljefelt ble funnet i 1969 og startet det norske oljeeventyret?",
+      "a": [
+        "Ekofisk",
+        "Troll",
+        "Statfjord",
+        "Johan Sverdrup"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles Statens pensjonsfond utland til daglig?",
+      "a": [
+        "Oljefondet",
+        "Statskassen",
+        "Folketrygden",
+        "Pensjonspotten"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem forvalter oljefondet?",
+      "a": [
+        "Norges Bank",
+        "Finansdepartementet direkte",
+        "DNB",
+        "Statoil"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges valuta?",
+      "a": [
+        "Krone",
+        "Mark",
+        "Daler",
+        "Euro"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Norges største bank?",
+      "a": [
+        "DNB",
+        "Nordea",
+        "Sparebank 1",
+        "Danske Bank"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket norsk selskap lager Jarlsbergost?",
+      "a": [
+        "Tine",
+        "Q-meieriene",
+        "Synnøve Finden",
+        "Nortura"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk selskap er verdenskjent for maling og lakk?",
+      "a": [
+        "Jotun",
+        "Nordsjø",
+        "Beckers",
+        "Flügger"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk selskap er en av verdens største aluminiumsprodusenter?",
+      "a": [
+        "Norsk Hydro",
+        "Elkem",
+        "Yara",
+        "Orkla"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk selskap er verdensledende på mineralgjødsel?",
+      "a": [
+        "Yara",
+        "Tine",
+        "Orkla",
+        "Borregaard"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem grunnla dagligvarekjeden Rema 1000?",
+      "a": [
+        "Odd Reitan",
+        "Stein Erik Hagen",
+        "Johan Johannson",
+        "Petter Stordalen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk hotellkonge er kjent som eier av Nordic Choice?",
+      "a": [
+        "Petter Stordalen",
+        "Olav Thon",
+        "Stein Erik Hagen",
+        "Kjell Inge Røkke"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk milliardær er kjent for kjøpesentre og en karakteristisk lue?",
+      "a": [
+        "Olav Thon",
+        "Petter Stordalen",
+        "Kjell Inge Røkke",
+        "John Fredriksen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kjent nettleser ble utviklet i Norge?",
+      "a": [
+        "Opera",
+        "Firefox",
+        "Safari",
+        "Edge"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk læringsplattform med quiz brukes i klasserom verden over?",
+      "a": [
+        "Kahoot",
+        "Duolingo",
+        "Quizlet",
+        "Socrative"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er Norges viktigste eksportvare målt i verdi?",
+      "a": [
+        "Olje og gass",
+        "Fisk",
+        "Aluminium",
+        "Vannkraft"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er Norges nest største eksportnæring etter olje og gass?",
+      "a": [
+        "Sjømat",
+        "Skogbruk",
+        "Turisme",
+        "Møbler"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter den norske betalingsappen nesten alle bruker?",
+      "a": [
+        "Vipps",
+        "Swish",
+        "MobilePay",
+        "Klarna"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket norsk merke er kjent for ullundertøy siden 1853?",
+      "a": [
+        "Devold",
+        "Bergans",
+        "Helly Hansen",
+        "Norrøna"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk friluftsmerke ble grunnlagt av Helly Juell Hansen i 1877?",
+      "a": [
+        "Helly Hansen",
+        "Bergans",
+        "Norrøna",
+        "Stormberg"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk barnestol er en designklassiker?",
+      "a": [
+        "Tripp Trapp fra Stokke",
+        "Bølgen fra Ekornes",
+        "Stressless Junior",
+        "Kids Comfort"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk møbelprodusent lager Stressless-stolen?",
+      "a": [
+        "Ekornes",
+        "Stokke",
+        "Hjellegjerde",
+        "Slettvoll"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er bompenger?",
+      "a": [
+        "Avgift for å kjøre på vei",
+        "Skatt på bensin",
+        "Parkeringsgebyr",
+        "Avgift på bilkjøp"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land har verdens høyeste andel elbiler av nybilsalget?",
+      "a": [
+        "Norge",
+        "Sverige",
+        "Nederland",
+        "Kina"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket statlig selskap eier og driver det norske strømnettet?",
+      "a": [
+        "Statnett",
+        "Statkraft",
+        "Statoil",
+        "Statskog"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken andel av norsk strømproduksjon kommer fra vannkraft?",
+      "a": [
+        "Rundt 90 prosent",
+        "Rundt 50 prosent",
+        "Rundt 30 prosent",
+        "Rundt 70 prosent"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva het Televerket etter privatiseringen?",
+      "a": [
+        "Telenor",
+        "Telia",
+        "Netcom",
+        "Ice"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk mediehus eier VG og Aftenposten?",
+      "a": [
+        "Schibsted",
+        "Amedia",
+        "Egmont",
+        "Polaris"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk nettmarkedsplass brukes til å kjøpe og selge brukte ting?",
+      "a": [
+        "Finn.no",
+        "Blocket",
+        "Tradera",
+        "Marktplaats"
+      ],
+      "d": 1
+    }
+  ]
+}

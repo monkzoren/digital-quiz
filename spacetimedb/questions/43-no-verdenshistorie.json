@@ -1,0 +1,287 @@
+{
+  "topic": "Verdenshistorie",
+  "icon": "🏺",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "I hvilket år falt Berlinmuren?",
+      "a": [
+        "1989",
+        "1991",
+        "1987",
+        "1985"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket år startet første verdenskrig?",
+      "a": [
+        "1914",
+        "1918",
+        "1912",
+        "1920"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket år endte andre verdenskrig?",
+      "a": [
+        "1945",
+        "1944",
+        "1946",
+        "1943"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var den første som gikk på månen?",
+      "a": [
+        "Neil Armstrong",
+        "Buzz Aldrin",
+        "Jurij Gagarin",
+        "Michael Collins"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilket år landet mennesker på månen første gang?",
+      "a": [
+        "1969",
+        "1961",
+        "1972",
+        "1965"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var den første mannen i verdensrommet?",
+      "a": [
+        "Jurij Gagarin",
+        "Neil Armstrong",
+        "Alan Shepard",
+        "Valentina Teresjkova"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket rike ble styrt av Djengis Khan?",
+      "a": [
+        "Mongolriket",
+        "Det osmanske riket",
+        "Perserriket",
+        "Romerriket"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by var sentrum i Romerriket?",
+      "a": [
+        "Roma",
+        "Athen",
+        "Konstantinopel",
+        "Alexandria"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var den første presidenten i USA?",
+      "a": [
+        "George Washington",
+        "Thomas Jefferson",
+        "Abraham Lincoln",
+        "John Adams"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket år ble den amerikanske uavhengighetserklæringen signert?",
+      "a": [
+        "1776",
+        "1789",
+        "1812",
+        "1750"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken revolusjon startet i 1789?",
+      "a": [
+        "Den franske",
+        "Den amerikanske",
+        "Den russiske",
+        "Den industrielle"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem malte Mona Lisa?",
+      "a": [
+        "Leonardo da Vinci",
+        "Michelangelo",
+        "Raphael",
+        "Caravaggio"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem malte taket i Det sixtinske kapell?",
+      "a": [
+        "Michelangelo",
+        "Leonardo da Vinci",
+        "Raphael",
+        "Donatello"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken sivilisasjon bygde pyramidene i Giza?",
+      "a": [
+        "Egypterne",
+        "Romerne",
+        "Grekerne",
+        "Aztekerne"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket skip forliste på sin jomfrutur i 1912?",
+      "a": [
+        "Titanic",
+        "Lusitania",
+        "Britannic",
+        "Queen Mary"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var Storbritannias statsminister under det meste av andre verdenskrig?",
+      "a": [
+        "Winston Churchill",
+        "Neville Chamberlain",
+        "Clement Attlee",
+        "Anthony Eden"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket år ble Magna Carta beseglet?",
+      "a": [
+        "1215",
+        "1066",
+        "1315",
+        "1415"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva skjedde i England i 1066?",
+      "a": [
+        "Normannernes erobring",
+        "Svartedauden",
+        "Magna Carta",
+        "Rosekrigene"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket gammelt vidunder lå i Alexandria?",
+      "a": [
+        "Fyrtårnet",
+        "De hengende hager",
+        "Kolossen",
+        "Mausoleet"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem var den franske keiseren som tapte ved Waterloo?",
+      "a": [
+        "Napoleon",
+        "Ludvig XIV",
+        "Karl den store",
+        "Robespierre"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket år ble Sovjetunionen oppløst?",
+      "a": [
+        "1991",
+        "1989",
+        "1993",
+        "1985"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem ledet den ikkevoldelige frigjøringskampen i India?",
+      "a": [
+        "Mahatma Gandhi",
+        "Jawaharlal Nehru",
+        "Nelson Mandela",
+        "Sukarno"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem satt 27 år i fengsel og ble president i Sør-Afrika?",
+      "a": [
+        "Nelson Mandela",
+        "Desmond Tutu",
+        "Thabo Mbeki",
+        "Steve Biko"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken mur delte en by fra 1961 til 1989?",
+      "a": [
+        "Berlinmuren",
+        "Den kinesiske mur",
+        "Hadrians mur",
+        "Vestmuren"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket år oppdaget Columbus Amerika for europeerne?",
+      "a": [
+        "1492",
+        "1592",
+        "1392",
+        "1450"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken pandemi herjet Europa fra 1347?",
+      "a": [
+        "Svartedauden",
+        "Spanskesyken",
+        "Koleraen",
+        "Kopper"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by ble ødelagt av Vesuv i år 79?",
+      "a": [
+        "Pompeii",
+        "Roma",
+        "Napoli",
+        "Ravenna"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem var den greske filosofen som lærte opp Alexander den store?",
+      "a": [
+        "Aristoteles",
+        "Platon",
+        "Sokrates",
+        "Pytagoras"
+      ],
+      "d": 3
+    }
+  ]
+}

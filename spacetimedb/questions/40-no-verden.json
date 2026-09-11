@@ -1,0 +1,287 @@
+{
+  "topic": "Verden rundt",
+  "icon": "🌍",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva er hovedstaden i Australia?",
+      "a": [
+        "Canberra",
+        "Sydney",
+        "Melbourne",
+        "Perth"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket hav er verdens største?",
+      "a": [
+        "Stillehavet",
+        "Atlanterhavet",
+        "Indiahavet",
+        "Nordishavet"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land har flest innbyggere i Europa?",
+      "a": [
+        "Russland",
+        "Tyskland",
+        "Frankrike",
+        "Storbritannia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er verdens minste land målt i areal?",
+      "a": [
+        "Vatikanstaten",
+        "Monaco",
+        "San Marino",
+        "Liechtenstein"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken elv renner gjennom Egypt?",
+      "a": [
+        "Nilen",
+        "Amazonas",
+        "Kongo",
+        "Tigris"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er hovedstaden i Canada?",
+      "a": [
+        "Ottawa",
+        "Toronto",
+        "Montreal",
+        "Vancouver"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket fjell er verdens høyeste over havet?",
+      "a": [
+        "Mount Everest",
+        "K2",
+        "Kilimanjaro",
+        "Mont Blanc"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken ørken er verdens største varme ørken?",
+      "a": [
+        "Sahara",
+        "Gobi",
+        "Kalahari",
+        "Atacama"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land har flest tidssoner?",
+      "a": [
+        "Frankrike",
+        "Russland",
+        "USA",
+        "Kina"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor mange tidssoner har Kina offisielt?",
+      "a": [
+        "Én",
+        "Fem",
+        "Tre",
+        "Åtte"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket land ligger både i Europa og Asia med sin største by?",
+      "a": [
+        "Tyrkia",
+        "Hellas",
+        "Ukraina",
+        "Egypt"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er hovedstaden i New Zealand?",
+      "a": [
+        "Wellington",
+        "Auckland",
+        "Christchurch",
+        "Dunedin"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land kalles Solens rike?",
+      "a": [
+        "Japan",
+        "Kina",
+        "Thailand",
+        "India"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land har flest øyer i verden?",
+      "a": [
+        "Sverige",
+        "Indonesia",
+        "Filippinene",
+        "Canada"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken verdensdel har flest land?",
+      "a": [
+        "Afrika",
+        "Europa",
+        "Asia",
+        "Sør-Amerika"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter den lengste fjellkjeden på land?",
+      "a": [
+        "Andesfjellene",
+        "Himalaya",
+        "Klippfjellene",
+        "Alpene"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land grenser til flest andre land?",
+      "a": [
+        "Kina",
+        "Russland",
+        "Brasil",
+        "Tyskland"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er verdens dypeste innsjø?",
+      "a": [
+        "Bajkalsjøen",
+        "Tanganyikasjøen",
+        "Kaspihavet",
+        "Lake Superior"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket land er verdens største produsent av kaffe?",
+      "a": [
+        "Brasil",
+        "Colombia",
+        "Vietnam",
+        "Etiopia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by kalles den evige stad?",
+      "a": [
+        "Roma",
+        "Athen",
+        "Jerusalem",
+        "Kairo"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land har flagget med en rød sirkel på hvit bakgrunn?",
+      "a": [
+        "Japan",
+        "Bangladesh",
+        "Sør-Korea",
+        "Kina"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land er verdens største målt i areal?",
+      "a": [
+        "Russland",
+        "Canada",
+        "Kina",
+        "USA"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor ligger Machu Picchu?",
+      "a": [
+        "Peru",
+        "Mexico",
+        "Bolivia",
+        "Chile"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by ligger både i Europa og Asia?",
+      "a": [
+        "Istanbul",
+        "Moskva",
+        "Aten",
+        "Baku"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land har euro som valuta av disse?",
+      "a": [
+        "Finland",
+        "Sverige",
+        "Danmark",
+        "Polen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter verdens lengste elv, ifølge de fleste kilder?",
+      "a": [
+        "Nilen",
+        "Amazonas",
+        "Yangtze",
+        "Mississippi"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land er kjent som Landet ned under?",
+      "a": [
+        "Australia",
+        "New Zealand",
+        "Sør-Afrika",
+        "Argentina"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket kontinent har ingen permanent befolkning?",
+      "a": [
+        "Antarktis",
+        "Australia",
+        "Afrika",
+        "Sør-Amerika"
+      ],
+      "d": 1
+    }
+  ]
+}

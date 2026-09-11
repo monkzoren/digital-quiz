@@ -40,4 +40,5 @@ export default __t.row({
   mcText: __t.string().name("mc_text"),
   championName: __t.string().name("champion_name"),
   championshipLeg: __t.u64().name("championship_leg"),
+  lang: __t.string(),
 });

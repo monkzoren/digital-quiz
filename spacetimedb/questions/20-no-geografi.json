@@ -1,0 +1,307 @@
+{
+  "topic": "Norge rundt",
+  "icon": "🗺️",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva er Norges lengste fjord?",
+      "a": [
+        "Sognefjorden",
+        "Hardangerfjorden",
+        "Trondheimsfjorden",
+        "Oslofjorden"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Norges høyeste fjell?",
+      "a": [
+        "Galdhøpiggen",
+        "Glittertind",
+        "Snøhetta",
+        "Store Skagastølstind"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Norges største innsjø?",
+      "a": [
+        "Mjøsa",
+        "Femunden",
+        "Randsfjorden",
+        "Tyrifjorden"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken elv er Norges lengste?",
+      "a": [
+        "Glomma",
+        "Numedalslågen",
+        "Tanaelva",
+        "Drammenselva"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken by er Norges nest største?",
+      "a": [
+        "Bergen",
+        "Trondheim",
+        "Stavanger",
+        "Tromsø"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land har Norge den lengste landegrensen mot?",
+      "a": [
+        "Sverige",
+        "Finland",
+        "Russland",
+        "Danmark"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange land grenser Norge til på fastlandet?",
+      "a": [
+        "Tre",
+        "To",
+        "Fire",
+        "Ett"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter den berømte klippen over Lysefjorden?",
+      "a": [
+        "Preikestolen",
+        "Kjeragbolten",
+        "Trolltunga",
+        "Romsdalseggen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken øygruppe i Nordland er kjent for Lofotveggen?",
+      "a": [
+        "Lofoten",
+        "Vesterålen",
+        "Helgeland",
+        "Senja"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter Norges sørligste punkt på fastlandet?",
+      "a": [
+        "Lindesnes",
+        "Mandal",
+        "Jomfruland",
+        "Kristiansand"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken by kalles Nordens Paris?",
+      "a": [
+        "Tromsø",
+        "Bodø",
+        "Hammerfest",
+        "Ålesund"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by kalles Rosenes by?",
+      "a": [
+        "Molde",
+        "Bergen",
+        "Larvik",
+        "Fredrikstad"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter verdens lengste veitunnel, i Norge?",
+      "a": [
+        "Lærdalstunnelen",
+        "Gudvangatunnelen",
+        "Folgefonntunnelen",
+        "Oslofjordtunnelen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Nord-Europas største fjellvidde?",
+      "a": [
+        "Hardangervidda",
+        "Finnmarksvidda",
+        "Dovrefjell",
+        "Saltfjellet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Fastlands-Europas største isbre?",
+      "a": [
+        "Jostedalsbreen",
+        "Folgefonna",
+        "Svartisen",
+        "Hardangerjøkulen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by regnes som Norges eldste?",
+      "a": [
+        "Tønsberg",
+        "Trondheim",
+        "Bergen",
+        "Oslo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket hav ligger nord for Norge?",
+      "a": [
+        "Barentshavet",
+        "Norskehavet",
+        "Nordsjøen",
+        "Skagerrak"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by er Norges sydligste?",
+      "a": [
+        "Mandal",
+        "Kristiansand",
+        "Farsund",
+        "Arendal"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken øygruppe langt nord er norsk territorium?",
+      "a": [
+        "Svalbard",
+        "Færøyene",
+        "Åland",
+        "Grønland"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken by har flest innbyggere i Nord-Norge?",
+      "a": [
+        "Tromsø",
+        "Bodø",
+        "Narvik",
+        "Alta"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor ligger Trollstigen?",
+      "a": [
+        "Mellom Åndalsnes og Valldal",
+        "I Jotunheimen",
+        "På Hardangervidda",
+        "I Lofoten"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges største øy, utenom Svalbard?",
+      "a": [
+        "Hinnøya",
+        "Senja",
+        "Magerøya",
+        "Sotra"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er Norges nordligste punkt på fastlandet?",
+      "a": [
+        "Kinnarodden",
+        "Nordkapp",
+        "Knivskjellodden",
+        "Vardø"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken by ligger nærmest den russiske grensen?",
+      "a": [
+        "Kirkenes",
+        "Vadsø",
+        "Hammerfest",
+        "Alta"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges høyeste foss?",
+      "a": [
+        "Vinnufossen",
+        "Vøringsfossen",
+        "Mardalsfossen",
+        "Kjosfossen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken fjord står på UNESCOs verdensarvliste sammen med Nærøyfjorden?",
+      "a": [
+        "Geirangerfjorden",
+        "Lysefjorden",
+        "Sognefjorden",
+        "Trollfjorden"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor går polarsirkelen tvers gjennom Norge?",
+      "a": [
+        "Gjennom Nordland",
+        "Gjennom Troms",
+        "Gjennom Finnmark",
+        "Gjennom Trøndelag"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor ligger Trolltunga?",
+      "a": [
+        "Ved Odda i Hardanger",
+        "I Lofoten",
+        "På Dovrefjell",
+        "I Jotunheimen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter den lange fjellheimen mellom Øst- og Vestlandet med Norges høyeste fjell?",
+      "a": [
+        "Jotunheimen",
+        "Rondane",
+        "Dovre",
+        "Sylan"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk by har landets travleste flyplass?",
+      "a": [
+        "Oslo",
+        "Bergen",
+        "Trondheim",
+        "Stavanger"
+      ],
+      "d": 1
+    }
+  ]
+}

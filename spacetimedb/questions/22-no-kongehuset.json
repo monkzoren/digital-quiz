@@ -1,0 +1,247 @@
+{
+  "topic": "Kongehuset",
+  "icon": "👑",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvem etterfulgte Olav V som konge i 1991?",
+      "a": [
+        "Harald V",
+        "Haakon",
+        "Olav VI",
+        "Christian"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem er tronarvingen etter Harald V?",
+      "a": [
+        "Kronprins Haakon",
+        "Prinsesse Märtha Louise",
+        "Prinsesse Ingrid Alexandra",
+        "Prins Sverre Magnus"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem er neste i arverekken etter kronprins Haakon?",
+      "a": [
+        "Prinsesse Ingrid Alexandra",
+        "Prins Sverre Magnus",
+        "Prinsesse Märtha Louise",
+        "Marius Borg Høiby"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva het Haakon VII før han ble norsk konge?",
+      "a": [
+        "Prins Carl av Danmark",
+        "Prins Gustav av Sverige",
+        "Prins Oscar av Sverige",
+        "Prins Valdemar av Danmark"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er kongens valgspråk?",
+      "a": [
+        "Alt for Norge",
+        "Ja, vi elsker",
+        "Rett og sannhet",
+        "For Gud og fedreland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken idrett tok Olav V OL-gull i?",
+      "a": [
+        "Seiling",
+        "Hopp",
+        "Skøyter",
+        "Langrenn"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem giftet Harald seg med i 1968?",
+      "a": [
+        "Sonja Haraldsen",
+        "Mette-Marit Tjessem Høiby",
+        "Märtha av Sverige",
+        "Ragnhild Alexandra"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor bor kronprinsfamilien?",
+      "a": [
+        "Skaugum",
+        "Bygdøy kongsgård",
+        "Oscarshall",
+        "Bygdø sjøbad"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken gate ender ved Slottet i Oslo?",
+      "a": [
+        "Karl Johans gate",
+        "Bogstadveien",
+        "Grensen",
+        "Akersgata"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter det norske kongeskipet?",
+      "a": [
+        "Norge",
+        "Fram",
+        "Gjøa",
+        "Kongen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem holder tale til folket på nyttårsdagen?",
+      "a": [
+        "Kongen",
+        "Statsministeren",
+        "Stortingspresidenten",
+        "Biskopen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange barn har kong Harald og dronning Sonja?",
+      "a": [
+        "To",
+        "Ett",
+        "Tre",
+        "Fire"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva het kronprinsesse Mette-Marit til etternavn før hun giftet seg?",
+      "a": [
+        "Tjessem Høiby",
+        "Borg",
+        "Haraldsen",
+        "Ferner"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilken katedral ble Harald og Sonja signet i 1991?",
+      "a": [
+        "Nidarosdomen",
+        "Oslo domkirke",
+        "Bergen domkirke",
+        "Stavanger domkirke"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken dag feires kongens fødselsdag?",
+      "a": [
+        "21. februar",
+        "4. juli",
+        "19. januar",
+        "17. mai"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva het Olav Vs kone, som døde før han ble konge?",
+      "a": [
+        "Kronprinsesse Märtha",
+        "Dronning Maud",
+        "Prinsesse Ragnhild",
+        "Prinsesse Astrid"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva var dronning Mauds opprinnelige nasjonalitet?",
+      "a": [
+        "Britisk",
+        "Dansk",
+        "Svensk",
+        "Tysk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket landområde i Antarktis er oppkalt etter dronning Maud?",
+      "a": [
+        "Dronning Maud Land",
+        "Maudbukta",
+        "Mauds Kyst",
+        "Maudhavet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter kongefamiliens balkong der de vinker til barnetoget?",
+      "a": [
+        "Slottsbalkongen",
+        "Kongebalkongen",
+        "Eidsvollsbalkongen",
+        "Majestetsbalkongen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken prinsesse har vært kjent for engleskolen?",
+      "a": [
+        "Märtha Louise",
+        "Ingrid Alexandra",
+        "Astrid",
+        "Ragnhild"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva sier Grunnloven at kongen skal bekjenne seg til?",
+      "a": [
+        "Den evangelisk-lutherske tro",
+        "Katolsk tro",
+        "Ingen bestemt tro",
+        "Statsreligionen fra 1537"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem vokter Slottet i Oslo?",
+      "a": [
+        "Hans Majestet Kongens Garde",
+        "Heimevernet",
+        "Politiet",
+        "Marinejegerne"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket dyr har vært æresmedlem i Kongens Garde?",
+      "a": [
+        "En pingvin",
+        "En elg",
+        "En isbjørn",
+        "En hest"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor holder kongen sin nyttårstale fra?",
+      "a": [
+        "Slottet",
+        "Stortinget",
+        "Nidarosdomen",
+        "Akershus festning"
+      ],
+      "d": 2
+    }
+  ]
+}

@@ -116,52 +116,119 @@ const CALLOUT_MIN_GAP = 6_000_000n; // one call-out per six seconds per heckler
 const EMOTES = ['👍', '😂', '🔥', '😭', '🍺', '❤️', '😡', '🤝'];
 
 // ---------------------------------------------------------------------------
-// Pubs (venues). Index = lobby.theme; the client dresses the room to match.
+// Languages. A pub plays in ONE language so packs never get mixed mid-quiz:
+// `lobby.lang` filters the draw to topics written in it, and the quiz master
+// speaks it. LANG_ANY ('') means "draw from everything". Mirrored by LANGS in
+// gen-bank.mjs and client/src/config.ts — adding one means adding it in all
+// three (and giving the quiz master something to say, below).
 // ---------------------------------------------------------------------------
-const PUBS = ['The Dog & Duck', 'The Neon Lounge', 'The Harbour Arms'];
+const LANG_ANY = '';
+const LANGS = ['en', 'nb'];
+const cleanLang = (v: string) => (LANGS.includes(v) ? v : LANG_ANY);
 
+// ---------------------------------------------------------------------------
+// Pubs (venues). Index = lobby.theme; the client dresses the room to match
+// (PUB_LOOK there maps a venue to one of the three interiors). Mirrored in
+// client/src/config.ts — keep the order.
+// ---------------------------------------------------------------------------
+const PUBS = [
+  'The Dog & Duck',
+  'The Neon Lounge',
+  'The Harbour Arms',
+  'Kroa på Hjørnet',
+  'Nordlysbaren',
+  'Hytta på Fjellet',
+];
 
-
-// The quiz master's patter. Picked with ctx.random so the banter differs
-// room to room; {name} is filled in by the module.
-const MC_WELCOME = [
-  'Evening all! Phones away, pints up — the quiz starts now.',
-  'Welcome, welcome. House rules: no googling, no sulking, tip your quiz master.',
-  'Right then. Ten categories, one winner, and the losers buy the round.',
-];
-const MC_BETTING = [
-  'Next category up — how confident are you feeling? Get your credits down.',
-  'Place your bets. Bold or broke, your call.',
-  'Stakes open! Big money on this one, or is that just the drink talking?',
-  'Here comes the category. Load up or play it safe.',
-];
-const MC_ALL_CORRECT = [
-  'Everyone got it? Suspiciously well-read table, this.',
-  'Full marks all round. I’ll make the next one harder.',
-];
-const MC_NOBODY = [
-  'Nobody? NOBODY? I despair.',
-  'Not a single one of you. The landlord thanks you for your donations.',
-  'Tumbleweed. That one’s going on the wall of shame.',
-];
-const MC_MIXED = [
-  'Some of you knew that. The rest of you — drink up and move on.',
-  'A split table! Wallets are moving now.',
-  'Half of you nailed it. The other half were guessing, and I could tell.',
-];
-const MC_PHONE = [
-  '{name}, put the phone down — this is a pub, not a waiting room.',
-  'Oi, {name}! Eyes up here. Your group chat can wait.',
-  'I see you, {name}. Whoever you’re texting can’t help you with this.',
-];
-const MC_FINAL = [
-  'LAST ORDERS! Final question — stake it all if you dare, double odds on the table.',
-  'Last question of the night. All-in is allowed. Regret is mandatory.',
-];
-const MC_DONE = [
-  'That’s the quiz! {name} takes the pot. Everyone else: the drinks are on you.',
-  'And we’re done. {name} wins, and let the record show it was never in doubt.',
-];
+// The quiz master's patter, per language. Picked with ctx.random so the
+// banter differs room to room; {name} is filled in by the module. A room
+// playing LANG_ANY (or any language with no patter) gets the English set.
+type McLines = {
+  welcome: string[]; betting: string[]; allCorrect: string[]; nobody: string[];
+  mixed: string[]; phone: string[]; final: string[]; done: string[];
+};
+const MC: Record<string, McLines> = {
+  en: {
+    welcome: [
+      'Evening all! Phones away, pints up — the quiz starts now.',
+      'Welcome, welcome. House rules: no googling, no sulking, tip your quiz master.',
+      'Right then. One winner, and the losers buy the round.',
+    ],
+    betting: [
+      'Next category up — how confident are you feeling? Get your credits down.',
+      'Place your bets. Bold or broke, your call.',
+      'Stakes open! Big money on this one, or is that just the drink talking?',
+      'Here comes the category. Load up or play it safe.',
+    ],
+    allCorrect: [
+      'Everyone got it? Suspiciously well-read table, this.',
+      'Full marks all round. I’ll make the next one harder.',
+    ],
+    nobody: [
+      'Nobody? NOBODY? I despair.',
+      'Not a single one of you. The landlord thanks you for your donations.',
+      'Tumbleweed. That one’s going on the wall of shame.',
+    ],
+    mixed: [
+      'Some of you knew that. The rest of you — drink up and move on.',
+      'A split table! Wallets are moving now.',
+      'Half of you nailed it. The other half were guessing, and I could tell.',
+    ],
+    phone: [
+      '{name}, put the phone down — this is a pub, not a waiting room.',
+      'Oi, {name}! Eyes up here. Your group chat can wait.',
+      'I see you, {name}. Whoever you’re texting can’t help you with this.',
+    ],
+    final: [
+      'LAST ORDERS! Final question — stake it all if you dare, double odds on the table.',
+      'Last question of the night. All-in is allowed. Regret is mandatory.',
+    ],
+    done: [
+      'That’s the quiz! {name} takes the pot. Everyone else: the drinks are on you.',
+      'And we’re done. {name} wins, and let the record show it was never in doubt.',
+    ],
+  },
+  nb: {
+    welcome: [
+      'God kveld, folkens! Mobilen ned, pilsen opp — nå braker det løs.',
+      'Velkommen til quiz. Husregler: ingen googling, ingen sutring, og tips quizmasteren.',
+      'Da er vi i gang. Én vinner — resten spanderer.',
+    ],
+    betting: [
+      'Ny kategori — hvor stødig føler du deg? Sett inn poletter.',
+      'Innsatsen er åpen. Frekk eller feig, du bestemmer.',
+      'Store penger på denne, eller er det bare pilsen som snakker?',
+      'Her kommer kategorien. Satse alt, eller spille det trygt?',
+    ],
+    allCorrect: [
+      'Alle sammen? Mistenkelig velinformert bord, dette her.',
+      'Full pott rundt hele bordet. Da skjerper jeg meg til neste.',
+    ],
+    nobody: [
+      'Ingen? INGEN? Jeg fortviler.',
+      'Ikke én eneste av dere. Vertshuset takker for gaven.',
+      'Helt stille. Den der havner på skammens vegg.',
+    ],
+    mixed: [
+      'Noen av dere kunne den. Resten får drikke opp og gå videre.',
+      'Delt bord! Nå flytter det seg penger.',
+      'Halvparten satt den. Den andre halvparten gjettet, og det så jeg.',
+    ],
+    phone: [
+      '{name}, legg fra deg mobilen — dette er en pub, ikke et venterom.',
+      'Hei, {name}! Øynene hit. Gruppechatten kan vente.',
+      'Jeg ser deg, {name}. Den du tekster kan ikke hjelpe deg nå.',
+    ],
+    final: [
+      'SISTE RUNDE! Siste spørsmål — sats alt hvis du tør, dobbel odds på bordet.',
+      'Siste spørsmål for kvelden. All in er lov. Anger er obligatorisk.',
+    ],
+    done: [
+      'Det var quizen! {name} tar potten. Resten: dere spanderer.',
+      'Og der er vi ferdige. {name} vinner, og la det være sagt — det var aldri tvil.',
+    ],
+  },
+};
 
 // ---------------------------------------------------------------------------
 // Schema
@@ -204,6 +271,10 @@ const Lobby = table(
     // The championship leg this room plays (a hub `leg` id; 0 = an ordinary
     // room). Set only by create_championship_room.
     championshipLeg: t.u64().default(0n),
+    // NOTE: appended column — the language this pub plays in (LANG_ANY = draw
+    // from every topic whatever it is written in). Filters the draw pool and
+    // picks the quiz master's patter.
+    lang: t.string().default(LANG_ANY),
   }
 );
 
@@ -302,6 +373,9 @@ const Topic = table(
     questionCount: t.u32(),
     authorName: t.string(),
     createdAt: t.timestamp(),
+    // NOTE: appended column — the language this topic's questions are written
+    // in. Comes from the pack's "lang" (or the author's pick in-game).
+    lang: t.string().default('en'),
   }
 );
 
@@ -601,6 +675,11 @@ function insertChat(ctx: Ctx, lobbyId: bigint, senderId: Identity, senderName: s
   for (let i = 0; i < rows.length - CHAT_KEEP; i++) ctx.db.chat.id.delete(rows[i].id);
 }
 
+/** One of the quiz master's lines, in the room's language. */
+function mcLine(ctx: Ctx, lobby: LobbyRow, key: keyof McLines): string {
+  return pick(ctx, (MC[lobby.lang] ?? MC.en)[key]);
+}
+
 /** The quiz master speaks: on the screen (lobby.mcText) and in the log. */
 function mcSay(ctx: Ctx, lobby: LobbyRow, text: string): LobbyRow {
   insertChat(ctx, lobby.id, lobby.hostId, 'QUIZ MASTER', CHAT_MC, text);
@@ -644,9 +723,9 @@ function ensureBank(ctx: Ctx) {
   for (const pack of BANK) {
     let topic = ctx.db.topic.name.find(pack.topic);
     if (!topic) {
-      topic = ctx.db.topic.insert({ id: 0n, name: pack.topic, icon: pack.icon, builtin: true, questionCount: 0, authorName: '', createdAt: ctx.timestamp });
-    } else if (topic.icon !== pack.icon || !topic.builtin) {
-      topic = ctx.db.topic.id.update({ ...topic, icon: pack.icon, builtin: true });
+      topic = ctx.db.topic.insert({ id: 0n, name: pack.topic, icon: pack.icon, lang: pack.lang, builtin: true, questionCount: 0, authorName: '', createdAt: ctx.timestamp });
+    } else if (topic.icon !== pack.icon || topic.lang !== pack.lang || !topic.builtin) {
+      topic = ctx.db.topic.id.update({ ...topic, icon: pack.icon, lang: pack.lang, builtin: true });
     }
     for (const q of pack.questions) {
       const key = `${pack.topic}|${q.q}`;
@@ -688,14 +767,26 @@ function bumpTopicCount(ctx: Ctx, topicId: bigint, by: number) {
   if (tp) ctx.db.topic.id.update({ ...tp, questionCount: Math.max(0, tp.questionCount + by) });
 }
 
-/** Draw `count` fresh questions for a room from its chosen topics, avoiding
+/** The topics a room may draw from: the host's picks, or (when they picked
+ *  none) every topic written in the room's language. */
+function poolTopics(ctx: Ctx, lobby: LobbyRow): Set<string> {
+  const picked = new Set(lobby.topics.map(String));
+  const out = new Set<string>();
+  for (const tp of ctx.db.topic.iter()) {
+    if (picked.size ? !picked.has(String(tp.id)) : lobby.lang !== LANG_ANY && tp.lang !== lobby.lang) continue;
+    out.add(String(tp.id));
+  }
+  return out;
+}
+
+/** Draw `count` fresh questions for a room from its topics, avoiding
  *  anything it has already played (a rematch never repeats a question until
  *  the pool runs dry). Topics are spread: consecutive questions differ where
  *  possible. */
 function drawQuestions(ctx: Ctx, lobby: LobbyRow, used: bigint[], count: number): bigint[] {
   const usedSet = new Set(used.map(String));
-  const allowed = new Set(lobby.topics.map(String));
-  const all = [...ctx.db.question.iter()].filter(q => allowed.size === 0 || allowed.has(String(q.topicId)));
+  const allowed = poolTopics(ctx, lobby);
+  const all = [...ctx.db.question.iter()].filter(q => allowed.has(String(q.topicId)));
   if (all.length === 0) throw new SenderError('No questions in the chosen topics');
   let pool = all.filter(q => !usedSet.has(String(q.id)));
   if (pool.length < count) pool = all; // exhausted — allow repeats
@@ -735,7 +826,7 @@ function startQuiz(ctx: Ctx, lobby: LobbyRow) {
     fastestName: '',
     championName: '',
   };
-  next = mcSay(ctx, next, pick(ctx, MC_WELCOME));
+  next = mcSay(ctx, next, mcLine(ctx, next, 'welcome'));
   setPhase(ctx, next, PH_INTRO, INTRO_SECS);
 }
 
@@ -786,7 +877,7 @@ function openBetting(ctx: Ctx, lobby: LobbyRow, idx: number) {
     qOptions: [],
     qCorrect: NO_ANSWER,
   };
-  next = mcSay(ctx, next, final ? pick(ctx, MC_FINAL) : pick(ctx, MC_BETTING));
+  next = mcSay(ctx, next, mcLine(ctx, next, final ? 'final' : 'betting'));
   setPhase(ctx, next, PH_BETTING, lobby.betSecs);
 }
 
@@ -856,10 +947,10 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
     });
   }
   let line: string;
-  if (onPhoneName && ctx.random() < 0.7) line = pick(ctx, MC_PHONE).replace('{name}', onPhoneName);
-  else if (right === 0) line = pick(ctx, MC_NOBODY);
-  else if (right === seats.length) line = pick(ctx, MC_ALL_CORRECT);
-  else line = pick(ctx, MC_MIXED);
+  if (onPhoneName && ctx.random() < 0.7) line = mcLine(ctx, lobby, 'phone').replace('{name}', onPhoneName);
+  else if (right === 0) line = mcLine(ctx, lobby, 'nobody');
+  else if (right === seats.length) line = mcLine(ctx, lobby, 'allCorrect');
+  else line = mcLine(ctx, lobby, 'mixed');
   let next: LobbyRow = { ...lobby, qCorrect: correctIdx, fastestName: fastest ? fastest.name : '' };
   next = mcSay(ctx, next, line);
   setPhase(ctx, next, PH_RESULT, RESULT_SECS);
@@ -883,7 +974,7 @@ function finishQuiz(ctx: Ctx, lobby: LobbyRow) {
     championName: winner ? winner.name : '',
     qText: '', qOptions: [], qCorrect: NO_ANSWER,
   };
-  next = mcSay(ctx, next, pick(ctx, MC_DONE).replace('{name}', winner?.name || 'Nobody'));
+  next = mcSay(ctx, next, mcLine(ctx, next, 'done').replace('{name}', winner?.name || 'Nobody'));
   ctx.db.lobby.id.update(next);
   awardProgression(ctx, next, order);
   recordLegResult(ctx, next, order.map(p => p.identity));
@@ -1105,7 +1196,7 @@ function legNum(o: Record<string, unknown>, key: string, def: number, lo: number
 
 /**
  * Open a room for a championship leg. Relay only. `venue` is "pub:N";
- * `settings` is the director's JSON: { questions, betSecs, answerSecs }.
+ * `settings` is the director's JSON: { questions, betSecs, answerSecs, lang }.
  * The championship host becomes the room host (same identity here as on the
  * hub — one Firebase project across every game); if they never turn up,
  * whoever joins first takes the seat (claimChampionshipHost).
@@ -1130,6 +1221,7 @@ export const create_championship_room = spacetimedb.reducer(
       betSecs: Math.round(legNum(o, 'betSecs', BET_SECS_DEFAULT, BET_SECS_MIN, BET_SECS_MAX)),
       answerSecs: Math.round(legNum(o, 'answerSecs', ANSWER_SECS_DEFAULT, ANSWER_SECS_MIN, ANSWER_SECS_MAX)),
       teamMode: false,
+      lang: cleanLang(typeof o['lang'] === 'string' ? (o['lang'] as string) : LANG_ANY),
     });
     ctx.db.lobby.id.update({ ...lobby, code: clean, hostId, championshipLeg: legId });
   }
@@ -1147,7 +1239,7 @@ function claimChampionshipHost(ctx: Ctx, lobby: LobbyRow): LobbyRow {
 // ---------------------------------------------------------------------------
 // Rooms
 // ---------------------------------------------------------------------------
-type LobbyOpts = { isPublic: boolean; theme: number; questionCount: number; betSecs: number; answerSecs: number; teamMode: boolean };
+type LobbyOpts = { isPublic: boolean; theme: number; questionCount: number; betSecs: number; answerSecs: number; teamMode: boolean; lang: string };
 
 function insertLobby(ctx: Ctx, o: LobbyOpts): LobbyRow {
   return ctx.db.lobby.insert({
@@ -1162,6 +1254,7 @@ function insertLobby(ctx: Ctx, o: LobbyOpts): LobbyRow {
     answerSecs: clamp(o.answerSecs, ANSWER_SECS_MIN, ANSWER_SECS_MAX),
     teamMode: o.teamMode,
     createdAt: ctx.timestamp,
+    lang: cleanLang(o.lang),
     phase: PH_LOBBY,
     questionIdx: 0,
     phaseEndsAt: ctx.timestamp,
@@ -1360,7 +1453,7 @@ export const set_team = spacetimedb.reducer({ team: t.u8() }, (ctx, { team }) =>
 });
 
 export const create_pub = spacetimedb.reducer(
-  { isPublic: t.bool(), theme: t.u8(), questions: t.u8(), betSecs: t.u8(), answerSecs: t.u8(), teamMode: t.bool() },
+  { isPublic: t.bool(), theme: t.u8(), questions: t.u8(), betSecs: t.u8(), answerSecs: t.u8(), teamMode: t.bool(), lang: t.string() },
   (ctx, o) => {
     const player = getPlayer(ctx);
     if (!player.name) throw new SenderError('Pick a name first');
@@ -1372,13 +1465,14 @@ export const create_pub = spacetimedb.reducer(
       betSecs: o.betSecs,
       answerSecs: o.answerSecs,
       teamMode: o.teamMode,
+      lang: o.lang,
     });
     seatPlayer(ctx, lobby, ctx.db.player.identity.find(ctx.sender)!);
   }
 );
 
 export const set_pub_settings = spacetimedb.reducer(
-  { questions: t.u8(), betSecs: t.u8(), answerSecs: t.u8(), teamMode: t.bool(), theme: t.u8() },
+  { questions: t.u8(), betSecs: t.u8(), answerSecs: t.u8(), teamMode: t.bool(), theme: t.u8(), lang: t.string() },
   (ctx, o) => {
     const player = getPlayer(ctx);
     if (player.lobbyId === 0n) throw new SenderError('Not in a pub');
@@ -1393,6 +1487,9 @@ export const set_pub_settings = spacetimedb.reducer(
       answerSecs: clamp(o.answerSecs, ANSWER_SECS_MIN, ANSWER_SECS_MAX),
       teamMode: o.teamMode,
       theme: clamp(o.theme, 0, PUBS.length - 1),
+      // changing language invalidates topics picked in the old one
+      lang: cleanLang(o.lang),
+      topics: cleanLang(o.lang) === lobby.lang ? lobby.topics : [],
     });
     if (!o.teamMode) {
       for (const p of lobbyPlayers(ctx, lobby.id)) if (p.team !== TEAM_NONE) ctx.db.player.identity.update({ ...p, team: TEAM_NONE });
@@ -1565,7 +1662,7 @@ function requireAuthor(ctx: Ctx): PlayerRow {
   return player;
 }
 
-export const add_topic = spacetimedb.reducer({ name: t.string(), icon: t.string() }, (ctx, { name, icon }) => {
+export const add_topic = spacetimedb.reducer({ name: t.string(), icon: t.string(), lang: t.string() }, (ctx, { name, icon, lang }) => {
   const player = requireAuthor(ctx);
   ensureBank(ctx);
   const clean = name.trim().replace(/\s+/g, ' ').slice(0, TOPIC_NAME_MAX);
@@ -1574,7 +1671,9 @@ export const add_topic = spacetimedb.reducer({ name: t.string(), icon: t.string(
     if (tp.name.toLowerCase() === clean.toLowerCase()) throw new SenderError(`"${tp.name}" already exists`);
   }
   const cleanIcon = [...icon.trim()].slice(0, 2).join('') || '❔';
-  ctx.db.topic.insert({ id: 0n, name: clean, icon: cleanIcon, builtin: false, questionCount: 0, authorName: player.name, createdAt: ctx.timestamp });
+  // a topic always has a real language — LANG_ANY is a room setting, not a
+  // property a question can have
+  ctx.db.topic.insert({ id: 0n, name: clean, icon: cleanIcon, lang: cleanLang(lang) || 'en', builtin: false, questionCount: 0, authorName: player.name, createdAt: ctx.timestamp });
 });
 
 export const add_question = spacetimedb.reducer(
@@ -1627,7 +1726,14 @@ export const set_pub_topics = spacetimedb.reducer({ topics: t.array(t.u64()) }, 
   if (!lobby) throw new SenderError('Not in a pub');
   if (!sameId(lobby.hostId, ctx.sender)) throw new SenderError('Only the host can pick the topics');
   if (lobby.status === L_RUNNING) throw new SenderError('The quiz is running');
-  const clean = [...new Set(topics.filter(id => !!ctx.db.topic.id.find(id)).map(String))].map(BigInt);
+  const clean = [...new Set(
+    topics
+      .filter(id => {
+        const tp = ctx.db.topic.id.find(id);
+        return !!tp && (lobby.lang === LANG_ANY || tp.lang === lobby.lang);
+      })
+      .map(String)
+  )].map(BigInt);
   ctx.db.lobby.id.update({ ...lobby, topics: clean });
 });
 

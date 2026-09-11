@@ -1,0 +1,287 @@
+{
+  "topic": "Hverdagsnorge",
+  "icon": "🚗",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva heter det tidligere NSB i dag?",
+      "a": [
+        "Vy",
+        "Bane Nor",
+        "Flytoget",
+        "Go-Ahead"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter kollektivselskapet i Oslo og Akershus?",
+      "a": [
+        "Ruter",
+        "Skyss",
+        "AtB",
+        "Kolumbus"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter kollektivselskapet i Bergen?",
+      "a": [
+        "Skyss",
+        "Ruter",
+        "AtB",
+        "Kolumbus"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter den norske arbeids- og velferdsetaten?",
+      "a": [
+        "NAV",
+        "SSB",
+        "KS",
+        "Skatteetaten"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er en fastlege?",
+      "a": [
+        "Legen du er fast registrert hos",
+        "En lege på sykehus",
+        "En privatlege uten timer",
+        "En vikarlege"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er barnetrygd?",
+      "a": [
+        "Månedlig støtte til familier med barn",
+        "Sparing til barnets 18-årsdag",
+        "Gratis barnehage",
+        "Skattefradrag for foreldre"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken måned tar de fleste nordmenn fellesferie?",
+      "a": [
+        "Juli",
+        "Juni",
+        "August",
+        "Mai"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles brødmåltidet folk tar med seg på jobb og skole?",
+      "a": [
+        "Matpakke",
+        "Brødboks",
+        "Lunsjkurv",
+        "Dagsrasjon"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er klassisk pålegg på en norsk matpakke?",
+      "a": [
+        "Brunost",
+        "Hummus",
+        "Pesto",
+        "Guacamole"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er piggdekk?",
+      "a": [
+        "Vinterdekk med metallpigger",
+        "Sommerdekk med mønster",
+        "Dekk til sykkel",
+        "Dekk uten luft"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva må man betale i mange norske byer for å kjøre inn med bil?",
+      "a": [
+        "Bompenger",
+        "Kjøreavgift",
+        "Byskatt",
+        "Parkeringsbot"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er en hytte for nordmenn flest?",
+      "a": [
+        "Fritidsbolig på fjellet eller ved sjøen",
+        "Et redskapsskur",
+        "En campingvogn",
+        "En leilighet i byen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er en typisk norsk dugnad i et borettslag?",
+      "a": [
+        "Felles vår- eller høstrydding",
+        "Et julebord",
+        "Et årsmøte",
+        "En loppemarked-auksjon"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva kalles avgiften alle med TV måtte betale før 2020?",
+      "a": [
+        "Lisensen, eller NRK-lisens",
+        "Kringkastingsskatt",
+        "Mediemomsen",
+        "Antenneavgift"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvordan finansieres NRK i dag?",
+      "a": [
+        "Over skatteseddelen",
+        "Med reklame",
+        "Med abonnement",
+        "Med lotteri"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er Norges alminnelige aldersgrense for å kjøpe alkohol over 22 prosent?",
+      "a": [
+        "20 år",
+        "18 år",
+        "21 år",
+        "23 år"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er aldersgrensen for å kjøpe øl og vin i Norge?",
+      "a": [
+        "18 år",
+        "20 år",
+        "16 år",
+        "21 år"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er promillegrensen for å kjøre bil i Norge?",
+      "a": [
+        "0,2",
+        "0,5",
+        "0,0",
+        "0,8"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken side av veien kjører man på i Norge?",
+      "a": [
+        "Høyre",
+        "Venstre",
+        "Midten",
+        "Det varierer"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter det norske nødnummeret for brann?",
+      "a": [
+        "110",
+        "112",
+        "113",
+        "911"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er nødnummeret til politiet i Norge?",
+      "a": [
+        "112",
+        "110",
+        "113",
+        "911"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er nødnummeret til ambulanse i Norge?",
+      "a": [
+        "113",
+        "112",
+        "110",
+        "911"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles den norske skatteoppgaven man leverer hvert år?",
+      "a": [
+        "Skattemeldingen",
+        "Skattekortet",
+        "Ligningsattesten",
+        "Inntektsbrevet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er et fødselsnummer i Norge?",
+      "a": [
+        "Elleve siffer som identifiserer deg",
+        "Et telefonnummer",
+        "Et kontonummer",
+        "Et passnummer"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er Vinmonopolets vanligste stengetid på lørdager?",
+      "a": [
+        "Klokken 15 eller 16",
+        "Klokken 20",
+        "Klokken 12",
+        "De holder stengt"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er en typisk norsk fredagskveld ifølge klisjeen?",
+      "a": [
+        "Taco",
+        "Pizza",
+        "Pasta",
+        "Fisk"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken dag spiser mange nordmenn taco?",
+      "a": [
+        "Fredag",
+        "Lørdag",
+        "Onsdag",
+        "Søndag"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er en borettslagsleilighet?",
+      "a": [
+        "En bolig der du eier en andel i laget",
+        "En kommunal utleiebolig",
+        "En hytte",
+        "Et kollektiv"
+      ],
+      "d": 2
+    }
+  ]
+}

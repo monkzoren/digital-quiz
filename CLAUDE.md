@@ -72,7 +72,11 @@ README.md for how a night goes and how to run it. Key facts:
   `initCharacterPreviews`. `player.avatarId` indexes CHARACTERS, so the
   module's `AVATAR_COUNT` must equal `CHARACTERS.length` (18). When tennis
   changes any of that, copy it across rather than diverging.
-- Walking about: appended `player.x`/`y`/`dirX`/`dirY`/`actTicks`/`actKind`,
+- Walking about: appended `player.x`/`y`/`dirX`/`dirY`/`actTicks`/`actKind`
+  (at the END of the table, each with a `.default(0)` — they were first added
+  in the MIDDLE and every deploy then failed with "Reordering table player
+  requires a manual migration", leaving an old module serving a new client
+  bundle, which surfaces as BSATN deserializer errors in the browser),
   the `set_input` / `act` reducers and a 20 Hz `walk_timer` per room
   (`walk_tick`) — the same shape as tennis's `moveWatchers`, and it skips a
   row write for anyone standing still. Floor bounds `PUB_*` live in the

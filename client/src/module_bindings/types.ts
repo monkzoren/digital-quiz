@@ -139,12 +139,6 @@ export const Player = __t.object("Player", {
   online: __t.bool(),
   ready: __t.bool(),
   kicked: __t.bool(),
-  x: __t.f32(),
-  y: __t.f32(),
-  dirX: __t.i8(),
-  dirY: __t.i8(),
-  actTicks: __t.u8(),
-  actKind: __t.u8(),
   credits: __t.i32(),
   stake: __t.u16(),
   answer: __t.u8(),
@@ -161,6 +155,12 @@ export const Player = __t.object("Player", {
   phoneMicros: __t.u64(),
   calledOut: __t.u16(),
   awayThisQ: __t.bool(),
+  x: __t.f32(),
+  y: __t.f32(),
+  dirX: __t.i8(),
+  dirY: __t.i8(),
+  actTicks: __t.u8(),
+  actKind: __t.u8(),
 });
 export type Player = __Infer<typeof Player>;
 

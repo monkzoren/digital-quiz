@@ -329,13 +329,6 @@ const Player = table(
     online: t.bool(),
     ready: t.bool(),
     kicked: t.bool(),
-    // --- where they are standing on the pub floor (walk_tick moves them) ---
-    x: t.f32(),
-    y: t.f32(),
-    dirX: t.i8(),
-    dirY: t.i8(),
-    actTicks: t.u8(), // jump/wave countdown
-    actKind: t.u8(), // ACT_*
     // --- the wallet and the current question ---
     credits: t.i32(),
     stake: t.u16(),
@@ -354,6 +347,16 @@ const Player = table(
     phoneMicros: t.u64(), // total time away this quiz
     calledOut: t.u16(), // times the table called them out this quiz
     awayThisQ: t.bool(), // caught on the phone at any point during this question
+    // NOTE: appended columns — where they are standing on the pub floor, and
+    // the jump/wave they are in the middle of (walk_tick moves them). These
+    // go at the END and carry defaults, or an existing database cannot
+    // migrate: `player` is append-only like every other table here.
+    x: t.f32().default(0),
+    y: t.f32().default(0),
+    dirX: t.i8().default(0),
+    dirY: t.i8().default(0),
+    actTicks: t.u8().default(0), // jump/wave countdown
+    actKind: t.u8().default(0), // ACT_*
   }
 );
 

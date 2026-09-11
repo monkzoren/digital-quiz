@@ -38,7 +38,12 @@ README.md for how a night goes and how to run it. Key facts:
   back through the `my_pick` view (`myAnswer()` in main.ts); the renderer
   shows a face-down paddle for `SceneSeat.locked` and the letter only once
   `answer` is set. `clearPicks` keeps a pick from outliving its question,
-  its room or its seat. The smoke test asserts the whole contract.
+  its room or its seat. A pick is NOT final: `answer` can be called again all
+  through PH_ANSWER and the last choice before the buzzer stands — it rewrites
+  the `pick` row and RE-STAMPS `answeredAt` (so the fastest-finger bonus goes
+  to the answer they stood behind, not to a throwaway first tap), and only the
+  first lock-in may shorten the clock to ALL_IN_GRACE_SECS, or one player could
+  hold the room by flip-flopping. The smoke test asserts the whole contract.
 - Quiz flow: `startQuiz` → PH_INTRO → per question PH_BETTING (topic/odds
   only — `qText`/`qOptions` stay empty, `qCorrect` = NO_ANSWER) → PH_ANSWER
   (question + shuffled options; key still hidden) → PH_RESULT (`qCorrect`

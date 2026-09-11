@@ -102,9 +102,14 @@ for (let q = 0; q < 3; q++) {
   if (me(a).answer !== 255) fail('own answer leaked into the public player row before the reveal');
   const mine = [...a.db.myPick.iter()].find(r => r.questionIdx === q);
   if (!mine || mine.choice !== 0) fail('my_pick did not give A their own answer back');
-  threw = false;
-  try { await a.reducers.answer({ choice: 1 }); } catch { threw = true; }
-  if (!threw) fail('second answer accepted');
+  // a pick is not final: A switches to 2, then back to 0 before the buzzer
+  const stamp = me(a).answeredAt;
+  await a.reducers.answer({ choice: 2 });
+  await until('A changed their answer', () => [...a.db.myPick.iter()].some(r => r.questionIdx === q && r.choice === 2));
+  if (me(a).answeredAt <= stamp) fail('answeredAt was not re-stamped on a change');
+  await a.reducers.answer({ choice: 0 });
+  await until('A changed back', () => [...a.db.myPick.iter()].some(r => r.questionIdx === q && r.choice === 0));
+  ok('answers can be changed while the clock runs');
   if (q === 0) {
     // B checks their phone mid-question: counted, flagged on the entry
     await b.reducers.setAttention({ state: 1 });

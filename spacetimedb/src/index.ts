@@ -1773,13 +1773,23 @@ export const answer = spacetimedb.reducer({ choice: t.u8() }, (ctx, { choice }) 
   const lobby = ctx.db.lobby.id.find(player.lobbyId);
   if (!lobby || lobby.status !== L_RUNNING || lobby.phase !== PH_ANSWER) throw new SenderError('Not taking answers');
   if (choice >= lobby.qOptions.length) throw new SenderError('No such option');
-  if (player.answeredAt !== 0n) throw new SenderError('Already locked in');
+  // A pick can be changed for as long as the clock runs — the last one on the
+  // paddle at the buzzer is the answer. `answeredAt` is re-stamped on every
+  // change, so the fastest-finger bonus belongs to the answer they actually
+  // stood behind; leaving the first stamp would let anyone slap A down the
+  // instant the question lands and then switch at the death, still 'fastest'.
+  const prev = ctx.db.pick.identity.find(ctx.sender);
+  const first = player.answeredAt === 0n;
+  if (!first && prev && prev.lobbyId === lobby.id && prev.questionIdx === lobby.questionIdx && prev.choice === choice) return;
   // the choice goes in the private table; the public row only records THAT
   // they answered, and when (the fastest-finger bonus needs the clock)
   ctx.db.pick.identity.delete(ctx.sender);
   ctx.db.pick.insert({ identity: ctx.sender, lobbyId: lobby.id, questionIdx: lobby.questionIdx, choice });
   ctx.db.player.identity.update({ ...player, answeredAt: micros(ctx) });
-  // Everyone in? Don't make the table sit through the rest of the clock.
+  // Everyone in? Don't make the table sit through the rest of the clock. Only
+  // on the FIRST lock-in: a change must not push the grace window back out,
+  // or one player could hold the room by flip-flopping.
+  if (!first) return;
   const seats = lobbyPlayers(ctx, lobby.id);
   const waiting = seats.filter(p => !sameId(p.identity, ctx.sender) && p.answeredAt === 0n && p.online);
   if (waiting.length === 0) {

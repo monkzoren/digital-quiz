@@ -787,6 +787,7 @@ function refreshHud(room: Lobby, me: Player) {
     stakePanel.classList.add('hidden');
     options.classList.add('hidden');
     result.classList.add('hidden');
+    $('answer-note').textContent = '';
     if (room.phase === C.PH_INTRO) {
       kicker.textContent = T.welcome;
       title.textContent = T.intro(room.questionCount, C.START_CREDITS);
@@ -815,11 +816,13 @@ function refreshHud(room: Lobby, me: Player) {
           if (i === room.qCorrect) b.classList.add('right');
           else if (mine === i) b.classList.add('wrong');
           b.disabled = true;
-        } else b.disabled = mine !== C.NO_ANSWER;
+        } else b.disabled = mine === i; // the rest stay live: tap another to change
         b.innerHTML = `<span class="letter" style="background:${['#ff4b33', '#3c8dff', '#43e97b', '#ffd60a'][i]};color:${i === 3 ? '#1a1200' : '#fff'}">${'ABCD'[i]}</span><span>${escapeHtml(opt)}</span>`;
         b.onclick = () => call(conn.reducers.answer({ choice: i }));
         options.appendChild(b);
       });
+      // Nothing is final until the clock runs out, so say so once they are in.
+      $('answer-note').textContent = room.phase === C.PH_ANSWER && mine !== C.NO_ANSWER ? T.changeHint : '';
       if (room.phase === C.PH_RESULT) {
         result.classList.remove('hidden');
         const d = me.lastDelta;

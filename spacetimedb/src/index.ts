@@ -63,6 +63,24 @@ const TEAM_NONE = 0;
 const MAX_TEAMS = 4;
 const MAX_SEATS = 12; // stools around the bar, mirrored in the client's pub layout
 
+// ---------------------------------------------------------------------------
+// The pub floor. Everyone walks about it — the same free movement the
+// spectators have on digital-tennis's grounds, steered by the same
+// `set_input` dirX/dirY and advanced by a 20 Hz tick per room. Mirrored in
+// client/src/config.ts (PUB_*) and used by the renderer — keep in sync.
+// ---------------------------------------------------------------------------
+const PUB_HALF_X = 6.6; // clear of the side walls
+const PUB_MIN_Y = -2.6; // the bar: nobody gets behind it but the quiz master
+const PUB_MAX_Y = 3.2; // the door end — beyond this you would be in the camera
+const PUB_SPEED = 3.1; // one pace for everyone — no stats in a pub
+const WALK_HZ = 20;
+const WALK_DT = 1 / WALK_HZ;
+// HIT and LOB off court are a JUMP and a WAVE on the tennis grounds; in here
+// the same two buttons do the same two things.
+const ACT_TICKS = Math.round(0.8 * WALK_HZ);
+const ACT_JUMP = 0;
+const ACT_WAVE = 1;
+
 // Attention states (player.attention). The client reports transitions; the
 // module keeps the tally so nobody can quietly edit their own phone time.
 const ATT_HERE = 0;
@@ -329,6 +347,16 @@ const Player = table(
     phoneMicros: t.u64(), // total time away this quiz
     calledOut: t.u16(), // times the table called them out this quiz
     awayThisQ: t.bool(), // caught on the phone at any point during this question
+    // NOTE: appended columns — where they are standing on the pub floor, and
+    // the jump/wave they are in the middle of (walk_tick moves them). These
+    // go at the END and carry defaults, or an existing database cannot
+    // migrate: `player` is append-only like every other table here.
+    x: t.f32().default(0),
+    y: t.f32().default(0),
+    dirX: t.i8().default(0),
+    dirY: t.i8().default(0),
+    actTicks: t.u8().default(0), // jump/wave countdown
+    actKind: t.u8().default(0), // ACT_*
   }
 );
 
@@ -522,6 +550,16 @@ const PhaseTimer = table(
   }
 );
 
+// Fires 20x a second per room with anybody in it: the pub floor's movement.
+const WalkTimer = table(
+  { name: 'walk_timer' },
+  {
+    scheduledId: t.u64().primaryKey().autoInc(),
+    scheduledAt: t.scheduleAt(),
+    lobbyId: t.u64(),
+  }
+);
+
 const ReapTimer = table(
   { name: 'reap_timer' },
   {
@@ -545,6 +583,7 @@ const spacetimedb = schema({
   quizLog: QuizLog,
   session: Session,
   phaseTimer: PhaseTimer,
+  walkTimer: WalkTimer,
   reapTimer: ReapTimer,
 });
 export default spacetimedb;
@@ -612,6 +651,23 @@ function levelFor(xp: number): number {
 // small table spreads along the bar instead of bunching at one end (the
 // client's seat layout mirrors this order — see render.ts seatPos).
 const SEAT_ORDER = [2, 3, 0, 5, 1, 4, 8, 9, 6, 11, 7, 10];
+
+// Where a seat stands when it first walks in — the stool it was given, which
+// the client's seatPos mirrors. From there they are free to wander.
+function seatSpot(seat: number): { x: number; y: number } {
+  const row = seat < 6 ? { r: 3.6, z: -0.6, n: 6, spread: 1.25 } : { r: 6.2, z: 0.9, n: 6, spread: 1.4 };
+  const i = seat % 6;
+  const a = ((i - (row.n - 1) / 2) / (row.n - 1)) * row.spread;
+  return { x: Math.sin(a) * row.r * 1.15, y: -4 + row.z + Math.cos(a) * row.r };
+}
+
+// Keep a patron on the floor: the walls box them in and the bar is a wall.
+function clampToFloor(x: number, y: number): { x: number; y: number } {
+  return {
+    x: clamp(x, -PUB_HALF_X, PUB_HALF_X),
+    y: clamp(y, PUB_MIN_Y, PUB_MAX_Y),
+  };
+}
 function freeSeat(ctx: Ctx, lobbyId: bigint): number {
   const taken = new Set(lobbyPlayers(ctx, lobbyId).map(p => p.seat));
   for (const s of SEAT_ORDER) if (!taken.has(s)) return s;
@@ -1278,9 +1334,12 @@ function insertLobby(ctx: Ctx, o: LobbyOpts): LobbyRow {
 
 function destroyLobby(ctx: Ctx, lobby: LobbyRow) {
   deletePhaseTimers(ctx, lobby.id);
+  disarmWalk(ctx, lobby.id);
   disarmReaper(ctx, lobby.id);
   for (const p of lobbyPlayers(ctx, lobby.id)) {
-    ctx.db.player.identity.update({ ...freshQuizFields(p), lobbyId: 0n, seat: 0, team: TEAM_NONE });
+    ctx.db.player.identity.update({
+      ...freshQuizFields(p), lobbyId: 0n, seat: 0, team: TEAM_NONE, dirX: 0, dirY: 0, actTicks: 0,
+    });
   }
   for (const e of ctx.db.entry.byLobby.filter(lobby.id)) ctx.db.entry.id.delete(e.id);
   for (const c of ctx.db.chat.byLobby.filter(lobby.id)) ctx.db.chat.id.delete(c.id);
@@ -1292,16 +1351,24 @@ function destroyLobby(ctx: Ctx, lobby: LobbyRow) {
 function seatPlayer(ctx: Ctx, lobby: LobbyRow, player: PlayerRow) {
   const seat = freeSeat(ctx, lobby.id);
   const base = freshQuizFields(player);
+  const spot = seatSpot(seat);
   ctx.db.player.identity.update({
     ...base,
     lobbyId: lobby.id,
     seat,
+    x: spot.x,
+    y: spot.y,
+    dirX: 0,
+    dirY: 0,
+    actTicks: 0,
+    actKind: 0,
     team: TEAM_NONE,
     kicked: false,
     // a late seat during betting/answers is still in for the ante
     stake: lobby.status === L_RUNNING && (lobby.phase === PH_BETTING || lobby.phase === PH_ANSWER) ? MIN_STAKE : 0,
   });
   disarmReaper(ctx, lobby.id);
+  armWalk(ctx, lobby.id);
 }
 
 function leaveCurrentLobby(ctx: Ctx, player: PlayerRow) {
@@ -1313,6 +1380,9 @@ function leaveCurrentLobby(ctx: Ctx, player: PlayerRow) {
     lobbyId: 0n,
     seat: 0,
     team: TEAM_NONE,
+    dirX: 0,
+    dirY: 0,
+    actTicks: 0,
   });
   if (!lobby) return;
   const remaining = lobbyPlayers(ctx, lobby.id).filter(p => !sameId(p.identity, player.identity));
@@ -1369,6 +1439,12 @@ export const onConnect = spacetimedb.clientConnected(ctx => {
       online: true,
       ready: false,
       kicked: false,
+      x: 0,
+      y: 0,
+      dirX: 0,
+      dirY: 0,
+      actTicks: 0,
+      actKind: 0,
       credits: START_CREDITS,
       stake: 0,
       answer: NO_ANSWER,
@@ -1432,7 +1508,9 @@ export const set_name = spacetimedb.reducer({ name: t.string() }, (ctx, { name }
   }
 });
 
-const AVATAR_COUNT = 12; // mirrored in client/src/avatars.ts
+// The roster is digital-tennis's, character for character — the same people
+// play tennis and drink here. Mirrored in client/src/characters.ts.
+const AVATAR_COUNT = 18;
 export const set_avatar = spacetimedb.reducer({ avatarId: t.u8() }, (ctx, { avatarId }) => {
   if (avatarId >= AVATAR_COUNT) throw new SenderError('No such avatar');
   const player = getPlayer(ctx);
@@ -1442,6 +1520,79 @@ export const set_avatar = spacetimedb.reducer({ avatarId: t.u8() }, (ctx, { avat
     ctx.db.account.identity.update({ ...acc, avatarId, rev: acc.rev + 1 });
   }
 });
+
+// ---------------------------------------------------------------------------
+// Walking about. Exactly digital-tennis's grounds controls: a direction from
+// the keyboard/stick, and two buttons that jump and wave.
+// ---------------------------------------------------------------------------
+export const set_input = spacetimedb.reducer(
+  { dirX: t.i8(), dirY: t.i8() },
+  (ctx, { dirX, dirY }) => {
+    const player = getPlayer(ctx);
+    if (player.lobbyId === 0n) return; // on the menu there is nothing to steer
+    const dx = clamp(dirX, -1, 1);
+    const dy = clamp(dirY, -1, 1);
+    if (dx === player.dirX && dy === player.dirY) return;
+    ctx.db.player.identity.update({ ...player, dirX: dx, dirY: dy });
+  }
+);
+
+export const act = spacetimedb.reducer({ kind: t.u8() }, (ctx, { kind }) => {
+  const player = getPlayer(ctx);
+  if (player.lobbyId === 0n || player.actTicks > 0) return; // one action at a time
+  ctx.db.player.identity.update({
+    ...player,
+    actTicks: ACT_TICKS,
+    actKind: kind === ACT_WAVE ? ACT_WAVE : ACT_JUMP,
+  });
+});
+
+// Everyone in the room walks, steered by their own dirX/dirY. A patron who
+// is standing still with no action running is skipped entirely, so a quiet
+// pub costs no row writes and no broadcast.
+export const walk_tick = spacetimedb.reducer(
+  { onSchedule: WalkTimer },
+  { arg: WalkTimer.rowType },
+  (ctx, { arg }) => {
+    const lobby = ctx.db.lobby.id.find(arg.lobbyId);
+    if (!lobby) {
+      ctx.db.walkTimer.scheduledId.delete(arg.scheduledId);
+      return;
+    }
+    for (const p of ctx.db.player.byLobby.filter(arg.lobbyId)) {
+      const moving = p.dirX !== 0 || p.dirY !== 0;
+      if (!moving && p.actTicks === 0) continue;
+      const actTicks = p.actTicks > 0 ? p.actTicks - 1 : 0;
+      if (!moving) {
+        ctx.db.player.identity.update({ ...p, actTicks });
+        continue;
+      }
+      const len = Math.hypot(p.dirX, p.dirY) || 1;
+      const { x, y } = clampToFloor(
+        p.x + (p.dirX / len) * PUB_SPEED * WALK_DT,
+        p.y + (p.dirY / len) * PUB_SPEED * WALK_DT
+      );
+      // pinned against a wall with nothing else changing: no write
+      if (x === p.x && y === p.y && actTicks === p.actTicks) continue;
+      ctx.db.player.identity.update({ ...p, x, y, actTicks });
+    }
+  }
+);
+
+function disarmWalk(ctx: Ctx, lobbyId: bigint) {
+  for (const r of ctx.db.walkTimer.iter()) {
+    if (r.lobbyId === lobbyId) ctx.db.walkTimer.scheduledId.delete(r.scheduledId);
+  }
+}
+
+function armWalk(ctx: Ctx, lobbyId: bigint) {
+  for (const r of ctx.db.walkTimer.iter()) if (r.lobbyId === lobbyId) return;
+  ctx.db.walkTimer.insert({
+    scheduledId: 0n,
+    scheduledAt: ScheduleAt.interval(BigInt(Math.round(WALK_DT * 1_000_000))),
+    lobbyId,
+  });
+}
 
 export const set_team = spacetimedb.reducer({ team: t.u8() }, (ctx, { team }) => {
   const player = getPlayer(ctx);

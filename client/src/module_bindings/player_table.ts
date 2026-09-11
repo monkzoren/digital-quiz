@@ -36,4 +36,10 @@ export default __t.row({
   phoneMicros: __t.u64().name("phone_micros"),
   calledOut: __t.u16().name("called_out"),
   awayThisQ: __t.bool().name("away_this_q"),
+  x: __t.f32(),
+  y: __t.f32(),
+  dirX: __t.i8().name("dir_x"),
+  dirY: __t.i8().name("dir_y"),
+  actTicks: __t.u8().name("act_ticks"),
+  actKind: __t.u8().name("act_kind"),
 });

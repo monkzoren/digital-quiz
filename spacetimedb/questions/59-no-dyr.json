@@ -1,0 +1,217 @@
+{
+  "topic": "Dyreriket",
+  "icon": "🐾",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilket dyr er verdens største?",
+      "a": [
+        "Blåhvalen",
+        "Afrikansk elefant",
+        "Spermhvalen",
+        "Sjiraffen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange bein har en edderkopp?",
+      "a": [
+        "Åtte",
+        "Seks",
+        "Ti",
+        "Tolv"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter ungen til en kenguru?",
+      "a": [
+        "Joey",
+        "Kalv",
+        "Lam",
+        "Valp"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva spiser en pandabjørn mest av?",
+      "a": [
+        "Bambus",
+        "Fisk",
+        "Kjøtt",
+        "Insekter"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket dyr er kjent som «ørkenens skip»?",
+      "a": [
+        "Kamelen",
+        "Hesten",
+        "Eselet",
+        "Lamaen"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket landdyr løper raskest?",
+      "a": [
+        "Geparden",
+        "Gaupa",
+        "Løven",
+        "Antilopen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket pattedyr legger egg?",
+      "a": [
+        "Nebbdyret",
+        "Flaggermusen",
+        "Dovendyret",
+        "Oteren"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr er kjent for å sove hengende opp ned?",
+      "a": [
+        "Flaggermusen",
+        "Dovendyret",
+        "Ekornet",
+        "Pinnsvinet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr har verdens lengste svangerskap blant pattedyr?",
+      "a": [
+        "Elefanten",
+        "Hvalen",
+        "Sjiraffen",
+        "Neshornet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken fugl kan fly bakover?",
+      "a": [
+        "Kolibrien",
+        "Svalen",
+        "Falken",
+        "Måken"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket rovdyr på det norske fastlandet er størst?",
+      "a": [
+        "Brunbjørnen",
+        "Ulven",
+        "Gaupa",
+        "Jerven"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange mager har en ku?",
+      "a": [
+        "Fire",
+        "En",
+        "To",
+        "Sju"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr er Norges nasjonaldyr?",
+      "a": [
+        "Elgen",
+        "Reven",
+        "Jerven",
+        "Ulven"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter verdens største fisk?",
+      "a": [
+        "Hvalhaien",
+        "Hvithaien",
+        "Blåhvalen",
+        "Manta"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken av de store kattene kan ikke brøle?",
+      "a": [
+        "Geparden",
+        "Løven",
+        "Tigeren",
+        "Leoparden"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket dyr kan regenerere et helt bein som voksen?",
+      "a": [
+        "Axolotlen",
+        "Frosken",
+        "Firfislen",
+        "Rotta"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva består narhvalens støttann egentlig av?",
+      "a": [
+        "En overgrodd tann",
+        "Horn av bein",
+        "Brusk",
+        "Keratin"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket insekt tar flest menneskeliv hvert år?",
+      "a": [
+        "Myggen",
+        "Bien",
+        "Vepsen",
+        "Maur"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket kontinent har ingen slanger naturlig?",
+      "a": [
+        "Antarktis",
+        "Australia",
+        "Europa",
+        "Sør-Amerika"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken fugl legger verdens største egg?",
+      "a": [
+        "Strutsen",
+        "Emuen",
+        "Albatrossen",
+        "Kondoren"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken hval har den lengste kjente levealderen?",
+      "a": [
+        "Grønlandshvalen",
+        "Spekkhoggeren",
+        "Knølhvalen",
+        "Vågehvalen"
+      ],
+      "d": 3
+    }
+  ]
+}

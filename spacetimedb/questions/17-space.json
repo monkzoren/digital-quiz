@@ -1,0 +1,227 @@
+{
+  "topic": "Space & Astronomy",
+  "icon": "🚀",
+  "lang": "en",
+  "questions": [
+    {
+      "q": "Which star is at the centre of our solar system?",
+      "a": [
+        "The Sun",
+        "Sirius",
+        "Polaris",
+        "Alpha Centauri"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is Earth's only natural satellite?",
+      "a": [
+        "The Moon",
+        "Phobos",
+        "Titan",
+        "Europa"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many planets are there in our solar system?",
+      "a": [
+        "Eight",
+        "Nine",
+        "Seven",
+        "Ten"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which planet has famous rings?",
+      "a": [
+        "Saturn",
+        "Mars",
+        "Venus",
+        "Mercury"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which space agency runs the Perseverance Mars rover?",
+      "a": [
+        "NASA",
+        "ESA",
+        "Roscosmos",
+        "JAXA"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who was the first person in space?",
+      "a": [
+        "Yuri Gagarin",
+        "Alan Shepard",
+        "John Glenn",
+        "Neil Armstrong"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is a light year a measure of?",
+      "a": [
+        "Distance",
+        "Time",
+        "Brightness",
+        "Speed"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the name of our galaxy?",
+      "a": [
+        "The Milky Way",
+        "Andromeda",
+        "The Magellanic Cloud",
+        "Orion"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which planet is the hottest in the solar system?",
+      "a": [
+        "Venus",
+        "Mercury",
+        "Mars",
+        "Jupiter"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the name of the telescope launched in 2021 to succeed Hubble?",
+      "a": [
+        "The James Webb Space Telescope",
+        "Kepler",
+        "Spitzer",
+        "Gaia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the Great Red Spot on Jupiter?",
+      "a": [
+        "A giant storm",
+        "A crater",
+        "A moon shadow",
+        "A volcano"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which was the first artificial satellite in orbit?",
+      "a": [
+        "Sputnik 1",
+        "Explorer 1",
+        "Vanguard 1",
+        "Telstar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which company landed the first reusable orbital rocket booster?",
+      "a": [
+        "SpaceX",
+        "Blue Origin",
+        "Rocket Lab",
+        "Boeing"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the closest star system to the Sun?",
+      "a": [
+        "Alpha Centauri",
+        "Sirius",
+        "Barnard's Star",
+        "Tau Ceti"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the boundary of a black hole called?",
+      "a": [
+        "The event horizon",
+        "The singularity",
+        "The accretion disc",
+        "The photon sphere"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which planet has the largest volcano in the solar system?",
+      "a": [
+        "Mars",
+        "Venus",
+        "Earth",
+        "Io"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How long does it take sunlight to reach Neptune, roughly?",
+      "a": [
+        "About four hours",
+        "About 40 minutes",
+        "About 20 hours",
+        "About two days"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the name of Saturn's largest moon?",
+      "a": [
+        "Titan",
+        "Enceladus",
+        "Rhea",
+        "Iapetus"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What did the Chandrasekhar limit describe?",
+      "a": [
+        "The maximum mass of a white dwarf",
+        "The size of the universe",
+        "The speed of a comet",
+        "The mass of a planet"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which mission first landed humans on the Moon?",
+      "a": [
+        "Apollo 11",
+        "Apollo 13",
+        "Gemini 8",
+        "Apollo 8"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What are the icy bodies beyond Neptune collectively called?",
+      "a": [
+        "The Kuiper Belt",
+        "The Oort Belt",
+        "The asteroid belt",
+        "The heliosphere"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Approximately how old is the universe?",
+      "a": [
+        "13.8 billion years",
+        "4.5 billion years",
+        "100 billion years",
+        "1 billion years"
+      ],
+      "d": 3
+    }
+  ]
+}

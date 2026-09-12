@@ -342,6 +342,56 @@
         "Gåte"
       ],
       "d": 2
+    },
+    {
+      "q": "Hvilket band ga ut albumet «The Dark Side of the Moon»?",
+      "a": [
+        "Pink Floyd",
+        "Led Zeppelin",
+        "The Who",
+        "Genesis"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket band spilte inn «Smells Like Teen Spirit»?",
+      "a": [
+        "Nirvana",
+        "Pearl Jam",
+        "Soundgarden",
+        "Alice in Chains"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket britisk band har medlemmene John, Paul, George og Ringo?",
+      "a": [
+        "The Beatles",
+        "The Rolling Stones",
+        "The Kinks",
+        "The Who"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk sjanger fra tidlig 90-tall fikk internasjonal beryktethet?",
+      "a": [
+        "Black metal",
+        "Britpop",
+        "Grunge",
+        "Ska"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken gitarist var kjent for å spille med tennene på Woodstock?",
+      "a": [
+        "Jimi Hendrix",
+        "Eric Clapton",
+        "Jimmy Page",
+        "Pete Townshend"
+      ],
+      "d": 3
     }
   ]
 }

@@ -282,6 +282,56 @@
         "Friidrett"
       ],
       "d": 1
+    },
+    {
+      "q": "Hvilken tennisturnering spilles på gress?",
+      "a": [
+        "Wimbledon",
+        "French Open",
+        "US Open",
+        "Australian Open"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor lang er en maraton, rundet til nærmeste kilometer?",
+      "a": [
+        "42 kilometer",
+        "40 kilometer",
+        "45 kilometer",
+        "38 kilometer"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem har verdensrekorden på 100 meter for menn?",
+      "a": [
+        "Usain Bolt",
+        "Tyson Gay",
+        "Asafa Powell",
+        "Justin Gatlin"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket land vant det aller første fotball-VM i 1930?",
+      "a": [
+        "Uruguay",
+        "Brasil",
+        "Argentina",
+        "Italia"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor mange poeng gir et forsøk i rugby union?",
+      "a": [
+        "Fem",
+        "Fire",
+        "Tre",
+        "Seks"
+      ],
+      "d": 3
     }
   ]
 }

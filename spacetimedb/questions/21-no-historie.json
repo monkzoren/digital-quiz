@@ -302,6 +302,96 @@
         "1943"
       ],
       "d": 1
+    },
+    {
+      "q": "I hvilket år ble Norge selvstendig fra Sverige?",
+      "a": [
+        "1905",
+        "1814",
+        "1945",
+        "1884"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva feirer vi 17. mai?",
+      "a": [
+        "Grunnloven fra 1814",
+        "Frigjøringen i 1945",
+        "Unionsoppløsningen i 1905",
+        "Kongens fødselsdag"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilket år ble Norge frigjort etter andre verdenskrig?",
+      "a": [
+        "1945",
+        "1944",
+        "1946",
+        "1940"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem var Norges statsminister under andre verdenskrig, i eksil i London?",
+      "a": [
+        "Johan Nygaardsvold",
+        "Einar Gerhardsen",
+        "Christopher Hornsrud",
+        "Vidkun Quisling"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket slag i 1030 er knyttet til Olav den hellige?",
+      "a": [
+        "Slaget på Stiklestad",
+        "Slaget i Hafrsfjord",
+        "Slaget ved Svolder",
+        "Slaget på Re"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket slag samlet Norge til ett rike ifølge sagaen?",
+      "a": [
+        "Slaget i Hafrsfjord",
+        "Slaget på Stiklestad",
+        "Slaget ved Nesjar",
+        "Slaget ved Svolder"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Omtrent hvor stor del av Norges befolkning døde av svartedauden?",
+      "a": [
+        "Rundt halvparten",
+        "Rundt ti prosent",
+        "Rundt en femtedel",
+        "Nesten alle"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor lenge varte union mellom Norge og Danmark, omtrent?",
+      "a": [
+        "Over 400 år",
+        "Om lag 90 år",
+        "Om lag 200 år",
+        "Om lag 50 år"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem ledet den norske motstandsbevegelsens tungtvannsaksjon på Vemork?",
+      "a": [
+        "Joachim Rønneberg",
+        "Max Manus",
+        "Gunnar Sønsteby",
+        "Knut Haukelid"
+      ],
+      "d": 3
     }
   ]
 }

@@ -142,6 +142,176 @@
         "H1Z1"
       ],
       "d": 3
+    },
+    {
+      "q": "What does \"USB\" stand for?",
+      "a": [
+        "Universal Serial Bus",
+        "United System Bus",
+        "Universal Storage Box",
+        "User Serial Board"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which company makes the Windows operating system?",
+      "a": [
+        "Microsoft",
+        "Apple",
+        "Google",
+        "IBM"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What do you call unwanted junk email?",
+      "a": [
+        "Spam",
+        "Ham",
+        "Toast",
+        "Jam"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What does \"AI\" stand for?",
+      "a": [
+        "Artificial intelligence",
+        "Automated input",
+        "Advanced interface",
+        "Applied informatics"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which search engine was founded in 1998 by Larry Page and Sergey Brin?",
+      "a": [
+        "Google",
+        "Yahoo",
+        "Bing",
+        "AltaVista"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What does \"GPU\" stand for?",
+      "a": [
+        "Graphics processing unit",
+        "General purpose unit",
+        "Grid power unit",
+        "Global processing utility"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which social network was originally called \"TheFacebook\"?",
+      "a": [
+        "Facebook",
+        "Twitter",
+        "MySpace",
+        "LinkedIn"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many bytes are in a kilobyte, by the binary definition?",
+      "a": [
+        "1024",
+        "1000",
+        "512",
+        "2048"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which company bought GitHub in 2018?",
+      "a": [
+        "Microsoft",
+        "Google",
+        "Amazon",
+        "Oracle"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What does \"VPN\" stand for?",
+      "a": [
+        "Virtual private network",
+        "Verified public node",
+        "Variable packet network",
+        "Virtual proxy name"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which protocol secures web traffic and is shown as a padlock?",
+      "a": [
+        "HTTPS",
+        "FTP",
+        "SMTP",
+        "SSH"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who is credited with inventing the World Wide Web?",
+      "a": [
+        "Tim Berners-Lee",
+        "Vint Cerf",
+        "Alan Turing",
+        "Bill Gates"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does \"RAM\" stand for?",
+      "a": [
+        "Random access memory",
+        "Rapid array module",
+        "Read access memory",
+        "Runtime allocation map"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which number system uses only 0 and 1?",
+      "a": [
+        "Binary",
+        "Octal",
+        "Decimal",
+        "Hexadecimal"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What was the first programmable electronic computer in Britain called?",
+      "a": [
+        "Colossus",
+        "ENIAC",
+        "UNIVAC",
+        "Z3"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who wrote the first algorithm intended for a machine?",
+      "a": [
+        "Ada Lovelace",
+        "Grace Hopper",
+        "Alan Turing",
+        "Charles Babbage"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does \"open source\" mean for software?",
+      "a": [
+        "The source code is freely available",
+        "It is always free of charge",
+        "It runs only on Linux",
+        "It has no licence"
+      ],
+      "d": 3
     }
   ]
 }

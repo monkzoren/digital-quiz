@@ -302,6 +302,76 @@
         "Stavanger"
       ],
       "d": 1
+    },
+    {
+      "q": "Hvilket hav ligger vest for Norge?",
+      "a": [
+        "Norskehavet",
+        "Østersjøen",
+        "Middelhavet",
+        "Nordishavet"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange fylker har Norge etter inndelingen fra 2024?",
+      "a": [
+        "15",
+        "11",
+        "19",
+        "13"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk øygruppe ligger lengst nord?",
+      "a": [
+        "Svalbard",
+        "Lofoten",
+        "Vesterålen",
+        "Frøya"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter Norges nordligste fastlandspunkt?",
+      "a": [
+        "Kinnarodden",
+        "Nordkapp",
+        "Knivskjellodden",
+        "Slettnes"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk isbre er Fastlands-Europas største?",
+      "a": [
+        "Jostedalsbreen",
+        "Folgefonna",
+        "Svartisen",
+        "Hardangerjøkulen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kommune er Norges største i areal?",
+      "a": [
+        "Kautokeino",
+        "Karasjok",
+        "Sør-Varanger",
+        "Tana"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk by ligger lengst sør?",
+      "a": [
+        "Mandal",
+        "Kristiansand",
+        "Stavanger",
+        "Farsund"
+      ],
+      "d": 3
     }
   ]
 }

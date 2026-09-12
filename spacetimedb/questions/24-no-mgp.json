@@ -202,6 +202,66 @@
         "Bjørnehoder"
       ],
       "d": 2
+    },
+    {
+      "q": "Hva står MGP for?",
+      "a": [
+        "Melodi Grand Prix",
+        "Musikk Grand Prix",
+        "Melodiens Grand Pris",
+        "Musikalsk Grand Prix"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange ganger har Norge vunnet Eurovision?",
+      "a": [
+        "Tre",
+        "To",
+        "Fire",
+        "Fem"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk artist vant Eurovision i 2009 med «Fairytale»?",
+      "a": [
+        "Alexander Rybak",
+        "Didrik Solli-Tangen",
+        "Margaret Berger",
+        "Tooji"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk gruppe representerte Norge i Eurovision 2024 med «Ulveham»?",
+      "a": [
+        "Gåte",
+        "Subwoolfer",
+        "KEiiNO",
+        "Ulrikke"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket norsk bidrag i 2019 ble publikumsfavoritt med «Spirit in the Sky»?",
+      "a": [
+        "KEiiNO",
+        "Alexander Rybak",
+        "Jowst",
+        "Rybak og Gåte"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk gruppe stilte maskert i Eurovision 2022 med «Give That Wolf a Banana»?",
+      "a": [
+        "Subwoolfer",
+        "Ylvis",
+        "Karpe",
+        "Hkeem"
+      ],
+      "d": 3
     }
   ]
 }

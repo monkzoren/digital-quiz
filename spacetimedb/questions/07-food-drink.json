@@ -142,6 +142,176 @@
         "International Pale Ale"
       ],
       "d": 3
+    },
+    {
+      "q": "Which vegetable is the main ingredient in coleslaw?",
+      "a": [
+        "Cabbage",
+        "Lettuce",
+        "Spinach",
+        "Kale"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the main ingredient in an omelette?",
+      "a": [
+        "Eggs",
+        "Flour",
+        "Milk",
+        "Potato"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which fruit has the varieties Granny Smith and Pink Lady?",
+      "a": [
+        "Apple",
+        "Pear",
+        "Plum",
+        "Grape"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which country does feta cheese come from?",
+      "a": [
+        "Greece",
+        "Italy",
+        "Turkey",
+        "Bulgaria"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is tofu made from?",
+      "a": [
+        "Soybeans",
+        "Chickpeas",
+        "Rice",
+        "Wheat"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which herb is the main flavour in pesto?",
+      "a": [
+        "Basil",
+        "Parsley",
+        "Coriander",
+        "Mint"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What kind of food is a shiitake?",
+      "a": [
+        "A mushroom",
+        "A seaweed",
+        "A noodle",
+        "A fish"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which country drinks the most coffee per person?",
+      "a": [
+        "Finland",
+        "Italy",
+        "Brazil",
+        "United States"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the main ingredient of black pudding?",
+      "a": [
+        "Blood",
+        "Liver",
+        "Chocolate",
+        "Mushroom"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which cocktail mixes vodka, tomato juice and spices?",
+      "a": [
+        "Bloody Mary",
+        "Cosmopolitan",
+        "Screwdriver",
+        "Margarita"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which pasta shape's name means \"little worms\"?",
+      "a": [
+        "Vermicelli",
+        "Farfalle",
+        "Penne",
+        "Rigatoni"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the base of a classic béchamel sauce?",
+      "a": [
+        "Butter, flour and milk",
+        "Egg yolk and butter",
+        "Tomato and onion",
+        "Cream and cheese"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which part of the plant is cinnamon?",
+      "a": [
+        "The bark",
+        "The root",
+        "The seed",
+        "The flower"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does \"al dente\" mean when cooking pasta?",
+      "a": [
+        "Firm to the bite",
+        "Very soft",
+        "In salted water",
+        "With sauce"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Japanese dish is raw fish served without rice?",
+      "a": [
+        "Sashimi",
+        "Nigiri",
+        "Maki",
+        "Tempura"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which country produces the most wine by volume?",
+      "a": [
+        "Italy",
+        "France",
+        "Spain",
+        "United States"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the fermented Korean side dish of cabbage called?",
+      "a": [
+        "Kimchi",
+        "Miso",
+        "Natto",
+        "Tsukemono"
+      ],
+      "d": 3
     }
   ]
 }

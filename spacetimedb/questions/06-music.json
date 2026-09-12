@@ -142,6 +142,186 @@
         "Birmingham"
       ],
       "d": 3
+    },
+    {
+      "q": "Which instrument is played by blowing across a hole while holding it sideways?",
+      "a": [
+        "Flute",
+        "Clarinet",
+        "Oboe",
+        "Trumpet"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which artist released \"Shape of You\"?",
+      "a": [
+        "Ed Sheeran",
+        "Sam Smith",
+        "Justin Bieber",
+        "Shawn Mendes"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many lines are in a standard musical stave?",
+      "a": [
+        "Five",
+        "Four",
+        "Six",
+        "Three"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which band is fronted by Chris Martin?",
+      "a": [
+        "Coldplay",
+        "Keane",
+        "Travis",
+        "Snow Patrol"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who released the album \"1989\"?",
+      "a": [
+        "Taylor Swift",
+        "Katy Perry",
+        "Lorde",
+        "Adele"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which instrument does a drummer hit with a pedal?",
+      "a": [
+        "Bass drum",
+        "Snare drum",
+        "Hi-hat",
+        "Tom-tom"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which music festival takes place at Worthy Farm?",
+      "a": [
+        "Glastonbury",
+        "Reading",
+        "Download",
+        "Leeds"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who is known as the \"Queen of Soul\"?",
+      "a": [
+        "Aretha Franklin",
+        "Diana Ross",
+        "Tina Turner",
+        "Whitney Houston"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which band recorded \"Smells Like Teen Spirit\"?",
+      "a": [
+        "Nirvana",
+        "Pearl Jam",
+        "Soundgarden",
+        "Alice in Chains"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many musicians are in a string quartet?",
+      "a": [
+        "Four",
+        "Three",
+        "Five",
+        "Six"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which artist has the most Grammy wins of all time?",
+      "a": [
+        "Beyoncé",
+        "Quincy Jones",
+        "Georg Solti",
+        "Stevie Wonder"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which decade did hip hop emerge in?",
+      "a": [
+        "The 1970s",
+        "The 1960s",
+        "The 1980s",
+        "The 1950s"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What tempo marking means \"very fast\" in classical music?",
+      "a": [
+        "Presto",
+        "Largo",
+        "Andante",
+        "Adagio"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which composer went deaf later in life?",
+      "a": [
+        "Ludwig van Beethoven",
+        "Johann Sebastian Bach",
+        "Franz Schubert",
+        "Frédéric Chopin"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How many notes are in a chromatic scale?",
+      "a": [
+        "Twelve",
+        "Eight",
+        "Seven",
+        "Ten"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Bob Dylan song begins \"How many roads must a man walk down\"?",
+      "a": [
+        "Blowin' in the Wind",
+        "The Times They Are a-Changin'",
+        "Like a Rolling Stone",
+        "Mr. Tambourine Man"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which band's members were called John, Paul, George and Ringo?",
+      "a": [
+        "The Beatles",
+        "The Rolling Stones",
+        "The Kinks",
+        "The Who"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does the musical term \"forte\" mean?",
+      "a": [
+        "Loud",
+        "Soft",
+        "Fast",
+        "Slow"
+      ],
+      "d": 3
     }
   ]
 }

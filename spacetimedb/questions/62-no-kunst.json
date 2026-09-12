@@ -1,0 +1,207 @@
+{
+  "topic": "Kunst & arkitektur",
+  "icon": "🎨",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvilken norsk kunstner malte «Skrik»?",
+      "a": [
+        "Edvard Munch",
+        "Christian Krohg",
+        "Harald Sohlberg",
+        "Nikolai Astrup"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilke tre farger regnes som primærfarger i maling?",
+      "a": [
+        "Rød, gul og blå",
+        "Rød, grønn og blå",
+        "Oransje, grønn og lilla",
+        "Svart, hvit og grå"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilken by står Eiffeltårnet?",
+      "a": [
+        "Paris",
+        "Roma",
+        "Wien",
+        "Brussel"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem malte «Stjernenatt»?",
+      "a": [
+        "Vincent van Gogh",
+        "Claude Monet",
+        "Paul Cézanne",
+        "Edvard Munch"
+      ],
+      "d": 2
+    },
+    {
+      "q": "På hvilket museum henger «Mona Lisa»?",
+      "a": [
+        "Louvre",
+        "Prado",
+        "Uffizi",
+        "Eremitasjen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kunstretning forbindes med Claude Monet?",
+      "a": [
+        "Impresjonismen",
+        "Kubismen",
+        "Surrealismen",
+        "Barokken"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken spansk arkitekt tegnet Sagrada Família?",
+      "a": [
+        "Antoni Gaudí",
+        "Santiago Calatrava",
+        "Rafael Moneo",
+        "Ricardo Bofill"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kunstner er kjent for smeltende klokker?",
+      "a": [
+        "Salvador Dalí",
+        "René Magritte",
+        "Max Ernst",
+        "Joan Miró"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken park i Oslo er fylt med skulpturer av Gustav Vigeland?",
+      "a": [
+        "Frognerparken",
+        "Ekebergparken",
+        "Tøyenparken",
+        "St. Hanshaugen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken kunstner malte suppebokser og Marilyn Monroe?",
+      "a": [
+        "Andy Warhol",
+        "Roy Lichtenstein",
+        "Jackson Pollock",
+        "Keith Haring"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Fra hvilket land kom Jørn Utzon, arkitekten bak operahuset i Sydney?",
+      "a": [
+        "Danmark",
+        "Norge",
+        "Sverige",
+        "Finland"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken meksikansk maler er kjent for selvportretter med blomster?",
+      "a": [
+        "Frida Kahlo",
+        "Remedios Varo",
+        "Leonora Carrington",
+        "María Izquierdo"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva kalles teknikken der man maler på våt puss?",
+      "a": [
+        "Freskomaleri",
+        "Tempera",
+        "Gouache",
+        "Enkaustikk"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken nederlandsk maler står bak «Pike med perleøredobb»?",
+      "a": [
+        "Johannes Vermeer",
+        "Rembrandt",
+        "Frans Hals",
+        "Jan Steen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken retning grunnla Picasso og Braque?",
+      "a": [
+        "Kubismen",
+        "Fauvismen",
+        "Futurismen",
+        "Dadaismen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem laget skulpturen «Tenkeren»?",
+      "a": [
+        "Auguste Rodin",
+        "Constantin Brâncuși",
+        "Alberto Giacometti",
+        "Henry Moore"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken gatekunstner er kjent for sjablongkunst og skjult identitet?",
+      "a": [
+        "Banksy",
+        "Shepard Fairey",
+        "Blek le Rat",
+        "Invader"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken byggestil har spisse buer og strebebuer?",
+      "a": [
+        "Gotikken",
+        "Romansk stil",
+        "Barokken",
+        "Nyklassisismen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket norsk arkitektkontor tegnet Operaen i Bjørvika?",
+      "a": [
+        "Snøhetta",
+        "LPO",
+        "Nordic",
+        "Reiulf Ramstad"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket museum i Bilbao ble tegnet av Frank Gehry?",
+      "a": [
+        "Guggenheim",
+        "Prado",
+        "Reina Sofía",
+        "Thyssen"
+      ],
+      "d": 3
+    }
+  ]
+}

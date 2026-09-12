@@ -1,0 +1,227 @@
+{
+  "topic": "Verdensrommet",
+  "icon": "🚀",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hva heter jordas eneste naturlige måne?",
+      "a": [
+        "Månen",
+        "Titan",
+        "Europa",
+        "Phobos"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange planeter er det i solsystemet vårt?",
+      "a": [
+        "Åtte",
+        "Ni",
+        "Sju",
+        "Ti"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken planet har de mest kjente ringene?",
+      "a": [
+        "Saturn",
+        "Mars",
+        "Venus",
+        "Merkur"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter stjernen i midten av solsystemet vårt?",
+      "a": [
+        "Sola",
+        "Sirius",
+        "Polarstjernen",
+        "Vega"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem var det første mennesket i verdensrommet?",
+      "a": [
+        "Jurij Gagarin",
+        "Neil Armstrong",
+        "Alan Shepard",
+        "John Glenn"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter galaksen vår?",
+      "a": [
+        "Melkeveien",
+        "Andromeda",
+        "Orion",
+        "Magellanskyen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva måler et lysår?",
+      "a": [
+        "Avstand",
+        "Tid",
+        "Lysstyrke",
+        "Fart"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken planet er varmest i solsystemet?",
+      "a": [
+        "Venus",
+        "Merkur",
+        "Mars",
+        "Jupiter"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken romorganisasjon står bak Mars-roveren Perseverance?",
+      "a": [
+        "NASA",
+        "ESA",
+        "Roskosmos",
+        "JAXA"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter romteleskopet som ble skutt opp i 2021?",
+      "a": [
+        "James Webb",
+        "Hubble",
+        "Kepler",
+        "Gaia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er Den store røde flekken på Jupiter?",
+      "a": [
+        "En kjempestorm",
+        "Et krater",
+        "En vulkan",
+        "En måneskygge"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva het den første kunstige satellitten i bane?",
+      "a": [
+        "Sputnik 1",
+        "Explorer 1",
+        "Vostok 1",
+        "Telstar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor lang tid bruker sollyset til jorda?",
+      "a": [
+        "Cirka åtte minutter",
+        "Cirka åtte sekunder",
+        "Cirka åtte timer",
+        "Cirka ett minutt"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket selskap landet den første gjenbrukbare rakettmotoren fra bane?",
+      "a": [
+        "SpaceX",
+        "Blue Origin",
+        "Boeing",
+        "Rocket Lab"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles grensen rundt et sort hull?",
+      "a": [
+        "Hendelseshorisonten",
+        "Singulariteten",
+        "Fotonsfæren",
+        "Akkresjonsskiven"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket stjernesystem ligger nærmest sola?",
+      "a": [
+        "Alfa Centauri",
+        "Sirius",
+        "Barnards stjerne",
+        "Tau Ceti"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken planet har solsystemets største vulkan?",
+      "a": [
+        "Mars",
+        "Venus",
+        "Jorda",
+        "Io"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva heter Saturns største måne?",
+      "a": [
+        "Titan",
+        "Enceladus",
+        "Rhea",
+        "Iapetus"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Omtrent hvor gammelt er universet?",
+      "a": [
+        "13,8 milliarder år",
+        "4,5 milliarder år",
+        "100 milliarder år",
+        "1 milliard år"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva kalles beltet av iskalde småkropper utenfor Neptun?",
+      "a": [
+        "Kuiperbeltet",
+        "Asteroidebeltet",
+        "Oortbeltet",
+        "Heliosfæren"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket Apollo-oppdrag landet de første menneskene på månen?",
+      "a": [
+        "Apollo 11",
+        "Apollo 13",
+        "Apollo 8",
+        "Apollo 12"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket fenomen skyldes ladde partikler fra sola som treffer atmosfæren?",
+      "a": [
+        "Nordlyset",
+        "Regnbuen",
+        "Solformørkelse",
+        "Stjerneskudd"
+      ],
+      "d": 3
+    }
+  ]
+}

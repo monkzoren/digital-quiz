@@ -282,6 +282,56 @@
         "Klokken 20 på lille julaften"
       ],
       "d": 2
+    },
+    {
+      "q": "Hva feirer man 17. mai i Norge?",
+      "a": [
+        "Grunnlovsdagen",
+        "Frigjøringsdagen",
+        "Kongens fødselsdag",
+        "Sankthans"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter feiringen av midtsommer i Norge?",
+      "a": [
+        "Sankthans",
+        "Olsok",
+        "Mikkelsmess",
+        "Kyndelsmesse"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken dag deles Nobels fredspris ut i Oslo?",
+      "a": [
+        "10. desember",
+        "24. desember",
+        "17. mai",
+        "1. januar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles tiden da russen feirer før eksamen?",
+      "a": [
+        "Russetiden",
+        "Fadderuka",
+        "Vinterferien",
+        "Sommerfesten"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken høytid markerer Olav den helliges dødsdag 29. juli?",
+      "a": [
+        "Olsok",
+        "Sankthans",
+        "Mikkelsmess",
+        "Jonsok"
+      ],
+      "d": 3
     }
   ]
 }

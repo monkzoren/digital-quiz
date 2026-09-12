@@ -282,6 +282,76 @@
         "Sør-Amerika"
       ],
       "d": 1
+    },
+    {
+      "q": "Hva er verdens lengste elv, etter de fleste målinger?",
+      "a": [
+        "Nilen",
+        "Amazonas",
+        "Yangtze",
+        "Mississippi"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket land har flest innbyggere i verden?",
+      "a": [
+        "India",
+        "Kina",
+        "USA",
+        "Indonesia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er verdens minste land i areal?",
+      "a": [
+        "Vatikanstaten",
+        "Monaco",
+        "San Marino",
+        "Liechtenstein"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket hav er størst?",
+      "a": [
+        "Stillehavet",
+        "Atlanterhavet",
+        "Indiahavet",
+        "Nordishavet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket land har verdens lengste kystlinje?",
+      "a": [
+        "Canada",
+        "Russland",
+        "Indonesia",
+        "Australia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket afrikansk land ble aldri kolonisert av en europeisk makt?",
+      "a": [
+        "Etiopia",
+        "Ghana",
+        "Kenya",
+        "Senegal"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er hovedstaden i Mongolia?",
+      "a": [
+        "Ulaanbaatar",
+        "Astana",
+        "Bisjkek",
+        "Tasjkent"
+      ],
+      "d": 3
     }
   ]
 }

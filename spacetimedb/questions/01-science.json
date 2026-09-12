@@ -142,6 +142,206 @@
         "Golgi body"
       ],
       "d": 3
+    },
+    {
+      "q": "What is H2O better known as?",
+      "a": [
+        "Water",
+        "Salt",
+        "Hydrogen peroxide",
+        "Ammonia"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which organ pumps blood around the human body?",
+      "a": [
+        "The heart",
+        "The liver",
+        "The lungs",
+        "The kidneys"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What force keeps us on the ground?",
+      "a": [
+        "Gravity",
+        "Magnetism",
+        "Friction",
+        "Inertia"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which planet is closest to the Sun?",
+      "a": [
+        "Mercury",
+        "Venus",
+        "Earth",
+        "Mars"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many chambers does the human heart have?",
+      "a": [
+        "Four",
+        "Two",
+        "Three",
+        "Six"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the speed of light in a vacuum, roughly?",
+      "a": [
+        "300,000 km per second",
+        "30,000 km per second",
+        "3,000 km per second",
+        "3 million km per second"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which blood type is the universal donor?",
+      "a": [
+        "O negative",
+        "AB positive",
+        "A positive",
+        "B negative"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What gas do plants absorb for photosynthesis?",
+      "a": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Methane"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which scientist proposed the theory of general relativity?",
+      "a": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Niels Bohr",
+        "Max Planck"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the most abundant element in the universe?",
+      "a": [
+        "Hydrogen",
+        "Helium",
+        "Oxygen",
+        "Carbon"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What part of the atom carries a negative charge?",
+      "a": [
+        "The electron",
+        "The proton",
+        "The neutron",
+        "The nucleus"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which vitamin does the body make from sunlight?",
+      "a": [
+        "Vitamin D",
+        "Vitamin C",
+        "Vitamin A",
+        "Vitamin B12"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the pH of pure water at room temperature?",
+      "a": [
+        "7",
+        "0",
+        "14",
+        "5"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who formulated the periodic table of elements?",
+      "a": [
+        "Dmitri Mendeleev",
+        "Marie Curie",
+        "Robert Boyle",
+        "John Dalton"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the name of the galaxy nearest our own?",
+      "a": [
+        "Andromeda",
+        "Triangulum",
+        "Sombrero",
+        "Whirlpool"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which particle was discovered at CERN in 2012?",
+      "a": [
+        "The Higgs boson",
+        "The neutrino",
+        "The quark",
+        "The muon"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does DNA stand for?",
+      "a": [
+        "Deoxyribonucleic acid",
+        "Dinucleic acid",
+        "Deoxyribose nitrate",
+        "Double nuclear acid"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which metal is liquid at room temperature?",
+      "a": [
+        "Mercury",
+        "Lead",
+        "Tin",
+        "Zinc"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is absolute zero in degrees Celsius?",
+      "a": [
+        "-273.15",
+        "-100",
+        "-459.67",
+        "0"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How long does light from the Sun take to reach Earth?",
+      "a": [
+        "About 8 minutes",
+        "About 8 seconds",
+        "About 80 minutes",
+        "About 8 hours"
+      ],
+      "d": 3
     }
   ]
 }

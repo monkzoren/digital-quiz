@@ -142,6 +142,186 @@
         "Jared Leto"
       ],
       "d": 3
+    },
+    {
+      "q": "Which animated film features a snowman called Olaf?",
+      "a": [
+        "Frozen",
+        "Tangled",
+        "Moana",
+        "Brave"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What colour is the Hulk?",
+      "a": [
+        "Green",
+        "Blue",
+        "Red",
+        "Grey"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In \"Toy Story\", what kind of toy is Woody?",
+      "a": [
+        "A cowboy doll",
+        "A space ranger",
+        "A dinosaur",
+        "A piggy bank"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which series is set in Westeros?",
+      "a": [
+        "Game of Thrones",
+        "The Witcher",
+        "Vikings",
+        "The Last Kingdom"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who directed \"Pulp Fiction\"?",
+      "a": [
+        "Quentin Tarantino",
+        "Martin Scorsese",
+        "Guy Ritchie",
+        "Spike Lee"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which film features a shark hunting off Amity Island?",
+      "a": [
+        "Jaws",
+        "Deep Blue Sea",
+        "The Meg",
+        "Open Water"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which sitcom is set in the Dunder Mifflin paper company?",
+      "a": [
+        "The Office",
+        "Parks and Recreation",
+        "Superstore",
+        "Better Off Ted"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who plays Tony Stark in the Marvel films?",
+      "a": [
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Mark Ruffalo",
+        "Chris Hemsworth"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which 2019 film won Best Picture and was not in English?",
+      "a": [
+        "Parasite",
+        "Roma",
+        "Amour",
+        "The Artist"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the highest-grossing film of all time?",
+      "a": [
+        "Avatar",
+        "Avengers: Endgame",
+        "Titanic",
+        "Star Wars: The Force Awakens"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In \"The Simpsons\", what is Homer's job?",
+      "a": [
+        "Safety inspector at a nuclear plant",
+        "Bartender",
+        "Police chief",
+        "School caretaker"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which streaming series features the Byers family?",
+      "a": [
+        "Stranger Things",
+        "Dark",
+        "The OA",
+        "Outer Banks"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which director made \"Spirited Away\"?",
+      "a": [
+        "Hayao Miyazaki",
+        "Isao Takahata",
+        "Makoto Shinkai",
+        "Mamoru Hosoda"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which actor has won the most Best Actor Oscars?",
+      "a": [
+        "Daniel Day-Lewis",
+        "Jack Nicholson",
+        "Marlon Brando",
+        "Tom Hanks"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the name of the spaceship in \"Alien\" (1979)?",
+      "a": [
+        "Nostromo",
+        "Sulaco",
+        "Serenity",
+        "Prometheus"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which film features a hotel called the Overlook?",
+      "a": [
+        "The Shining",
+        "Psycho",
+        "Barton Fink",
+        "The Grand Budapest Hotel"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which TV drama follows advertising men on Madison Avenue in the 1960s?",
+      "a": [
+        "Mad Men",
+        "The Sopranos",
+        "Halt and Catch Fire",
+        "Boardwalk Empire"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who wrote and directed \"Get Out\"?",
+      "a": [
+        "Jordan Peele",
+        "Ari Aster",
+        "Barry Jenkins",
+        "Ryan Coogler"
+      ],
+      "d": 3
     }
   ]
 }

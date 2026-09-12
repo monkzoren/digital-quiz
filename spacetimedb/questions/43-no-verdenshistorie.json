@@ -282,6 +282,106 @@
         "Pytagoras"
       ],
       "d": 3
+    },
+    {
+      "q": "I hvilket år sluttet andre verdenskrig?",
+      "a": [
+        "1945",
+        "1944",
+        "1946",
+        "1939"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilket skip forliste på sin første tur i 1912?",
+      "a": [
+        "Titanic",
+        "Lusitania",
+        "Britannic",
+        "Olympic"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken mur falt i 1989?",
+      "a": [
+        "Berlinmuren",
+        "Den kinesiske mur",
+        "Hadrians mur",
+        "Klagemuren"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilket år skjedde Tsjernobyl-ulykken?",
+      "a": [
+        "1986",
+        "1979",
+        "1991",
+        "1984"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem ledet Indias frigjøringskamp med ikkevold?",
+      "a": [
+        "Mahatma Gandhi",
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "B. R. Ambedkar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken sivilisasjon bygde Machu Picchu?",
+      "a": [
+        "Inkaene",
+        "Aztekerne",
+        "Mayaene",
+        "Olmekerne"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilket år begynte den franske revolusjonen?",
+      "a": [
+        "1789",
+        "1776",
+        "1799",
+        "1815"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem var Romerrikets første keiser?",
+      "a": [
+        "Augustus",
+        "Julius Caesar",
+        "Nero",
+        "Tiberius"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken farao ble funnet nesten urørt i graven sin i 1922?",
+      "a": [
+        "Tutankhamon",
+        "Ramses II",
+        "Kheops",
+        "Akhenaton"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken traktat avsluttet første verdenskrig med Tyskland?",
+      "a": [
+        "Versaillestraktaten",
+        "Trianontraktaten",
+        "Utrechtfreden",
+        "Wienerkongressen"
+      ],
+      "d": 3
     }
   ]
 }

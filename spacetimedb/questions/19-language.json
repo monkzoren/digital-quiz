@@ -1,0 +1,217 @@
+{
+  "topic": "Words & Language",
+  "icon": "🔤",
+  "lang": "en",
+  "questions": [
+    {
+      "q": "How many letters are in the English alphabet?",
+      "a": [
+        "26",
+        "24",
+        "28",
+        "30"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is a word that means the same as another called?",
+      "a": [
+        "A synonym",
+        "An antonym",
+        "A homonym",
+        "A pronoun"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which language is spoken in Brazil?",
+      "a": [
+        "Portuguese",
+        "Spanish",
+        "Brazilian",
+        "French"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What punctuation mark ends a question?",
+      "a": [
+        "A question mark",
+        "A full stop",
+        "A comma",
+        "A colon"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is a word spelled the same backwards called?",
+      "a": [
+        "A palindrome",
+        "An anagram",
+        "An acronym",
+        "A homograph"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which alphabet is used to write Russian?",
+      "a": [
+        "Cyrillic",
+        "Greek",
+        "Latin",
+        "Arabic"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What does \"et cetera\" mean?",
+      "a": [
+        "And the rest",
+        "And so forth only in lists",
+        "For example",
+        "That is"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which language has the most words borrowed into English?",
+      "a": [
+        "French",
+        "German",
+        "Dutch",
+        "Spanish"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the study of word origins called?",
+      "a": [
+        "Etymology",
+        "Entomology",
+        "Epistemology",
+        "Phonology"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which language is written in three scripts including kanji?",
+      "a": [
+        "Japanese",
+        "Korean",
+        "Chinese",
+        "Thai"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is an \"onomatopoeia\"?",
+      "a": [
+        "A word that imitates a sound",
+        "A word with two meanings",
+        "A compound word",
+        "A shortened word"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which is the official language of Austria?",
+      "a": [
+        "German",
+        "Austrian",
+        "Hungarian",
+        "Czech"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Esperanto was created for what purpose?",
+      "a": [
+        "To be a universal second language",
+        "For use in science",
+        "As a code",
+        "For poetry"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which language family do English, Hindi and Norwegian all belong to?",
+      "a": [
+        "Indo-European",
+        "Uralic",
+        "Afro-Asiatic",
+        "Sino-Tibetan"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is a \"pangram\"?",
+      "a": [
+        "A sentence using every letter of the alphabet",
+        "A word read the same both ways",
+        "A 100-word poem",
+        "A sentence without vowels"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which language has the most speakers in total, first and second combined?",
+      "a": [
+        "English",
+        "Mandarin Chinese",
+        "Hindi",
+        "Spanish"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Norwegian written standard was created by Ivar Aasen?",
+      "a": [
+        "Nynorsk",
+        "Bokmål",
+        "Riksmål",
+        "Samnorsk"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the Icelandic language most closely descended from?",
+      "a": [
+        "Old Norse",
+        "Old English",
+        "Gothic",
+        "Proto-Germanic directly"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which of these is a language isolate with no known relatives?",
+      "a": [
+        "Basque",
+        "Finnish",
+        "Estonian",
+        "Hungarian"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How many characters must you know to read a Chinese newspaper, roughly?",
+      "a": [
+        "About 3,000",
+        "About 500",
+        "About 20,000",
+        "About 50,000"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does the linguistic term \"lingua franca\" mean?",
+      "a": [
+        "A common language between speakers of different tongues",
+        "The French language",
+        "A written standard",
+        "A dead language"
+      ],
+      "d": 3
+    }
+  ]
+}

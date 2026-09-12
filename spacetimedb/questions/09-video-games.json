@@ -222,6 +222,196 @@
         "Megapop"
       ],
       "d": 3
+    },
+    {
+      "q": "Which fruit-throwing plants defend your lawn in a famous mobile game?",
+      "a": [
+        "Plants vs. Zombies",
+        "Angry Birds",
+        "Candy Crush",
+        "Fruit Ninja"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What colour is Sonic the Hedgehog?",
+      "a": [
+        "Blue",
+        "Red",
+        "Green",
+        "Yellow"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In Minecraft, what material is the strongest common tool tier in the base game?",
+      "a": [
+        "Netherite",
+        "Diamond",
+        "Iron",
+        "Gold"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which game series features the character Master Chief's rival, the Covenant?",
+      "a": [
+        "Halo",
+        "Gears of War",
+        "Destiny",
+        "Killzone"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which game features the phrase \"The cake is a lie\"?",
+      "a": [
+        "Portal",
+        "Half-Life",
+        "Bioshock",
+        "Fallout"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which company makes the FIFA and Battlefield games?",
+      "a": [
+        "Electronic Arts",
+        "Ubisoft",
+        "Activision",
+        "Take-Two"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which handheld console launched with Tetris in 1989?",
+      "a": [
+        "Game Boy",
+        "Game Gear",
+        "Atari Lynx",
+        "Neo Geo Pocket"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which game series is set in the world of Hyrule?",
+      "a": [
+        "The Legend of Zelda",
+        "Final Fantasy",
+        "Dragon Quest",
+        "Fire Emblem"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In Among Us, what is the role trying to sabotage the crew called?",
+      "a": [
+        "The Impostor",
+        "The Traitor",
+        "The Saboteur",
+        "The Mole"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which company publishes Call of Duty?",
+      "a": [
+        "Activision",
+        "EA",
+        "Ubisoft",
+        "Bethesda"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which racing series is Nintendo's own?",
+      "a": [
+        "Mario Kart",
+        "Gran Turismo",
+        "Forza",
+        "Burnout"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which sandbox game is set in the fictional Los Santos?",
+      "a": [
+        "Grand Theft Auto V",
+        "Watch Dogs 2",
+        "Saints Row",
+        "Sleeping Dogs"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which 2016 hero shooter features Tracer and Reinhardt?",
+      "a": [
+        "Overwatch",
+        "Paladins",
+        "Apex Legends",
+        "Valorant"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which 2011 role-playing game is set in the province of Skyrim?",
+      "a": [
+        "The Elder Scrolls V",
+        "Dragon Age II",
+        "The Witcher 2",
+        "Kingdoms of Amalur"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Japanese series features Cloud Strife and Sephiroth?",
+      "a": [
+        "Final Fantasy",
+        "Kingdom Hearts",
+        "Persona",
+        "Chrono Trigger"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which studio created Half-Life and Portal?",
+      "a": [
+        "Valve",
+        "id Software",
+        "Epic Games",
+        "Bungie"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which 1993 shooter helped define the first-person genre?",
+      "a": [
+        "Doom",
+        "Quake",
+        "Wolfenstein 3D",
+        "Duke Nukem 3D"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which farming-life series comes from Japan and predates Stardew Valley?",
+      "a": [
+        "Harvest Moon",
+        "Animal Crossing",
+        "Rune Factory",
+        "Story of Seasons"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which indie game has you dying repeatedly in a hollow underground kingdom of bugs?",
+      "a": [
+        "Hollow Knight",
+        "Celeste",
+        "Dead Cells",
+        "Blasphemous"
+      ],
+      "d": 3
     }
   ]
 }

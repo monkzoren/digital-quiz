@@ -1,0 +1,217 @@
+{
+  "topic": "Blandet allmennkunnskap",
+  "icon": "🧠",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvor mange sider har en sekskant?",
+      "a": [
+        "Seks",
+        "Fem",
+        "Sju",
+        "Åtte"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange dager er det i et skuddår?",
+      "a": [
+        "366",
+        "365",
+        "364",
+        "367"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange farger har regnbuen tradisjonelt?",
+      "a": [
+        "Sju",
+        "Seks",
+        "Fem",
+        "Ni"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken planet er størst i solsystemet?",
+      "a": [
+        "Jupiter",
+        "Saturn",
+        "Neptun",
+        "Jorda"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange minutter er det i et døgn?",
+      "a": [
+        "1440",
+        "1240",
+        "1640",
+        "2400"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvor mange grader er det i en sirkel?",
+      "a": [
+        "360",
+        "180",
+        "270",
+        "400"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken gass utgjør omtrent 78 prosent av lufta?",
+      "a": [
+        "Nitrogen",
+        "Oksygen",
+        "Karbondioksid",
+        "Argon"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange bein har et voksent menneske?",
+      "a": [
+        "206",
+        "186",
+        "226",
+        "306"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er det hardeste naturlige stoffet på jorda?",
+      "a": [
+        "Diamant",
+        "Kvarts",
+        "Stål",
+        "Titan"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr er det eneste pattedyret som kan fly?",
+      "a": [
+        "Flaggermusen",
+        "Flygeekornet",
+        "Sukkerpungdyret",
+        "Kolugoen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva står Roma-tallet XL for?",
+      "a": [
+        "40",
+        "60",
+        "90",
+        "400"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket språk har flest morsmålsbrukere i verden?",
+      "a": [
+        "Mandarin",
+        "Engelsk",
+        "Spansk",
+        "Hindi"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvor mange tangenter har et vanlig piano?",
+      "a": [
+        "88",
+        "76",
+        "64",
+        "96"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er valutaen i Japan?",
+      "a": [
+        "Yen",
+        "Won",
+        "Yuan",
+        "Ringgit"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket organ pumper blodet rundt i kroppen?",
+      "a": [
+        "Hjertet",
+        "Leveren",
+        "Lungene",
+        "Nyrene"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles læren om sopp?",
+      "a": [
+        "Mykologi",
+        "Iktyologi",
+        "Nefologi",
+        "Onkologi"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket grunnstoff har atomnummer 1?",
+      "a": [
+        "Hydrogen",
+        "Helium",
+        "Litium",
+        "Oksygen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvor mange tidssoner strekker Russland seg over?",
+      "a": [
+        "11",
+        "9",
+        "7",
+        "13"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket metall er flytende ved romtemperatur?",
+      "a": [
+        "Kvikksølv",
+        "Bly",
+        "Tinn",
+        "Sink"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva er det absolutte nullpunkt i celsius?",
+      "a": [
+        "-273,15",
+        "-100",
+        "-459,67",
+        "0"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken blodtype er universaldonor?",
+      "a": [
+        "0 negativ",
+        "AB positiv",
+        "A positiv",
+        "B negativ"
+      ],
+      "d": 3
+    }
+  ]
+}

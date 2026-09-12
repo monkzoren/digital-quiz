@@ -302,6 +302,66 @@
         "Trondheim Værnes"
       ],
       "d": 1
+    },
+    {
+      "q": "Hvilken by er Norges hovedstad?",
+      "a": [
+        "Oslo",
+        "Bergen",
+        "Trondheim",
+        "Stavanger"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk by kalles «Byen mellom de syv fjell»?",
+      "a": [
+        "Bergen",
+        "Ålesund",
+        "Tromsø",
+        "Stavanger"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk by er kjent for jugendstilarkitekturen etter bybrannen i 1904?",
+      "a": [
+        "Ålesund",
+        "Bodø",
+        "Kristiansund",
+        "Molde"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken by kalles «Porten til Ishavet»?",
+      "a": [
+        "Tromsø",
+        "Bodø",
+        "Hammerfest",
+        "Alta"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilken by står Nidarosdomen?",
+      "a": [
+        "Trondheim",
+        "Bergen",
+        "Oslo",
+        "Stavanger"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk by regnes som Norges eldste?",
+      "a": [
+        "Tønsberg",
+        "Oslo",
+        "Bergen",
+        "Trondheim"
+      ],
+      "d": 3
     }
   ]
 }

@@ -3,26 +3,325 @@
   "icon": "🌍",
   "lang": "en",
   "questions": [
-    { "q": "Which country is reggae from?", "a": ["Jamaica", "Cuba", "Trinidad", "Barbados"], "d": 1 },
-    { "q": "What was the name of Bob Marley's band?", "a": ["The Wailers", "The Maytals", "The Skatalites", "The Upsetters"], "d": 2 },
-    { "q": "Which Jamaican style came before reggae?", "a": ["Ska", "Calypso", "Merengue", "Zouk"], "d": 2 },
-    { "q": "Which dance and music style comes from Argentina?", "a": ["Tango", "Samba", "Salsa", "Merengue"], "d": 1 },
-    { "q": "Which country is flamenco from?", "a": ["Spain", "Italy", "Portugal", "Greece"], "d": 1 },
-    { "q": "Which Brazilian style became famous through «The Girl from Ipanema»?", "a": ["Bossa nova", "Samba", "Forró", "Choro"], "d": 2 },
-    { "q": "Which string instrument is central to Indian classical music?", "a": ["The sitar", "The balalaika", "The oud", "The koto"], "d": 2 },
-    { "q": "Which Beatle studied the sitar with Ravi Shankar?", "a": ["George Harrison", "John Lennon", "Paul McCartney", "Ringo Starr"], "d": 2 },
-    { "q": "What is the West African 21-string harp-lute called?", "a": ["The kora", "The balafon", "The ngoni", "The kalimba"], "d": 3 },
-    { "q": "Which South African singer was known as «Mama Africa»?", "a": ["Miriam Makeba", "Angélique Kidjo", "Cesária Évora", "Yvonne Chaka Chaka"], "d": 3 },
-    { "q": "Which South African choir sang with Paul Simon on Graceland?", "a": ["Ladysmith Black Mambazo", "Soweto Gospel Choir", "The Mahotella Queens", "Drakensberg Boys"], "d": 3 },
-    { "q": "Which country did Fela Kuti and Afrobeat come from?", "a": ["Nigeria", "Ghana", "Cameroon", "Ivory Coast"], "d": 2 },
-    { "q": "Which Nigerian artist is behind the global hit «Essence»?", "a": ["Wizkid", "Burna Boy", "Davido", "Rema"], "d": 3 },
-    { "q": "Which melancholy Portuguese song tradition is on the UNESCO heritage list?", "a": ["Fado", "Flamenco", "Rebetiko", "Tarantella"], "d": 3 },
-    { "q": "Which island nation is the home of the steelpan drum?", "a": ["Trinidad and Tobago", "Jamaica", "Cuba", "Haiti"], "d": 2 },
-    { "q": "Which music style became world famous through Buena Vista Social Club?", "a": ["Son cubano", "Bachata", "Cumbia", "Vallenato"], "d": 3 },
-    { "q": "Which Puerto Rican artist was the world's most streamed artist in 2020 and 2021?", "a": ["Bad Bunny", "Daddy Yankee", "J Balvin", "Ozuna"], "d": 2 },
-    { "q": "What is the music style of Bad Bunny and Daddy Yankee called?", "a": ["Reggaeton", "Bachata", "Salsa", "Merengue"], "d": 1 },
-    { "q": "Which long wind instrument comes from Aboriginal Australia?", "a": ["The didgeridoo", "The bagpipes", "The pan flute", "The shakuhachi"], "d": 1 },
-    { "q": "Which Norwegian folk instrument has sympathetic strings under the fingerboard?", "a": ["The Hardanger fiddle", "The langeleik", "The lur", "The jew's harp"], "d": 2 },
-    { "q": "What is the traditional singing of the Sámi people called?", "a": ["Joik", "Kulning", "Stev", "Throat song"], "d": 2 }
+    {
+      "q": "Which country is reggae from?",
+      "a": [
+        "Jamaica",
+        "Cuba",
+        "Trinidad",
+        "Barbados"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What was the name of Bob Marley's band?",
+      "a": [
+        "The Wailers",
+        "The Maytals",
+        "The Skatalites",
+        "The Upsetters"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Jamaican style came before reggae?",
+      "a": [
+        "Ska",
+        "Calypso",
+        "Merengue",
+        "Zouk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which dance and music style comes from Argentina?",
+      "a": [
+        "Tango",
+        "Samba",
+        "Salsa",
+        "Merengue"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which country is flamenco from?",
+      "a": [
+        "Spain",
+        "Italy",
+        "Portugal",
+        "Greece"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which Brazilian style became famous through «The Girl from Ipanema»?",
+      "a": [
+        "Bossa nova",
+        "Samba",
+        "Forró",
+        "Choro"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which string instrument is central to Indian classical music?",
+      "a": [
+        "The sitar",
+        "The balalaika",
+        "The oud",
+        "The koto"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Beatle studied the sitar with Ravi Shankar?",
+      "a": [
+        "George Harrison",
+        "John Lennon",
+        "Paul McCartney",
+        "Ringo Starr"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the West African 21-string harp-lute called?",
+      "a": [
+        "The kora",
+        "The balafon",
+        "The ngoni",
+        "The kalimba"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which South African singer was known as «Mama Africa»?",
+      "a": [
+        "Miriam Makeba",
+        "Angélique Kidjo",
+        "Cesária Évora",
+        "Yvonne Chaka Chaka"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which South African choir sang with Paul Simon on Graceland?",
+      "a": [
+        "Ladysmith Black Mambazo",
+        "Soweto Gospel Choir",
+        "The Mahotella Queens",
+        "Drakensberg Boys"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which country did Fela Kuti and Afrobeat come from?",
+      "a": [
+        "Nigeria",
+        "Ghana",
+        "Cameroon",
+        "Ivory Coast"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Nigerian artist is behind the global hit «Essence»?",
+      "a": [
+        "Wizkid",
+        "Burna Boy",
+        "Davido",
+        "Rema"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which melancholy Portuguese song tradition is on the UNESCO heritage list?",
+      "a": [
+        "Fado",
+        "Flamenco",
+        "Rebetiko",
+        "Tarantella"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which island nation is the home of the steelpan drum?",
+      "a": [
+        "Trinidad and Tobago",
+        "Jamaica",
+        "Cuba",
+        "Haiti"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which music style became world famous through Buena Vista Social Club?",
+      "a": [
+        "Son cubano",
+        "Bachata",
+        "Cumbia",
+        "Vallenato"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Puerto Rican artist was the world's most streamed artist in 2020 and 2021?",
+      "a": [
+        "Bad Bunny",
+        "Daddy Yankee",
+        "J Balvin",
+        "Ozuna"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the music style of Bad Bunny and Daddy Yankee called?",
+      "a": [
+        "Reggaeton",
+        "Bachata",
+        "Salsa",
+        "Merengue"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which long wind instrument comes from Aboriginal Australia?",
+      "a": [
+        "The didgeridoo",
+        "The bagpipes",
+        "The pan flute",
+        "The shakuhachi"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which Norwegian folk instrument has sympathetic strings under the fingerboard?",
+      "a": [
+        "The Hardanger fiddle",
+        "The langeleik",
+        "The lur",
+        "The jew's harp"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the traditional singing of the Sámi people called?",
+      "a": [
+        "Joik",
+        "Kulning",
+        "Stev",
+        "Throat song"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which instrument is central to Scottish traditional music?",
+      "a": [
+        "The bagpipes",
+        "The banjo",
+        "The accordion only",
+        "The sitar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Irish group is the best known ambassador of traditional Irish music?",
+      "a": [
+        "The Chieftains",
+        "U2",
+        "The Cranberries",
+        "Westlife"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which country is the birthplace of the tabla drum pair?",
+      "a": [
+        "India",
+        "Egypt",
+        "Turkey",
+        "Morocco"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Caribbean style from Guadeloupe and Martinique has a name meaning \"party\"?",
+      "a": [
+        "Zouk",
+        "Calypso",
+        "Soca",
+        "Merengue"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which country is the origin of the accordion-led style called vallenato?",
+      "a": [
+        "Colombia",
+        "Mexico",
+        "Peru",
+        "Venezuela"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which instrument is the Japanese three-stringed lute?",
+      "a": [
+        "The shamisen",
+        "The koto",
+        "The erhu",
+        "The pipa"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Tuareg band from Mali made desert blues world famous?",
+      "a": [
+        "Tinariwen",
+        "Bombino",
+        "Tamikrest",
+        "Terakaft"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Egyptian singer is often called the greatest of the Arab world?",
+      "a": [
+        "Umm Kulthum",
+        "Fairuz",
+        "Warda",
+        "Asmahan"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Pakistani singer made qawwali music known worldwide?",
+      "a": [
+        "Nusrat Fateh Ali Khan",
+        "Rahat Fateh Ali Khan",
+        "A. R. Rahman",
+        "Abida Parveen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which style from Angola gave its name to a slow partner dance now popular worldwide?",
+      "a": [
+        "Kizomba",
+        "Semba",
+        "Kuduro",
+        "Marrabenta"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Throat singing known as khoomei comes from which republic in southern Siberia?",
+      "a": [
+        "Tuva",
+        "Sakha",
+        "Buryatia",
+        "Altai"
+      ],
+      "d": 3
+    }
   ]
 }

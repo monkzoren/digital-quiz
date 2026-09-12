@@ -142,6 +142,206 @@
         "Albatross"
       ],
       "d": 3
+    },
+    {
+      "q": "How many players are on a basketball team on the court?",
+      "a": [
+        "Five",
+        "Six",
+        "Seven",
+        "Four"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In which sport is the Ryder Cup contested?",
+      "a": [
+        "Golf",
+        "Tennis",
+        "Rugby",
+        "Sailing"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many periods are there in an ice hockey game?",
+      "a": [
+        "Three",
+        "Two",
+        "Four",
+        "Five"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which sport uses a shuttlecock?",
+      "a": [
+        "Badminton",
+        "Squash",
+        "Table tennis",
+        "Handball"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How often are the Summer Olympic Games held?",
+      "a": [
+        "Every four years",
+        "Every two years",
+        "Every three years",
+        "Every five years"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In cricket, how many players are on a team?",
+      "a": [
+        "Eleven",
+        "Ten",
+        "Twelve",
+        "Nine"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which country invented judo?",
+      "a": [
+        "Japan",
+        "China",
+        "Korea",
+        "Brazil"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many Grand Slam tournaments are there in tennis each year?",
+      "a": [
+        "Four",
+        "Three",
+        "Five",
+        "Six"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In athletics, how many hurdles are in a 110 metres hurdles race?",
+      "a": [
+        "Ten",
+        "Eight",
+        "Twelve",
+        "Fourteen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which boxer called himself \"The Greatest\"?",
+      "a": [
+        "Muhammad Ali",
+        "Joe Frazier",
+        "Mike Tyson",
+        "George Foreman"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the length of an Olympic swimming pool?",
+      "a": [
+        "50 metres",
+        "25 metres",
+        "100 metres",
+        "75 metres"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In Formula 1, what flag signals the end of a race?",
+      "a": [
+        "Chequered",
+        "Yellow",
+        "Red",
+        "Blue"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which nation has won the most Olympic gold medals in total?",
+      "a": [
+        "United States",
+        "Soviet Union",
+        "China",
+        "Germany"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many points is a try worth in rugby union?",
+      "a": [
+        "Five",
+        "Four",
+        "Three",
+        "Six"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which tennis tournament is played on grass?",
+      "a": [
+        "Wimbledon",
+        "The French Open",
+        "The US Open",
+        "The Australian Open"
+      ],
+      "d": 3
+    },
+    {
+      "q": "In which sport would you use a foil, épée or sabre?",
+      "a": [
+        "Fencing",
+        "Archery",
+        "Shooting",
+        "Javelin"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who holds the men's 100 metres world record?",
+      "a": [
+        "Usain Bolt",
+        "Tyson Gay",
+        "Asafa Powell",
+        "Justin Gatlin"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the diameter of a basketball hoop, roughly?",
+      "a": [
+        "46 centimetres",
+        "36 centimetres",
+        "56 centimetres",
+        "66 centimetres"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which team sport is played in a velodrome?",
+      "a": [
+        "Track cycling",
+        "Roller derby",
+        "Speed skating",
+        "Motocross"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which country won the first FIFA World Cup in 1930?",
+      "a": [
+        "Uruguay",
+        "Brazil",
+        "Argentina",
+        "Italy"
+      ],
+      "d": 3
     }
   ]
 }

@@ -1,0 +1,217 @@
+{
+  "topic": "Art & Architecture",
+  "icon": "🎨",
+  "lang": "en",
+  "questions": [
+    {
+      "q": "Who painted the \"Mona Lisa\"?",
+      "a": [
+        "Leonardo da Vinci",
+        "Michelangelo",
+        "Raphael",
+        "Titian"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In which city is the Eiffel Tower?",
+      "a": [
+        "Paris",
+        "Rome",
+        "Vienna",
+        "Brussels"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What are the three primary colours in paint?",
+      "a": [
+        "Red, yellow and blue",
+        "Red, green and blue",
+        "Orange, green and purple",
+        "Black, white and grey"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which artist is famous for painting soup cans?",
+      "a": [
+        "Andy Warhol",
+        "Roy Lichtenstein",
+        "Jackson Pollock",
+        "Keith Haring"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Who painted \"The Starry Night\"?",
+      "a": [
+        "Vincent van Gogh",
+        "Claude Monet",
+        "Paul Cézanne",
+        "Edvard Munch"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Norwegian artist painted \"The Scream\"?",
+      "a": [
+        "Edvard Munch",
+        "Christian Krohg",
+        "Harald Sohlberg",
+        "Nikolai Astrup"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In which museum does the \"Mona Lisa\" hang?",
+      "a": [
+        "The Louvre",
+        "The Prado",
+        "The Uffizi",
+        "The Hermitage"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which artist cut off part of his own ear?",
+      "a": [
+        "Vincent van Gogh",
+        "Paul Gauguin",
+        "Henri Matisse",
+        "Egon Schiele"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which art movement is Claude Monet associated with?",
+      "a": [
+        "Impressionism",
+        "Cubism",
+        "Surrealism",
+        "Baroque"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Spanish architect designed the Sagrada Família?",
+      "a": [
+        "Antoni Gaudí",
+        "Santiago Calatrava",
+        "Rafael Moneo",
+        "Ricardo Bofill"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which artist is known for melting clocks?",
+      "a": [
+        "Salvador Dalí",
+        "René Magritte",
+        "Max Ernst",
+        "Joan Miró"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which city is home to the Guggenheim Museum designed by Frank Gehry?",
+      "a": [
+        "Bilbao",
+        "Barcelona",
+        "Madrid",
+        "Valencia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Mexican painter is known for her self-portraits with flowers and animals?",
+      "a": [
+        "Frida Kahlo",
+        "Remedios Varo",
+        "Leonora Carrington",
+        "María Izquierdo"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What technique is painting on wet plaster called?",
+      "a": [
+        "Fresco",
+        "Tempera",
+        "Gouache",
+        "Encaustic"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Dutch artist painted \"Girl with a Pearl Earring\"?",
+      "a": [
+        "Johannes Vermeer",
+        "Rembrandt",
+        "Frans Hals",
+        "Jan Steen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which movement did Pablo Picasso and Georges Braque found?",
+      "a": [
+        "Cubism",
+        "Fauvism",
+        "Futurism",
+        "Dadaism"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which building in Sydney was designed by Jørn Utzon?",
+      "a": [
+        "The Sydney Opera House",
+        "The Harbour Bridge",
+        "Sydney Tower",
+        "The Museum of Contemporary Art"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which sculptor made \"The Thinker\"?",
+      "a": [
+        "Auguste Rodin",
+        "Constantin Brâncuși",
+        "Alberto Giacometti",
+        "Henry Moore"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which street artist is known for stencilled works and hidden identity?",
+      "a": [
+        "Banksy",
+        "Shepard Fairey",
+        "Blek le Rat",
+        "Invader"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which architectural style features pointed arches and flying buttresses?",
+      "a": [
+        "Gothic",
+        "Romanesque",
+        "Baroque",
+        "Neoclassical"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which park in Oslo is filled with sculptures by Gustav Vigeland?",
+      "a": [
+        "Frogner Park",
+        "Ekeberg Park",
+        "St. Hanshaugen",
+        "Tøyen Park"
+      ],
+      "d": 3
+    }
+  ]
+}

@@ -3,37 +3,475 @@
   "icon": "🤯",
   "lang": "en",
   "questions": [
-    { "q": "What unusual shape is wombat poo?", "a": ["Cube", "Sphere", "Star", "Pyramid"], "d": 2 },
-    { "q": "How many hearts does an octopus have?", "a": ["Three", "One", "Two", "Five"], "d": 1 },
-    { "q": "Botanically speaking, which of these is a berry?", "a": ["Banana", "Strawberry", "Raspberry", "Blackberry"], "d": 2 },
-    { "q": "What is the collective noun for a group of flamingos?", "a": ["A flamboyance", "A flutter", "A blush", "A parade"], "d": 2 },
-    { "q": "Archaeologists found pots of what still edible in ancient Egyptian tombs?", "a": ["Honey", "Bread", "Wine", "Cheese"], "d": 2 },
-    { "q": "Why do sea otters hold hands while they sleep?", "a": ["So they do not drift apart", "To stay warm", "To scare off gulls", "To mark territory"], "d": 1 },
-    { "q": "Which country's official national animal is the unicorn?", "a": ["Scotland", "Iceland", "Wales", "Denmark"], "d": 2 },
-    { "q": "The shortest war in recorded history lasted roughly how long?", "a": ["About 38 minutes", "About six hours", "About two days", "About a week"], "d": 3 },
-    { "q": "What did Nintendo originally make when it was founded in 1889?", "a": ["Playing cards", "Bicycles", "Vacuum cleaners", "Pianos"], "d": 2 },
-    { "q": "The Eiffel Tower does what in hot summer weather?", "a": ["Grows about 15 cm taller", "Shrinks by a metre", "Leans east", "Changes colour"], "d": 2 },
-    { "q": "Where is a shrimp's heart located?", "a": ["In its head", "In its tail", "In its legs", "Behind its eyes"], "d": 2 },
-    { "q": "Which appeared on Earth first?", "a": ["Sharks", "Trees", "Grass", "Flowers"], "d": 3 },
-    { "q": "Oxford University was already teaching students before which of these existed?", "a": ["The Aztec Empire", "The Roman Empire", "Ancient Greece", "The pyramids"], "d": 3 },
-    { "q": "Cleopatra lived closer in time to which event than to the building of the Great Pyramid?", "a": ["The Moon landing", "The Trojan War", "The birth of Rome", "The invention of writing"], "d": 3 },
-    { "q": "The man who designed the Pringles tube was buried how?", "a": ["With his ashes in a Pringles tube", "In a crisp-shaped coffin", "At a Pringles factory", "Under a potato field"], "d": 3 },
-    { "q": "The Mpemba effect describes what surprising behaviour?", "a": ["Hot water freezing faster than cold", "Ice sinking in water", "Boiling water turning blue", "Salt water boiling first"], "d": 3 },
-    { "q": "Botanically, a peanut is really what?", "a": ["A legume", "A nut", "A seed pod of a tree", "A root vegetable"], "d": 2 },
-    { "q": "A 'jiffy' is what, in scientific terms?", "a": ["A real unit of time", "A unit of weight", "A unit of sound", "Made up entirely"], "d": 3 },
-    { "q": "Sir Nils Olav, a knighted mascot of the Norwegian King's Guard, is what animal?", "a": ["A penguin", "A goat", "A moose", "A dog"], "d": 2 },
-    { "q": "How does a sea cucumber typically defend itself?", "a": ["It ejects its own internal organs", "It inflates and floats away", "It sprays ink", "It plays dead for days"], "d": 3 },
-    { "q": "Male platypuses are unusual among mammals because they have what?", "a": ["Venomous spurs", "Four stomachs", "Hollow bones", "Night vision"], "d": 2 },
-    { "q": "Rjukan in Norway installed giant mirrors on the mountainside to do what?", "a": ["Bounce sunlight into the town square", "Warn of avalanches", "Signal aircraft", "Melt the road ice"], "d": 2 },
-    { "q": "Turritopsis dohrnii earned its nickname 'the immortal jellyfish' because it can do what?", "a": ["Revert to an earlier life stage", "Live without water", "Regrow after being eaten", "Survive being frozen solid"], "d": 3 },
-    { "q": "What is the dot above a lower-case 'i' called?", "a": ["A tittle", "A dottle", "A pip", "A serif"], "d": 3 },
-    { "q": "Bubble wrap was originally invented to be sold as what?", "a": ["Wallpaper", "A raincoat lining", "Greenhouse glazing", "A mattress"], "d": 2 },
-    { "q": "In the 1830s in the United States, ketchup was sold as what?", "a": ["Medicine", "Paint", "Shoe polish", "A dessert topping"], "d": 3 },
-    { "q": "Which bird can fly backwards?", "a": ["Hummingbird", "Swift", "Kingfisher", "Sparrow"], "d": 1 },
-    { "q": "Which of these animals has fingerprints almost indistinguishable from a human's?", "a": ["Koala", "Chimpanzee", "Raccoon", "Pig"], "d": 3 },
-    { "q": "How long can a sloth hold its breath under water?", "a": ["About 40 minutes", "About 2 minutes", "About 10 minutes", "About 3 hours"], "d": 3 },
-    { "q": "Napoleon Bonaparte was once famously swarmed and put to flight by what?", "a": ["Rabbits", "Bees", "Geese", "Cats"], "d": 3 },
-    { "q": "Scientists have shown that cows do what?", "a": ["Form close friendships with specific cows", "Sleep standing up all night", "Recognise their own reflection", "Navigate by the stars"], "d": 2 },
-    { "q": "What colour is an octopus's blood?", "a": ["Blue", "Red", "Green", "Clear"], "d": 2 }
+    {
+      "q": "What unusual shape is wombat poo?",
+      "a": [
+        "Cube",
+        "Sphere",
+        "Star",
+        "Pyramid"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many hearts does an octopus have?",
+      "a": [
+        "Three",
+        "One",
+        "Two",
+        "Five"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Botanically speaking, which of these is a berry?",
+      "a": [
+        "Banana",
+        "Strawberry",
+        "Raspberry",
+        "Blackberry"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the collective noun for a group of flamingos?",
+      "a": [
+        "A flamboyance",
+        "A flutter",
+        "A blush",
+        "A parade"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Archaeologists found pots of what still edible in ancient Egyptian tombs?",
+      "a": [
+        "Honey",
+        "Bread",
+        "Wine",
+        "Cheese"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Why do sea otters hold hands while they sleep?",
+      "a": [
+        "So they do not drift apart",
+        "To stay warm",
+        "To scare off gulls",
+        "To mark territory"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which country's official national animal is the unicorn?",
+      "a": [
+        "Scotland",
+        "Iceland",
+        "Wales",
+        "Denmark"
+      ],
+      "d": 2
+    },
+    {
+      "q": "The shortest war in recorded history lasted roughly how long?",
+      "a": [
+        "About 38 minutes",
+        "About six hours",
+        "About two days",
+        "About a week"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What did Nintendo originally make when it was founded in 1889?",
+      "a": [
+        "Playing cards",
+        "Bicycles",
+        "Vacuum cleaners",
+        "Pianos"
+      ],
+      "d": 2
+    },
+    {
+      "q": "The Eiffel Tower does what in hot summer weather?",
+      "a": [
+        "Grows about 15 cm taller",
+        "Shrinks by a metre",
+        "Leans east",
+        "Changes colour"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Where is a shrimp's heart located?",
+      "a": [
+        "In its head",
+        "In its tail",
+        "In its legs",
+        "Behind its eyes"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which appeared on Earth first?",
+      "a": [
+        "Sharks",
+        "Trees",
+        "Grass",
+        "Flowers"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Oxford University was already teaching students before which of these existed?",
+      "a": [
+        "The Aztec Empire",
+        "The Roman Empire",
+        "Ancient Greece",
+        "The pyramids"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Cleopatra lived closer in time to which event than to the building of the Great Pyramid?",
+      "a": [
+        "The Moon landing",
+        "The Trojan War",
+        "The birth of Rome",
+        "The invention of writing"
+      ],
+      "d": 3
+    },
+    {
+      "q": "The man who designed the Pringles tube was buried how?",
+      "a": [
+        "With his ashes in a Pringles tube",
+        "In a crisp-shaped coffin",
+        "At a Pringles factory",
+        "Under a potato field"
+      ],
+      "d": 3
+    },
+    {
+      "q": "The Mpemba effect describes what surprising behaviour?",
+      "a": [
+        "Hot water freezing faster than cold",
+        "Ice sinking in water",
+        "Boiling water turning blue",
+        "Salt water boiling first"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Botanically, a peanut is really what?",
+      "a": [
+        "A legume",
+        "A nut",
+        "A seed pod of a tree",
+        "A root vegetable"
+      ],
+      "d": 2
+    },
+    {
+      "q": "A 'jiffy' is what, in scientific terms?",
+      "a": [
+        "A real unit of time",
+        "A unit of weight",
+        "A unit of sound",
+        "Made up entirely"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Sir Nils Olav, a knighted mascot of the Norwegian King's Guard, is what animal?",
+      "a": [
+        "A penguin",
+        "A goat",
+        "A moose",
+        "A dog"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How does a sea cucumber typically defend itself?",
+      "a": [
+        "It ejects its own internal organs",
+        "It inflates and floats away",
+        "It sprays ink",
+        "It plays dead for days"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Male platypuses are unusual among mammals because they have what?",
+      "a": [
+        "Venomous spurs",
+        "Four stomachs",
+        "Hollow bones",
+        "Night vision"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Rjukan in Norway installed giant mirrors on the mountainside to do what?",
+      "a": [
+        "Bounce sunlight into the town square",
+        "Warn of avalanches",
+        "Signal aircraft",
+        "Melt the road ice"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Turritopsis dohrnii earned its nickname 'the immortal jellyfish' because it can do what?",
+      "a": [
+        "Revert to an earlier life stage",
+        "Live without water",
+        "Regrow after being eaten",
+        "Survive being frozen solid"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the dot above a lower-case 'i' called?",
+      "a": [
+        "A tittle",
+        "A dottle",
+        "A pip",
+        "A serif"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Bubble wrap was originally invented to be sold as what?",
+      "a": [
+        "Wallpaper",
+        "A raincoat lining",
+        "Greenhouse glazing",
+        "A mattress"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In the 1830s in the United States, ketchup was sold as what?",
+      "a": [
+        "Medicine",
+        "Paint",
+        "Shoe polish",
+        "A dessert topping"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which bird can fly backwards?",
+      "a": [
+        "Hummingbird",
+        "Swift",
+        "Kingfisher",
+        "Sparrow"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which of these animals has fingerprints almost indistinguishable from a human's?",
+      "a": [
+        "Koala",
+        "Chimpanzee",
+        "Raccoon",
+        "Pig"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How long can a sloth hold its breath under water?",
+      "a": [
+        "About 40 minutes",
+        "About 2 minutes",
+        "About 10 minutes",
+        "About 3 hours"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Napoleon Bonaparte was once famously swarmed and put to flight by what?",
+      "a": [
+        "Rabbits",
+        "Bees",
+        "Geese",
+        "Cats"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Scientists have shown that cows do what?",
+      "a": [
+        "Form close friendships with specific cows",
+        "Sleep standing up all night",
+        "Recognise their own reflection",
+        "Navigate by the stars"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What colour is an octopus's blood?",
+      "a": [
+        "Blue",
+        "Red",
+        "Green",
+        "Clear"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which animal never sleeps in the way we understand sleep, having no brain at all?",
+      "a": [
+        "The jellyfish",
+        "The dolphin",
+        "The giraffe",
+        "The shark"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many tentacles does a common garden slug have on its head?",
+      "a": [
+        "Four",
+        "Two",
+        "Six",
+        "None"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Honey found in sealed jars can last roughly how long without spoiling?",
+      "a": [
+        "Thousands of years",
+        "Two years",
+        "Ten years",
+        "One hundred years"
+      ],
+      "d": 2
+    },
+    {
+      "q": "A group of pugs is called what?",
+      "a": [
+        "A grumble",
+        "A wrinkle",
+        "A snuffle",
+        "A pack"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which fruit floats because it is about 25 percent air?",
+      "a": [
+        "The apple",
+        "The orange",
+        "The banana",
+        "The mango"
+      ],
+      "d": 2
+    },
+    {
+      "q": "The loudest animal on Earth relative to its size is what?",
+      "a": [
+        "A pistol shrimp",
+        "A howler monkey",
+        "A blue whale",
+        "A cicada"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which country flies a dragon on its national flag?",
+      "a": [
+        "Wales",
+        "Ireland",
+        "Portugal",
+        "Denmark"
+      ],
+      "d": 2
+    },
+    {
+      "q": "A cat's purr vibrates at a frequency associated with what?",
+      "a": [
+        "Healing of bone and tissue",
+        "Hunting",
+        "Sleeping",
+        "Digestion"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Venus is unusual among planets because it does what?",
+      "a": [
+        "Rotates backwards",
+        "Has no core",
+        "Has two moons",
+        "Has no atmosphere"
+      ],
+      "d": 3
+    },
+    {
+      "q": "The tallest grass in the world is which plant?",
+      "a": [
+        "Bamboo",
+        "Sugarcane",
+        "Pampas grass",
+        "Wheat"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Sharks existed on Earth before which of these?",
+      "a": [
+        "Trees",
+        "Fish",
+        "Insects",
+        "Bacteria"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Why are flamingos pink?",
+      "a": [
+        "Their diet of shrimp and algae",
+        "Their feathers reflect sunlight",
+        "They are born that way",
+        "The heat of their habitat"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What happens to a banana plant after it fruits?",
+      "a": [
+        "The stalk dies back and a new shoot takes over",
+        "It fruits again the next week",
+        "It turns into a tree",
+        "It flowers for ten years"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Astronauts on the ISS see how many sunrises in 24 hours?",
+      "a": [
+        "About 16",
+        "About 2",
+        "About 8",
+        "About 40"
+      ],
+      "d": 3
+    },
+    {
+      "q": "The world's oldest known living individual tree is roughly how old?",
+      "a": [
+        "Nearly 5,000 years",
+        "About 800 years",
+        "About 1,500 years",
+        "About 12,000 years"
+      ],
+      "d": 3
+    }
   ]
 }

@@ -302,6 +302,66 @@
         "Norwegian fudge"
       ],
       "d": 2
+    },
+    {
+      "q": "Hva er hovedingrediensen i lapskaus?",
+      "a": [
+        "Kjøtt og poteter",
+        "Fisk",
+        "Ris",
+        "Kylling og pasta"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva er fårikål laget av?",
+      "a": [
+        "Sau og kål",
+        "Svin og kål",
+        "Storfe og rotgrønnsaker",
+        "Kylling og kål"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk brunost er mest kjent?",
+      "a": [
+        "Gudbrandsdalsost",
+        "Jarlsberg",
+        "Norvegia",
+        "Snøfrisk"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva er lutefisk laget av?",
+      "a": [
+        "Tørrfisk lagt i lut",
+        "Fersk laks",
+        "Røkt sild",
+        "Saltet torsk uten lut"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk drikk smakes til med karve?",
+      "a": [
+        "Akevitt",
+        "Vodka",
+        "Gin",
+        "Rom"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva kalles den tradisjonelle norske flatbrødsvarianten som spises til rømmegrøt?",
+      "a": [
+        "Flatbrød",
+        "Lefse",
+        "Knekkebrød",
+        "Vaffel"
+      ],
+      "d": 3
     }
   ]
 }

@@ -132,6 +132,176 @@
         "Sesquiphobia"
       ],
       "d": 3
+    },
+    {
+      "q": "How many days are there in a leap year?",
+      "a": [
+        "366",
+        "365",
+        "364",
+        "367"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many colours are there in a rainbow, traditionally?",
+      "a": [
+        "Seven",
+        "Six",
+        "Five",
+        "Nine"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the tallest animal in the world?",
+      "a": [
+        "Giraffe",
+        "Elephant",
+        "Ostrich",
+        "Camel"
+      ],
+      "d": 1
+    },
+    {
+      "q": "How many players are on a football pitch per team at kick-off?",
+      "a": [
+        "Eleven",
+        "Ten",
+        "Twelve",
+        "Nine"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What is the smallest prime number?",
+      "a": [
+        "2",
+        "1",
+        "3",
+        "0"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many bones are there in the adult human body?",
+      "a": [
+        "206",
+        "186",
+        "226",
+        "306"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which gas makes up about 78 percent of the air we breathe?",
+      "a": [
+        "Nitrogen",
+        "Oxygen",
+        "Carbon dioxide",
+        "Argon"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many squares are there on a chessboard?",
+      "a": [
+        "64",
+        "81",
+        "100",
+        "48"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What does WWW stand for?",
+      "a": [
+        "World Wide Web",
+        "World Web Work",
+        "Wide World Web",
+        "Web World Wide"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which is the only mammal capable of true flight?",
+      "a": [
+        "Bat",
+        "Flying squirrel",
+        "Sugar glider",
+        "Colugo"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many degrees are there in a circle?",
+      "a": [
+        "360",
+        "180",
+        "270",
+        "400"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the study of fungi called?",
+      "a": [
+        "Mycology",
+        "Ichthyology",
+        "Oology",
+        "Nephology"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which number is considered unlucky in much of East Asia?",
+      "a": [
+        "4",
+        "7",
+        "13",
+        "9"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the collective noun for a group of crows?",
+      "a": [
+        "A murder",
+        "A parliament",
+        "A gaggle",
+        "A pride"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the only letter that does not appear in any US state name?",
+      "a": [
+        "Q",
+        "X",
+        "Z",
+        "J"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does the acronym LASER stand for, in part?",
+      "a": [
+        "Light Amplification",
+        "Linear Alignment",
+        "Low Amplitude",
+        "Long Arc"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which element has the atomic number 1?",
+      "a": [
+        "Hydrogen",
+        "Helium",
+        "Lithium",
+        "Oxygen"
+      ],
+      "d": 3
     }
   ]
 }

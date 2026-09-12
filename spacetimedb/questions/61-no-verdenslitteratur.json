@@ -1,0 +1,227 @@
+{
+  "topic": "Verdenslitteratur",
+  "icon": "📚",
+  "lang": "nb",
+  "questions": [
+    {
+      "q": "Hvem skrev «Romeo og Julie»?",
+      "a": [
+        "William Shakespeare",
+        "Charles Dickens",
+        "Jane Austen",
+        "Molière"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem skapte trollmannen Harry Potter?",
+      "a": [
+        "J. K. Rowling",
+        "Roald Dahl",
+        "C. S. Lewis",
+        "Philip Pullman"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem skrev «Hobbiten»?",
+      "a": [
+        "J. R. R. Tolkien",
+        "C. S. Lewis",
+        "Terry Pratchett",
+        "Ursula K. Le Guin"
+      ],
+      "d": 1
+    },
+    {
+      "q": "I hvilken bok faller en jente ned i et kaninhull?",
+      "a": [
+        "Alice i Eventyrland",
+        "Den hemmelige hagen",
+        "Peter Pan",
+        "Trollmannen fra Oz"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvem skrev «Stolthet og fordom»?",
+      "a": [
+        "Jane Austen",
+        "Charlotte Brontë",
+        "Emily Brontë",
+        "Virginia Woolf"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skapte detektiven Sherlock Holmes?",
+      "a": [
+        "Arthur Conan Doyle",
+        "Agatha Christie",
+        "Edgar Allan Poe",
+        "Wilkie Collins"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken roman handler om Storebror som ser deg?",
+      "a": [
+        "1984",
+        "Fagre nye verden",
+        "Fahrenheit 451",
+        "Vi"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev «Hundre års ensomhet»?",
+      "a": [
+        "Gabriel García Márquez",
+        "Mario Vargas Llosa",
+        "Isabel Allende",
+        "Jorge Luis Borges"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken av Agatha Christies detektiver er belgier?",
+      "a": [
+        "Hercule Poirot",
+        "Miss Marple",
+        "Tommy Beresford",
+        "Ariadne Oliver"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev «Den store Gatsby»?",
+      "a": [
+        "F. Scott Fitzgerald",
+        "Ernest Hemingway",
+        "John Steinbeck",
+        "William Faulkner"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev «Don Quijote»?",
+      "a": [
+        "Miguel de Cervantes",
+        "Lope de Vega",
+        "Federico García Lorca",
+        "Camilo José Cela"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken forfatter står bak «Ringenes herre»?",
+      "a": [
+        "J. R. R. Tolkien",
+        "George R. R. Martin",
+        "Robert Jordan",
+        "Brandon Sanderson"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev «Pippi Langstrømpe»?",
+      "a": [
+        "Astrid Lindgren",
+        "Tove Jansson",
+        "Selma Lagerlöf",
+        "Anne-Cath. Vestly"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skapte Mummitrollet?",
+      "a": [
+        "Tove Jansson",
+        "Astrid Lindgren",
+        "Elsa Beskow",
+        "Thorbjørn Egner"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem skrev «Forbrytelse og straff»?",
+      "a": [
+        "Fjodor Dostojevskij",
+        "Lev Tolstoj",
+        "Anton Tsjekhov",
+        "Nikolaj Gogol"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket epos forteller om den trojanske krigen?",
+      "a": [
+        "Iliaden",
+        "Odysseen",
+        "Aeneiden",
+        "Beowulf"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem var den første kvinnen som vant Nobelprisen i litteratur?",
+      "a": [
+        "Selma Lagerlöf",
+        "Sigrid Undset",
+        "Grazia Deledda",
+        "Pearl S. Buck"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken japansk forfatter skrev «Norwegian Wood»?",
+      "a": [
+        "Haruki Murakami",
+        "Yukio Mishima",
+        "Kenzaburo Oe",
+        "Banana Yoshimoto"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken nigeriansk forfatter skrev «Things Fall Apart»?",
+      "a": [
+        "Chinua Achebe",
+        "Wole Soyinka",
+        "Ben Okri",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken forfatter har solgt flest romaner gjennom tidene?",
+      "a": [
+        "Agatha Christie",
+        "Barbara Cartland",
+        "Danielle Steel",
+        "Stephen King"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem skrev diktet «Ravnen»?",
+      "a": [
+        "Edgar Allan Poe",
+        "Walt Whitman",
+        "Emily Dickinson",
+        "Robert Frost"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken roman begynner med «Kall meg Ismael»?",
+      "a": [
+        "Moby Dick",
+        "Skattøya",
+        "Den gamle mannen og havet",
+        "Robinson Crusoe"
+      ],
+      "d": 3
+    }
+  ]
+}

@@ -302,6 +302,86 @@
         "Phobos"
       ],
       "d": 1
+    },
+    {
+      "q": "Hva er H2O bedre kjent som?",
+      "a": [
+        "Vann",
+        "Salt",
+        "Ammoniakk",
+        "Hydrogenperoksid"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken kraft holder oss på bakken?",
+      "a": [
+        "Tyngdekraften",
+        "Magnetisme",
+        "Friksjon",
+        "Treghet"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva kalles cellens kraftverk?",
+      "a": [
+        "Mitokondriene",
+        "Cellekjernen",
+        "Ribosomene",
+        "Vakuolen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken gass tar planter opp under fotosyntesen?",
+      "a": [
+        "Karbondioksid",
+        "Oksygen",
+        "Nitrogen",
+        "Metan"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem la fram den generelle relativitetsteorien?",
+      "a": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Niels Bohr",
+        "Max Planck"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvem satte opp det periodiske system?",
+      "a": [
+        "Dmitrij Mendelejev",
+        "Marie Curie",
+        "John Dalton",
+        "Robert Boyle"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken partikkel ble påvist ved CERN i 2012?",
+      "a": [
+        "Higgs-bosonet",
+        "Nøytrinoet",
+        "Kvarken",
+        "Myonet"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hva står DNA for?",
+      "a": [
+        "Deoksyribonukleinsyre",
+        "Dinukleinsyre",
+        "Dobbel nukleinsyre",
+        "Deoksyribosenitrat"
+      ],
+      "d": 3
     }
   ]
 }

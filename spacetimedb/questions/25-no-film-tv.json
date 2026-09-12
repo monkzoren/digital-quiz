@@ -302,6 +302,66 @@
         "Kvelden før kvelden"
       ],
       "d": 3
+    },
+    {
+      "q": "Hvilken norsk TV-serie følger elever på Hartvig Nissen skole?",
+      "a": [
+        "Skam",
+        "Himmelblå",
+        "Hotel Cæsar",
+        "Lykkeland"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk film fra 2015 handler om en flodbølge i Geiranger?",
+      "a": [
+        "Bølgen",
+        "Skjelvet",
+        "Tsunami",
+        "Utøya 22. juli"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk regissør står bak «Verdens verste menneske»?",
+      "a": [
+        "Joachim Trier",
+        "Erik Poppe",
+        "Bent Hamer",
+        "Hans Petter Moland"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk julekalender er lagt til et fjell der blånissene bor?",
+      "a": [
+        "Jul i Blåfjell",
+        "Amalies jul",
+        "Jul på Månetoppen",
+        "Snøfall"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk film ble nominert til Oscar for beste internasjonale film i 2022?",
+      "a": [
+        "Verdens verste menneske",
+        "Kongens nei",
+        "Bølgen",
+        "Utøya 22. juli"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk Netflix-serie handler om norrøne guder i Edda?",
+      "a": [
+        "Ragnarok",
+        "Vikingane",
+        "Home for Christmas",
+        "Furia"
+      ],
+      "d": 3
     }
   ]
 }

@@ -502,6 +502,46 @@
         "Sovjetunionen"
       ],
       "d": 2
+    },
+    {
+      "q": "Hvilken norsk skiskytter har flest OL-gull gjennom tidene?",
+      "a": [
+        "Ole Einar Bjørndalen",
+        "Johannes Thingnes Bø",
+        "Emil Hegle Svendsen",
+        "Tarjei Bø"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk by arrangerte vinter-OL i 1952?",
+      "a": [
+        "Oslo",
+        "Lillehammer",
+        "Bergen",
+        "Hamar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk langrennsløper har flest OL-gull blant kvinner?",
+      "a": [
+        "Marit Bjørgen",
+        "Bjørg Eva Jensen",
+        "Vibeke Skofterud",
+        "Therese Johaug"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken hoppbakke i Oslo er Norges mest kjente?",
+      "a": [
+        "Holmenkollbakken",
+        "Vikersundbakken",
+        "Granåsen",
+        "Lysgårdsbakken"
+      ],
+      "d": 3
     }
   ]
 }

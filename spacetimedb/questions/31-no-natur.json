@@ -302,6 +302,56 @@
         "Å følge nærmeste spor"
       ],
       "d": 1
+    },
+    {
+      "q": "Hva heter Norges største nasjonalpark på fastlandet?",
+      "a": [
+        "Hardangervidda",
+        "Jotunheimen",
+        "Rondane",
+        "Dovrefjell"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket dyr kan du se på Dovrefjell som er Europas eneste ville bestand av arten?",
+      "a": [
+        "Moskusen",
+        "Bisonen",
+        "Villreinen",
+        "Elgen"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter loven som gir alle rett til å ferdes i utmark i Norge?",
+      "a": [
+        "Allemannsretten",
+        "Friluftsloven om eiendom",
+        "Utmarksretten",
+        "Naturloven"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk fjellformasjon henger over Lysefjorden?",
+      "a": [
+        "Preikestolen",
+        "Trolltunga",
+        "Besseggen",
+        "Kjeragbolten"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilket norsk tre er mest brukt til juletre?",
+      "a": [
+        "Gran",
+        "Furu",
+        "Bjørk",
+        "Osp"
+      ],
+      "d": 3
     }
   ]
 }

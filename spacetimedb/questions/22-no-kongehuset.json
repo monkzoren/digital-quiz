@@ -242,6 +242,76 @@
         "Akershus festning"
       ],
       "d": 2
+    },
+    {
+      "q": "Hva heter Norges konge i dag?",
+      "a": [
+        "Harald V",
+        "Olav V",
+        "Haakon VII",
+        "Carl Gustaf"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hva heter kronprinsen av Norge?",
+      "a": [
+        "Haakon",
+        "Sverre Magnus",
+        "Olav",
+        "Carl Philip"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hva heter kronprinsparets datter som er nummer to i arverekken?",
+      "a": [
+        "Ingrid Alexandra",
+        "Märtha Louise",
+        "Maud Angelica",
+        "Leah Isadora"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilket motto har kong Harald V?",
+      "a": [
+        "Alt for Norge",
+        "Ja, vi elsker",
+        "Rett og sant",
+        "For Gud og Norge"
+      ],
+      "d": 2
+    },
+    {
+      "q": "I hvilket år ble kong Harald V konge?",
+      "a": [
+        "1991",
+        "1957",
+        "1905",
+        "1985"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken idrettsgren har kong Harald V konkurrert i internasjonalt?",
+      "a": [
+        "Seiling",
+        "Skiskyting",
+        "Roing",
+        "Riding"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvem var Norges første konge etter unionsoppløsningen i 1905?",
+      "a": [
+        "Haakon VII",
+        "Olav V",
+        "Harald V",
+        "Oscar II"
+      ],
+      "d": 3
     }
   ]
 }

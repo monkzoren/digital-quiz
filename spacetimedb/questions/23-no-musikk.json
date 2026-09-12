@@ -302,6 +302,76 @@
         "Turbonegro"
       ],
       "d": 3
+    },
+    {
+      "q": "Hvilken norsk artist står bak «Take On Me»?",
+      "a": [
+        "a-ha",
+        "Wig Wam",
+        "Madcon",
+        "Röyksopp"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Hvilken norsk DJ og produsent står bak «Faded»?",
+      "a": [
+        "Alan Walker",
+        "Kygo",
+        "Matoma",
+        "Cashmere Cat"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk artist slo gjennom internasjonalt med «Firestone»?",
+      "a": [
+        "Kygo",
+        "Alan Walker",
+        "Seeb",
+        "Astrid S"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk gruppe synger «Jeg vil ha deg for meg selv»?",
+      "a": [
+        "Postgirobygget",
+        "DDE",
+        "Vamp",
+        "CC Cowboys"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Hvilken norsk visesanger skrev «Blåbærturen» og «Du ska få en dag i mårå»?",
+      "a": [
+        "Alf Prøysen",
+        "Erik Bye",
+        "Lillebjørn Nilsen",
+        "Odd Børretzen"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk komponist skrev musikken til «Peer Gynt»?",
+      "a": [
+        "Edvard Grieg",
+        "Johan Svendsen",
+        "Christian Sinding",
+        "Halfdan Kjerulf"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Hvilken norsk artist står bak albumet «All My Demons Greeting Me as a Friend»?",
+      "a": [
+        "Aurora",
+        "Sigrid",
+        "Astrid S",
+        "Dagny"
+      ],
+      "d": 3
     }
   ]
 }

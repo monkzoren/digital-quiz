@@ -1,0 +1,217 @@
+{
+  "topic": "Animal Kingdom",
+  "icon": "🐾",
+  "lang": "en",
+  "questions": [
+    {
+      "q": "What is a baby kangaroo called?",
+      "a": [
+        "A joey",
+        "A cub",
+        "A kit",
+        "A calf"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which is the largest animal ever to have lived?",
+      "a": [
+        "The blue whale",
+        "The African elephant",
+        "The sperm whale",
+        "Argentinosaurus"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which bird is famous for saying words back to you?",
+      "a": [
+        "The parrot",
+        "The pigeon",
+        "The seagull",
+        "The swan"
+      ],
+      "d": 1
+    },
+    {
+      "q": "What do pandas mainly eat?",
+      "a": [
+        "Bamboo",
+        "Fish",
+        "Meat",
+        "Insects"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which is the fastest land animal?",
+      "a": [
+        "The cheetah",
+        "The pronghorn",
+        "The lion",
+        "The greyhound"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is a group of lions called?",
+      "a": [
+        "A pride",
+        "A pack",
+        "A herd",
+        "A troop"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which mammal lays eggs?",
+      "a": [
+        "The platypus",
+        "The bat",
+        "The sloth",
+        "The otter"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How long is an elephant's pregnancy, roughly?",
+      "a": [
+        "22 months",
+        "9 months",
+        "12 months",
+        "36 months"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which animal has the longest lifespan among mammals?",
+      "a": [
+        "The bowhead whale",
+        "The elephant",
+        "The human",
+        "The orca"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the only continent without native snakes?",
+      "a": [
+        "Antarctica",
+        "Australia",
+        "Europe",
+        "South America"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which big cat cannot roar?",
+      "a": [
+        "The cheetah",
+        "The lion",
+        "The tiger",
+        "The leopard"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which sea creature has three hearts and blue blood?",
+      "a": [
+        "The octopus",
+        "The starfish",
+        "The jellyfish",
+        "The lobster"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is a male swan called?",
+      "a": [
+        "A cob",
+        "A drake",
+        "A gander",
+        "A tom"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which land mammal has the most teeth?",
+      "a": [
+        "The giant armadillo",
+        "The opossum",
+        "The horse",
+        "The hippopotamus"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which bird lays the largest egg?",
+      "a": [
+        "The ostrich",
+        "The emu",
+        "The albatross",
+        "The condor"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the smallest bird in the world?",
+      "a": [
+        "The bee hummingbird",
+        "The goldcrest",
+        "The wren",
+        "The sunbird"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which animal can regrow a lost limb as an adult?",
+      "a": [
+        "The axolotl",
+        "The frog",
+        "The gecko",
+        "The rat"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What does a narwhal's tusk actually consist of?",
+      "a": [
+        "An overgrown tooth",
+        "A horn of bone",
+        "Cartilage",
+        "Keratin like a nail"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which insect is responsible for the most human deaths each year?",
+      "a": [
+        "The mosquito",
+        "The bee",
+        "The tsetse fly",
+        "The kissing bug"
+      ],
+      "d": 3
+    },
+    {
+      "q": "How many stomach compartments does a cow have?",
+      "a": [
+        "Four",
+        "One",
+        "Two",
+        "Seven"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which animal's name means \"river horse\" in Greek?",
+      "a": [
+        "The hippopotamus",
+        "The rhinoceros",
+        "The manatee",
+        "The otter"
+      ],
+      "d": 3
+    }
+  ]
+}

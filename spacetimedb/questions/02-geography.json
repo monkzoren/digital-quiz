@@ -142,6 +142,166 @@
         "China"
       ],
       "d": 3
+    },
+    {
+      "q": "What is the longest river in the world, by most measures?",
+      "a": [
+        "The Nile",
+        "The Amazon",
+        "The Yangtze",
+        "The Mississippi"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which continent is the Sahara Desert on?",
+      "a": [
+        "Africa",
+        "Asia",
+        "Australia",
+        "South America"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which ocean is the largest?",
+      "a": [
+        "The Pacific",
+        "The Atlantic",
+        "The Indian",
+        "The Arctic"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which country has the most people?",
+      "a": [
+        "India",
+        "China",
+        "United States",
+        "Indonesia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Mount Kilimanjaro is in which country?",
+      "a": [
+        "Tanzania",
+        "Kenya",
+        "Uganda",
+        "Ethiopia"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which sea is the saltiest large body of water?",
+      "a": [
+        "The Dead Sea",
+        "The Red Sea",
+        "The Baltic Sea",
+        "The Black Sea"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which country is home to the fjords of Sognefjord?",
+      "a": [
+        "Norway",
+        "Iceland",
+        "New Zealand",
+        "Chile"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which strait separates Europe from Africa at its narrowest?",
+      "a": [
+        "The Strait of Gibraltar",
+        "The Bosphorus",
+        "The Dardanelles",
+        "The Strait of Messina"
+      ],
+      "d": 2
+    },
+    {
+      "q": "How many countries does Brazil share a land border with?",
+      "a": [
+        "10",
+        "6",
+        "8",
+        "4"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which US state is the largest by area?",
+      "a": [
+        "Alaska",
+        "Texas",
+        "California",
+        "Montana"
+      ],
+      "d": 2
+    },
+    {
+      "q": "What is the deepest point in the ocean called?",
+      "a": [
+        "The Mariana Trench",
+        "The Tonga Trench",
+        "The Java Trench",
+        "The Puerto Rico Trench"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which country has the longest coastline?",
+      "a": [
+        "Canada",
+        "Russia",
+        "Indonesia",
+        "Australia"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the capital of Mongolia?",
+      "a": [
+        "Ulaanbaatar",
+        "Astana",
+        "Bishkek",
+        "Tashkent"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which African country was never colonised by a European power?",
+      "a": [
+        "Ethiopia",
+        "Ghana",
+        "Kenya",
+        "Senegal"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which two countries share the longest land border in the world?",
+      "a": [
+        "Canada and the USA",
+        "Russia and China",
+        "Chile and Argentina",
+        "India and China"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the only country that borders both the Atlantic and Indian Oceans in Africa's south?",
+      "a": [
+        "South Africa",
+        "Namibia",
+        "Mozambique",
+        "Angola"
+      ],
+      "d": 3
     }
   ]
 }

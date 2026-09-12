@@ -132,6 +132,166 @@
         "Donatello"
       ],
       "d": 3
+    },
+    {
+      "q": "Who was the first man to walk on the Moon?",
+      "a": [
+        "Neil Armstrong",
+        "Buzz Aldrin",
+        "Yuri Gagarin",
+        "Michael Collins"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which ship sank on its maiden voyage in 1912?",
+      "a": [
+        "The Titanic",
+        "The Lusitania",
+        "The Britannic",
+        "The Olympic"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which wall fell in 1989?",
+      "a": [
+        "The Berlin Wall",
+        "Hadrian's Wall",
+        "The Great Wall",
+        "The Western Wall"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which empire was ruled by Julius Caesar's heirs?",
+      "a": [
+        "The Roman Empire",
+        "The Ottoman Empire",
+        "The Greek Empire",
+        "The Persian Empire"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In which year did the Chernobyl disaster happen?",
+      "a": [
+        "1986",
+        "1979",
+        "1991",
+        "1984"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who led the Indian independence movement with non-violent protest?",
+      "a": [
+        "Mahatma Gandhi",
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "B. R. Ambedkar"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which queen ruled Britain for 63 years until 1901?",
+      "a": [
+        "Victoria",
+        "Elizabeth I",
+        "Anne",
+        "Mary II"
+      ],
+      "d": 2
+    },
+    {
+      "q": "The Cold War was mainly between the USA and which country?",
+      "a": [
+        "The Soviet Union",
+        "China",
+        "Germany",
+        "Cuba"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which ancient civilisation built Machu Picchu?",
+      "a": [
+        "The Inca",
+        "The Aztec",
+        "The Maya",
+        "The Olmec"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In which year was the Magna Carta sealed?",
+      "a": [
+        "1215",
+        "1066",
+        "1315",
+        "1415"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who was the first Emperor of Rome?",
+      "a": [
+        "Augustus",
+        "Julius Caesar",
+        "Nero",
+        "Tiberius"
+      ],
+      "d": 3
+    },
+    {
+      "q": "The Hundred Years' War was fought between England and which country?",
+      "a": [
+        "France",
+        "Spain",
+        "Scotland",
+        "The Netherlands"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which pharaoh's tomb was found largely intact in 1922?",
+      "a": [
+        "Tutankhamun",
+        "Ramesses II",
+        "Khufu",
+        "Akhenaten"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What year did the French Revolution begin?",
+      "a": [
+        "1789",
+        "1776",
+        "1799",
+        "1815"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who was the longest-serving British Prime Minister?",
+      "a": [
+        "Robert Walpole",
+        "Winston Churchill",
+        "William Pitt the Younger",
+        "Margaret Thatcher"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which treaty formally ended the First World War with Germany?",
+      "a": [
+        "The Treaty of Versailles",
+        "The Treaty of Trianon",
+        "The Treaty of Ghent",
+        "The Treaty of Utrecht"
+      ],
+      "d": 3
     }
   ]
 }

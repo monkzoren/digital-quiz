@@ -1,0 +1,237 @@
+{
+  "topic": "Books & Literature",
+  "icon": "📚",
+  "lang": "en",
+  "questions": [
+    {
+      "q": "Who wrote \"Romeo and Juliet\"?",
+      "a": [
+        "William Shakespeare",
+        "Charles Dickens",
+        "Jane Austen",
+        "John Milton"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Which boy wizard was created by J. K. Rowling?",
+      "a": [
+        "Harry Potter",
+        "Percy Jackson",
+        "Artemis Fowl",
+        "Eragon"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Who wrote \"The Hobbit\"?",
+      "a": [
+        "J. R. R. Tolkien",
+        "C. S. Lewis",
+        "Terry Pratchett",
+        "George R. R. Martin"
+      ],
+      "d": 1
+    },
+    {
+      "q": "In which book does a girl fall down a rabbit hole?",
+      "a": [
+        "Alice's Adventures in Wonderland",
+        "The Secret Garden",
+        "Peter Pan",
+        "The Wizard of Oz"
+      ],
+      "d": 1
+    },
+    {
+      "q": "Who wrote \"Pride and Prejudice\"?",
+      "a": [
+        "Jane Austen",
+        "Charlotte Brontë",
+        "Emily Brontë",
+        "George Eliot"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which novel begins \"Call me Ishmael\"?",
+      "a": [
+        "Moby-Dick",
+        "Treasure Island",
+        "The Old Man and the Sea",
+        "Robinson Crusoe"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who created the detective Sherlock Holmes?",
+      "a": [
+        "Arthur Conan Doyle",
+        "Agatha Christie",
+        "Edgar Allan Poe",
+        "Wilkie Collins"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which dystopian novel features Big Brother?",
+      "a": [
+        "Nineteen Eighty-Four",
+        "Brave New World",
+        "Fahrenheit 451",
+        "We"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who wrote \"One Hundred Years of Solitude\"?",
+      "a": [
+        "Gabriel García Márquez",
+        "Mario Vargas Llosa",
+        "Jorge Luis Borges",
+        "Isabel Allende"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Agatha Christie detective is Belgian?",
+      "a": [
+        "Hercule Poirot",
+        "Miss Marple",
+        "Tommy Beresford",
+        "Ariadne Oliver"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who wrote \"The Great Gatsby\"?",
+      "a": [
+        "F. Scott Fitzgerald",
+        "Ernest Hemingway",
+        "John Steinbeck",
+        "William Faulkner"
+      ],
+      "d": 2
+    },
+    {
+      "q": "In \"Lord of the Flies\", where are the boys stranded?",
+      "a": [
+        "On a desert island",
+        "In a jungle",
+        "In the mountains",
+        "On a ship"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which Norwegian playwright wrote \"A Doll's House\"?",
+      "a": [
+        "Henrik Ibsen",
+        "Knut Hamsun",
+        "Bjørnstjerne Bjørnson",
+        "Jo Nesbø"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Which novel features the character Katniss Everdeen?",
+      "a": [
+        "The Hunger Games",
+        "Divergent",
+        "The Maze Runner",
+        "Uglies"
+      ],
+      "d": 2
+    },
+    {
+      "q": "Who wrote \"Crime and Punishment\"?",
+      "a": [
+        "Fyodor Dostoevsky",
+        "Leo Tolstoy",
+        "Anton Chekhov",
+        "Nikolai Gogol"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which epic poem tells of the Trojan War?",
+      "a": [
+        "The Iliad",
+        "The Odyssey",
+        "The Aeneid",
+        "Beowulf"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who was the first woman to win the Nobel Prize in Literature?",
+      "a": [
+        "Selma Lagerlöf",
+        "Grazia Deledda",
+        "Sigrid Undset",
+        "Pearl S. Buck"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which Japanese author wrote \"Norwegian Wood\"?",
+      "a": [
+        "Haruki Murakami",
+        "Yukio Mishima",
+        "Kenzaburo Oe",
+        "Banana Yoshimoto"
+      ],
+      "d": 3
+    },
+    {
+      "q": "What is the longest novel ever published, by most counts?",
+      "a": [
+        "In Search of Lost Time",
+        "War and Peace",
+        "Les Misérables",
+        "Infinite Jest"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Who wrote \"Things Fall Apart\"?",
+      "a": [
+        "Chinua Achebe",
+        "Wole Soyinka",
+        "Ngũgĩ wa Thiong'o",
+        "Ben Okri"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which poet wrote \"The Raven\"?",
+      "a": [
+        "Edgar Allan Poe",
+        "Walt Whitman",
+        "Emily Dickinson",
+        "Robert Frost"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which novel opens \"It was a bright cold day in April, and the clocks were striking thirteen\"?",
+      "a": [
+        "Nineteen Eighty-Four",
+        "Brave New World",
+        "A Clockwork Orange",
+        "The Handmaid's Tale"
+      ],
+      "d": 3
+    },
+    {
+      "q": "Which author has sold the most novels of all time?",
+      "a": [
+        "Agatha Christie",
+        "Barbara Cartland",
+        "Danielle Steel",
+        "Stephen King"
+      ],
+      "d": 3
+    }
+  ]
+}

@@ -39,6 +39,23 @@ export const ATT_HERE = 0;
 export const ATT_PHONE = 1;
 export const ATT_IDLE = 2;
 
+// The pub floor and the walk — mirrors the module's PUB_* / ACT_*. The
+// renderer dead-reckons everyone between the module's 20 Hz ticks with the
+// same speed and bounds, so what you see is what the server will confirm.
+export const PUB_HALF_X = 6.6;
+export const PUB_MIN_Y = -2.6;
+export const PUB_MAX_Y = 3.2;
+export const PUB_SPEED = 3.1;
+export const ACT_JUMP = 0;
+export const ACT_WAVE = 1;
+// paired actions (two patrons, `interact` reducer): kinds >= ACT_HIGH_FIVE
+export const ACT_HIGH_FIVE = 2;
+export const ACT_CHEERS = 3;
+export const ACT_FIST_BUMP = 4;
+export const ACT_PAIRED_MS = 1600; // the module's ACT_PAIRED_TICKS at 20 Hz
+export const ACT_REACH = 1.7; // metres — how close you must stand to pair up
+export const isPairedAct = (kind: number) => kind >= ACT_HIGH_FIVE;
+
 export const CHAT_TEXT = 0;
 export const CHAT_EMOTE = 1;
 export const CHAT_CALLOUT = 2;
@@ -131,6 +148,12 @@ const EN = {
   onPhoneSub: 'THE WHOLE PUB CAN SEE IT — CLICK BACK IN',
   callOut: (name: string) => `📱 CALL OUT ${name}`,
   wake: (name: string) => `💤 WAKE ${name}`,
+  // the paired-action prompt over whoever is within reach
+  withName: (name: string) => `WITH ${name}`,
+  highFive: 'HIGH FIVE',
+  cheers: 'CHEERS',
+  fistBump: 'FIST BUMP',
+  walkHint: 'WASD / ARROWS — WALK ABOUT<br />SPACE JUMP · E WAVE · 1-4 ANSWER · F FULLSCREEN<br />STAND BY SOMEONE: Q HIGH FIVE · R CHEERS · T FIST BUMP',
   intro: (n: number, points: number) =>
     `${n} questions. ${points} points for every right answer. Nothing for a wrong one.`,
   // results
@@ -182,6 +205,11 @@ const NB: Strings = {
   onPhoneSub: 'HELE PUBEN SER DET — KLIKK DEG INN IGJEN',
   callOut: (name: string) => `📱 TA ${name} PÅ FERSKEN`,
   wake: (name: string) => `💤 VEKK ${name}`,
+  withName: (name: string) => `MED ${name}`,
+  highFive: 'HIGH FIVE',
+  cheers: 'SKÅL',
+  fistBump: 'KNYTTNEVE',
+  walkHint: 'WASD / PILER — GÅ RUNDT<br />MELLOMROM HOPP · E VINK · 1-4 SVAR · F FULLSKJERM<br />STÅ VED NOEN: Q HIGH FIVE · R SKÅL · T KNYTTNEVE',
   intro: (n: number, points: number) =>
     `${n} spørsmål. ${points} poeng for hvert riktig svar. Ingenting for et feil.`,
   takesThePot: (name: string) => `${name} TOPPER TAVLA`,

@@ -83,6 +83,13 @@ README.md for how a night goes and how to run it. Key facts:
   not a gate; everyone ready auto-starts with 2+ seats), host `start_quiz`
   works with unready seats, host-only `kick_player` sets `player.kicked`,
   ready/kicked cleared on join/leave/start.
+- The projector screen (`SCREEN_*` in render.ts) hangs in front of the back
+  bar above the top shelf, the camera looks up enough to keep it in the upper
+  third, and nothing is hung in its line of sight: the pendant lamps are at
+  the bar's ends and over the tables, the quiz master's bubble goes to her
+  left under the screen's bottom edge, and in the HUD `#q-card` stacks ABOVE
+  the head-pinned layers (`#callouts`, `#pair-prompt`) while `#hud-mc` is
+  confined to the column between the standings and the card.
 - The look IS digital-tennis's, not a lookalike — keep them in sync:
   `client/index.html`'s stylesheet is that game's `<style>` block verbatim
   followed by one clearly-marked quiz section; `client/src/characters.ts` is
@@ -101,8 +108,23 @@ README.md for how a night goes and how to run it. Key facts:
   the `set_input` / `act` reducers and a 20 Hz `walk_timer` per room
   (`walk_tick`) — the same shape as tennis's `moveWatchers`, and it skips a
   row write for anyone standing still. Floor bounds `PUB_*` live in the
-  module; the renderer places rigs from those coords and the camera pans
-  with the local player.
+  module and are MIRRORED in `client/src/config.ts` (with `PUB_SPEED`): the
+  renderer does not place a rig on the row's x/y directly — it walks a
+  drawn position at the module's pace from `dirX`/`dirY` and lets each row
+  correct it (`poseRig`: a small lead/lag is left alone while walking, closed
+  once stopped, snapped if wild), and `buildScene` feeds the LOCAL player's
+  last SENT direction rather than the echoed one, so you move on the keypress
+  and everyone else moves at the frame rate, not at 20 Hz. The camera pans on
+  that drawn position too.
+- Pairing up: `interact` (target identity + kind) is a high five (2), cheers
+  (3) or fist bump (4) between two patrons within `ACT_REACH` of each other,
+  both free; it starts the same `actKind`/`actTicks` on both rows, stores the
+  other's seat in the appended `player.actSeat` (so the renderer turns them
+  to face each other), roots both in `walk_tick`, and drops a CHAT_EMOTE
+  line. The client prompts over the nearest reachable head (`pairTarget` /
+  `#pair-prompt`, keys Q/R/T, pad buttons 2/3); `pairedPose` in render.ts
+  holds the routines and the pint prop. Same append-only rule: `actSeat` is
+  at the END of `player` with a default.
 - Fullscreen is `toggleFullscreen()` in main.ts — the menu button
   (`menu-fullscreen-btn`), the ESC menu's (`mm-fullscreen`) and the F key all
   call it; `#app:fullscreen #stage` keeps the 16:10 shape and fills the

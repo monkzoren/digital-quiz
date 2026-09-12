@@ -3886,7 +3886,10 @@
     #hud-clock { color: var(--gold); min-width: 62px; text-align: center; }
     #hud-clock.hot { color: var(--red); animation: pulse 0.6s infinite alternate; }
     @keyframes pulse { from { opacity: 1; } to { opacity: 0.45; } }
-    #hud-mc { position: absolute; top: 52px; left: 50%; translate: -50%; max-width: 62%; text-align: center; color: var(--gold-hi); font-size: 13px; font-style: italic; letter-spacing: 1px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
+    /* the quiz master's line sits in the column the standings and the
+       question card leave free, so a long one wraps there instead of
+       running under the card */
+    #hud-mc { position: absolute; top: 52px; left: 224px; right: calc(min(350px, 42%) + 24px); text-align: center; color: var(--gold-hi); font-size: 13px; font-style: italic; letter-spacing: 1px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
     #hud-score { position: absolute !important; top: 10px; left: 14px; }
     #hud-score b { color: var(--gold); }
     #standings { position: absolute; top: 52px; left: 14px; display: flex; flex-direction: column; gap: 3px; width: 200px; max-height: 46%; overflow: hidden; }
@@ -3929,8 +3932,21 @@
     #emote-bar { display: flex; gap: 3px; flex-wrap: wrap; }
     #emote-bar button { padding: 3px 7px; font-size: 15px; transform: none; letter-spacing: 0; }
     #emote-bar button:hover { transform: translateY(-1px); }
+    /* Anything pinned to a head (call-outs, the pair-up prompt) lives under
+       the question card: a "CALL OUT" button over someone standing on the
+       right must never land across the question. */
+    #callouts, #pair-prompt { z-index: 1; }
+    #q-card { z-index: 2; }
     #callouts { position: absolute; inset: 0; pointer-events: none; }
     .callout-btn { position: absolute; translate: -50% -100%; pointer-events: auto; font-size: 10px; padding: 4px 10px; letter-spacing: 1px; }
+    /* the pair-up prompt: over the head of whoever is within arm's reach */
+    #pair-prompt {
+      position: absolute; translate: -50% -100%; display: flex; flex-direction: column; align-items: center; gap: 3px;
+      background: rgba(5, 8, 34, 0.82); border: 1px solid var(--line-2); border-radius: var(--r-sm); padding: 5px 6px;
+    }
+    #pair-prompt .pp-name { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--gold); }
+    #pair-prompt button { font-size: 10px; padding: 3px 9px; letter-spacing: 1px; width: 100%; justify-content: space-between; display: flex; gap: 8px; transform: none; }
+    #pair-prompt kbd { font: inherit; font-size: 9px; opacity: 0.7; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 4px; padding: 0 4px; }
     #btn-esc { position: absolute; right: 14px; top: 10px; }
     #phone-self {
       position: absolute; left: 50%; bottom: 16px; translate: -50% 0; display: flex; flex-direction: column; align-items: center; gap: 2px;
@@ -3992,6 +4008,7 @@
           <div id="result-panel" class="hidden"></div>
         </div>
         <div id="callouts"></div>
+        <div id="pair-prompt" class="hidden"></div>
         <div id="phone-self" class="hidden">📱 YOU LOOK LIKE YOU'RE ON YOUR PHONE<small>THE WHOLE PUB CAN SEE IT — CLICK BACK IN</small></div>
         <div id="chat-panel">
           <div id="chat-log"></div>
@@ -3999,7 +4016,7 @@
           <input id="chat-input" type="text" placeholder="SAY SOMETHING… (ENTER)" maxlength="120" autocomplete="off" />
         </div>
         <!-- The pub floor is yours to walk: same controls as the tennis grounds -->
-        <div id="walk-hint">WASD / ARROWS — WALK ABOUT<br />SPACE JUMP · E WAVE · 1-4 ANSWER · F FULLSCREEN</div>
+        <div id="walk-hint">WASD / ARROWS — WALK ABOUT<br />SPACE JUMP · E WAVE · 1-4 ANSWER · F FULLSCREEN<br />STAND BY SOMEONE: Q HIGH FIVE · R CHEERS · T FIST BUMP</div>
         <button id="btn-esc" class="small ghost">☰ MENU</button>
       </div>
 

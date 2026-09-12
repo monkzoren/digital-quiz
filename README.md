@@ -42,7 +42,11 @@ module. The client is a Vite + TypeScript app with a three.js pub.
    mid-quiz.
 2. Everyone **walks about** the pub — WASD or the arrows walk, SPACE jumps,
    E waves, and a gamepad stick does the same. Movement is server-authoritative
-   (a 20 Hz tick per room), exactly like the spectators on the tennis grounds.
+   (a 20 Hz tick per room), exactly like the spectators on the tennis grounds;
+   the client walks you on the keypress and smooths everyone between ticks.
+   Stand within arm's reach of someone and a prompt comes up over their head:
+   Q **high five**, R **cheers** (glasses out), T **fist bump** — both of you
+   play it out, facing each other, and it goes to the chat.
    Everyone **readies up** at the bar (a signal, not a gate — the host can
    start anyway, and the room starts itself when everyone is ready).
 3. Each question runs in two beats, both timed by the module:

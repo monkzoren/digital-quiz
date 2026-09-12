@@ -80,6 +80,29 @@ await until('B on the phone', () => asSeenBy(a, b).attention === 1);
 await a.reducers.callOut({ target: me(b).identity });
 await until('call-out in chat', () => [...a.db.chat.iter()].some(c => c.kind === 2));
 await b.reducers.setAttention({ state: 0 });
+// pairing up: B walks over to A (set_input steers, walk_tick moves), then a
+// high five starts the same routine on both rows, facing each other by seat
+const dist = () => Math.hypot(asSeenBy(a, b).x - me(a).x, asSeenBy(a, b).y - me(a).y);
+threw = false;
+try { await b.reducers.interact({ target: me(a).identity, kind: 2 }); await sleep(200); } catch { threw = true; }
+if (!threw && me(a).actTicks !== 0 && dist() > 1.7) fail('a high five landed from across the room');
+{
+  const t0 = Date.now();
+  while (dist() > 1.0) {
+    if (Date.now() - t0 > 15000) fail(`B never reached A (${dist().toFixed(2)} m apart)`);
+    const dx = me(a).x - asSeenBy(a, b).x;
+    const dy = me(a).y - asSeenBy(a, b).y;
+    await b.reducers.setInput({ dirX: Math.abs(dx) > 0.15 ? Math.sign(dx) : 0, dirY: Math.abs(dy) > 0.15 ? Math.sign(dy) : 0 });
+    await sleep(100);
+  }
+  await b.reducers.setInput({ dirX: 0, dirY: 0 });
+}
+ok(`B walked over to A (${dist().toFixed(2)} m apart)`);
+await b.reducers.interact({ target: me(a).identity, kind: 2 });
+await until('both in the high five', () => me(a).actKind === 2 && me(a).actTicks > 0 && asSeenBy(a, b).actKind === 2 && asSeenBy(a, b).actTicks > 0);
+if (me(a).actSeat !== asSeenBy(a, b).seat || asSeenBy(a, b).actSeat !== me(a).seat) fail('the pair do not point at each other');
+await until('high five in chat', () => [...a.db.chat.iter()].some(c => c.kind === 1 && c.text.startsWith('🙌')));
+await until('high five over', () => me(a).actTicks === 0 && me(a).actSeat === 0);
 await a.reducers.startQuiz({});
 await until('quiz running', () => room(a)?.status === 1);
 await until('intro phase', () => room(a)?.phase === 1);

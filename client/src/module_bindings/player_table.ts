@@ -42,4 +42,5 @@ export default __t.row({
   dirY: __t.i8().name("dir_y"),
   actTicks: __t.u8().name("act_ticks"),
   actKind: __t.u8().name("act_kind"),
+  actSeat: __t.u8().name("act_seat"),
 });

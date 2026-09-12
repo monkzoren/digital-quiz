@@ -15,7 +15,10 @@ import {
   WATCHER_JUMP_MS, WATCHER_WAVE_MS, ZERO_POSE,
   type PlayerRig, type Pose,
 } from './rig';
-import { ATT_IDLE, ATT_PHONE, NO_ANSWER, PUB_LOOK, TEAM_COLORS } from './config';
+import {
+  ACT_CHEERS, ACT_FIST_BUMP, ACT_HIGH_FIVE, ACT_PAIRED_MS, ATT_IDLE, ATT_PHONE, NO_ANSWER, PUB_HALF_X, PUB_LOOK,
+  PUB_MAX_Y, PUB_MIN_Y, PUB_SPEED, TEAM_COLORS, isPairedAct,
+} from './config';
 
 export interface SceneSeat {
   key: string; // identity hex
@@ -32,6 +35,8 @@ export interface SceneSeat {
   /** Jump/wave countdown and which of the two it is (module ACT_*). */
   actTicks: number;
   actKind: number;
+  /** The other half of a paired action (their seat number), else 0. */
+  actSeat: number;
   credits: number;
   attention: number;
   /** The letter to show on the paddle — only ever set at the reveal. */
@@ -72,8 +77,16 @@ export interface Scene {
 // walk on without filling the lens.
 const ROOM_W = 18;
 const ROOM_D = 18;
-const ROOM_H = 4.2;
+// Tall enough for the projector screen to hang above the optics without
+// meeting the ceiling — the shot looks up at it, so the height reads as air.
+const ROOM_H = 6.4;
 const BAR_Z = -4;
+// The screen: a proper projector sheet dropped in front of the back wall,
+// bottom edge just clear of the top shelf, nothing hung in front of it.
+const SCREEN_W = 6.4;
+const SCREEN_H = SCREEN_W * (9 / 16);
+const SCREEN_BOTTOM = 2.3;
+const SCREEN_Z = -ROOM_D / 2 + 0.9;
 const SEAT_ARCS = [
   { r: 3.6, n: 6, z: -0.6 }, // front row, at the bar
   { r: 6.2, n: 6, z: 0.9 }, // back row, at the tables
@@ -125,6 +138,7 @@ interface PubRig {
   rig: PlayerRig;
   phone: THREE.Mesh;
   phoneLight: THREE.PointLight;
+  pint: THREE.Group;
   paddle: THREE.Group;
   paddleFace: THREE.Mesh;
   paddleLetter: number;
@@ -141,6 +155,13 @@ interface PubRig {
   yaw: number;
   prevX: number;
   prevZ: number;
+  // where they are DRAWN: the module's rows land 20 times a second, so the
+  // renderer walks each rig itself at the module's pace and lets the rows
+  // correct it — smooth at any frame rate, and the local player starts
+  // moving on the keypress rather than a round trip later
+  dispX: number;
+  dispZ: number;
+  placed: boolean;
   // jump/wave, clocked locally off the server's tick countdown
   actKind: number;
   actAt: number;
@@ -199,6 +220,19 @@ function makeRig(): PubRig {
   phoneLight.position.set(0, -0.95, 0.75);
   rig.elbowR.add(phoneLight);
 
+  // a pint, in the same hand — raised for a cheers, otherwise not out
+  const pint = new THREE.Group();
+  const beer = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.075 * TU, 0.06 * TU, 0.2 * TU, 10),
+    new THREE.MeshStandardMaterial({ color: 0xf0b030, transparent: true, opacity: 0.85, roughness: 0.2 })
+  );
+  const head = new THREE.Mesh(new THREE.CylinderGeometry(0.078 * TU, 0.075 * TU, 0.035 * TU, 10), mat(0xfff4dc));
+  head.position.y = 0.11 * TU;
+  pint.add(beer, head);
+  pint.position.set(0, -1.05, 0.22);
+  pint.visible = false;
+  rig.elbowR.add(pint);
+
   // the answer paddle, in the other hand
   const paddle = new THREE.Group();
   paddle.position.set(0, -0.95, 0);
@@ -250,10 +284,10 @@ function makeRig(): PubRig {
   anno.add(ring);
 
   return {
-    holder, anno, rig, phone, phoneLight, paddle, paddleFace, paddleLetter: -2,
+    holder, anno, rig, phone, phoneLight, pint, paddle, paddleFace, paddleLetter: -2,
     zzz: z.sprite, label: label.sprite, labelKey: '', bubble: bubble.sprite, bubbleKey: '', ring,
     characterId: -1, seed: Math.random() * 10, mood: 0, moodAt: 0,
-    yaw: Math.PI, prevX: 0, prevZ: 0,
+    yaw: Math.PI, prevX: 0, prevZ: 0, dispX: 0, dispZ: 0, placed: false,
     actKind: -1, actAt: 0, prevActTicks: 0, emoteKind: 0, emoteAt: 0,
   };
 }
@@ -462,20 +496,29 @@ function buildRoom(theme: number, pubName: string) {
       g.add(bottle);
     }
   }
-  // the screen above the optics
-  const screenW = 5.2;
-  const screenH = screenW * (9 / 16);
-  const frame = new THREE.Mesh(new THREE.BoxGeometry(screenW + 0.16, screenH + 0.16, 0.12), mat(0x111111, { roughness: 0.4 }));
-  frame.position.set(0, 3.05, -ROOM_D / 2 + 0.08);
+  // the projector screen: hung from the ceiling in front of the back bar,
+  // above the top shelf, big enough to read from the door
+  const screenY = SCREEN_BOTTOM + SCREEN_H / 2;
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(SCREEN_W + 0.16, SCREEN_H + 0.16, 0.08), mat(0x111111, { roughness: 0.4 }));
+  frame.position.set(0, screenY, SCREEN_Z - 0.05);
   g.add(frame);
   const screen = new THREE.Mesh(
-    new THREE.PlaneGeometry(screenW, screenH),
+    new THREE.PlaneGeometry(SCREEN_W, SCREEN_H),
     new THREE.MeshBasicMaterial({ map: screenTex, toneMapped: false })
   );
-  screen.position.set(0, 3.05, -ROOM_D / 2 + 0.15);
+  screen.position.set(0, screenY, SCREEN_Z);
   g.add(screen);
-  const glow = new THREE.PointLight(0x9fc4ff, 1.4, 6);
-  glow.position.set(0, 3, -ROOM_D / 2 + 1.2);
+  const screenRail = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, SCREEN_W + 0.5, 8), mat(0x222222, { metalness: 0.5, roughness: 0.4 }));
+  screenRail.rotation.z = Math.PI / 2;
+  screenRail.position.set(0, SCREEN_BOTTOM + SCREEN_H + 0.14, SCREEN_Z - 0.05);
+  g.add(screenRail);
+  for (const wx of [-SCREEN_W / 2 + 0.3, SCREEN_W / 2 - 0.3]) {
+    const wire = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, ROOM_H - (SCREEN_BOTTOM + SCREEN_H + 0.14), 4), mat(0x111111));
+    wire.position.set(wx, (ROOM_H + SCREEN_BOTTOM + SCREEN_H + 0.14) / 2, SCREEN_Z - 0.05);
+    g.add(wire);
+  }
+  const glow = new THREE.PointLight(0x9fc4ff, 1.4, 7);
+  glow.position.set(0, screenY, SCREEN_Z + 1.4);
   g.add(glow);
 
   // neon pub sign on the left wall
@@ -543,15 +586,18 @@ function buildRoom(theme: number, pubName: string) {
   // pendant lamps
   for (const l of lampLights) scene3.remove(l);
   lampLights = [];
-  for (const lx of [-4, 0, 4]) {
-    const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, 1.1, 4), mat(0x111111));
-    cord.position.set(lx, ROOM_H - 0.55, BAR_Z + 1.2);
+  // two over the ends of the bar, two over the tables — none in front of
+  // the screen from where the camera stands
+  const LAMP_DROP = 2.6; // cord length: the ceiling is high, the light is not
+  for (const [lx, lz] of [[-5.2, BAR_Z + 1.2], [5.2, BAR_Z + 1.2], [-3.4, BAR_Z + 6.4], [3.4, BAR_Z + 6.4]]) {
+    const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, LAMP_DROP, 4), mat(0x111111));
+    cord.position.set(lx, ROOM_H - LAMP_DROP / 2, lz);
     g.add(cord);
     const shade = new THREE.Mesh(new THREE.ConeGeometry(0.35, 0.35, 16, 1, true), mat(T.accent, { side: THREE.DoubleSide, emissive: T.lamp, emissiveIntensity: 0.4 }));
-    shade.position.set(lx, ROOM_H - 1.15, BAR_Z + 1.2);
+    shade.position.set(lx, ROOM_H - LAMP_DROP - 0.05, lz);
     g.add(shade);
     const light = new THREE.PointLight(T.lamp, 6, 9, 1.6);
-    light.position.set(lx, ROOM_H - 1.35, BAR_Z + 1.2);
+    light.position.set(lx, ROOM_H - LAMP_DROP - 0.25, lz);
     g.add(light);
     lampLights.push(light);
   }
@@ -703,6 +749,7 @@ function acquireRig(key: string): PubRig {
   r.emoteKind = 0;
   r.actKind = -1;
   r.prevActTicks = 0;
+  r.placed = false;
   rigs.set(key, r);
   return r;
 }
@@ -754,10 +801,84 @@ function paddlePose(now: number, seed: number): Pose {
   };
 }
 
-function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boolean) {
-  // module coords → three coords: x across, y into the room becomes z
-  const px = s.x;
-  const pz = s.y;
+// The paired routines, t = 0..1 through the action. Both halves run the same
+// one facing each other, so the contact lands in the middle for both.
+// The right arm is the doing arm; a snap envelope round t = 0.5 is the slap,
+// the clink, the bump.
+function pairedPose(kind: number, t: number, now: number): { pose: Pose; hop: number } {
+  const env = Math.sin(Math.min(1, t * 4) * Math.PI * 0.5) * (t > 0.82 ? (1 - t) / 0.18 : 1); // in, hold, out
+  const hit = Math.exp(-Math.pow((t - 0.5) / 0.09, 2)); // the moment of contact
+  if (kind === ACT_HIGH_FIVE) {
+    // arm cocked back and up, then thrown forward-up into the slap
+    const swing = t < 0.5 ? t / 0.5 : 1;
+    return {
+      pose: {
+        ...ZERO_POSE,
+        leanF: (0.08 + 0.1 * hit) * env,
+        twist: 0.15 * env,
+        shRx: (-2.0 - 0.5 * swing) * env, shRz: (-0.55 + 0.25 * swing) * env, elR: -0.25 * env,
+        shLx: 0.3 * env, shLz: 0.35 * env, elL: -0.8 * env,
+        thighL: -0.12 * hit, calfL: 0.2 * hit, thighR: -0.12 * hit, calfR: 0.2 * hit,
+      },
+      hop: 0.7 * hit,
+    };
+  }
+  if (kind === ACT_CHEERS) {
+    // the glass comes up to the chest, out for the clink, then a swig
+    const swig = t > 0.62 ? Math.sin(Math.min(1, (t - 0.62) / 0.3) * Math.PI) : 0;
+    return {
+      pose: {
+        ...ZERO_POSE,
+        leanF: 0.05 * env,
+        leanS: -0.05 * env - 0.1 * swig,
+        shRx: (-1.35 - 0.3 * hit - 0.9 * swig) * env, shRz: (-0.35 + 0.15 * hit) * env, elR: (-1.4 + 0.5 * hit - 0.9 * swig) * env,
+        shLx: 0.15 * env, shLz: 0.25 * env, elL: -0.6 * env,
+      },
+      hop: 0,
+    };
+  }
+  // fist bump: a short jab at chest height, a little pull-back first
+  const jab = t < 0.35 ? -0.2 * (t / 0.35) : t < 0.5 ? -0.2 + 1.2 * ((t - 0.35) / 0.15) : 1 - 0.3 * Math.min(1, (t - 0.5) / 0.3);
+  return {
+    pose: {
+      ...ZERO_POSE,
+      leanF: 0.12 * hit * env,
+      twist: -0.2 * jab * env,
+      shRx: (-1.05 - 0.45 * jab) * env, shRz: -0.15 * env, elR: (-1.3 + 1.1 * jab) * env,
+      shLx: 0.25 * env, shLz: 0.3 * env, elL: -1.4 * env,
+    },
+    hop: 0,
+  };
+}
+
+function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boolean, partner: { x: number; z: number } | null) {
+  const rooted = s.actTicks > 0 && isPairedAct(s.actKind);
+  const moving = (s.dirX !== 0 || s.dirY !== 0) && !rooted;
+  // module coords → three coords: x across, y into the room becomes z.
+  // Walk the drawn position at the module's pace and let the row correct it:
+  // a small lead or lag (the round trip, the gap between ticks) is left
+  // alone while they walk, and closed quickly once they stop.
+  if (!r.placed) { r.dispX = s.x; r.dispZ = s.y; r.placed = true; }
+  if (moving) {
+    const len = Math.hypot(s.dirX, s.dirY) || 1;
+    r.dispX = Math.max(-PUB_HALF_X, Math.min(PUB_HALF_X, r.dispX + (s.dirX / len) * PUB_SPEED * dt));
+    r.dispZ = Math.max(PUB_MIN_Y, Math.min(PUB_MAX_Y, r.dispZ + (s.dirY / len) * PUB_SPEED * dt));
+  }
+  const ex = s.x - r.dispX;
+  const ez = s.y - r.dispZ;
+  const err = Math.hypot(ex, ez);
+  if (err > 2.5 || menu) {
+    r.dispX = s.x;
+    r.dispZ = s.y;
+  } else if (!moving || err > 0.9) {
+    // 0.9 m is ~300 ms of walking: the local player's own lead over the
+    // server is left alone on any sane connection, so no rubber-banding
+    const k = 1 - Math.exp(-(moving ? 5 : 14) * dt);
+    r.dispX += ex * k;
+    r.dispZ += ez * k;
+  }
+  const px = r.dispX;
+  const pz = r.dispZ;
   r.holder.position.set(px, 0, pz);
   r.anno.position.set(px, 0, pz);
 
@@ -767,13 +888,14 @@ function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boole
   const rig = r.rig;
   if (stepDist < 3) rig.runPhase += (stepDist / PUB_SCALE) * RUN_STRIDE_RATE;
 
-  const moving = s.dirX !== 0 || s.dirY !== 0;
-  // facing: the way you're walking, else the big screen — the whole point of
-  // being here is the quiz
+  // facing: the way you're walking, whoever you are pairing up with, else
+  // the big screen — the whole point of being here is the quiz
   const yawTarget = moving
     ? Math.atan2(s.dirX, s.dirY)
-    : Math.atan2(0 - px, BAR_Z - 0.5 - pz);
-  r.yaw = blendAngle(r.yaw, yawTarget, moving ? 12 : 4, dt);
+    : partner
+      ? Math.atan2(partner.x - px, partner.z - pz)
+      : Math.atan2(0 - px, BAR_Z - 0.5 - pz);
+  r.yaw = blendAngle(r.yaw, yawTarget, moving || partner ? 12 : 4, dt);
 
   // a fresh jump/wave from the server starts its timeline here
   if (s.actTicks > 0 && r.prevActTicks === 0) {
@@ -781,9 +903,10 @@ function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boole
     r.actAt = nowMs;
   }
   r.prevActTicks = s.actTicks;
-  const actMs = r.actKind === 1 ? WATCHER_WAVE_MS : WATCHER_JUMP_MS;
+  const actMs = isPairedAct(r.actKind) ? ACT_PAIRED_MS : r.actKind === 1 ? WATCHER_WAVE_MS : WATCHER_JUMP_MS;
   const actT = r.actKind >= 0 ? (nowMs - r.actAt) / actMs : 2;
   if (actT > 1) r.actKind = -1;
+  const cheers = r.actKind === ACT_CHEERS;
 
   if (s.mood !== r.mood) { r.mood = s.mood; r.moodAt = nowMs; }
   const moodAge = (nowMs - r.moodAt) / 1000;
@@ -798,10 +921,10 @@ function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boole
   let rate = 12;
   let hop = 0;
   if (r.actKind >= 0) {
-    const a = actionPose(r.actKind, actT, nowMs);
+    const a = isPairedAct(r.actKind) ? pairedPose(r.actKind, actT, nowMs) : actionPose(r.actKind, actT, nowMs);
     target = a.pose;
     hop = a.hop;
-    rate = r.actKind === 1 ? 18 : 30; // the leap snaps, the wave flows
+    rate = r.actKind === 1 ? 18 : r.actKind === ACT_FIST_BUMP ? 26 : r.actKind === ACT_HIGH_FIVE ? 22 : 16; // the leap snaps, the wave flows
   } else if (r.emoteKind) {
     const e = emotePose(r.emoteKind, emoteT, nowMs);
     target = e.pose;
@@ -846,8 +969,9 @@ function poseRig(r: PubRig, s: SceneSeat, nowMs: number, dt: number, menu: boole
   rig.head.rotation.y -= rig.head.rotation.y * ha;
 
   // props
-  r.phone.visible = onPhone;
-  r.phoneLight.intensity = onPhone ? 2.2 + Math.sin(nowMs / 110 + r.seed) * 0.3 : 0;
+  r.phone.visible = onPhone && !cheers;
+  r.phoneLight.intensity = onPhone && !cheers ? 2.2 + Math.sin(nowMs / 110 + r.seed) * 0.3 : 0;
+  r.pint.visible = cheers;
   r.zzz.visible = dozing;
   if (dozing) r.zzz.position.y = 2.2 + ((nowMs / 2500 + r.seed) % 1) * 0.3;
   r.paddle.visible = paddleUp;
@@ -904,11 +1028,16 @@ export function drawScene(s: Scene) {
   // the regulars, wherever they have wandered to
   const seen = new Set<string>();
   let me: SceneSeat | null = null;
+  // who is pairing up with whom: the module stores the other half's seat
+  const bySeat = new Map<number, SceneSeat>();
+  for (const seat of s.seats) bySeat.set(seat.seat, seat);
   for (const seat of s.seats) {
     seen.add(seat.key);
     const r = acquireRig(seat.key);
     if (r.characterId !== seat.avatarId) dressRig(r, seat.avatarId);
-    poseRig(r, seat, nowMs, dt, s.menu);
+    const other = seat.actTicks > 0 && isPairedAct(seat.actKind) ? bySeat.get(seat.actSeat) : undefined;
+    const partner = other && other !== seat ? { x: other.x, z: other.y } : null;
+    poseRig(r, seat, nowMs, dt, s.menu, partner);
     if (seat.isMe) me = seat;
   }
   for (const [key, r] of rigs) {
@@ -943,7 +1072,7 @@ export function drawScene(s: Scene) {
     mcRig.bubble.visible = true;
     (mcRig.bubble.material as THREE.SpriteMaterial).opacity = 1;
     mcRig.bubble.scale.set(2.4, 0.9, 1);
-    mcRig.bubble.position.set(1.9, 2.05, 0); // beside the screen, not over it
+    mcRig.bubble.position.set(-2.9, 1.15, 0.4); // out to her side, under the screen's bottom edge and clear of the question card
   } else mcRig.bubble.visible = false;
 
   // camera: a fixed broadcast shot of the room from the door end. It tracks
@@ -957,10 +1086,11 @@ export function drawScene(s: Scene) {
     // the bar and the screen never leave the frame) and backs off as you
     // wander toward the door
     const sway = Math.sin(t * 0.25) * 0.18;
-    const followX = me ? Math.max(-3.4, Math.min(3.4, me.x * 0.7)) : 0;
+    const meX = me ? (rigs.get(me.key)?.dispX ?? me.x) : 0; // the drawn spot, so the pan is as smooth as the walk
+    const followX = me ? Math.max(-3.4, Math.min(3.4, meX * 0.7)) : 0;
     camTargetX += (followX + sway - camTargetX) * (1 - Math.exp(-2.5 * dt));
     camera.position.set(camTargetX, 2.7, 9.0);
-    camera.lookAt(camTargetX * 0.85, 1.35, BAR_Z + 0.2);
+    camera.lookAt(camTargetX * 0.85, 1.75, BAR_Z + 0.2);
   }
   // lamp flicker
   lampLights.forEach((l, i) => { l.intensity = 6 + Math.sin(t * 7 + i * 2.1) * 0.15; });

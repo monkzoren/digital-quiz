@@ -755,6 +755,7 @@ function refreshHud(room: Lobby, me: Player) {
   $('hud-mc').textContent = room.mcText ? `“${room.mcText}”` : '';
   $('hud-score').innerHTML = `${T.score} <b id="score-val">${me.credits}</b>${C.PTS}`;
   ($('btn-esc') as HTMLButtonElement).textContent = T.menu;
+  $('walk-hint').innerHTML = T.walkHint;
   (chatInput as HTMLInputElement).placeholder = T.chatPlaceholder;
   const mine = myAnswer(room, me);
   const phaseKey = `${room.id}|${room.questionIdx}|${room.phase}|${room.qOptions.join('|')}|${room.qCorrect}|${mine}|${me.credits}`;
@@ -857,8 +858,8 @@ const MOVE_KEYS: Record<string, [number, number]> = {
   KeyA: [-1, 0],
   KeyD: [1, 0],
 };
-const ACT_JUMP = 0;
-const ACT_WAVE = 1;
+const ACT_JUMP = C.ACT_JUMP;
+const ACT_WAVE = C.ACT_WAVE;
 const pressed = new Set<string>();
 let lastSentDir = { dirX: 0, dirY: 0 };
 
@@ -880,9 +881,12 @@ function keyboardDir(): [number, number] {
 function padDir(): [number, number] | null {
   for (const gp of navigator.getGamepads?.() ?? []) {
     if (!gp || !gp.connected) continue;
-    for (const [btn, kind] of [[0, ACT_JUMP], [1, ACT_WAVE]] as const) {
+    for (const [btn, kind] of [[0, ACT_JUMP], [1, ACT_WAVE], [2, C.ACT_HIGH_FIVE], [3, C.ACT_CHEERS]] as const) {
       const down = gp.buttons[btn]?.pressed ?? false;
-      if (down && !padPrev[btn]) call(conn.reducers.act({ kind }));
+      if (down && !padPrev[btn]) {
+        if (C.isPairedAct(kind)) pairUp(kind);
+        else call(conn.reducers.act({ kind }));
+      }
       padPrev[btn] = down;
     }
     const ax = gp.axes[0] ?? 0;
@@ -892,7 +896,7 @@ function padDir(): [number, number] | null {
   }
   return null;
 }
-const padPrev = [false, false];
+const padPrev = [false, false, false, false];
 
 function sendDir(dx: number, dy: number) {
   const dirX = Math.sign(dx);
@@ -929,6 +933,9 @@ window.addEventListener('keydown', e => {
   if (e.code === 'Space') { call(conn.reducers.act({ kind: ACT_JUMP })); e.preventDefault(); return; }
   if (e.code === 'KeyE') { call(conn.reducers.act({ kind: ACT_WAVE })); return; }
   if (e.code === 'KeyF') { toggleFullscreen(); return; }
+  if (e.code === 'KeyQ') { pairUp(C.ACT_HIGH_FIVE); return; }
+  if (e.code === 'KeyR') { pairUp(C.ACT_CHEERS); return; }
+  if (e.code === 'KeyT') { pairUp(C.ACT_FIST_BUMP); return; }
   const room = myRoom();
   if (!room || room.status !== C.L_RUNNING || room.phase !== C.PH_ANSWER) return;
   const idx = '1234'.indexOf(e.key);
@@ -968,6 +975,50 @@ function positionCallouts() {
     el.style.left = `${pos.x}px`;
     el.style.top = `${pos.y - 8}px`;
   });
+}
+
+// Pairing up: whoever is standing within reach gets a prompt over their
+// head — high five, cheers or fist bump — and Q/R/T (or the buttons) do it.
+// The module checks the reach again, so this is only about pointing at
+// the right person.
+function pairTarget(): Player | null {
+  const me = getMyPlayer();
+  if (!me || me.lobbyId === 0n) return null;
+  let best: Player | null = null;
+  let bestD = C.ACT_REACH;
+  for (const p of roomPlayers(me.lobbyId)) {
+    if (!p.online || p.identity.toHexString() === myHex()) continue;
+    const d = Math.hypot(p.x - me.x, p.y - me.y);
+    if (d < bestD) { bestD = d; best = p; }
+  }
+  return best;
+}
+function pairUp(kind: number) {
+  const target = pairTarget();
+  if (!target || !conn || !subscribed) return;
+  call(conn.reducers.interact({ target: target.identity, kind }));
+}
+let pairPromptKey = '';
+function refreshPairPrompt() {
+  const el = $('pair-prompt');
+  const me = getMyPlayer();
+  const room = myRoom();
+  const target = room && me && me.actTicks === 0 ? pairTarget() : null;
+  if (!target || !room) { el.classList.add('hidden'); pairPromptKey = ''; return; }
+  const key = `${target.identity.toHexString()}|${room.lang}`;
+  if (key !== pairPromptKey) {
+    pairPromptKey = key;
+    const T = C.tr(room.lang);
+    el.innerHTML = `<div class="pp-name">${escapeHtml(T.withName(target.name || 'GUEST'))}</div>` +
+      [[C.ACT_HIGH_FIVE, '🙌', T.highFive, 'Q'], [C.ACT_CHEERS, '🍻', T.cheers, 'R'], [C.ACT_FIST_BUMP, '👊', T.fistBump, 'T']]
+        .map(([kind, icon, label, k]) => `<button class="small" data-kind="${kind}">${icon} ${label} <kbd>${k}</kbd></button>`).join('');
+    el.querySelectorAll<HTMLButtonElement>('button').forEach(b => { b.onclick = () => pairUp(Number(b.dataset.kind)); });
+  }
+  const pos = headScreenPos(target.identity.toHexString());
+  if (!pos) { el.classList.add('hidden'); return; }
+  el.classList.remove('hidden');
+  el.style.left = `${pos.x}px`;
+  el.style.top = `${pos.y - 26}px`;
 }
 
 // Chat + emotes
@@ -1260,9 +1311,15 @@ function buildScene(): Scene {
   }
   const seats: SceneSeat[] = roomPlayers(room.id).map(p => {
     const key = p.identity.toHexString();
+    // my own steering is what I last SENT, not what the server has echoed
+    // back yet: the renderer starts me walking on the keypress and the
+    // server's rows confirm it a round trip later (a paired action roots me
+    // server-side, so it wins)
+    const mine = key === myHex() && !(p.actTicks > 0 && C.isPairedAct(p.actKind));
     return {
       key, name: p.name, avatarId: p.avatarId, seat: p.seat, credits: p.credits, attention: p.attention,
-      x: p.x, y: p.y, dirX: p.dirX, dirY: p.dirY, actTicks: p.actTicks, actKind: p.actKind,
+      x: p.x, y: p.y, dirX: mine ? lastSentDir.dirX : p.dirX, dirY: mine ? lastSentDir.dirY : p.dirY,
+      actTicks: p.actTicks, actKind: p.actKind, actSeat: p.actSeat,
       // the letter on the paddle is public ONLY at the reveal; until then a
       // paddle is up but face down (and my own is my own business)
       answer: room.phase === C.PH_RESULT ? p.answer : C.NO_ANSWER,
@@ -1303,7 +1360,7 @@ function demoSeats(now: number): SceneSeat[] {
     return {
       key: `demo${i}`, name: CHARACTERS[(i * 5) % AVATAR_COUNT].name, avatarId: (i * 5) % AVATAR_COUNT,
       seat, credits: 100, team: 0, online: true, isMe: false, bubble: null,
-      x, y, dirX: Math.cos(a) * speed, dirY: -Math.sin(a) * speed, actTicks: 0, actKind: 0, locked: false,
+      x, y, dirX: Math.cos(a) * speed, dirY: -Math.sin(a) * speed, actTicks: 0, actKind: 0, actSeat: 0, locked: false,
       attention: Math.floor(t / 9 + i) % 4 === 0 ? C.ATT_PHONE : C.ATT_HERE, answer: C.NO_ANSWER, mood: 0,
     };
   });
@@ -1317,6 +1374,7 @@ function frame(now: number) {
   if (dirty || now - lastUiAt > 250) { dirty = false; lastUiAt = now; refreshUi(); }
   drawScene(buildScene());
   positionCallouts();
+  refreshPairPrompt();
 }
 requestAnimationFrame(frame);
 // rAF stops in hidden tabs; keep the UI fresh regardless

@@ -74,6 +74,16 @@ const WALK_DT = 1 / WALK_HZ;
 const ACT_TICKS = Math.round(0.8 * WALK_HZ);
 const ACT_JUMP = 0;
 const ACT_WAVE = 1;
+// Paired actions: two patrons within arm's reach do one together — the
+// `interact` reducer starts the same routine on both rows and roots them for
+// its length (`walk_tick` skips anyone in one). `actSeat` remembers who the
+// other half is so the renderer can turn them to face each other.
+const ACT_HIGH_FIVE = 2;
+const ACT_CHEERS = 3;
+const ACT_FIST_BUMP = 4;
+const ACT_PAIRED_TICKS = Math.round(1.6 * WALK_HZ);
+const ACT_REACH = 1.7; // metres between the two, on the floor
+const isPaired = (kind: number) => kind >= ACT_HIGH_FIVE;
 
 // Attention states (player.attention). The client reports transitions; the
 // module keeps the tally so nobody can quietly edit their own phone time.
@@ -351,6 +361,7 @@ const Player = table(
     dirY: t.i8().default(0),
     actTicks: t.u8().default(0), // jump/wave countdown
     actKind: t.u8().default(0), // ACT_*
+    actSeat: t.u8().default(0), // the other half of a paired action (their seat), else 0
   }
 );
 
@@ -1357,7 +1368,7 @@ function destroyLobby(ctx: Ctx, lobby: LobbyRow) {
   disarmReaper(ctx, lobby.id);
   for (const p of lobbyPlayers(ctx, lobby.id)) {
     ctx.db.player.identity.update({
-      ...freshQuizFields(p), lobbyId: 0n, seat: 0, team: TEAM_NONE, dirX: 0, dirY: 0, actTicks: 0,
+      ...freshQuizFields(p), lobbyId: 0n, seat: 0, team: TEAM_NONE, dirX: 0, dirY: 0, actTicks: 0, actSeat: 0,
     });
   }
   for (const e of ctx.db.entry.byLobby.filter(lobby.id)) ctx.db.entry.id.delete(e.id);
@@ -1381,6 +1392,7 @@ function seatPlayer(ctx: Ctx, lobby: LobbyRow, player: PlayerRow) {
     dirY: 0,
     actTicks: 0,
     actKind: 0,
+    actSeat: 0,
     team: TEAM_NONE,
     kicked: false,
   });
@@ -1401,6 +1413,7 @@ function leaveCurrentLobby(ctx: Ctx, player: PlayerRow) {
     dirX: 0,
     dirY: 0,
     actTicks: 0,
+    actSeat: 0,
   });
   if (!lobby) return;
   const remaining = lobbyPlayers(ctx, lobby.id).filter(p => !sameId(p.identity, player.identity));
@@ -1463,6 +1476,7 @@ export const onConnect = spacetimedb.clientConnected(ctx => {
       dirY: 0,
       actTicks: 0,
       actKind: 0,
+      actSeat: 0,
       credits: START_SCORE,
       stake: 0,
       answer: NO_ANSWER,
@@ -1562,8 +1576,36 @@ export const act = spacetimedb.reducer({ kind: t.u8() }, (ctx, { kind }) => {
     ...player,
     actTicks: ACT_TICKS,
     actKind: kind === ACT_WAVE ? ACT_WAVE : ACT_JUMP,
+    actSeat: 0,
   });
 });
+
+// A high five, a clink of glasses or a fist bump with whoever is standing
+// next to you. Both have to be in the room, online, within reach and not in
+// the middle of something else; then both rows start the same routine at
+// once and a line goes to chat so the rest of the pub sees it too.
+const PAIRED_LINE: Record<number, string> = {
+  [ACT_HIGH_FIVE]: '🙌',
+  [ACT_CHEERS]: '🍻',
+  [ACT_FIST_BUMP]: '👊',
+};
+export const interact = spacetimedb.reducer(
+  { target: t.identity(), kind: t.u8() },
+  (ctx, { target, kind }) => {
+    const player = getPlayer(ctx);
+    if (player.lobbyId === 0n || player.actTicks > 0) return;
+    if (!isPaired(kind) || kind > ACT_FIST_BUMP) throw new SenderError('No such move');
+    if (target.toHexString() === ctx.sender.toHexString()) throw new SenderError('Not with yourself');
+    const other = ctx.db.player.identity.find(target);
+    if (!other || other.lobbyId !== player.lobbyId || !other.online) throw new SenderError('They are not here');
+    if (other.actTicks > 0) return; // mid-jump, mid-wave, or already paired up
+    if (Math.hypot(other.x - player.x, other.y - player.y) > ACT_REACH) throw new SenderError('Too far away');
+    const start = { actTicks: ACT_PAIRED_TICKS, actKind: kind };
+    ctx.db.player.identity.update({ ...player, ...start, actSeat: other.seat });
+    ctx.db.player.identity.update({ ...other, ...start, actSeat: player.seat });
+    insertChat(ctx, player.lobbyId, ctx.sender, player.name || 'PLAYER', CHAT_EMOTE, `${PAIRED_LINE[kind]} ${other.name || 'PLAYER'}`);
+  }
+);
 
 // Everyone in the room walks, steered by their own dirX/dirY. A patron who
 // is standing still with no action running is skipped entirely, so a quiet
@@ -1578,11 +1620,12 @@ export const walk_tick = spacetimedb.reducer(
       return;
     }
     for (const p of ctx.db.player.byLobby.filter(arg.lobbyId)) {
-      const moving = p.dirX !== 0 || p.dirY !== 0;
+      // a paired action roots both halves until it is over
+      const moving = (p.dirX !== 0 || p.dirY !== 0) && !(p.actTicks > 0 && isPaired(p.actKind));
       if (!moving && p.actTicks === 0) continue;
       const actTicks = p.actTicks > 0 ? p.actTicks - 1 : 0;
       if (!moving) {
-        ctx.db.player.identity.update({ ...p, actTicks });
+        ctx.db.player.identity.update({ ...p, actTicks, actSeat: actTicks === 0 ? 0 : p.actSeat });
         continue;
       }
       const len = Math.hypot(p.dirX, p.dirY) || 1;

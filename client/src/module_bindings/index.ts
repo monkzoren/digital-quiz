@@ -39,6 +39,7 @@ import AddQuestionReducer from "./add_question_reducer";
 import AddTopicReducer from "./add_topic_reducer";
 import AnswerReducer from "./answer_reducer";
 import CallOutReducer from "./call_out_reducer";
+import InteractReducer from "./interact_reducer";
 import CreateChampionshipRoomReducer from "./create_championship_room_reducer";
 import CreatePubReducer from "./create_pub_reducer";
 import DeleteQuestionReducer from "./delete_question_reducer";
@@ -206,6 +207,7 @@ const reducersSchema = __reducers(
   __reducerSchema("add_topic", AddTopicReducer),
   __reducerSchema("answer", AnswerReducer),
   __reducerSchema("call_out", CallOutReducer),
+  __reducerSchema("interact", InteractReducer),
   __reducerSchema("create_championship_room", CreateChampionshipRoomReducer),
   __reducerSchema("create_pub", CreatePubReducer),
   __reducerSchema("delete_question", DeleteQuestionReducer),

@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "bank": "node gen-bank.mjs",
+    "test": "node draw.test.mjs",
     "build": "node gen-bank.mjs && spacetime build",
     "publish": "node gen-bank.mjs && spacetime publish"
   },

@@ -69,6 +69,15 @@ module. The client is a Vite + TypeScript app with a three.js pub.
    **ANOTHER ROUND** — a rematch never repeats a question until the pool runs
    out.
 
+**The regulars get new questions.** The draw remembers what each player has
+already been asked, in any pub, on any night, and works through everything
+they have never seen before it repeats anything. When it finally must repeat
+— a narrow topic, or a regular who has been through most of the bank — it
+picks what fewest people at the table remember, so the one question somebody
+half-recalls goes up before the one the whole room can recite. Nothing about
+this is visible in the lobby; it is simply that coming back next week does
+not mean sitting through the same round.
+
 **Teams:** with teams on, every seat picks RED/BLUE/GREEN/GOLD in the lobby;
 everyone still answers individually and the team standings are the sum of
 the seats' scores.

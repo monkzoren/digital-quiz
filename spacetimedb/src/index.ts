@@ -1,6 +1,7 @@
 import { schema, table, t, SenderError, ScheduleAt, type ReducerCtx } from 'spacetimedb/server';
 import { Identity, Timestamp } from 'spacetimedb';
 import { BANK, BANK_VERSION } from './bank';
+import { pickSpread } from './draw';
 
 // ===========================================================================
 // Digital Quiz — the arcade pub quiz.
@@ -122,6 +123,10 @@ const LEVEL_BASE = 200;
 const LEVEL_STEP = 100;
 const LEVEL_MAX = 99;
 const LOG_KEEP = 20;
+// How many distinct questions of a player's own history the draw remembers.
+// Past this the oldest fall off, so a regular who has worked through most of
+// the bank starts seeing the earliest ones again rather than running out.
+const SEEN_KEEP = 600;
 
 // Room teardown: a room whose humans have all gone dark is reaped after this.
 const REAP_AFTER = 300_000_000n; // 5 min, micros
@@ -550,6 +555,27 @@ const QuizLog = table(
   }
 );
 
+// What each player has already been asked, one row per player per question.
+// The draw reads it to keep a question off the screen for anybody who has
+// seen it before (see drawQuestions). Private and never exposed through a
+// view: no client has a reason to read it, and one that could read another
+// player's history could read ahead.
+const Seen = table(
+  {
+    name: 'seen',
+    indexes: [
+      { accessor: 'byAccount', algorithm: 'btree', columns: ['identity'] },
+      { accessor: 'byQuestion', algorithm: 'btree', columns: ['questionId'] },
+    ],
+  },
+  {
+    id: t.u64().primaryKey().autoInc(),
+    identity: t.identity(),
+    questionId: t.u64(),
+    playedAt: t.timestamp(),
+  }
+);
+
 // One row per live websocket: presence is "holds at least one session".
 const Session = table(
   {
@@ -606,6 +632,7 @@ const spacetimedb = schema({
   chatGuard: ChatGuard,
   account: Account,
   quizLog: QuizLog,
+  seen: Seen,
   session: Session,
   phaseTimer: PhaseTimer,
   walkTimer: WalkTimer,
@@ -829,7 +856,11 @@ function ensureBank(ctx: Ctx) {
     }
   }
   // A question dropped from its pack goes too — the pack is the source of truth.
-  for (const [key, row] of byKey) if (!keep.has(key)) ctx.db.question.id.delete(row.id);
+  for (const [key, row] of byKey) {
+    if (keep.has(key)) continue;
+    ctx.db.question.id.delete(row.id);
+    forgetQuestion(ctx, row.id);
+  }
   recountTopics(ctx);
   if (meta) ctx.db.bankMeta.id.update({ id: 0, version: BANK_VERSION });
   else ctx.db.bankMeta.insert({ id: 0, version: BANK_VERSION });
@@ -861,11 +892,63 @@ function poolTopics(ctx: Ctx, lobby: LobbyRow): Set<string> {
   return out;
 }
 
-/** Draw `count` fresh questions for a room from its topics, avoiding
- *  anything it has already played (a rematch never repeats a question until
- *  the pool runs dry). Topics are spread: consecutive questions differ where
- *  possible. */
-function drawQuestions(ctx: Ctx, lobby: LobbyRow, used: bigint[], count: number): bigint[] {
+/** The questions a player has been asked before, as a set of ids. */
+function seenBefore(ctx: Ctx, id: Identity): Set<string> {
+  const out = new Set<string>();
+  for (const row of ctx.db.seen.byAccount.filter(id)) out.add(String(row.questionId));
+  return out;
+}
+
+/** Remember that a player has now been asked this question. One row per
+ *  player per question: asking it again refreshes the stamp instead of
+ *  piling up a second row, so the window below counts distinct questions.
+ *  The oldest fall off at SEEN_KEEP — a regular who has worked through the
+ *  bank would rather meet something from months ago again than nothing. */
+function markSeen(ctx: Ctx, id: Identity, questionId: bigint) {
+  const mine = [...ctx.db.seen.byAccount.filter(id)];
+  const had = mine.find(r => r.questionId === questionId);
+  if (had) {
+    ctx.db.seen.id.update({ ...had, playedAt: ctx.timestamp });
+    return;
+  }
+  ctx.db.seen.insert({ id: 0n, identity: id, questionId, playedAt: ctx.timestamp });
+  const over = mine.length + 1 - SEEN_KEEP;
+  if (over <= 0) return;
+  mine.sort((a, b) =>
+    a.playedAt.microsSinceUnixEpoch < b.playedAt.microsSinceUnixEpoch ? -1 : 1
+  );
+  for (let k = 0; k < over; k++) ctx.db.seen.id.delete(mine[k].id);
+}
+
+/** A question that no longer exists should not hold a slot in anybody's
+ *  history, or it would crowd out a question that could still be asked. */
+function forgetQuestion(ctx: Ctx, questionId: bigint) {
+  for (const row of ctx.db.seen.byQuestion.filter(questionId)) ctx.db.seen.id.delete(row.id);
+}
+
+/** Draw `count` questions for a room from its topics, trying hard not to ask
+ *  anybody something they have met before and falling back only when it has
+ *  to. Two filters, in that order of priority:
+ *
+ *   1. Nothing the ROOM has already played (`used`) — a rematch never
+ *      repeats a question until the pool runs dry.
+ *   2. Nothing THESE PLAYERS have been asked before, in any pub, on any
+ *      night (the `seen` table). Candidates are banded by how many of
+ *      tonight's seats remember them, and the draw empties the band nobody
+ *      has seen before it touches the next one. So a repeat only reaches the
+ *      screen once nothing fresh is left, and when one must, a question a
+ *      single regular half-remembers goes up before one the whole room can
+ *      recite.
+ *
+ *  The banding and the topic spread are pickSpread in draw.ts, which is
+ *  where their exact behaviour is written down and tested. */
+function drawQuestions(
+  ctx: Ctx,
+  lobby: LobbyRow,
+  used: bigint[],
+  count: number,
+  seats: PlayerRow[]
+): bigint[] {
   const usedSet = new Set(used.map(String));
   const allowed = poolTopics(ctx, lobby);
   const all = [...ctx.db.question.iter()].filter(q => allowed.has(String(q.topicId)));
@@ -876,16 +959,12 @@ function drawQuestions(ctx: Ctx, lobby: LobbyRow, used: bigint[], count: number)
     const j = Math.floor(ctx.random() * (i + 1)) % (i + 1);
     [pool[i], pool[j]] = [pool[j], pool[i]];
   }
-  const out: bigint[] = [];
-  let lastTopic = -1n;
-  while (out.length < count && pool.length) {
-    let k = pool.findIndex(q => q.topicId !== lastTopic);
-    if (k < 0) k = 0;
-    const q = pool.splice(k, 1)[0];
-    out.push(q.id);
-    lastTopic = q.topicId;
+  // How many of tonight's seats have met each candidate before.
+  const seenBy = new Map<string, number>();
+  for (const p of seats) {
+    for (const key of seenBefore(ctx, p.identity)) seenBy.set(key, (seenBy.get(key) ?? 0) + 1);
   }
-  return out;
+  return pickSpread(pool, seenBy, count);
 }
 
 const isFinal = (lobby: LobbyRow) => lobby.questionIdx >= lobby.questionCount - 1;
@@ -898,7 +977,13 @@ function startQuiz(ctx: Ctx, lobby: LobbyRow) {
   for (const e of ctx.db.entry.byLobby.filter(lobby.id)) ctx.db.entry.id.delete(e.id);
   // Previous rounds' questions stay in `drawn` so a rematch gets new ones.
   const prior = lobby.status === L_FINISHED ? [...lobby.drawn] : [];
-  const drawn = [...prior, ...drawQuestions(ctx, lobby, prior, lobby.questionCount)];
+  // Only the seats that will actually watch the screen steer the draw: an
+  // empty chair's history should not keep a question off tonight's sheet.
+  const present = seats.filter(p => p.online && !p.kicked);
+  const drawn = [
+    ...prior,
+    ...drawQuestions(ctx, lobby, prior, lobby.questionCount, present.length ? present : seats),
+  ];
   let next: LobbyRow = {
     ...lobby,
     status: L_RUNNING,
@@ -974,6 +1059,9 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
   const q = questionAt(ctx, lobby, lobby.questionIdx);
   const correctIdx = lobby.qOptions.indexOf(q.correct);
   const seats = lobbyPlayers(ctx, lobby.id);
+  // Was this a real question, or the placeholder standing in for one its
+  // author withdrew mid-quiz? Only a real one goes into anybody's history.
+  const real = !!ctx.db.question.id.find(q.id);
   const started = lobby.phaseStartedAt.microsSinceUnixEpoch;
   // The reveal: every pick comes out of the private table at the same moment.
   const picked = new Map<string, number>();
@@ -999,6 +1087,9 @@ function settleQuestion(ctx: Ctx, lobby: LobbyRow) {
     let streak = p.streak;
     if (correct) { right++; streak++; } else streak = 0;
     if (p.awayThisQ && !onPhoneName) onPhoneName = p.name;
+    // They have now been asked it. Somebody who was not at the table for it
+    // has not, so the question stays fresh for them.
+    if (real && p.online && !p.kicked) markSeen(ctx, p.identity, q.id);
     ctx.db.entry.insert({
       id: 0n,
       lobbyId: lobby.id,
@@ -1925,6 +2016,7 @@ export const delete_question = spacetimedb.reducer({ id: t.u64() }, (ctx, { id }
   if (q.builtin) throw new SenderError('Built-in questions change in questions/*.json, not here');
   if (!sameId(q.authorId, ctx.sender)) throw new SenderError('Only the author can withdraw a question');
   ctx.db.question.id.delete(id);
+  forgetQuestion(ctx, id);
   bumpTopicCount(ctx, q.topicId, -1);
 });
 

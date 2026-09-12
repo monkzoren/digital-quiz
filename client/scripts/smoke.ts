@@ -178,11 +178,25 @@ await until('rematch running', () => room(a)?.status === 1);
 const again = room(a)!;
 if (again.drawn.length !== 6 || again.drawn.slice(3).some(id => firstDrawn.includes(String(id)))) fail('rematch repeated a question');
 ok('rematch drew fresh questions');
-// A Norwegian pub must never draw an English pack — the whole point of
-// tagging the bank by language.
+
+// A player's history outlasts the room. A brand-new pub, whose own `drawn`
+// starts empty, must still not ask them anything they have already been
+// asked — that guarantee lives in the private `seen` table, not the lobby.
 await a.reducers.leavePub({});
 await until('A out of the old pub', () => me(a).lobbyId === 0n);
 await b.reducers.leavePub({});
+await a.reducers.createPub({ isPublic: false, theme: 1, questions: 3, answerSecs: 8, teamMode: false, lang: 'en' });
+await until('a second pub open', () => room(a)?.status === 0);
+await a.reducers.startQuiz({});
+await until('second pub quiz running', () => room(a)?.status === 1 && room(a)!.drawn.length === 3);
+const secondDrawn = room(a)!.drawn.map(String);
+if (secondDrawn.some(id => firstDrawn.includes(id))) fail('a fresh pub re-asked a question this player had already had');
+ok('per-player history kept repeats out of a brand-new pub');
+await a.reducers.leavePub({});
+await until('A out of the second pub', () => me(a).lobbyId === 0n);
+
+// A Norwegian pub must never draw an English pack — the whole point of
+// tagging the bank by language.
 await a.reducers.createPub({ isPublic: false, theme: 3, questions: 8, answerSecs: 8, teamMode: false, lang: 'nb' });
 await until('norsk pub open', () => room(a)?.lang === 'nb');
 const nbTopics = new Set([...a.db.topic.iter()].filter(t => t.lang === 'nb').map(t => String(t.id)));

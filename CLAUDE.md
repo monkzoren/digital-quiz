@@ -19,6 +19,28 @@ README.md for how a night goes and how to run it. Key facts:
   / `add_question` / `delete_question`, `my_questions` view) live in the
   same tables. `question` is PRIVATE — it holds the key; the only public
   exposure is `my_questions` (author's own, builtins excluded).
+- NOT THE SAME QUESTIONS AGAIN: the draw tries hard to ask nobody anything
+  they have met before, and gives up only when it has to. `seen` is a PRIVATE
+  table, one row per player per question, written by `settleQuestion` for
+  every seat that was actually at the table (online, not kicked) when the
+  question was served — a placeholder standing in for a withdrawn question is
+  not recorded. `drawQuestions` reads it for tonight's seats, counts how many
+  of them remember each candidate, and hands the count to `pickSpread` in
+  `draw.ts` (the pure half, unit-tested by `draw.test.mjs`, `npm test` in
+  `spacetimedb/`). That bands the candidates — nobody has seen it, one seat
+  has, two… — and empties a band before touching the next, so a repeat only
+  reaches the screen when nothing fresh is left and the least-remembered one
+  goes first. Freshness outranks the topic spread, which is a tie-break
+  INSIDE a band. `lobby.drawn` still handles repeats within a sitting; the
+  `seen` table is what survives the room. Two things to keep true: the sheet
+  always comes back the full `questionCount` (a short one leaves the room
+  stuck in the intro with nothing to put on screen, so as a last resort
+  `pickSpread` goes round the pool again), and `SEEN_KEEP` caps each
+  player's history at 600 distinct questions, oldest off first — past that a
+  regular meets the earliest ones again rather than running out.
+  `forgetQuestion` clears a deleted question out of everyone's history, from
+  both `delete_question` and `ensureBank`. Nothing of this reaches the
+  client: `seen` is private with no view, so there are no bindings for it.
 - LANGUAGES: a pub plays in ONE language. `lobby.lang` ('' = any) filters the
   draw (`poolTopics`), picks the quiz master's patter (`MC` / `mcLine`), and
   on the client picks the in-quiz wording (`tr(lang)` in

@@ -3979,9 +3979,155 @@
     #qw-topics, #qw-mine { display: flex; flex-direction: column; gap: 4px; font-size: 11px; }
     #qw-form input, #qw-form textarea { width: 100%; text-align: left; font-size: 13px; letter-spacing: 1px; }
 
-    @media (max-width: 720px) {
-      #q-card { position: static; translate: none; width: 100%; }
-      #standings, #chat-panel, #walk-hint { display: none; }
+    /* the compact layouts show the rank inside the score plate instead of
+       the standings ladder; on a desktop it is redundant */
+    #score-pos { display: none; margin-left: 6px; color: var(--dim); }
+    #btn-chat { display: none; position: absolute; right: 14px; top: 44px; padding: 5px 10px; font-size: 15px; letter-spacing: 0; }
+    #btn-chat.on { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+
+    /* ==================================================================
+       Phones and tablets. Three things change: the stage fills the screen
+       (a 16:10 box in a 96vw column is a postage stamp on a phone), the HUD
+       stacks — score/clock/question along the top, the question card docked
+       to the bottom edge where the thumb lives, standings folded into the
+       score plate and the chat behind a toggle — and a floating touch stick
+       plus JUMP/WAVE do what WASD and the keys do on a desktop. The stage is
+       the size container (tennis's `container-type: size`), so the HUD
+       responds to the box it is actually drawn in, fullscreen or not.
+       ================================================================== */
+    /* --- fill the screen: any touch device, or any small window --- */
+    @media (pointer: coarse), (max-width: 700px), (max-height: 540px) {
+      html, body { overflow: hidden; overscroll-behavior: none; }
+      #stage, #app:fullscreen #stage {
+        width: 100vw; height: 100dvh; aspect-ratio: auto; border-radius: 0; box-shadow: none;
+      }
+      /* the modals and the ESC menu live inside the stage; on a small window
+         the overlays are already viewport-fixed (tennis's rule above), so
+         these follow them out */
+      #esc-menu { position: fixed; z-index: 12; padding: 12px; padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+      #status { display: none; }
+    }
+    /* --- touch: bigger targets, no iOS zoom on inputs, no key legend --- */
+    @media (pointer: coarse) {
+      input[type="text"], input[type="email"], input[type="password"], input[type="number"], select, textarea { font-size: 16px; }
+      #walk-hint { display: none; }
+      .opt { min-height: 44px; }
+      .callout-btn { font-size: 12px; padding: 8px 14px; }
+      #pair-prompt button { font-size: 12px; padding: 7px 12px; }
+      #pair-prompt kbd { display: none; }
+      #btn-esc, #btn-chat { min-height: 34px; }
+      #emote-bar button { padding: 6px 10px; font-size: 18px; }
+      .topic-pill { padding: 7px 12px; font-size: 11px; }
+      .chip .kick { height: 26px; padding: 0 10px; }
+    }
+
+    /* --- the floating stick + JUMP/WAVE, styled by tennis's rules above --- */
+    #touch-controls { display: none; z-index: 3; }
+    #stage.touch #touch-controls { display: block; }
+    /* the whole floor is the stick zone; the HUD's own elements sit above
+       it and take the touch first */
+    #touch-stick-zone { width: 100%; height: 100%; top: 0; }
+    #touch-home {
+      right: auto; bottom: auto; top: 50%; left: 50%; translate: -50% -50%;
+      pointer-events: none; text-align: center; padding: 8px;
+    }
+    /* fades once the stick has been used (tennis's .hidden variant loses to
+       the global !important .hidden, so this is its own class) */
+    #touch-home.off { opacity: 0; }
+    #touch-actions {
+      left: 50%; right: auto; translate: -50% 0;
+      bottom: max(14px, env(safe-area-inset-bottom));
+      align-items: center;
+    }
+    #touch-jump {
+      width: min(76px, 20cqmin); aspect-ratio: 1; font-size: min(16px, 4.4cqmin); color: #fff;
+      border: 2px solid rgba(255, 224, 92, 0.85);
+      background: radial-gradient(circle at 34% 28%, rgba(255, 224, 120, 0.85), rgba(240, 164, 0, 0.75) 60%, rgba(120, 70, 0, 0.75));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.25);
+    }
+    #touch-wave {
+      width: min(58px, 15cqmin); aspect-ratio: 1; font-size: min(22px, 6cqmin);
+      border: 2px solid rgba(140, 158, 255, 0.8);
+      background: radial-gradient(circle at 34% 28%, rgba(96, 118, 255, 0.75), rgba(24, 36, 140, 0.65) 60%, rgba(8, 14, 80, 0.65));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.2);
+    }
+
+    /* --- short stage (landscape phone): keep the desktop layout, lose the
+       chat and the legend, trim the plates --- */
+    @container (max-height: 520px) {
+      #hud .plate { padding: 4px 10px; font-size: 11px; letter-spacing: 1px; }
+      #hud-clock { min-width: 44px; }
+      #hud-mc { top: 40px; font-size: 11px; }
+      #standings { top: 40px; width: 170px; max-height: 60%; }
+      #chat-panel { display: none; }
+      #walk-hint { display: none; }
+      /* the card hangs from under the top row, so MENU and the chat toggle
+         keep the top-right corner */
+      #btn-esc { top: 8px; right: 10px; }
+      #btn-chat { display: inline-flex; top: 8px; right: 82px; }
+      #q-card { top: 44px; translate: none; right: 10px; max-height: calc(100% - 52px); overflow-y: auto; padding: 10px 12px; gap: 7px; }
+      #hud.chat-open #chat-panel {
+        display: flex; z-index: 3; left: 10px; top: 44px; bottom: 8px; width: min(320px, 44%);
+        background: rgba(5, 8, 34, 0.86); border: 1px solid var(--line); border-radius: var(--r-md); padding: 8px;
+      }
+      #hud.chat-open #chat-log { flex: 1; max-height: none; min-height: 0; }
+      #hud.chat-open #chat-input { font-size: 16px; }
+      #q-title { font-size: 14px; }
+      .opt { padding: 7px 10px; font-size: 12px; }
+      #touch-actions { left: auto; right: auto; translate: none; left: max(14px, env(safe-area-inset-left)); }
+    }
+
+    /* --- narrow stage (portrait phone): everything stacks --- */
+    @container (max-width: 720px) {
+      #hud .plate { padding: 4px 9px; font-size: 11px; letter-spacing: 1px; max-width: none; }
+      #hud-score { left: max(8px, env(safe-area-inset-left)); top: max(8px, env(safe-area-inset-top)); }
+      #hud-pub { display: none; }
+      #hud-top {
+        left: auto; right: calc(max(8px, env(safe-area-inset-right)) + 80px);
+        top: max(8px, env(safe-area-inset-top)); translate: none; gap: 6px;
+      }
+      #hud-clock { min-width: 40px; }
+      #btn-esc { right: max(8px, env(safe-area-inset-right)); top: max(8px, env(safe-area-inset-top)); padding: 6px 9px; }
+      #btn-chat { display: inline-flex; right: max(8px, env(safe-area-inset-right)); top: calc(max(8px, env(safe-area-inset-top)) + 38px); }
+      #hud-mc {
+        top: calc(max(8px, env(safe-area-inset-top)) + 38px); left: max(8px, env(safe-area-inset-left));
+        right: calc(max(8px, env(safe-area-inset-right)) + 48px); font-size: 12px; text-align: left;
+      }
+      #standings { display: none; }
+      #score-pos { display: inline; }
+      /* the card docks to the bottom edge, full width, and scrolls inside
+         itself if a long question and four long answers outgrow the phone */
+      #q-card {
+        top: auto; translate: none; width: auto;
+        left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
+        bottom: max(8px, env(safe-area-inset-bottom));
+        max-height: 60%; overflow-y: auto; padding: 12px; gap: 8px;
+      }
+      #q-title { font-size: 15px; }
+      .opt { padding: 10px 12px; font-size: 14px; min-height: 44px; }
+      .opt .letter { width: 26px; height: 26px; font-size: 13px; }
+      #answer-note:empty { display: none; }
+      /* the chat is a sheet over the floor between the top row and the card;
+         --card-h is the card's live height, kept by main.ts */
+      #chat-panel { display: none; }
+      #hud.chat-open #chat-panel {
+        display: flex; width: auto; z-index: 3;
+        left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
+        top: calc(max(8px, env(safe-area-inset-top)) + 78px);
+        bottom: calc(max(8px, env(safe-area-inset-bottom)) + var(--card-h, 0px) + 10px);
+        background: rgba(5, 8, 34, 0.86); border: 1px solid var(--line); border-radius: var(--r-md); padding: 8px;
+      }
+      #hud.chat-open #chat-log { flex: 1; max-height: none; min-height: 0; font-size: 12px; }
+      #hud.chat-open #chat-input { font-size: 16px; }
+      #walk-hint { display: none; }
+      #phone-self { bottom: calc(max(8px, env(safe-area-inset-bottom)) + var(--card-h, 0px) + 12px); width: calc(100% - 32px); }
+      #touch-actions {
+        left: auto; right: max(10px, env(safe-area-inset-right)); translate: none;
+        bottom: calc(max(8px, env(safe-area-inset-bottom)) + var(--card-h, 0px) + 12px);
+      }
+      #touch-home { top: 40%; }
+      /* the pub's own screens inside the stage */
+      #esc-menu .gfx-card { width: 100%; }
     }
   </style>
 </head>
@@ -3989,6 +4135,23 @@
   <div id="app">
     <div id="stage">
       <canvas id="game-canvas"></canvas>
+
+      <!-- TOUCH CONTROLS — phones and tablets only (#stage.touch, set by
+           main.ts from the pointer media query while the HUD is up). The
+           stick zone is the whole pub floor: put a thumb down anywhere the
+           HUD isn't and drag to walk, the same floating stick as the tennis
+           grounds. Sits UNDER #hud, so the card, the prompts and the buttons
+           always win the touch. -->
+      <div id="touch-controls">
+        <div id="touch-stick-zone">
+          <div id="touch-home">DRAG TO WALK</div>
+          <div id="touch-stick" class="hidden"><div id="touch-knob"></div></div>
+        </div>
+        <div id="touch-actions">
+          <button id="touch-wave" class="touch-btn" aria-label="Wave">👋</button>
+          <button id="touch-jump" class="touch-btn" aria-label="Jump">JUMP</button>
+        </div>
+      </div>
 
       <!-- HUD -->
       <div id="hud" class="hidden">
@@ -4018,6 +4181,8 @@
         <!-- The pub floor is yours to walk: same controls as the tennis grounds -->
         <div id="walk-hint">WASD / ARROWS — WALK ABOUT<br />SPACE JUMP · E WAVE · 1-4 ANSWER · F FULLSCREEN<br />STAND BY SOMEONE: Q HIGH FIVE · R CHEERS · T FIST BUMP</div>
         <button id="btn-esc" class="small ghost">☰ MENU</button>
+        <!-- Compact layouts hide the chat panel behind this toggle -->
+        <button id="btn-chat" class="small ghost" aria-label="Chat">💬</button>
       </div>
 
       <!-- CONNECTING -->

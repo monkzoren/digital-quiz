@@ -753,7 +753,11 @@ function refreshHud(room: Lobby, me: Player) {
     ? T.warmingUp
     : `${T.question} ${room.questionIdx + 1}/${room.questionCount}${final ? ` · ${T.lastOrders}` : ''}`;
   $('hud-mc').textContent = room.mcText ? `“${room.mcText}”` : '';
-  $('hud-score').innerHTML = `${T.score} <b id="score-val">${me.credits}</b>${C.PTS}`;
+  const order = standingsOf(room);
+  // the rank rides in the score plate for the compact layouts, which have
+  // no room for the ladder (CSS decides whether it shows)
+  const myPos = order.findIndex(p => p.identity.toHexString() === myHex());
+  $('hud-score').innerHTML = `${T.score} <b id="score-val">${me.credits}</b>${C.PTS}${myPos >= 0 ? `<span id="score-pos">#${myPos + 1}/${order.length}</span>` : ''}`;
   ($('btn-esc') as HTMLButtonElement).textContent = T.menu;
   $('walk-hint').innerHTML = T.walkHint;
   (chatInput as HTMLInputElement).placeholder = T.chatPlaceholder;
@@ -811,7 +815,6 @@ function refreshHud(room: Lobby, me: Player) {
 
   // standings
   const st = $('standings');
-  const order = standingsOf(room);
   let html = '';
   if (room.teamMode) {
     const totals = new Map<number, number>();
@@ -915,9 +918,100 @@ function pumpInput() {
   }
   const pad = padDir();
   const [kx, ky] = keyboardDir();
-  const [dx, dy] = pad && (pad[0] || pad[1]) ? pad : [kx, ky];
+  const [dx, dy] = pad && (pad[0] || pad[1]) ? pad : touchDir[0] || touchDir[1] ? touchDir : [kx, ky];
   sendDir(dx, dy);
 }
+
+// ---------------------------------------------------------------------------
+// Touch: the floating stick from the tennis grounds. A thumb anywhere on the
+// floor (everything the HUD does not cover) becomes the stick's centre;
+// dragging away from it walks in that direction, 8-way like the keys. JUMP
+// and WAVE are buttons; the pair-up prompt and the call-outs are buttons
+// already. Only shown on coarse-pointer devices while the HUD is up
+// (#stage.touch), so a desktop never sees it.
+// ---------------------------------------------------------------------------
+const stage = $('stage');
+const coarsePointer = window.matchMedia('(pointer: coarse)');
+let touchDir: [number, number] = [0, 0];
+{
+  const zone = $('touch-stick-zone');
+  const stick = $('touch-stick');
+  const knob = $('touch-knob');
+  const home = $('touch-home');
+  let stickId = -1;
+  let origin = { x: 0, y: 0 };
+  const reset = () => {
+    stickId = -1;
+    touchDir = [0, 0];
+    stick.classList.add('hidden');
+    knob.style.translate = '';
+  };
+  zone.addEventListener('pointerdown', e => {
+    if (stickId >= 0 || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    stickId = e.pointerId;
+    zone.setPointerCapture(e.pointerId);
+    const r = zone.getBoundingClientRect();
+    origin = { x: e.clientX - r.left, y: e.clientY - r.top };
+    stick.style.left = `${origin.x}px`;
+    stick.style.top = `${origin.y}px`;
+    stick.classList.remove('hidden');
+    home.classList.add('off');
+    e.preventDefault();
+  });
+  zone.addEventListener('pointermove', e => {
+    if (e.pointerId !== stickId) return;
+    const r = zone.getBoundingClientRect();
+    const dx = e.clientX - r.left - origin.x;
+    const dy = e.clientY - r.top - origin.y;
+    const dist = Math.hypot(dx, dy);
+    const dead = 10;
+    const reach = stick.offsetWidth * 0.32 || 36;
+    if (dist < dead) {
+      touchDir = [0, 0];
+      knob.style.translate = '';
+      return;
+    }
+    const nx = dx / dist;
+    const ny = dy / dist;
+    // 8-way: a sector 45° wide per direction, diagonals when both exceed
+    // sin(22.5°) — the same steps the module walks from the keyboard
+    const k = 0.383;
+    touchDir = [nx > k ? 1 : nx < -k ? -1 : 0, ny > k ? 1 : ny < -k ? -1 : 0];
+    const c = Math.min(dist, reach);
+    knob.style.translate = `${nx * c}px ${ny * c}px`;
+  });
+  const end = (e: PointerEvent) => { if (e.pointerId === stickId) reset(); };
+  zone.addEventListener('pointerup', end);
+  zone.addEventListener('pointercancel', end);
+  zone.addEventListener('lostpointercapture', end);
+  // JUMP / WAVE: fire on the press, not the click, so they feel arcade-quick
+  for (const [id, kind] of [['touch-jump', ACT_JUMP], ['touch-wave', ACT_WAVE]] as const) {
+    const b = $(id);
+    b.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      b.classList.add('pressed');
+      if (conn && subscribed) call(conn.reducers.act({ kind }));
+    });
+    for (const ev of ['pointerup', 'pointercancel', 'pointerleave']) b.addEventListener(ev, () => b.classList.remove('pressed'));
+  }
+  // leaving the room, or the layer going away under a finger, drops the stick
+  window.addEventListener('blur', reset);
+}
+/** The touch layer follows the HUD: up while the quiz is on screen on a
+ *  touch device, gone otherwise. Called from refreshUi. */
+function syncTouchLayer() {
+  const on = coarsePointer.matches && !hud.classList.contains('hidden');
+  if (stage.classList.contains('touch') !== on) {
+    stage.classList.toggle('touch', on);
+    if (!on) touchDir = [0, 0];
+  }
+}
+// The compact layouts dock the question card to the bottom edge and stack
+// the chat sheet, the phone banner and the action buttons above it, so the
+// stylesheet needs the card's live height (--card-h).
+new ResizeObserver(entries => {
+  for (const en of entries) stage.style.setProperty('--card-h', `${(en.target as HTMLElement).offsetHeight}px`);
+}).observe($('q-card'));
 
 window.addEventListener('keydown', e => {
   if (typing(e.target)) return;
@@ -1025,6 +1119,13 @@ function refreshPairPrompt() {
 const chatInput = $('chat-input') as HTMLInputElement;
 let lastChatAt = 0;
 let lastEmoteAt = 0;
+// The compact layouts keep the chat behind a toggle (a sheet over the floor)
+$('btn-chat').addEventListener('click', () => {
+  const open = hud.classList.toggle('chat-open');
+  $('btn-chat').classList.toggle('on', open);
+  if (open) { $('chat-log').scrollTop = $('chat-log').scrollHeight; chatInput.focus(); }
+  else chatInput.blur();
+});
 chatInput.addEventListener('keydown', e => {
   if (e.key === 'Escape') { chatInput.blur(); return; }
   if (e.key !== 'Enter') return;
@@ -1287,6 +1388,8 @@ function refreshUi() {
   }
   if (!me || !room) {
     hud.classList.add('hidden');
+    hud.classList.remove('chat-open');
+    syncTouchLayer();
     if (currentOverlay !== 'menu') { showOverlay('menu'); resultsShownFor = ''; }
     refreshProfile();
     refreshPublicList();
@@ -1296,6 +1399,7 @@ function refreshUi() {
   if (room.status === C.L_RUNNING) refreshHud(room, me);
   else if (room.status === C.L_FINISHED) refreshResults(room, me);
   else { hud.classList.add('hidden'); refreshLobby(room, me); }
+  syncTouchLayer();
 }
 
 function buildScene(): Scene {

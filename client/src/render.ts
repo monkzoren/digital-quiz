@@ -733,9 +733,20 @@ function resizeToDisplay() {
   if (hostCanvas.width !== Math.floor(w * renderer.getPixelRatio()) || hostCanvas.height !== Math.floor(h * renderer.getPixelRatio())) {
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
+    // A phone held upright is far narrower than 16:10: with the desktop's
+    // vertical FOV the frame would hold one bar stool. Open the vertical FOV
+    // as the box narrows so the horizontal one stays around 54°, capped
+    // before the perspective goes fish-eye; portraitK (0 on a desktop, 1 on
+    // a phone) also tips the shot down in drawScene so the regulars sit in
+    // the upper half, above the docked question card.
+    const hMin = THREE.MathUtils.degToRad(54) / 2;
+    const vfov = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(hMin) / camera.aspect));
+    camera.fov = Math.min(84, Math.max(46, vfov));
+    portraitK = Math.max(0, Math.min(1, (1.3 - camera.aspect) / 0.7));
     camera.updateProjectionMatrix();
   }
 }
+let portraitK = 0;
 
 function acquireRig(key: string): PubRig {
   let r = rigs.get(key);
@@ -1079,8 +1090,8 @@ export function drawScene(s: Scene) {
   // you as you walk so you are never off the edge of your own pub.
   if (s.menu) {
     const a = t * 0.12;
-    camera.position.set(Math.sin(a) * 5.5, 2.6 + Math.sin(t * 0.3) * 0.2, 5.5 + Math.cos(a) * 2.5);
-    camera.lookAt(0, 1.6, BAR_Z - 1);
+    camera.position.set(Math.sin(a) * 5.5, 2.6 + Math.sin(t * 0.3) * 0.2 + 0.3 * portraitK, 5.5 + Math.cos(a) * 2.5);
+    camera.lookAt(0, 1.6 - 1.0 * portraitK, BAR_Z - 1);
   } else {
     // the shot tracks you around the floor: it slides with you (clamped so
     // the bar and the screen never leave the frame) and backs off as you
@@ -1089,8 +1100,10 @@ export function drawScene(s: Scene) {
     const meX = me ? (rigs.get(me.key)?.dispX ?? me.x) : 0; // the drawn spot, so the pan is as smooth as the walk
     const followX = me ? Math.max(-3.4, Math.min(3.4, meX * 0.7)) : 0;
     camTargetX += (followX + sway - camTargetX) * (1 - Math.exp(-2.5 * dt));
-    camera.position.set(camTargetX, 2.7, 9.0);
-    camera.lookAt(camTargetX * 0.85, 1.75, BAR_Z + 0.2);
+    // upright phone: the docked question card takes the bottom of the
+    // frame, so the shot tips down a touch to lift the room above it
+    camera.position.set(camTargetX, 2.7 + 0.3 * portraitK, 9.0);
+    camera.lookAt(camTargetX * 0.85, 1.75 - 1.0 * portraitK, BAR_Z + 0.2);
   }
   // lamp flicker
   lampLights.forEach((l, i) => { l.intensity = 6 + Math.sin(t * 7 + i * 2.1) * 0.15; });

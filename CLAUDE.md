@@ -151,6 +151,23 @@ README.md for how a night goes and how to run it. Key facts:
   (`menu-fullscreen-btn`), the ESC menu's (`mm-fullscreen`) and the F key all
   call it; `#app:fullscreen #stage` keeps the 16:10 shape and fills the
   screen, and the renderer re-reads the canvas size every frame.
+- PHONES: the quiz section at the end of `client/index.html`'s stylesheet
+  carries the mobile layout. Any coarse-pointer device or small window fills
+  the viewport with the stage (no 16:10 box), the overlays and modals go
+  viewport-fixed (tennis's small-screen rule), and the HUD responds to the
+  STAGE's size via `@container` (tennis's `container-type: size`): narrow
+  (≤720px) docks `#q-card` to the bottom edge, folds the standings into the
+  score plate (`#score-pos`, filled by `refreshHud`) and puts the chat behind
+  `#btn-chat` (`#hud.chat-open`); short (≤520px) keeps the desktop layout
+  minus chat and legend. `--card-h` on `#stage` is the card's live height
+  (ResizeObserver in main.ts) so the chat sheet, the phone banner and the
+  touch buttons stack above it. Touch: `#touch-controls` (markup in the
+  stage, shown by `#stage.touch`, which `syncTouchLayer` sets from
+  `(pointer: coarse)` while the HUD is up) is tennis's floating stick over
+  the whole floor plus JUMP/WAVE; `touchDir` feeds `pumpInput` between the
+  pad and the keys. The camera opens its vertical FOV as the box narrows
+  (`resizeToDisplay`, horizontal ≈54°, capped at 84°) and `portraitK` tips
+  the shot down so the room sits above the docked card.
 - Client: `main.ts` owns connection/UI, `render.ts` the three.js pub (spawn
   spots `seatPos`/`seatSpot`, rigs pooled per identity at `PUB_SCALE` inside
   a holder group, big screen is a CanvasTexture repainted only when
